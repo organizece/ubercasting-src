@@ -1,0 +1,8 @@
+<%= form_tag models_path, :method => 'get', :id => "models_search" do %>
+  <div id="criteria">
+    <%= render 'search_criteria' %>
+  </div>
+  <div id="models">
+    <%= render 'search_result' %>
+  </div>
+<% end %>

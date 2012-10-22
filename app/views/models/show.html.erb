@@ -1,0 +1,157 @@
+<div class="basic info">
+  <p>
+    <b><%= Model.human_attribute_name(:name) %>:</b>
+    <%= @model.name %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:birthday) %>:</b>
+    <%= l @model.birthday %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:gender) %>:</b>
+    <%= t @model.gender, scope: :genders %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:biotype) %>:</b>
+    <%= t @model.biotype, scope: :biotypes %>
+  </p>
+</div>
+<div class="responsible info">
+  <p>
+    <b><%= Model.human_attribute_name(:responsible_name) %>:</b>
+    <%= @model.responsible_name %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:responsible_cpf) %>:</b>
+    <%= @model.responsible_cpf %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:responsible_rg) %>:</b>
+    <%= @model.responsible_rg %>
+  </p>
+</div>
+<div class="body info">
+  <p>
+    <b><%= Model.human_attribute_name(:height) %>:</b>
+    <%= @model.height %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:eyes_color) %>:</b>
+    <%= @model.eyes_color %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:hair_color) %>:</b>
+    <%= @model.hair_color %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:bust) %>:</b>
+    <%= @model.bust %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:waist) %>:</b>
+    <%= @model.waist %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:hip) %>:</b>
+    <%= @model.hip %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:shoes_size) %>:</b>
+    <%= @model.shoes_size %>
+  </p>
+</div>
+<div class="model info">
+  <p>
+    <b><%= Model.human_attribute_name(:rg) %>:</b>
+    <%= @model.rg %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:cpf) %>:</b>
+    <%= @model.cpf %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:personal_phone) %>:</b>
+    <%= @model.personal_phone %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:secondary_phone) %>:</b>
+    <%= @model.secondary_phone %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:job_phone) %>:</b>
+    <%= @model.job_phone %>
+  </p>
+</div>
+<div class="address info">
+  <p>
+    <b><%= Model.human_attribute_name(:address) %>:</b>
+    <%= @model.address %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:address_number) %>:</b>
+    <%= @model.address_number %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:neighborhood) %>:</b>
+    <%= @model.neighborhood %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:complement) %>:</b>
+    <%= @model.complement %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:cep) %>:</b>
+    <%= @model.cep %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:city) %>:</b>
+    <%= @model.city %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:state) %>:</b>
+    <%= t @model.state, scope: :states unless @model.state.nil? || @model.state.blank? %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:country) %>:</b>
+    <%= @model.country %>
+  </p>
+</div>
+<div class="bank info">
+  <p>
+    <b><%= Model.human_attribute_name(:bank) %>:</b>
+    <%= @model.bank %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:bank_agency) %>:</b>
+    <%= @model.bank_agency %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:bank_account) %>:</b>
+    <%= @model.bank_account %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:bank_account_type) %>:</b>
+    <%= @model.bank_account_type %>
+  </p>
+</div>
+<div class="personal info">
+  <p>
+    <b><%= Model.human_attribute_name(:personal_email) %>:</b>
+    <%= @model.personal_email %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:job_email) %>:</b>
+    <%= @model.job_email %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:secondary_email) %>:</b>
+    <%= @model.secondary_email %>
+  </p>
+  <p>
+    <b><%= Model.human_attribute_name(:site_url) %>:</b>
+    <%= @model.site_url %>
+  </p>
+</div>
+
+<%= link_to 'Editar', edit_model_path(@model) %> |
+<%= link_to 'Voltar', models_path %>

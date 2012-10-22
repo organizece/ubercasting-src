@@ -1,0 +1,193 @@
+<%= form_for(@model) do |f| %>
+  <% if @model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@model.errors.count, "error") %> prohibited this model from being saved:</h2>
+
+      <ul>
+      <% @model.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="basic info">
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :birthday %><br />
+      <%= date_select :model, :birthday, order: [:day, :month, :year], start_year: 1900, end_year: Time.now.year, default: Time.now.years_ago(18) %>
+    </div>
+    <div class="field">
+      <%= f.label :age %><br />
+      <%= f.text_field :age %>
+    </div>
+    <div class="field">
+      <%= f.label :gender %><br />
+      <%= f.radio_button(:gender, :male) %>
+      <%= f.label(:gender_male, "Masculino") %>
+      <%= f.radio_button(:gender, :female) %>
+      <%= f.label(:gender_female, "Feminino") %>
+    </div>
+    <div class="field">
+      <%= f.label :ethnicity %><br />
+      <%= f.select(:ethnicity, options_for_select(ethnicities, @model.ethnicity)) %>
+    </div>
+    <div class="field">
+      <%= f.label :biotype %><br />
+      <%= f.select(:biotype, options_for_select(biotypes, @model.biotype)) %>
+    </div>
+  </div>
+  <div class="responsible info">
+    <div class="field">
+      <%= f.label :responsible %><br />
+      <%= f.text_field :responsible %>
+    </div>
+    <div class="field">
+      <%= f.label :responsible_cpf %><br />
+      <%= f.text_field :responsible_cpf %>
+    </div>
+    <div class="field">
+      <%= f.label :responsible_rg %><br />
+      <%= f.text_field :responsible_rg %>
+    </div>
+  </div>  
+  <div class="body info">
+    <div class="field">
+      <%= f.label :height %><br />
+      <%= f.text_field :height %>
+    </div>
+    <div class="field">
+      <%= f.label :eyes_color %><br />
+      <%= f.text_field :eyes_color %>
+    </div>
+    <div class="field">
+      <%= f.label :hair_color %><br />
+      <%= f.text_field :hair_color %>
+    </div>
+    <div class="field">
+      <%= f.label :bust %><br />
+      <%= f.text_field :bust %>
+    </div>
+    <div class="field">
+      <%= f.label :waist %><br />
+      <%= f.text_field :waist %>
+    </div>
+    <div class="field">
+      <%= f.label :hip %><br />
+      <%= f.text_field :hip %>
+    </div>
+    <div class="field">
+      <%= f.label :shoes %><br />
+      <%= f.text_field :shoes %>
+    </div>
+  </div>
+  <div class="model info">
+    <div class="field">
+      <%= f.label :sector %><br />
+      <%= f.text_field :sector %>
+    </div>
+    <div class="field">
+      <%= f.label :job %><br />
+      <%= f.text_field :job %>
+    </div>
+    <div class="field">
+      <%= f.label :rg %><br />
+      <%= f.text_field :rg %>
+    </div>
+    <div class="field">
+      <%= f.label :cpf %><br />
+      <%= f.text_field :cpf %>
+    </div>
+    <div class="field">
+      <%= f.label :cel_phone %><br />
+      <%= f.text_field :cel_phone %>
+    </div>
+    <div class="field">
+      <%= f.label :home_phone %><br />
+      <%= f.text_field :home_phone %>
+    </div>
+    <div class="field">
+      <%= f.label :job_phone %><br />
+      <%= f.text_field :job_phone %>
+    </div>
+  </div>
+  <div class="address info">
+    <div class="field">
+      <%= f.label :address %><br />
+      <%= f.text_field :address %>
+    </div>
+    <div class="field">
+      <%= f.label :address_number %><br />
+      <%= f.text_field :address_number %>
+    </div>
+    <div class="field">
+      <%= f.label :neighborhood %><br />
+      <%= f.text_field :neighborhood %>
+    </div>
+    <div class="field">
+      <%= f.label :complement %><br />
+      <%= f.text_field :complement %>
+    </div>
+    <div class="field">
+      <%= f.label :cep %><br />
+      <%= f.text_field :cep %>
+      <a href="#" id="find_cep">Buscar CEP</a>
+    </div>
+    <div class="field">
+      <%= f.label :city %><br />
+      <%= f.text_field :city %>
+    </div>
+    <div class="field">
+      <%= f.label :state %><br />
+      <%= f.select(:state, options_for_select(states, @model.state)) %>
+    </div>
+    <div class="field">
+      <%= f.label :country %><br />
+      <%= f.text_field :country %>
+    </div>
+  </div>  
+  <div class="bank info">
+    <div class="field">
+      <%= f.label :bank %><br />
+      <%= f.text_field :bank %>
+    </div>
+    <div class="field">
+      <%= f.label :bank_agency %><br />
+      <%= f.text_field :bank_agency %>
+    </div>
+    <div class="field">
+      <%= f.label :bank_account %><br />
+      <%= f.text_field :bank_account %>
+    </div>
+    <div class="field">
+      <%= f.label :bank_account_type %><br />
+      <%= f.text_field :bank_account_type %>
+    </div>
+  </div>
+  <div class="personal info">
+    <div class="field">
+      <%= f.label :personal_email %><br />
+      <%= f.text_field :personal_email %>
+    </div>
+    <div class="field">
+      <%= f.label :job_email %><br />
+      <%= f.text_field :job_email %>
+    </div>
+    <div class="field">
+      <%= f.label :other_email %><br />
+      <%= f.text_field :other_email %>
+    </div>
+    <div class="field">
+      <%= f.label :site_url %><br />
+      <%= f.text_field :site_url %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= javascript_include_tag 'find_cep'%>

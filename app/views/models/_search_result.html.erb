@@ -1,0 +1,37 @@
+<div class="pagination">
+  <div clas="page_info">
+    <%= page_entries_info @models %>
+  </div>
+  <div class="itens_per_page">
+    <p>
+      Itens por página:
+      <%= select_tag :itens_per_page, options_for_select(itens_per_page, params[:itens_per_page]) %>
+    </p>
+  </div>
+  <div class="pages">
+    <%= will_paginate @models %>
+  </div>
+  <div class="order_column">
+    <p>
+      Ordenar por:
+      <%= select_tag :order_column, options_for_select(order_columns, params[:order_column]), :include_blank => true %>
+    </p>
+  </div>
+</div>
+
+<table class="pretty">
+  <% for model in @models %>
+    <tr>
+      <td><%= link_to model.name, model_path(model) %></td>
+      <td>
+        <% if model.avatar %>
+          <%= image_tag model.avatar.image.url(:thumb)  %>
+        <% else %>
+          <%= image_tag 'avatar.png' %>
+        <% end %>
+      </td>
+      <td><a href="#">Composite</a></td>
+      <td><a href="#">Adicionar à casting</a></td>
+    </tr>
+  <% end %>
+</table>

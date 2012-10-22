@@ -1,0 +1,39 @@
+<h3>Etapa 03 de 05</h3>
+<h2>Dados Gerais</h2>
+<p>Por favor, preencha as informações abaixo e depois clique em "Continuar". Estes campos não são de preenchimento obrigatório, fique a vontade para optar em preenchê-los ou não.</p>
+
+<div class="bank info">
+  <div class="field">
+    <%= f.label :bank %><br />
+    <%= f.text_field :bank %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_agency %><br />
+    <%= f.text_field :bank_agency %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_account %><br />
+    <%= f.text_field :bank_account %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_account_type %>*<br />
+    <%= f.radio_button(:bank_account_type, :conta_corrente) %>
+    <%= f.label(:bank_account_type_conta_corrente, "Conta Corrente") %>
+    <%= f.radio_button(:bank_account_type, :conta_poupanca) %>
+    <%= f.label(:bank_account_type_conta_poupanca, "Conta Poupança") %>
+  </div>
+</div>
+<div class="personal info">
+  <div class="field">
+    <%= f.label :secondary_phone %><br />
+    <%= f.text_field :secondary_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :secondary_email %><br />
+    <%= f.text_field :secondary_email %>
+  </div>
+  <div class="field">
+    <%= f.label :site_url %><br />
+    <%= f.text_field :site_url %>
+  </div>
+</div>

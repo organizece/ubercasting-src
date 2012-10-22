@@ -1,0 +1,106 @@
+<h3>Etapa 01 de 05</h3>
+<h2>Informações Básicas</h2>
+<p>Por favor, preencha as informações abaixo e depois clique em "Continuar". Os campos com " * " são obrigatórios.</p>
+
+<div class="basic info">
+  <div class="field">
+    <%= f.label :name %>*<br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %>*<br />
+    <%= date_select :model, :birthday, order: [:day, :month, :year], 
+      start_year: start_year, end_year: end_year, default: default_year %>
+  </div>
+  <div class="field">
+    <%= f.label :rg %><br />
+    <%= f.text_field :rg %>
+  </div>
+  <div class="field">
+    <%= f.label :cpf %><br />
+    <%= f.text_field :cpf %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %>*<br />
+    <%= f.radio_button(:gender, :male) %>
+    <%= f.label(:gender_male, "Masculino") %>
+    <%= f.radio_button(:gender, :female) %>
+    <%= f.label(:gender_female, "Feminino") %>
+  </div>
+  <div class="field">
+    <%= f.label :biotype %>*<br />
+    <%= f.select :biotype, options_for_select(biotypes, @model.biotype), include_blank: true %>
+  </div>
+</div>
+<div class="responsible info">
+  <div class="field">
+    <%= f.label :responsible_name %><br />
+    <%= f.text_field :responsible_name %>
+  </div>
+  <div class="field">
+    <%= f.label :responsible_birthday %><br />
+    <%= date_select :model, :responsible_birthday, order: [:day, :month, :year], 
+      start_year: start_year, end_year: end_year, default: default_year %>
+  </div>
+  <div class="field">
+    <%= f.label :responsible_cpf %><br />
+    <%= f.text_field :responsible_cpf %>
+  </div>
+  <div class="field">
+    <%= f.label :responsible_rg %><br />
+    <%= f.text_field :responsible_rg %>
+  </div>
+</div>  
+<div class="model info">
+  <div class="field">
+    <%= f.label :personal_phone %>*<br />
+    <%= f.text_field :personal_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :job_phone %><br />
+    <%= f.text_field :job_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :personal_email %>*<br />
+    <%= f.text_field :personal_email %>
+  </div>
+  <div class="field">
+    <%= f.label :job_email %><br />
+    <%= f.text_field :job_email %>
+  </div>
+</div>
+<div class="address info">
+  <div class="field">
+    <%= f.label :cep %>*<br />
+    <%= f.text_field :cep %>
+    <a href="#" id="find_cep">Buscar CEP</a>
+  </div>
+  <div class="field">
+    <%= f.label :address %>*<br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :address_number %>*<br />
+    <%= f.text_field :address_number %>
+  </div>
+  <div class="field">
+    <%= f.label :neighborhood %>*<br />
+    <%= f.text_field :neighborhood %>
+  </div>
+  <div class="field">
+    <%= f.label :complement %><br />
+    <%= f.text_field :complement %>
+  </div>
+  <div class="field">
+    <%= f.label :city %>*<br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %>*<br />
+    <%= f.select :state, options_for_select(states, @model.state), include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :country %>*<br />
+    <%= f.text_field :country %>
+  </div>
+</div>

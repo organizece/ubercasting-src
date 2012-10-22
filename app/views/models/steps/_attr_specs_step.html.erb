@@ -1,0 +1,46 @@
+<h3>Etapa 02 de 05</h3>
+<h2>Atributos e Especialidades</h2>
+<p>Por favor, preencha as informações abaixo e depois clique em "Continuar". Estes não são de preenchimento obrigatório, mas o não preenchimento destes pode prejudicar a performance de suas buscas.</p>
+
+<div class="body info">
+  <div class="field">
+    <%= f.label :height %><br />
+    <%= f.text_field :height %>cm
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br />
+    <%= f.text_field :weight %>Kg
+  </div>
+  <div class="field">
+    <%= f.label :bust %><br />
+    <%= f.text_field :bust %>cm
+  </div>
+  <div class="field">
+    <%= f.label :waist %><br />
+    <%= f.text_field :waist %>cm
+  </div>
+  <div class="field">
+    <%= f.label :hip %><br />
+    <%= f.text_field :hip %>cm
+  </div>
+  <div class="field">
+    <%= f.label :eyes_color %><br />
+    <%= f.select :eyes_color, options_for_select(eyes_color, params[:eyes_color]), include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :hair_color %><br />
+    <%= f.select :hair_color, options_for_select(hair_color, params[:hair_color]), include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :shoes_size %><br />
+    <%= f.select :shoes_size, options_for_select(shoes_size, params[:shoes_size]), include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :specialty %>:
+    <%= f.select :specialty, options_for_select(specialties, params[:specialty]), {multiple: true, size: 5} %>
+  </div>
+  <div class="field">
+    <%= f.label :curriculum %><br />
+    <%= f.text_area :curriculum %>
+  </div>
+</div>

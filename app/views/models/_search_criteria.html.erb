@@ -1,0 +1,51 @@
+<p>
+  <%= Model.human_attribute_name(:gender) %>:
+  <%= select_tag :gender, options_for_select(genders, params[:gender]), :include_blank => true %>
+</p>
+<p>
+  <%= Model.human_attribute_name(:age) %>:
+  <%= select_tag :age_from, options_for_select(ages_from, params[:age_from]), :include_blank => true %>
+  até
+  <%= select_tag :age_to, options_for_select(ages_to, params[:age_to]), :include_blank => true %>
+</p>
+<p>
+  <%= Model.human_attribute_name(:biotype) %>:
+  <%= select_tag :biotype, options_for_select(biotypes, params[:biotype]), :include_blank => true %>
+</p>
+<p>
+  <%= Model.human_attribute_name(:eyes_color) %>:
+  <%= select_tag :eyes_color, options_for_select(eyes_color, params[:eyes_color]), :include_blank => true %>
+</p>
+<p>
+  <%= Model.human_attribute_name(:hair_color) %>:
+  <%= select_tag :hair_color, options_for_select(hair_color, params[:hair_color]), :include_blank => true %>
+</p>
+<p>
+  <%= Model.human_attribute_name(:specialty) %>:
+  <%= select_tag :specialty, options_for_select(specialties, params[:specialty]), :include_blank => true %>
+</p>
+<p>
+  <%= Model.human_attribute_name(:weight) %>:
+  <%= select_tag :weight_from, options_for_select(weights_from, params[:weight_from]), :include_blank => true %>
+  até
+  <%= select_tag :weight_to, options_for_select(weights_to, params[:weight_to]), :include_blank => true %>
+</p>
+<p>
+  <%= Model.human_attribute_name(:bust) %>:
+  <%= select_tag :bust_from, options_for_select(busts_from, params[:bust_from]), :include_blank => true %>
+  até
+  <%= select_tag :bust_to, options_for_select(busts_to, params[:bust_to]), :include_blank => true %>
+</p>
+<p>
+  <%= Model.human_attribute_name(:waist) %>:
+  <%= select_tag :waist_from, options_for_select(waists_from, params[:waist_from]), :include_blank => true %>
+  até
+  <%= select_tag :waist_to, options_for_select(waists_to, params[:waist_to]), :include_blank => true %>
+</p>
+<p>
+  <%= Model.human_attribute_name(:hip) %>:
+  <%= select_tag :hip_from, options_for_select(hips_from, params[:hip_from]), :include_blank => true %>
+  até
+  <%= select_tag :hip_to, options_for_select(hips_to, params[:hip_to]), :include_blank => true %>
+</p>
+<%= submit_tag "Buscar", :name => nil %>

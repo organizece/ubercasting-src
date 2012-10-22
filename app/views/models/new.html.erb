@@ -1,0 +1,22 @@
+<h1>Adicionar Novo Modelo</h1>
+
+<%= form_for @model do |f| %>
+  <% if @model.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @model.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render "models/steps/hidden_fields", { f: f, current_step: @model.current_step} %>
+
+  <%= render "models/steps/#{@model.current_step}_step", f: f %>
+
+  <p><%= f.submit "Continuar" %></p>
+  <p><%= f.submit "Voltar", :name => "back_button" unless @model.first_step? %></p>
+<% end %>
+
+<%= javascript_include_tag 'find_cep' %>
