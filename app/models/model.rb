@@ -32,6 +32,7 @@ class Model < ActiveRecord::Base
 
   belongs_to :agency
   has_many :photos, dependent: :destroy
+  has_one :composite, dependent: :destroy
 
   attr_accessible :name, :birthday, :age, :gender, :biotype, :responsible_name, :responsible_birthday, :responsible_cpf, :responsible_rg,
     :height, :weight, :eyes_color, :hair_color, :bust, :waist, :hip, :shoes_size, :rg, :cpf, :personal_phone, :secondary_phone, :curriculum,

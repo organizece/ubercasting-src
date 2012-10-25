@@ -4,6 +4,8 @@ Ubercasting::Application.routes.draw do
 
   resources :models do
     resources :photos, except: [:edit, :update, :index]
+    resources :composites, except: [:index, :destroy]
+
     match "gallery/" => "photos#index"
   end
 

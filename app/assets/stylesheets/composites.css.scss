@@ -1,0 +1,92 @@
+*{
+  margin:0;
+  padding:0;
+  list-style:none;
+  cursor:auto;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+h1{ margin:20px 0 10px 20px; }
+
+div.split-content{ display:block; clear:both; }
+
+div#container{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/**  COMPOSITE TEMPLATE  ****************/
+
+div#container div#composite-template{
+  width:480px;
+  height:500px;
+  display:block;
+  float:left;
+  border:1px solid #CCC;
+  padding:5px;
+  margin-left:20px;
+  margin-top:20px;
+  font-size:0.7em;
+}
+
+div#container div#composite-template div.is-droppable{ border:1px solid #999; }
+div#container div#composite-template div#composite-cover{ 
+  width:100%; 
+  height:340px;
+  display:block;
+  overflow:hidden;
+}
+
+div#container div#composite-template div#composite-01,
+div#container div#composite-template div#composite-02,
+div#container div#composite-template div#composite-03,
+div#container div#composite-template div#composite-04{
+  width:115px;
+  height:150px;
+  display:block;
+  float:left;
+  margin-top:5px;
+  margin-right:3px;
+  overflow:hidden;
+}
+
+
+/**  MODEL GALLERY  ****************/
+
+
+ul#model-gallery{
+  width:700px;
+  height:auto;
+  overflow:hidden;
+  display:block;
+  float:left;
+  border:1px solid #CCC;
+  padding:5px;
+  margin-left:20px;
+  margin-top:20px;
+  font-size:0.7em;
+}
+
+ul#model-gallery li{
+  width:115px;
+  height:auto;
+  display:block;
+  float:left;
+  border:1px solid #999;
+  margin:0 5px 5px 5px;
+  padding:5px;
+  background: #eee;
+  cursor:move;
+}
+
+ul#model-gallery li h5{ margin: 0 0 0.4em; cursor: move; }
+
+ul#model-gallery li img{
+  width:100px;
+  height:130px;
+  margin-top:10px;
+  cursor:move;
+}
+
+ul#model-gallery li p{ padding:10px 0 10px 0; }

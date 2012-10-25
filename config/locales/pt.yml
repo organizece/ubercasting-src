@@ -213,7 +213,7 @@ pt:
         curriculum: Curriculum
         rg: RG
         cpf: CPF
-        persinal_phone: Tel. Pessoal
+        personal_phone: Tel. Pessoal
         secondary_phone: Tel. de Contato Secundário
         job_phone: Tel. Comercial
         specialty: Especialidade
