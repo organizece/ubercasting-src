@@ -10,7 +10,7 @@ gem 'devise'
 gem 'brazilian-rails'
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
-gem 'will_paginate', '~> 3.0'
+gem 'kaminari'
 gem 'simple_form'
 gem 'country_select'
 
