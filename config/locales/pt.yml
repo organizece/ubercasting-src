@@ -299,6 +299,10 @@ pt:
     publicidade: Publicidade
     atuacao: Ator / Atriz
 
+  bank_account_type:
+    conta_corrente: Conta Corrente
+    conta_poupanca: Conta Poupança
+
   states:
     AC: Acre
     AL: Alagoas
