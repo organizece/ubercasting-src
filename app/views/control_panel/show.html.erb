@@ -1,7 +1,40 @@
-<h1>Painel de Controle</h1>
+<div class="page-header">
+  <h1>Painel de Controle</h1>
+</div>
 
-<div id="models" class="hot_links">
-  <h2>Gerenciar Modelos</h2>
-  <%= link_to 'Adicionar Modelo', new_model_path %>
-  <%= link_to 'Buscar', models_path %>
+<div class="row">
+  <div class="span12">
+    <h2>Resumo de Pedidos <small>O que é isso?</small></h2>
+    <%= link_to 'Pedidos de Casting', new_model_path, class: 'btn btn-danger' %>
+    <%= link_to 'Novos Clientes', models_path, class: 'btn btn-warning' %>
+    <%= link_to 'Novas Mensagens', models_path, class: 'btn btn-inverse' %>
+  </div>
+</div>
+<div class="row">
+  <div class="span6">
+    <h2>Gerenciar Modelos</h2>
+    <p>Adicione novos modelos, visualize, edite ou delete modelos já cadastrados. Essas outras opções estão disponíveis na seção Modelos.</p>
+    <%= link_to 'Adicionar Modelo', new_model_path, class: 'btn' %>
+    <%= link_to 'Buscar', models_path, class: 'btn' %>
+  </div>
+  <div class="span6">
+    <h2>Gerenciar Castings</h2>
+    <p>Partindo do resultado de uma busca, você pode criar e compartilhar modelos selecionados por você.</p>
+    <%= link_to 'Gerar Novo Casting', new_model_path, class: 'btn' %>
+    <%= link_to 'Histórico de Castings', models_path, class: 'btn' %>
+  </div>
+</div>
+<div class="row">
+  <div class="span6">
+    <h2>Atualizar Site</h2>
+    <p> Atualize seu site escolhendo e editando templates, configurando páginas e permissões de visualização.</p>
+    <%= link_to 'Configurar Tema', new_model_path, class: 'btn' %>
+    <%= link_to 'Editar Visualização', models_path, class: 'btn' %>
+  </div>
+  <div class="span6">
+    <h2>Caderno de Clientes</h2>
+    <p>Partindo do resultado de uma busca, você pode criar e compartilhar modelos selecionados por você.</p>
+    <%= link_to 'Gerar Novo Casting', new_model_path, class: 'btn' %>
+    <%= link_to 'Histórico de Castings', models_path, class: 'btn' %>
+  </div>
 </div>

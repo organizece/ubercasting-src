@@ -1,51 +1,64 @@
-<p>
-  <%= Model.human_attribute_name(:gender) %>:
-  <%= select_tag :gender, options_for_select(genders, params[:gender]), :include_blank => true %>
-</p>
-<p>
-  <%= Model.human_attribute_name(:age) %>:
-  <%= select_tag :age_from, options_for_select(ages_from, params[:age_from]), :include_blank => true %>
-  até
-  <%= select_tag :age_to, options_for_select(ages_to, params[:age_to]), :include_blank => true %>
-</p>
-<p>
-  <%= Model.human_attribute_name(:biotype) %>:
-  <%= select_tag :biotype, options_for_select(biotypes, params[:biotype]), :include_blank => true %>
-</p>
-<p>
-  <%= Model.human_attribute_name(:eyes_color) %>:
-  <%= select_tag :eyes_color, options_for_select(eyes_color, params[:eyes_color]), :include_blank => true %>
-</p>
-<p>
-  <%= Model.human_attribute_name(:hair_color) %>:
-  <%= select_tag :hair_color, options_for_select(hair_color, params[:hair_color]), :include_blank => true %>
-</p>
-<p>
-  <%= Model.human_attribute_name(:specialty) %>:
-  <%= select_tag :specialty, options_for_select(specialties, params[:specialty]), :include_blank => true %>
-</p>
-<p>
-  <%= Model.human_attribute_name(:weight) %>:
-  <%= select_tag :weight_from, options_for_select(weights_from, params[:weight_from]), :include_blank => true %>
-  até
-  <%= select_tag :weight_to, options_for_select(weights_to, params[:weight_to]), :include_blank => true %>
-</p>
-<p>
-  <%= Model.human_attribute_name(:bust) %>:
-  <%= select_tag :bust_from, options_for_select(busts_from, params[:bust_from]), :include_blank => true %>
-  até
-  <%= select_tag :bust_to, options_for_select(busts_to, params[:bust_to]), :include_blank => true %>
-</p>
-<p>
-  <%= Model.human_attribute_name(:waist) %>:
-  <%= select_tag :waist_from, options_for_select(waists_from, params[:waist_from]), :include_blank => true %>
-  até
-  <%= select_tag :waist_to, options_for_select(waists_to, params[:waist_to]), :include_blank => true %>
-</p>
-<p>
-  <%= Model.human_attribute_name(:hip) %>:
-  <%= select_tag :hip_from, options_for_select(hips_from, params[:hip_from]), :include_blank => true %>
-  até
-  <%= select_tag :hip_to, options_for_select(hips_to, params[:hip_to]), :include_blank => true %>
-</p>
-<%= submit_tag "Buscar", :name => nil %>
+<div class="row">
+  <div class="span3">
+    <%= Model.human_attribute_name(:gender) %>:<br />
+    <%= select_tag :gender, options_for_select(genders, params[:gender]), :include_blank => true, class: 'input-medium' %>
+  </div>
+  <div class="span3">
+    <%= Model.human_attribute_name(:age) %>:<br />
+    <%= select_tag :age_from, options_for_select(ages_from, params[:age_from]), :include_blank => true, class: 'input-small' %>
+    &nbsp;até&nbsp;
+    <%= select_tag :age_to, options_for_select(ages_to, params[:age_to]), :include_blank => true, class: 'input-small' %>
+  </div>
+  <div class="span3">
+    <%= Model.human_attribute_name(:biotype) %>:<br />
+    <%= select_tag :biotype, options_for_select(biotypes, params[:biotype]), :include_blank => true, class: 'input-medium' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span3">
+    <%= Model.human_attribute_name(:eyes_color) %>:<br />
+    <%= select_tag :eyes_color, options_for_select(eyes_color, params[:eyes_color]), :include_blank => true, class: 'input-medium' %>
+  </div>
+  <div class="span3">
+    <%= Model.human_attribute_name(:hair_color) %>:<br />
+    <%= select_tag :hair_color, options_for_select(hair_color, params[:hair_color]), :include_blank => true, class: 'input-medium' %>
+  </div>
+  <div class="span3">
+    <%= Model.human_attribute_name(:specialty) %>:<br />
+    <%= select_tag :specialty, options_for_select(specialties, params[:specialty]), :include_blank => true, class: 'input-medium' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span3">
+    <%= Model.human_attribute_name(:weight) %>:<br />
+    <%= select_tag :weight_from, options_for_select(weights_from, params[:weight_from]), :include_blank => true, class: 'input-small' %>
+    &nbsp;até&nbsp;
+    <%= select_tag :weight_to, options_for_select(weights_to, params[:weight_to]), :include_blank => true, class: 'input-small' %>
+  </div>
+  <div class="span3">
+    <%= Model.human_attribute_name(:bust) %>:<br />
+    <%= select_tag :bust_from, options_for_select(busts_from, params[:bust_from]), :include_blank => true, class: 'input-small' %>
+    &nbsp;até&nbsp;
+    <%= select_tag :bust_to, options_for_select(busts_to, params[:bust_to]), :include_blank => true, class: 'input-small' %>
+  </div>
+  <div class="span3">
+    <%= Model.human_attribute_name(:waist) %>:<br />
+    <%= select_tag :waist_from, options_for_select(waists_from, params[:waist_from]), :include_blank => true, class: 'input-small' %>
+    &nbsp;até&nbsp;
+    <%= select_tag :waist_to, options_for_select(waists_to, params[:waist_to]), :include_blank => true, class: 'input-small' %>
+  </div>
+  <div class="span3">
+    <%= Model.human_attribute_name(:hip) %>:<br />
+    <%= select_tag :hip_from, options_for_select(hips_from, params[:hip_from]), :include_blank => true, class: 'input-small' %>
+    &nbsp;até&nbsp;
+    <%= select_tag :hip_to, options_for_select(hips_to, params[:hip_to]), :include_blank => true, class: 'input-small' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="offset9 span3">
+    <%= submit_tag "Buscar", :name => nil, class: 'btn btn-large btn-primary' %>
+  </div>
+</div>

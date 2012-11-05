@@ -6,7 +6,7 @@ class ModelsController < ApplicationController
   # GET /models.json
   def index
     @models = Model.search(ModelSearchCriteria.build_criteria(params, current_agency)).
-      order(sort_column + " " + sort_direction).paginate(:per_page => per_page, :page => params[:page])
+      order(sort_column + " " + sort_direction).page(params[:page]).per(per_page)
   end
 
   # GET /models/1

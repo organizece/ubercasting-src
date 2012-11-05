@@ -1,37 +1,33 @@
-<div class="pagination">
-  <div clas="page_info">
-    <%= page_entries_info @models %>
-  </div>
-  <div class="itens_per_page">
+<div class="row">
+  <div class="itens_per_page span3">
     <p>
       Itens por página:
-      <%= select_tag :itens_per_page, options_for_select(itens_per_page, params[:itens_per_page]) %>
+      <%= select_tag :itens_per_page, options_for_select(itens_per_page, params[:itens_per_page]), class: 'input-mini' %>
     </p>
   </div>
-  <div class="pages">
-    <%= will_paginate @models %>
+  <div class="span6">
+    <%= paginate @models %>
   </div>
-  <div class="order_column">
+  <div class="order_column span3">
     <p>
       Ordenar por:
-      <%= select_tag :order_column, options_for_select(order_columns, params[:order_column]), :include_blank => true %>
+      <%= select_tag :order_column, options_for_select(order_columns, params[:order_column]), :include_blank => true, class: 'input-medium' %>
     </p>
   </div>
 </div>
 
-<table class="pretty">
+<div class="row">
   <% for model in @models %>
-    <tr>
-      <td><%= link_to model.name, model_path(model) %></td>
-      <td>
-        <% if model.avatar %>
-          <%= image_tag model.avatar.image.url(:thumb)  %>
-        <% else %>
-          <%= image_tag 'avatar.png' %>
-        <% end %>
-      </td>
-      <td><a href="#">Composite</a></td>
-      <td><a href="#">Adicionar à casting</a></td>
-    </tr>
+    <div class="span3">
+      <h4><%= link_to model.name, model_path(model) %></h4>
+      <% if model.avatar %>
+        <%= image_tag model.avatar.image.url(:thumb), class: 'rounded' %>
+      <% else %>
+        <%= image_tag 'avatar.png', class: 'rounded' %>
+      <% end %>
+      <%= link_to 'Upload Fotos', new_model_photo_path(model), class: 'btn btn-block' %>
+      <a href="#" class='btn btn-block'>Composite</a>
+      <a href="#" class='btn btn-block'>Adicionar à casting</a>
+    </div>
   <% end %>
-</table>
+</div>

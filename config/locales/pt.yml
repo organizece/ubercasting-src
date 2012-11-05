@@ -213,7 +213,7 @@ pt:
         curriculum: Curriculum
         rg: RG
         cpf: CPF
-        persinal_phone: Tel. Pessoal
+        personal_phone: Tel. Pessoal
         secondary_phone: Tel. de Contato Secundário
         job_phone: Tel. Comercial
         specialty: Especialidade
@@ -248,21 +248,13 @@ pt:
       full_messages:
         format: "%{attribute} %{message}"
 
-  will_paginate:
-    previous_label: "&#8592; Anterior"
-    next_label: "Próximo &#8594;"
-    page_gap: "&hellip;"
-    page_entries_info:
-      single_page:
-        zero:  "%{model} não encontrado"
-        one:   "Exibindo 1 %{model}"
-        other: "Exibindo todos %{count} %{model}"
-      single_page_html:
-        zero:  "%{model} não encontrado"
-        one:   "Exibindo <b>1</b> %{model}"
-        other: "Exibindo todos <b>%{count}</b> %{model}"
-      multi_page: "Itens: %{from} a %{to} de %{count}"
-      multi_page_html: "Itens: <b>%{from}</b> a <b>%{to}</b> de <b>%{count}</b>"
+  views:
+    pagination:
+      first: "&laquo; Primeiro"
+      last: "Último &raquo;"
+      previous: "Anterior"
+      next: "Próximo"
+      truncate: "..."
 
   biotypes:
     branco: Branca(o)
@@ -298,6 +290,10 @@ pt:
     eventos: Eventos
     publicidade: Publicidade
     atuacao: Ator / Atriz
+
+  bank_account_type:
+    conta_corrente: Conta Corrente
+    conta_poupanca: Conta Poupança
 
   states:
     AC: Acre
