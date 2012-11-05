@@ -1,5 +1,10 @@
 /*
  *= require_self
- *= require_tree .
+ *= require agencies
+ *= require composites
+ *= require control_panel
+ *= require models
+ *= require photos
+ *= require bootstrap_and_overrides
  *= require jquery.fileupload-ui
 */
