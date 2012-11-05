@@ -1,5 +1,10 @@
 Ubercasting::Application.routes.draw do
 
+  match 'home' => 'main_pages#home', via: :get
+  match 'who_we_are' => 'main_pages#who_we_are', via: :get
+  match 'tour' => 'main_pages#tour', via: :get
+  match 'testemonials' => 'main_pages#testemonials', via: :get
+
   devise_for :agencies, :controllers => { :sessions => "agencies/sessions" }
 
   resources :models do
