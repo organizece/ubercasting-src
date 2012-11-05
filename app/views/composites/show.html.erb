@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Model:</b>
+  <%= @composite.model_id %>
+</p>
+
+<p>
+  <b>Main photo:</b>
+  <%= @composite.main_photo_id %>
+</p>
+
+<p>
+  <b>First sub photo:</b>
+  <%= @composite.first_sub_photo_id %>
+</p>
+
+<p>
+  <b>Second sub photo:</b>
+  <%= @composite.second_sub_photo_id %>
+</p>
+
+<p>
+  <b>Third sub photo:</b>
+  <%= @composite.third_sub_photo_id %>
+</p>
+
+<p>
+  <b>Fourth sub photo:</b>
+  <%= @composite.fourth_sub_photo_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_composite_path(@composite) %> |
+<%= link_to 'Back', composites_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  model_id: 1
+  main_photo_id: 1
+  first_sub_photo_id: 1
+  second_sub_photo_id: 1
+  third_sub_photo_id: 1
+  fourth_sub_photo_id: 1
+
+two:
+  model_id: 1
+  main_photo_id: 1
+  first_sub_photo_id: 1
+  second_sub_photo_id: 1
+  third_sub_photo_id: 1
+  fourth_sub_photo_id: 1

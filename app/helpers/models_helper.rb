@@ -174,12 +174,11 @@ module ModelsHelper
     columns
   end
 
-  def scores
-    scores = []
-    (0..5).each do |score|
-      scores << [score, score]
-    end
+  def bank_account_types
+    bank_account_types = []
+    bank_account_types << [t(:conta_corrente, scope: :bank_account_types), :conta_corrente]
+    bank_account_types << [t(:conta_poupanca, scope: :bank_account_types), :conta_poupanca]
 
-    scores
+    bank_account_types
   end
 end

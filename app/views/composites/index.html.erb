@@ -1,0 +1,33 @@
+<h1>Listing composites</h1>
+
+<table>
+  <tr>
+    <th>Model</th>
+    <th>Main photo</th>
+    <th>First sub photo</th>
+    <th>Second sub photo</th>
+    <th>Third sub photo</th>
+    <th>Fourth sub photo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @composites.each do |composite| %>
+  <tr>
+    <td><%= composite.model_id %></td>
+    <td><%= composite.main_photo_id %></td>
+    <td><%= composite.first_sub_photo_id %></td>
+    <td><%= composite.second_sub_photo_id %></td>
+    <td><%= composite.third_sub_photo_id %></td>
+    <td><%= composite.fourth_sub_photo_id %></td>
+    <td><%= link_to 'Show', composite %></td>
+    <td><%= link_to 'Edit', edit_composite_path(composite) %></td>
+    <td><%= link_to 'Destroy', composite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Composite', new_composite_path %>
