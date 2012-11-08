@@ -1,8 +1,5 @@
 <%= form_for([@model, @composite]) do |f| %>
   <div id="container-composite">
-  
-    <h1>Seleção de Composite</h1>
-    <hr />
     
     <div id="composite-template" class="ui-widget ui-helper-clearfix">
         <div id="composite-cover" class="is-droppable">Capa Composite</div>
@@ -28,8 +25,13 @@
       <% end %>
     </ul>
   </div>
-  
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="row">
+    <div class="span2">
+      <%= f.submit "Voltar", class: 'btn btn-small', :name => "back_button" %>
+    </div>
+    <div class="offset8 span2">
+      <%= f.submit "Finalizar", class: 'btn btn-large btn-primary' %>
+    </div>
   </div>
 <% end %>

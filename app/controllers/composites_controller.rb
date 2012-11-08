@@ -47,13 +47,17 @@ class CompositesController < ApplicationController
     @model = Model.find(params[:model_id])
     @composite.model = @model
 
-    respond_to do |format|
-      if @composite.save
-        format.html { redirect_to models_path, notice: 'Composite was successfully created.' }
-        format.json { render json: @composite, status: :created, location: @composite }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @composite.errors, status: :unprocessable_entity }
+    if params[:back_button]
+      redirect_to new_model_photo_path(@model)
+    else
+      respond_to do |format|
+        if @composite.save
+          format.html { redirect_to models_path, notice: 'Composite was successfully created.' }
+          format.json { render json: @composite, status: :created, location: @composite }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @composite.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

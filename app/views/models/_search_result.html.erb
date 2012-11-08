@@ -26,7 +26,7 @@
         <%= image_tag 'avatar.png', class: 'rounded' %>
       <% end %>
       <%= link_to 'Editar Modelo', edit_model_path(model), class: 'btn btn-block' %>
-      <%= link_to 'Upload Fotos', model_edit_photos_path(model), class: 'btn btn-block' %>
+      <%= link_to 'Upload Fotos', new_model_photo_path(model), class: 'btn btn-block' %>
       <% if model.composite %>
         <%= link_to 'Editar Composite', edit_model_composite_path(model, model.composite), class: 'btn btn-block' %>
         <%= link_to 'Visualizar Composite', model_composite_path(model, model.composite), class: 'btn btn-block' %>
