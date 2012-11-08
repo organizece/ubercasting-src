@@ -25,8 +25,15 @@
       <% else %>
         <%= image_tag 'avatar.png', class: 'rounded' %>
       <% end %>
+      <%= link_to 'Editar Modelo', edit_model_path(model), class: 'btn btn-block' %>
       <%= link_to 'Upload Fotos', new_model_photo_path(model), class: 'btn btn-block' %>
-      <a href="#" class='btn btn-block'>Composite</a>
+      <% if model.composite %>
+        <%= link_to 'Editar Composite', edit_model_composite_path(model, model.composite), class: 'btn btn-block' %>
+        <%= link_to 'Visualizar Composite', model_composite_path(model, model.composite), class: 'btn btn-block' %>
+      <% else %>
+        <%= link_to 'Criar Composite', new_model_composite_path(model), class: 'btn btn-block' %>
+      <% end %>
+      <%= link_to 'Deletar Modelo', model_path(model), method: :delete, class: 'btn btn-block' %>
       <a href="#" class='btn btn-block'>Adicionar à casting</a>
     </div>
   <% end %>
