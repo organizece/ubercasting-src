@@ -1,5 +1,5 @@
-<%= form_for(@composite) do |f| %>
-  <div id="container">
+<%= form_for([@model, @composite]) do |f| %>
+  <div id="container-composite">
   
     <h1>Seleção de Composite</h1>
     <hr />
@@ -19,11 +19,11 @@
     </div>
       
     <ul id="model-gallery" class="gallery ui-helper-reset ui-helper-clearfix">
-      <%= for @composite.model.photos.each do |photo| %>
+      <% for photo in @composite.model.photos.each %>
         <li class="is-draggable ui-widget-content ui-corner-tr">
           <h5><%= photo.image_file_name %></h5>
-            <%= image_tag photo.image.url(:thumb), alt: photo.image_file_name, id: photo.id %>
-            <p>Clique e arraste-me para a posição do composite desejada.</p>
+          <%= image_tag photo.image.url(:thumb), alt: photo.image_file_name, id: photo.id %>
+          <p>Clique e arraste-me para a posição do composite desejada.</p>
         </li>
       <% end %>
     </ul>

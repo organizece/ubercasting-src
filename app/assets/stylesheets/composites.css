@@ -2,15 +2,15 @@ h1{ margin:20px 0 10px 20px; }
 
 div.split-content{ display:block; clear:both; }
 
-/*div#container{
+div#container-composite{
   width:100%;
   height:auto;
   display:block;
-}*/
+}
 
 /**  COMPOSITE TEMPLATE  ****************/
 
-/*div#container div#composite-template{
+div#container-composite div#composite-template{
   width:480px;
   height:500px;
   display:block;
@@ -22,18 +22,18 @@ div.split-content{ display:block; clear:both; }
   font-size:0.7em;
 }
 
-div#container div#composite-template div.is-droppable{ border:1px solid #999; }
-div#container div#composite-template div#composite-cover{ 
+div#container-composite div#composite-template div.is-droppable{ border:1px solid #999; }
+div#container-composite div#composite-template div#composite-cover{ 
   width:100%; 
   height:340px;
   display:block;
   overflow:hidden;
 }
 
-div#container div#composite-template div#composite-01,
-div#container div#composite-template div#composite-02,
-div#container div#composite-template div#composite-03,
-div#container div#composite-template div#composite-04{
+div#container-composite div#composite-template div#composite-01,
+div#container-composite div#composite-template div#composite-02,
+div#container-composite div#composite-template div#composite-03,
+div#container-composite div#composite-template div#composite-04{
   width:115px;
   height:150px;
   display:block;
@@ -41,7 +41,7 @@ div#container div#composite-template div#composite-04{
   margin-top:5px;
   margin-right:3px;
   overflow:hidden;
-}*/
+}
 
 
 /**  MODEL GALLERY  ****************/

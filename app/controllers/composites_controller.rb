@@ -24,7 +24,9 @@ class CompositesController < ApplicationController
   # GET /composites/new
   # GET /composites/new.json
   def new
+    @model = Model.find(params[:model_id])
     @composite = Composite.new
+    @composite.model = @model
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,16 +37,19 @@ class CompositesController < ApplicationController
   # GET /composites/1/edit
   def edit
     @composite = Composite.find(params[:id])
+    @model = @composite.model
   end
 
   # POST /composites
   # POST /composites.json
   def create
     @composite = Composite.new(params[:composite])
+    @model = Model.find(params[:model_id])
+    @composite.model = @model
 
     respond_to do |format|
       if @composite.save
-        format.html { redirect_to @composite, notice: 'Composite was successfully created.' }
+        format.html { redirect_to models_path, notice: 'Composite was successfully created.' }
         format.json { render json: @composite, status: :created, location: @composite }
       else
         format.html { render action: "new" }
@@ -60,7 +65,7 @@ class CompositesController < ApplicationController
 
     respond_to do |format|
       if @composite.update_attributes(params[:composite])
-        format.html { redirect_to @composite, notice: 'Composite was successfully updated.' }
+        format.html { redirect_to models_path, notice: 'Composite was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
