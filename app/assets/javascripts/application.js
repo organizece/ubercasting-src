@@ -14,4 +14,12 @@
 //= require jquery_ujs
 //= require jquery-fileupload
 //= require bootstrap
-//= require_tree .
+//= require agencies
+//= require bootstrap_aditions
+//= require composites
+//= require control_panel
+//= require find_cep
+//= require jquery-fileupload-main
+//= require models
+//= require photos
+//= require_self
