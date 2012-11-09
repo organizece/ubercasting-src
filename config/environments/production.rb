@@ -22,6 +22,8 @@ Ubercasting::Application.configure do
 
   config.assets.initialize_on_precompile = false
 
+  config.assets.precompile += ['dragdrop_composite.js', 'main_pages.css', 'main_pages.js']
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
