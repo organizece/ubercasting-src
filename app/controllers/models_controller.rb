@@ -60,7 +60,7 @@ class ModelsController < ApplicationController
     else
       session[:model_step] = nil
       flash[:notice] = "Model was successfully created."
-      redirect_to new_model_photo_path(@model, {source: 'new'})
+      redirect_to new_model_photo_path(@model)
     end
   end
 
