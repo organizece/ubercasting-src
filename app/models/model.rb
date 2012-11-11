@@ -68,7 +68,9 @@ class Model < ActiveRecord::Base
   validates :shoes_size, numericality: true, allow_nil: true, if: :attr_specs_step?
 
   def minor_aged?
-    false
+    major_age = Date.today >> (-1 * 18 * 12) #Cria data 18 anos atrás. Método >> adiciona n meses a data.
+
+    (birthday <=> major_age) == 1
   end
 
   def avatar
@@ -78,10 +80,14 @@ class Model < ActiveRecord::Base
   def self.search(criteria)
     models = Model.where(agency_id: criteria.agency_id)
     models = models.where("gender = ?", "#{criteria.gender}") if criteria.gender.present?
-
-    # models = models.where("age >= ?", "#{criteria.age_from}") if criteria.age_from.present?
-    # models = models.where("age <= ?", "#{criteria.age_to}") if criteria.age_to.present?
-
+    if criteria.age_to.present?
+      age_to = Time.local(Date.today.year).to_date >> (-1 * Integer(criteria.age_to) * 12)
+      models = models.where("birthday >= ?", "#{age_to}")
+    end
+    if criteria.age_from.present?
+      age_from = Date.today >> (-1 * Integer(criteria.age_from) * 12)
+      models = models.where("birthday <= ?", "#{age_from}")
+    end
     models = models.where("biotype = ?", "#{criteria.biotype}") if criteria.biotype.present?
     models = models.where("eyes_color = ?", "#{criteria.eyes_color}") if criteria.eyes_color.present?
     models = models.where("hair_color = ?", "#{criteria.hair_color}") if criteria.hair_color.present?

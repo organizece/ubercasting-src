@@ -97,7 +97,11 @@ class ModelsController < ApplicationController
     else
       session[:model_step] = nil
       flash[:notice] = "Model was successfully updated."
-      redirect_to new_model_photo_path(@model, {source: 'edit'})
+      if params[:end_button]
+        redirect_to models_path()
+      else
+        redirect_to new_model_photo_path(@model, {source: 'edit'})
+      end
     end
   end
 
