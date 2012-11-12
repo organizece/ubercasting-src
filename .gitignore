@@ -3,5 +3,3 @@ log/*.log
 tmp/
 public/system/photos/images/*
 .DS_Store
-Gemfile
-
