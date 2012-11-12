@@ -1,2 +1,69 @@
-<h1>MainPages#home</h1>
-<p>Find me in app/views/main_pages/home.html.erb</p>
+<%= stylesheet_link_tag    "home" %>
+
+<div id="main-content-container">
+
+<div id="main-content-wrapper">
+	
+	<div id="left-column">
+		
+		<div id="video-container">
+			<div id="share-bar">
+                <ul id="share-list">
+                    <li><a href="#" onclick="javascript:return false;" title="Compartilhar no Facebook" class="share-fb">Compartilhar no Facebook</a></li>
+                    <li><a href="#" onclick="javascript:return false;" title="Compartilhar no Twitter" class="share-tr">Compartilhar no Twitter</a></li>
+                    <li><a href="#" onclick="javascript:return false;" title="Compartilhar no Google+" class="share-go">Compartilhar no Google+</a></li>
+                    <li>&nbsp;</li>
+                </ul>
+            </div>
+			<div id="video-container-obj">&nbsp;</div>
+		</div>
+		
+	</div>
+	
+	<div id="right-column">
+        <h2>Casting Made Easy</h2>
+        <h3>Organize, construa e exiba seus casting, on-line.</h3>
+        <ul id="content-list">
+            <li>&raquo; Cadastre e gerencie seus modelos de qualquer lugar.</li>
+            <li>&raquo; Construa seu site e exiba seu casting de forma rápida e fácil.</li>
+            <li>&raquo; Forte ferramente de busca integrada com filtros p/ busca avançada.</li>
+            <li>&raquo; Busque, selecione e envie castings com mais praticidade.</li>
+        </ul>
+		<%=	link_to "EXPERIMENTAR", agency_root_path, :class => "btn-gold-experimentar"  %>
+    </div>
+	
+</div>
+
+</div>
+
+<div id="bottom-content-container">
+	
+    <div id="bottom-content-wrapper">
+    
+        <div id="bottom-left-column" class="bottom-column">
+            <a href="/control_panel" title="Cadastro e Gerenciamento">
+				<h4 id="bottom-title-01">Cadastro e Gerenciamento</h4>
+	            <div id="folder01" class="img-container">Cadastro e Gerenciamento</div>
+	            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elit mauris, volutpat vulputate tempor vitae.</p>
+			</a>
+        </div>
+        
+        <div id="bottom-middle-column" class="bottom-column">
+            <a href="#" title="Exiba e Compartilhe">
+				<h4 id="bottom-title-02">Exiba e Compartilhe</h4>
+	            <div id="folder02" class="img-container">Exiba e Compartilhe</div>
+	            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elit mauris, volutpat vulputate tempor vitae.</p>
+			</a>
+        </div>
+        
+        <div id="bottom-right-column" class="bottom-column">
+            <a href="/testemonials"title="Nossos Depoimentos">
+				<h4 id="bottom-title-03">Nossos Depoimentos</h4>
+	            <div id="folder03" class="img-container">Nossos Depoimentos</div>
+	            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elit mauris, volutpat vulputate tempor vitae.</p>
+			</a>
+        </div>
+    
+    </div>
+    
+</div>

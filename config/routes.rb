@@ -20,6 +20,7 @@ Ubercasting::Application.routes.draw do
 
   match "control_panel/" => "control_panel#show", as: :agency_root
 
-  root :to => "control_panel#show"
+  #root :to => "control_panel#show"
+  root :to => "main_pages#home"
 
 end

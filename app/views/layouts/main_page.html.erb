@@ -5,52 +5,121 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
-  <%= stylesheet_link_tag    "main_pages", media: "all" %>
-  <%= javascript_include_tag "main_pages" %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<%= stylesheet_link_tag    "main_pages" %>
+	<%= javascript_include_tag "main_pages" %>
+	<%= javascript_include_tag "main" %>
+	<%= csrf_meta_tags %>
+ 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">Ubercasting</a>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li><%= link_to 'Home', home_path %></li>
-          <li><%= link_to 'Quem Somos', who_we_are_path %></li>
-          <li><%= link_to 'Tour', tour_path %></li>
-          <li><%= link_to 'Depoimentos', testemonials_path %></li>
-        </ul>
-        <ul class="nav pull-right">
-          <li class="divider-vertical"></li>
-          <li><%= link_to 'Sair', destroy_agency_session_path %></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<div id="container">
+	
+	<div id="nav-container">
+    	
+        <div id="nav-wrapper">
+            
+            <div id="primary-links">
+                
+                <ul id="primary-links-list">
+                    <li><h1 class="nav-logo"><%= link_to 'ÜBER', root_path  %></h1></li>
+                    <li><%= link_to 'Quem Somos', who_we_are_path, :class => "btn-quemsomos"  %></li>
+                    <li><%= link_to 'Tour', tour_path, :class => "btn-tour" %></li>
+                    <li><%= link_to 'Depoimentos', testemonials_path, :class => "btn-depoimentos" %></li>
+                    <li class="no-bar"><a href="#" title="Planos" class="btn-planos">Planos</a></li>
+                </ul>
+                
+            </div>
+            
+            <div id="secundary-links">
+                
+                <ul id="secundary-links-list">
+                    <li class="login-container"><%= link_to 'Login', agency_root_path, :class => "btn-login" %></li>
+                </ul>
+                
+            </div>
+            
+        </div>
+        
+        <div id="login-panel">
+                            
+            <div id="mail-field" class="login-panel-field">
+                <label>E-mail</label>
+                <input type="text" id="input-mail" value="Digite aqui seu e-mail..." />
+            </div>
+            
+            <div id="pass-field" class="login-panel-field">
+                <label>Senha</label>
+                <input type="password" id="input-pass" value="Digite aqui a sua senha..." />
+            </div>
+            
+            <div class="content-split">&nbsp;</div>
+            
+            <div id="login-panel-links">
+                <ul>
+                    <li><a href="#" title="Esqueceu sua senha?">Esqueceu sua senha?</a></li>
+                    <li><a href="#" class="account-link" title="Criar Conta">Criar Conta</a></li>
+                </ul>
+            </div>
+            
+            <div id="login-panel-submit">
+                <input type="button" value="ENTRAR" id="btn-entrar" />
+            </div>
+            
+        </div>
+        
+   	</div>
+    
+    <div id="nav-block-push">&nbsp;</div>
 
-<div class="container">
-  <% flash.each do |name, msg| %>
-    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-      <a class="close" data-dismiss="alert">×</a>
-      <%= msg %>
+	<%= yield %>
+	
+	<div id="footer-container">
+    	
+        <div id="footer-wrapper">
+        
+            <div id="footer-left-column" class="footer-column">
+                <h5 id="footer-title-uber">Über</h5>
+                <ul class="footer-link-list">
+                    <li><%= link_to 'Quem Somos', who_we_are_path %></li>
+                    <li><%= link_to 'Tour', tour_path %></li>
+                    <li><%= link_to 'Depoimentos', testemonials_path %></li>
+                    <li><a href="#" title="Planos" class="gold-link">Planos &raquo;</a></li>
+                </ul>
+            </div>
+            
+            <div id="footer-middle-column" class="footer-column">
+                <h5 id="footer-title-contato">Contato</h5>
+                <ul class="footer-link-list">
+                    <li><a href="#" title="Ajuda">Ajuda &raquo;</a></li>
+                    <li><a href="#" title="Facebook">Facebook &raquo;</a></li>
+                    <li><a href="#" title="Termos de Uso">Termos de Uso &raquo;</a></li>
+                    <li><a href="#" title="Política de Privacidade">Política de Privacidade &raquo;</a></li>
+                </ul>
+            </div>
+            
+            <div id="footer-right-column" class="footer-column no-margin">
+                <h5 id="footer-title-faleconosco">Fale Conosco, e nos diga como podemos ajudar:</h5>
+                <p>Envie uma mensagem para nós, e iremos responder o mais rápido possível.</p>
+                <ul class="footer-link-list">
+                    <li><a href="#" title="contato@ubercasting.com.br">contato@ubercasting.com.br</a></li>
+                    <li><a href="#" title="ajuda@ubercasting.com.br">ajuda@ubercasting.com.br</a></li>
+                    <li><a href="#" title="suporte@ubercasting.com.br">suporte@ubercasting.com.br</a></li>
+                </ul>
+            </div>
+            
+            <div class="content-split"></div>
+            
+            <p class="footer-signature">2012 &copy; Über Casting - Todos os Direitos Reseravados</p>
+            
+        </div>
+        
     </div>
-  <% end %>
-  <div class="row">
-    <div class="span12"> 
-      <%= yield %>
-    </div>
-  </div>
+	
 </div>
-
 
 </body>
 </html>
