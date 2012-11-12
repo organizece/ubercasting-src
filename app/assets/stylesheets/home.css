@@ -1,0 +1,200 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/**************************************/
+/*  MAIN CONTENT CONTAINER  ***********/
+/**************************************/
+
+/*  GENERAL  ***********/
+
+div#main-content-container{
+	width:100%;
+	height:434px;
+	display:block;
+	clear:both;
+	background:#000 url(home/bg-main-content.jpg) center top no-repeat scroll;
+	position:relative;
+}
+
+div#main-content-wrapper{
+	width:1000px;
+	height:434px;
+	overflow:hidden;
+	display:block;
+	margin:0 auto;
+}
+
+div#main-content-wrapper div#left-column,
+div#main-content-wrapper div#right-column{
+	width:auto;
+	height:auto;
+	display:block;
+	overflow:hidden;
+	float:left;
+	margin-top:55px;
+}
+
+/*  SHARE BAR  ***********/
+
+div#main-content-wrapper div#left-column div#share-bar,
+div#main-content-wrapper div#left-column div#share-bar ul{ 
+	width:auto; 
+	height:21px; 
+	display:block; 
+	color:#FFF; 
+	font-size:10px; 
+	margin-left: 8px;
+}
+
+div#main-content-wrapper div#left-column div#share-bar ul li{
+	width:auto;
+	height:21px;
+	display:block;
+	float:left;
+}
+
+div#main-content-wrapper div#left-column div#share-bar ul li a{
+	width:31px;
+	height:21px;
+	display:block;
+	text-indent:-10000px;
+	margin-right:10px;
+}
+
+div#main-content-wrapper div#left-column div#share-bar ul li a.share-fb{ background:transparent url(home/share-bar-facebook.jpg) left top no-repeat scroll; }
+div#main-content-wrapper div#left-column div#share-bar ul li a.share-tr{ background:transparent url(home/share-bar-twitter.jpg) left top no-repeat scroll; }
+div#main-content-wrapper div#left-column div#share-bar ul li a.share-go{ background:transparent url(home/share-bar-google.jpg) left top no-repeat scroll; }
+
+/*  VIDEO CONTAINER  ***********/
+
+div#video-container{
+	width:501px;
+	height:318px;
+	display:block;
+	padding-top:12px;
+	background:transparent url(home/bg-video-container.png) left top no-repeat scroll;
+}
+
+/*  RIGHT COLUMN  ***********/
+
+div#main-content-wrapper div#right-column{ 
+	margin-left:35px; 
+	width:447px;
+}
+
+div#main-content-wrapper div#right-column h2{
+	width:447px;
+	height:108px;
+	display:block;
+	text-indent:-10000px;
+	background:transparent url(home/main-content-title.png) left top no-repeat scroll;
+}
+
+div#main-content-wrapper div#right-column h3{
+	width:447px;
+	height:21px;
+	display:block;
+	text-indent:-10000px;
+	margin:12px 0 10px 0;
+	background:transparent url(home/main-content-subtitle.png) left top no-repeat scroll;
+}
+
+div#main-content-wrapper ul#content-list{
+	width:auto;
+	height:auto;
+	font-size:14px;
+	color:#FFF;
+	font-weight:normal;
+}
+
+div#main-content-wrapper ul#content-list li{ margin-bottom: 2px; }
+
+div#main-content-wrapper div#right-column a.btn-gold-experimentar{
+	width:443px;
+	height:46px;
+	display:block;
+	text-indent:-10000px;
+	background:transparent url(home/btn-big-experimentar.jpg) left top no-repeat scroll;
+	margin-left:1px;
+	margin-top:19px;
+}
+
+
+
+/**************************************/
+/*  BOTTOM CONTENT CONTAINER  *********/
+/**************************************/
+
+div#bottom-content-container{
+	width:100%;
+	height:370px;
+	display:block;
+	clear:both;
+	overflow:hidden;
+	background:#000 url(home/bg-lower-body.jpg) center top no-repeat scroll;
+}
+
+div#bottom-content-wrapper{
+	width:1000px;
+	height:370px;
+	display:block;
+	margin:0 auto;
+}
+
+div#bottom-content-wrapper div.bottom-column{
+	width:301px;
+	height:auto;
+	display:block;
+	float:left;
+	margin-right:17px;
+	margin-top:50px;
+}
+
+div#bottom-content-wrapper div.bottom-column a{ text-decoration: none; }
+div#bottom-content-wrapper div.bottom-column a:hover{ text-decoration: none; }
+
+div#bottom-content-wrapper div.bottom-column h4{
+	width:301px;
+	height:51px;
+	display:block;
+	text-indent:-10000px;
+	margin-bottom:25px;
+}
+
+div#bottom-content-wrapper div.bottom-column h4#bottom-title-01{ background:transparent url(home/bottom-title-01.png) left top no-repeat scroll; }
+div#bottom-content-wrapper div.bottom-column h4#bottom-title-02{ background:transparent url(home/bottom-title-02.png) center top no-repeat scroll; }
+div#bottom-content-wrapper div.bottom-column h4#bottom-title-03{ background:transparent url(home/bottom-title-03.png) center top no-repeat scroll; }
+
+div#bottom-content-wrapper div.bottom-column div.img-container{
+	width:300px;
+	height:126px;
+	display:block;
+	text-indent:-10000px;
+}
+
+div#bottom-content-wrapper div.bottom-column div#folder01{ background:transparent url(home/bottom-folder-01.png) center top no-repeat scroll; }
+div#bottom-content-wrapper div.bottom-column div#folder02{ background:transparent url(home/bottom-folder-02.png) center top no-repeat scroll; }
+div#bottom-content-wrapper div.bottom-column div#folder03{ background:transparent url(home/bottom-folder-03.png) center top no-repeat scroll; }
+div#bottom-content-wrapper div.bottom-column div.folder-hover{ background-position: center bottom !important; }
+
+div#bottom-content-wrapper div.bottom-column p{ 
+	width:270px;
+	height:auto;
+	text-align:center;
+	display:block;
+	margin:0 auto;
+	color:#FFF;
+	font-size:12px;
+}
+
+div#bottom-content-wrapper div.bottom-column a.btn-silver{
+	width:301px;
+	height:60px;
+	display:block;
+	text-indent:-10000px;
+	margin-top:25px;
+}
+
+div#bottom-content-wrapper div.bottom-column a#bottom-btn-experimentar{ background:transparent url(home/bottom-btn-experimentar.jpg) center top no-repeat scroll; }
+div#bottom-content-wrapper div.bottom-column a#bottom-btn-tour{ background:transparent url(home/bottom-btn-fazertour.jpg) center top no-repeat scroll; }
+div#bottom-content-wrapper div.bottom-column a#bottom-btn-depos{ background:transparent url(home/bottom-btn-depoimentos.jpg) center top no-repeat scroll; }
