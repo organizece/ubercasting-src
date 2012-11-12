@@ -6,7 +6,6 @@ gem 'rails', '3.2.8'
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
 
-
 gem 'devise'
 gem 'brazilian-rails'
 gem "paperclip", "~> 3.0"
