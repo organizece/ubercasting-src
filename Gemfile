@@ -4,6 +4,7 @@ gem 'rails', '3.2.8'
 
 # Database
 gem 'sqlite3', group: :development
+gem 'pg', group: :production
 
 
 gem 'devise'
