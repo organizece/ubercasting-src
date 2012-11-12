@@ -1,0 +1,283 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+/**************************************/
+/*  UTILS  ****************************/
+/**************************************/
+
+html, body{ background-color: #111111; }
+
+ul{ margin: 0; padding: 0;}
+
+div#container{ 
+	width:100%;
+	height:auto;
+	display:block;
+	overflow:hidden;
+}
+
+.content-split{
+	width:100%;
+	height:1px;
+	display: block;
+	clear: both;
+}
+
+
+
+/**************************************/
+/*  NAVIGATION BAR  *******************/
+/**************************************/
+
+div#nav-container{
+	width:100%;
+	height:59px;
+	display:block;
+	position:fixed;
+	top:0;
+	z-index:999;
+	background:#000 url(nav/nav-container-bg.jpg) left top repeat-x scroll;
+	color:#FFF;
+}
+
+div#nav-wrapper{
+	width:1000px;
+	height:auto;
+	overflow:hidden;
+	display:block;
+	margin:0 auto;
+}
+
+div#nav-container div#nav-wrapper div#primary-links{
+	width:auto;
+	height:59px;
+	display:block;
+	float:left;
+}
+
+div#nav-container div#nav-wrapper div#primary-links ul li,
+div#nav-container div#nav-wrapper div#secundary-links ul li{
+	display:block;
+	float:left;
+	height:57px;
+}
+
+div#nav-container div#nav-wrapper div#primary-links ul li{ background:transparent url(nav/nav-container-bar.jpg) right top no-repeat scroll; }
+div#nav-container div#nav-wrapper div#primary-links ul li.no-bar{ background:none; }
+
+div#nav-container div#nav-wrapper div#primary-links ul li h1.nav-logo{
+	width:107px;
+	height:57px;
+	display:block;
+	text-indent:10000px;
+	padding-right:27px;
+	margin-top:0;
+	cursor:pointer;
+	background:transparent url(nav/nav-container-logo.png) left top no-repeat scroll;
+}
+
+div#nav-container div#nav-wrapper div#primary-links ul li a{
+	display:block;
+	height:57px;
+	text-indent:-10000px;
+}
+
+div#nav-wrapper div#primary-links ul li a.btn-quemsomos{ width:146px; background:transparent url(nav/nav-container-btn-quemsomos.png) left top no-repeat scroll;}
+div#nav-wrapper div#primary-links ul li a.btn-tour{ width:92px; background:transparent url(nav/nav-container-btn-tour.png) left top no-repeat scroll;}
+div#nav-wrapper div#primary-links ul li a.btn-depoimentos{ width:150px; background:transparent url(nav/nav-container-btn-depoimentos.png) left top no-repeat scroll;}
+div#nav-wrapper div#primary-links ul li a.btn-planos{
+	width:88px;
+	height:32px !important;
+	background:transparent url(nav/nav-container-btn-planos.jpg) left top no-repeat scroll;
+	margin:13px 20px 0 25px;
+}
+
+div#nav-wrapper div#primary-links ul li a.btn-quemsomos:hover{ background-position:left bottom; }
+div#nav-wrapper div#primary-links ul li a.btn-tour:hover{ background-position:left bottom; }
+div#nav-wrapper div#primary-links ul li a.btn-depoimentos:hover{ background-position:left bottom; }
+div#nav-wrapper div#primary-links ul li a.btn-planos:hover{ background-position:left bottom; }
+
+div#nav-container div#nav-wrapper div#secundary-links{
+	width:auto;
+	height:59px;
+	display:block;
+	float:right;
+}
+
+div#nav-container div#nav-wrapper div#secundary-links ul li a{
+	display:block;
+	height:57px;
+	text-indent:-10000px;
+}
+
+div#nav-container div#nav-wrapper div#secundary-links ul li a.btn-login{
+	width:72px;
+	height:37px !important;
+	background:transparent url(nav/nav-container-btn-login.png) left top no-repeat scroll;
+	margin:11px 20px 0 25px;
+}
+div#nav-container div#nav-wrapper div#secundary-links ul li a.btn-login:hover{ background-position:left bottom; }
+div#nav-container div#nav-wrapper div#secundary-links ul li a.login-active{ background-position:left bottom; }
+
+div#nav-block-push{
+	width:100%;
+	height:59px;
+	display:block;
+	margin-top: -60px;
+}
+
+
+
+
+
+/*  LOGIN  ***********/
+
+div#nav-container div#login-panel{
+	position:absolute;
+	top:58px;
+	right:252px;
+	width:220px;
+	min-height:150px;
+	z-index:1000;
+	display:none;
+	background:#333333 url(nav/login-panel-bg.gif) left bottom repeat-x scroll;
+	border-top:1px solid #000;
+	border-left:1px solid #000;
+	border-right:1px solid #000;
+	padding:12px 15px 12px 15px;
+}
+
+div#nav-container div#login-panel div.login-panel-field{
+	width:100%;
+	height:auto;
+	display:block;
+	margin-bottom:15px;
+}
+
+div#nav-container div#login-panel div.login-panel-field label{
+	font-size:12px;
+	color:#FFF;
+	display:block;
+	margin-bottom:5px;
+	text-shadow:1px 2px 1px #000000;
+}
+
+div#nav-container div#login-panel div.login-panel-field input{
+	width:95%;
+	height:31px;
+	padding-left:5px;
+	border:1px solid #000;
+	color:#737373;
+	background:#fff url(nav/login-panel-input-bg.jpg) left top repeat-x scroll;
+}
+
+div#nav-container div#login-panel div#login-panel-links,
+div#nav-container div#login-panel div#login-panel-submit{
+	width:auto;
+	height:auto;
+	display:block;
+	float:left;
+}
+
+div#nav-container div#login-panel div#login-panel-links{ margin-right:21px; }
+div#nav-container div#login-panel div#login-panel-links ul,
+div#nav-container div#login-panel div#login-panel-links ul li{ width:auto; height:auto; display:block; }
+div#nav-container div#login-panel div#login-panel-links ul li{ margin-bottom:6px; }
+div#nav-container div#login-panel div#login-panel-links ul li a{ color:#FFF; text-decoration:none; font-size:10px; }
+div#nav-container div#login-panel div#login-panel-links ul li a:hover{ text-decoration:underline; }
+div#nav-container div#login-panel div#login-panel-links ul li a.account-link{ font-size:14px; }
+
+div#nav-container div#login-panel div#login-panel-submit input#btn-entrar{
+	width:88px;
+	height:32px;
+	display:block;
+	text-indent:-10000px;
+	cursor:pointer;
+	background:#000 url(nav/login-panel-btn-enter.jpg) left top no-repeat scroll;
+}
+div#nav-container div#login-panel div#login-panel-submit input#btn-entrar:hover{ background-position:left bottom; }
+
+
+
+
+
+/**************************************/
+/*  FOOTER  ***************************/
+/**************************************/
+
+div#footer-container{
+	width:100%;
+	height:216px;
+	display:block;
+	background:#000 url(footer/footer-container-bg.jpg) left top repeat-x scroll;
+}
+
+div#footer-wrapper{
+	width:960px;
+	height:216px;
+	display:block;
+	margin:0 auto;
+}
+
+div#footer-wrapper div.footer-column{
+	width:auto;
+	height:auto;
+	display:block;
+	float:left;
+	color:#FFF;
+	margin: 25px 60px 0px 0px;
+	font-size:12px;
+}
+
+div#footer-wrapper div.no-margin{ margin: 25px 0px 0px 0px; }
+
+div#footer-wrapper div.footer-column h5{
+	width:auto;
+	height:28px;
+	display:block;
+	text-indent:-10000px;
+	margin-bottom:7px;
+}
+
+div#footer-wrapper div.footer-column h5#footer-title-uber{ background:transparent url(footer/footer-title-uber.jpg) left top no-repeat scroll; }
+div#footer-wrapper div.footer-column h5#footer-title-contato{ background:transparent url(footer/footer-title-contato.jpg) left top no-repeat scroll; }
+div#footer-wrapper div.footer-column h5#footer-title-faleconosco{ background:transparent url(footer/footer-title-faleconosco.jpg) left top no-repeat scroll; width:584px; }
+
+div#footer-wrapper div.footer-column ul.footer-link-list{ margin-left: 0px; }
+
+div#footer-wrapper div.footer-column ul.footer-link-list,
+div#footer-wrapper div.footer-column ul.footer-link-list li{
+	width:auto;
+	height:auto;
+	padding-left:5px;
+	display:block;
+}
+
+div#footer-wrapper div.footer-column ul.footer-link-list li{ display:block; margin:5px 0 5px 0;}
+
+div#footer-wrapper div.footer-column ul.footer-link-list li a{
+	color:#FFF;
+	text-decoration:none;
+}
+
+div#footer-wrapper div.footer-column ul.footer-link-list li a:hover{ text-decoration:underline; }
+
+div#footer-wrapper div.footer-column ul.footer-link-list li a.gold-link{
+	display:block;
+	background-color:#fff22d;
+	padding:10px;
+	color:#121111;
+	font-weight:bold;
+}
+
+div#footer-wrapper div.footer-column ul.footer-link-list li a.gold-link:hover{ background-color:#e1d629; }
+
+div#footer-wrapper p.footer-signature{
+	width:100%;
+	height:auto;
+	display:block;
+	text-align:center;
+	font-size:11px;
+	color:#717070;
+}
