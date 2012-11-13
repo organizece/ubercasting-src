@@ -7,4 +7,5 @@
  *= require photos
  *= require bootstrap_and_overrides
  *= require jquery.fileupload-ui
+ *= require admin-general
 */

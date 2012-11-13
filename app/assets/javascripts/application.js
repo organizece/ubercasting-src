@@ -22,4 +22,5 @@
 //= require jquery-fileupload-main
 //= require models
 //= require photos
+//= require admin-css-overwrite
 //= require_self
