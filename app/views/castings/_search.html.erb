@@ -1,0 +1,8 @@
+<%= form_tag castings_path, :method => 'get', :id => "castings_search" do %>
+  <div id="criteria">
+    <%= render 'search_criteria' %>
+  </div>
+  <div id="castings">
+    <%= render 'search_result' %>
+  </div>
+<% end %>

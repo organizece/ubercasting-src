@@ -1,0 +1,13 @@
+<div class="row">
+  <table class="table table-striped">
+    <% for casting in @castings %>
+      <tr>
+        <td></td>
+        <td><%= casting.name %></td>
+        <td><%= link_to 'Compartilhar', castings_path, class: 'btn btn-small btn-block' %></td>
+        <td><%= link_to 'Visualizar', casting_path(casting), class: 'btn btn-small btn-block' %></td>
+        <td><%= link_to 'Excluir', casting_path(casting), method: :delete, class: 'btn btn-small btn-block' %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

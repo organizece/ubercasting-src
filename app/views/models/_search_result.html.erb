@@ -11,7 +11,7 @@
   <div class="order_column span3">
     <p>
       Ordenar por:
-      <%= select_tag :order_column, options_for_select(order_columns, params[:order_column]), :include_blank => true, class: 'input-medium' %>
+      <%= select_tag :order_column, options_for_select(model_order_columns, params[:order_column]), :include_blank => true, class: 'input-medium' %>
     </p>
   </div>
 </div>

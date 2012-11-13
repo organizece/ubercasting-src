@@ -18,6 +18,7 @@
 //= require bootstrap_aditions
 //= require find_cep
 //= require agencies
+//= require castings
 //= require composites
 //= require control_panel
 //= require models

@@ -1,5 +1,7 @@
 Ubercasting::Application.routes.draw do
 
+  resources :castings
+
   match 'home' => 'main_pages#home', via: :get
   match 'who_we_are' => 'main_pages#who_we_are', via: :get
   match 'tour' => 'main_pages#tour', via: :get

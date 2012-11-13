@@ -183,7 +183,7 @@ module ModelsHelper
     shoes_size
   end
 
-  def order_columns
+  def model_order_columns
     columns = []
     columns << [Model.human_attribute_name(:age), :age]
     columns << [Model.human_attribute_name(:biotype), :biotype]

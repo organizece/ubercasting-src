@@ -7,6 +7,7 @@ class Agency < ActiveRecord::Base
          :name, :cnpj, :owner_name, :owner_cpf, :domain
 
   has_many :models
+  has_many :castings
 
   validates :domain, presence: true, if: :confirmed?
 

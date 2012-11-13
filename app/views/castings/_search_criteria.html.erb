@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="itens_per_page span3">
+    <p>
+      Itens por página:
+      <%= select_tag :itens_per_page, options_for_select(itens_per_page, params[:itens_per_page]), class: 'input-mini' %>
+    </p>
+  </div>
+  <div class="span6">
+    <%= paginate @castings %>
+  </div>
+  <div class="order_column span3">
+    <p>
+      Ordenar por:
+      <%= select_tag :order_column, options_for_select(casting_order_columns, params[:order_column]), :include_blank => true, class: 'input-medium' %>
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span5">
+    Buscar Casting: <%= text_field_tag :name, params[:name], placeholder: 'Digite sua busca aqui...' %>
+  </div>
+  <div class="span3">
+    <%= submit_tag "Buscar", :name => nil, class: 'btn btn-large btn-primary' %>
+  </div>
+</div>

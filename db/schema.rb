@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112162104) do
+ActiveRecord::Schema.define(:version => 20121112173050) do
 
   create_table "agencies", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(:version => 20121112162104) do
   add_index "agencies", ["email"], :name => "index_agencies_on_email", :unique => true
   add_index "agencies", ["reset_password_token"], :name => "index_agencies_on_reset_password_token", :unique => true
 
+  create_table "castings", :force => true do |t|
+    t.string   "name"
+    t.integer  "agency_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "composites", :force => true do |t|
     t.integer  "model_id"
     t.integer  "main_photo_id"
@@ -49,6 +56,14 @@ ActiveRecord::Schema.define(:version => 20121112162104) do
     t.integer  "fourth_sub_photo_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+  end
+
+  create_table "model_castings", :force => true do |t|
+    t.integer  "model_id"
+    t.integer  "casting_id"
+    t.integer  "score"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "models", :force => true do |t|
