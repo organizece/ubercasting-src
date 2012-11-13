@@ -33,10 +33,12 @@ class Model < ActiveRecord::Base
   belongs_to :agency
   has_many :photos, dependent: :destroy
   has_one :composite, dependent: :destroy
+  has_many :model_castings
+  has_many :castings, through: :model_castings
 
   attr_accessible :name, :birthday, :age, :gender, :biotype, :responsible_name, :responsible_birthday, :responsible_cpf, :responsible_rg,
-    :height, :weight, :eyes_color, :hair_color, :bust, :waist, :hip, :shoes_size, :rg, :cpf, :personal_phone, :secondary_phone, :curriculum,
-    :job_phone, :specialty, :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :bank, 
+    :height, :weight, :eyes_color, :hair_color, :bust, :waist, :hip, :mannequin, :shoes_size, :rg, :cpf, :personal_phone, :secondary_phone, 
+    :curriculum, :job_phone, :specialty, :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :bank, 
     :bank_account, :bank_account_type, :bank_agency, :personal_email, :job_email, :secondary_email, :site_url, :avatar_photo_id
 
   attr_writer :current_step
@@ -47,13 +49,6 @@ class Model < ActiveRecord::Base
   validates :biotype, presence: true, if: :basic_info_step?
   validates :personal_phone, presence: true, if: :basic_info_step?
   validates :personal_email, presence: true, if: :basic_info_step?
-  validates :cep, presence: true, if: :basic_info_step?
-  validates :address, presence: true, if: :basic_info_step?
-  validates :address_number, presence: true, if: :basic_info_step?
-  validates :neighborhood, presence: true, if: :basic_info_step?
-  validates :city, presence: true, if: :basic_info_step?
-  validates :state, presence: true, if: :basic_info_step?
-  validates :country, presence: true, if: :basic_info_step?
   
   validates :responsible_name, presence: true, if: lambda { |o| o.minor_aged? && o.basic_info_step? }
   validates :responsible_birthday, presence: true, if: lambda { |o| o.minor_aged? && o.basic_info_step? }
@@ -65,10 +60,13 @@ class Model < ActiveRecord::Base
   validates :bust, numericality: true, allow_nil: true, if: :attr_specs_step?
   validates :waist, numericality: true, allow_nil: true, if: :attr_specs_step?
   validates :hip, numericality: true, allow_nil: true, if: :attr_specs_step?
+  validates :mannequin, numericality: true, allow_nil: true, if: :attr_specs_step?
   validates :shoes_size, numericality: true, allow_nil: true, if: :attr_specs_step?
 
   def minor_aged?
-    false
+    major_age = Date.today >> (-1 * 18 * 12) #Cria data 18 anos atrás. Método >> adiciona n meses a data.
+
+    (birthday <=> major_age) == 1
   end
 
   def avatar
@@ -78,10 +76,14 @@ class Model < ActiveRecord::Base
   def self.search(criteria)
     models = Model.where(agency_id: criteria.agency_id)
     models = models.where("gender = ?", "#{criteria.gender}") if criteria.gender.present?
-
-    # models = models.where("age >= ?", "#{criteria.age_from}") if criteria.age_from.present?
-    # models = models.where("age <= ?", "#{criteria.age_to}") if criteria.age_to.present?
-
+    if criteria.age_to.present?
+      age_to = Time.local(Date.today.year).to_date >> (-1 * Integer(criteria.age_to) * 12)
+      models = models.where("birthday >= ?", "#{age_to}")
+    end
+    if criteria.age_from.present?
+      age_from = Date.today >> (-1 * Integer(criteria.age_from) * 12)
+      models = models.where("birthday <= ?", "#{age_from}")
+    end
     models = models.where("biotype = ?", "#{criteria.biotype}") if criteria.biotype.present?
     models = models.where("eyes_color = ?", "#{criteria.eyes_color}") if criteria.eyes_color.present?
     models = models.where("hair_color = ?", "#{criteria.hair_color}") if criteria.hair_color.present?
@@ -94,6 +96,8 @@ class Model < ActiveRecord::Base
     models = models.where("waist <= ?", "#{criteria.waist_to}") if criteria.waist_to.present?
     models = models.where("hip >= ?", "#{criteria.hip_from}") if criteria.hip_from.present?
     models = models.where("hip <= ?", "#{criteria.hip_to}") if criteria.hip_to.present?
+    models = models.where("mannequin >= ?", "#{criteria.mannequin_from}") if criteria.mannequin_from.present?
+    models = models.where("mannequin <= ?", "#{criteria.mannequin_to}") if criteria.mannequin_to.present?
 
     models
   end

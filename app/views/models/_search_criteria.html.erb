@@ -58,6 +58,15 @@
 </div>
 
 <div class="row">
+  <div class="span3">
+    <%= Model.human_attribute_name(:mannequin) %>:<br />
+    <%= select_tag :mannequin_from, options_for_select(mannequins_from, params[:mannequin_from]), :include_blank => true, class: 'input-small' %>
+    &nbsp;até&nbsp;
+    <%= select_tag :mannequin_to, options_for_select(mannequins_to, params[:mannequin_to]), :include_blank => true, class: 'input-small' %>
+  </div>
+</div>
+
+<div class="row">
   <div class="offset9 span3">
     <%= submit_tag "Buscar", :name => nil, class: 'btn btn-large btn-primary' %>
   </div>

@@ -1,13 +1,27 @@
 <div class="page-header">
-  <h1>Adicionar Novo Modelo</h1>
+    <% if params[:source] == 'edit' %>
+        <h1>Editar Modelo</h1>
+    <% else %>
+        <h1>Adicionar Novo Modelo</h1>
+    <% end %>
 </div>
 
 <h3>Etapa 04 de 05</h3>
 <h2>Upload de Imagens</h2>
 
 <div class="row">
-    <div class="offset10 span2">
-        <%= link_to "Continuar", new_model_composite_path(@model) ,class: 'btn btn-large btn-primary' %>
+    <div class="offset8 span2">
+        <% if params[:source] == 'edit' %>
+            <%= link_to "Continuar", edit_model_composite_path(@model, @model.composite), class: 'btn btn-large btn-primary' if @model.composite %>
+            <%= link_to "Continuar", new_model_composite_path(@model, { source: 'edit'}), class: 'btn btn-large btn-primary' unless @model.composite %>
+        <% else %>
+            <%= link_to "Continuar", new_model_composite_path(@model), class: 'btn btn-large btn-primary' %>
+        <% end %>
+    </div>
+    <div class="span2">
+        <% if params[:source] == 'edit' %>
+            <%= link_to "Finalizar", models_path, class: 'btn btn-large btn-primary' %>
+        <% end %>
     </div>
 </div>
 

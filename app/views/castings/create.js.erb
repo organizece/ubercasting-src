@@ -1,0 +1,8 @@
+$("#messages").remove();
+<% if @casting.errors.any? %>
+  $('#body_container').prepend("<%= escape_javascript(render('utils/error_messages', errors: @casting.errors)) %>");
+<% else %>
+  $('#body_container').prepend("<%= escape_javascript(render('utils/success_messages')) %>");
+  $("#castings_search").submit();
+  $('#casting_name').val("");
+<% end %>

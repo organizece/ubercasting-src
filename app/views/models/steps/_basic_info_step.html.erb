@@ -70,20 +70,20 @@
 
 <div class="row">
   <div class="span5">
-    <%= f.input :cep, required: true, input_html: { class: 'input-xlarge' } %>
+    <%= f.input :cep, input_html: { class: 'input-xlarge' } %>
     <a href="#" id="find_cep" class="btn">Buscar CEP</a>
   </div>
 </div>
 
 <div class="row">
   <div class="span3">
-    <%= f.input :address, required: true, input_html: { class: 'input-xlarge' } %>
+    <%= f.input :address, input_html: { class: 'input-xlarge' } %>
   </div>
   <div class="span3">
-    <%= f.input :neighborhood, required: true, input_html: { class: 'input-xlarge' } %>
+    <%= f.input :neighborhood, input_html: { class: 'input-xlarge' } %>
   </div>
   <div class="span2">
-    <%= f.input :address_number, required: true, input_html: { class: 'input-small' } %>
+    <%= f.input :address_number, input_html: { class: 'input-small' } %>
   </div>
   <div class="span2">
     <%= f.input :complement, input_html: { class: 'input-medium' } %>
@@ -92,12 +92,12 @@
 
 <div class="row">
   <div class="span4">
-    <%= f.input :city, required: true, input_html: { class: 'input-xlarge' } %>
+    <%= f.input :city, input_html: { class: 'input-xlarge' } %>
   </div>
   <div class="span3">
-    <%= f.input :state, required: true, collection: states, input_html: { class: 'input-large' } %>
+    <%= f.input :state, collection: states, input_html: { class: 'input-large' } %>
   </div>
   <div class="span3">
-    <%= f.input :country, required: true, priority: [ "Brazil" ], input_html: { class: 'input-large' } %>
+    <%= f.input :country, priority: [ "Brazil" ], input_html: { class: 'input-large' } %>
   </div>
 </div>

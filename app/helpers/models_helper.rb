@@ -154,6 +154,26 @@ module ModelsHelper
     hips
   end
 
+  def mannequins_from
+    mannequins = []
+    mannequins << ["- 20", 0]
+    (21..70).each do |mannequin|
+      mannequins << [mannequin, mannequin]
+    end
+    mannequins << ['70 +', 71]
+    mannequins
+  end
+
+  def mannequins_to
+    mannequins = []
+    mannequins << ['- 20', 19]
+    (21..70).each do |mannequin|
+      mannequins << [mannequin, mannequin]
+    end
+    mannequins << ['70 +', '']
+    mannequins
+  end
+
   def shoes_size
     shoes_size = []
     (20..50).each do |size|
@@ -163,7 +183,7 @@ module ModelsHelper
     shoes_size
   end
 
-  def order_columns
+  def model_order_columns
     columns = []
     columns << [Model.human_attribute_name(:age), :age]
     columns << [Model.human_attribute_name(:biotype), :biotype]
