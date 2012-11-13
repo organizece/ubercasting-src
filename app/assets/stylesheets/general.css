@@ -24,6 +24,10 @@ div#container{
 	clear: both;
 }
 
+.put-left{ float: left; }
+.put-right{ float: right; }
+.put-center{ display: block; margin:0 auto; }
+
 
 
 /**************************************/
