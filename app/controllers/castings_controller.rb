@@ -6,6 +6,7 @@ class CastingsController < ApplicationController
   def index
     @castings = Casting.search(params[:name], current_agency.id).
       order(sort_column + " " + sort_direction).page(params[:page]).per(per_page)
+    @casting = Casting.new
   end
 
   # GET /castings/1
@@ -45,9 +46,11 @@ class CastingsController < ApplicationController
       if @casting.save
         format.html { redirect_to @casting, notice: 'Casting was successfully created.' }
         format.json { render json: @casting, status: :created, location: @casting }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @casting.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -77,6 +80,7 @@ class CastingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to castings_url }
       format.json { head :no_content }
+      format.js
     end
   end
 

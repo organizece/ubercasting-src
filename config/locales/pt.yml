@@ -181,6 +181,7 @@ pt:
       agency: Agência
       model: Modelo
       photo: Foto
+      casting: Casting
 
     attributes:
       agency:
@@ -235,6 +236,8 @@ pt:
         secondary_email: E-mail de Contato Secundário
         site_url: Endereço de Site / Blog
         avatar: Avatar
+      casting:
+        name: Nome
 
     errors:
       template:
