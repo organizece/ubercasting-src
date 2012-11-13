@@ -1,4 +1,6 @@
 <%= form_for([@model, @composite]) do |f| %>
+  <%= hidden_field_tag :source, params[:source] %>
+
   <div id="container-composite">
     
     <div id="composite-template" class="ui-widget ui-helper-clearfix">

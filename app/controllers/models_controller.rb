@@ -25,11 +25,13 @@ class ModelsController < ApplicationController
   # GET /models/new.json
   def new
     @model = Model.new
+    session[:model_step] = nil
   end
 
   # GET /models/1/edit
   def edit
     @model = current_agency.models.find_by_id(params[:id])
+    session[:model_step] = nil
 
     redirect_to models_path and return unless @model
     @model
@@ -66,15 +68,39 @@ class ModelsController < ApplicationController
   # PUT /models/1.json
   def update
     @model = current_agency.models.find_by_id(params[:id])
+    @model.attributes = params[:model]
 
-    respond_to do |format|
-      redirect_to models_path and return unless @model
-      if @model.update_attributes(params[:model])
-        format.html { redirect_to @model, notice: 'Model was successfully updated.' }
-        format.json { head :no_content }
+    @model.current_step = session[:model_step]
+
+    editing = true
+    if @model.valid?
+      if params[:back_button]
+        @model.previous_step
+      elsif params[:end_button]
+        if @model.all_valid?
+          @model.save
+          editing = false
+        end
+      elsif @model.last_step?
+        if @model.all_valid?
+          @model.save
+          editing = false
+        end
       else
-        format.html { render action: "edit" }
-        format.json { render json: @model.errors, status: :unprocessable_entity }
+        @model.next_step
+      end
+      session[:model_step] = @model.current_step
+    end
+
+    if editing
+      render "edit"
+    else
+      session[:model_step] = nil
+      flash[:notice] = "Model was successfully updated."
+      if params[:end_button]
+        redirect_to models_path()
+      else
+        redirect_to new_model_photo_path(@model, {source: 'edit'})
       end
     end
   end

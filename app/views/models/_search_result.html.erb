@@ -11,7 +11,7 @@
   <div class="order_column span3">
     <p>
       Ordenar por:
-      <%= select_tag :order_column, options_for_select(order_columns, params[:order_column]), :include_blank => true, class: 'input-medium' %>
+      <%= select_tag :order_column, options_for_select(model_order_columns, params[:order_column]), :include_blank => true, class: 'input-medium' %>
     </p>
   </div>
 </div>
@@ -26,7 +26,7 @@
         <%= image_tag 'avatar.png', class: 'rounded' %>
       <% end %>
       <%= link_to 'Editar Modelo', edit_model_path(model), class: 'btn btn-block' %>
-      <%= link_to 'Upload Fotos', new_model_photo_path(model), class: 'btn btn-block' %>
+      <%= link_to 'Upload Fotos', new_model_photo_path(model, {source: 'edit'}), class: 'btn btn-block' %>
       <% if model.composite %>
         <%= link_to 'Editar Composite', edit_model_composite_path(model, model.composite), class: 'btn btn-block' %>
         <%= link_to 'Visualizar Composite', model_composite_path(model, model.composite), class: 'btn btn-block' %>

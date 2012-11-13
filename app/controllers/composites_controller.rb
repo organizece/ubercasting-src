@@ -48,7 +48,7 @@ class CompositesController < ApplicationController
     @composite.model = @model
 
     if params[:back_button]
-      redirect_to new_model_photo_path(@model)
+      redirect_to new_model_photo_path(@model, {source: params[:source]})
     else
       respond_to do |format|
         if @composite.save
@@ -67,13 +67,18 @@ class CompositesController < ApplicationController
   def update
     @composite = Composite.find(params[:id])
 
-    respond_to do |format|
-      if @composite.update_attributes(params[:composite])
-        format.html { redirect_to models_path, notice: 'Composite was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @composite.errors, status: :unprocessable_entity }
+    if params[:back_button]
+      @model = Model.find(params[:model_id])
+      redirect_to new_model_photo_path(@model, {source: 'edit'})
+    else
+      respond_to do |format|
+        if @composite.update_attributes(params[:composite])
+          format.html { redirect_to models_path, notice: 'Composite was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @composite.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
