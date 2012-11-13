@@ -1,40 +1,128 @@
-<div class="page-header">
-  <h1>Painel de Controle</h1>
-</div>
-
-<div class="row">
-  <div class="span12">
-    <h2>Resumo de Pedidos <small>O que é isso?</small></h2>
-    <%= link_to 'Pedidos de Casting', new_model_path, class: 'btn btn-danger' %>
-    <%= link_to 'Novos Clientes', models_path, class: 'btn btn-warning' %>
-    <%= link_to 'Novas Mensagens', models_path, class: 'btn btn-inverse' %>
-  </div>
-</div>
-<div class="row">
-  <div class="span6">
-    <h2>Gerenciar Modelos</h2>
-    <p>Adicione novos modelos, visualize, edite ou delete modelos já cadastrados. Essas outras opções estão disponíveis na seção Modelos.</p>
-    <%= link_to 'Adicionar Modelo', new_model_path, class: 'btn' %>
-    <%= link_to 'Buscar', models_path, class: 'btn' %>
-  </div>
-  <div class="span6">
-    <h2>Gerenciar Castings</h2>
-    <p>Partindo do resultado de uma busca, você pode criar e compartilhar modelos selecionados por você.</p>
-    <%= link_to 'Gerar Novo Casting', castings_path, class: 'btn' %>
-    <%= link_to 'Histórico de Castings', castings_path, class: 'btn' %>
-  </div>
-</div>
-<div class="row">
-  <div class="span6">
-    <h2>Atualizar Site</h2>
-    <p> Atualize seu site escolhendo e editando templates, configurando páginas e permissões de visualização.</p>
-    <%= link_to 'Configurar Tema', new_model_path, class: 'btn' %>
-    <%= link_to 'Editar Visualização', models_path, class: 'btn' %>
-  </div>
-  <div class="span6">
-    <h2>Caderno de Clientes</h2>
-    <p>Partindo do resultado de uma busca, você pode criar e compartilhar modelos selecionados por você.</p>
-    <%= link_to 'Gerar Novo Casting', new_model_path, class: 'btn' %>
-    <%= link_to 'Histórico de Castings', models_path, class: 'btn' %>
-  </div>
+<div id="admin-panel-container" class="put-center">
+	
+	<div class="auto-size-block admin-panel-header">
+		
+		<span class="icon-title icon-title-gear put-left">&nbsp;</span>
+		<h2 class="put-left clear-margin-padding title-control-panel">Painel de Controle</h2>
+		
+	</div>
+	
+	<div class="content-split"></div>
+	
+	<div id="admin-panel-content" class="auto-size-block">
+		
+		<div id="admin-panel-requests" class="auto-size-block clear-margin put-relative">
+			
+			<div class="admin-panel-full-top clear-margin-padding">&nbsp;</div>
+			
+			<div id="admin-panel-requests-content" class="admin-container-header">
+				
+				<span class="put-absolute admin-panel-header-icon admin-panel-header-icon-request">&nbsp;</span>
+				
+				<h3 class="put-left title-requests-sum">Resumo de Pedidos</h3>
+				<a href="#" class="put-left request-tip" onclick="javascript:return false;">O que é isso?</a>
+				
+				<div class="content-split"></div>
+			    
+				<%= link_to 'Pedidos de Casting', new_model_path, :class => "request-link" %>
+			    <%= link_to 'Novos Clientes', models_path, :class => "request-link" %>
+			    <%= link_to 'Novas Mensagens', models_path, :class => "request-link" %>
+			</div>
+			
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div id="admin-panel-model-casting">
+			
+			<div id="admin-panel-model" class="put-relative auto-size-block put-left admin-container admin-panel-block">
+				
+				<span class="put-absolute admin-inner-panel-icon admin-inner-panel-icon-models">&nbsp;</span>
+				
+				<div class="admin-inner-container">
+					
+					<h3 class="title-manage-models">Gerenciar Modelos</h3>
+					<p>Adicione novos modelos, visualize, edite ou delete modelos já cadastrados. Essas outras opções estão disponíveis na seção Modelos.</p>
+				
+				</div>
+				
+				<div>
+					<ul class="put-list-inline">
+						<li><%= link_to 'Adicionar Modelo', new_model_path, :class => "anchor-btn-silver-light-normal" %></li>
+						<li><%= link_to 'Buscar', models_path, :class => "anchor-btn-silver-light-normal" %></li>
+					</ul>
+				</div>
+				
+			</div>
+			
+			<div id="admin-panel-casting" class="put-relative auto-size-block put-left admin-container admin-panel-block admin-panel-block-right">
+				
+				<span class="put-absolute admin-inner-panel-icon admin-inner-panel-icon-castings">&nbsp;</span>
+				
+				<div class="admin-inner-container admin-inner-container-header">
+					
+					<h3 class="title-manage-castings">Gerenciar Castings</h3>
+					<p>Partindo do resultado de uma busca, você pode criar e compartilhar modelos selecionados por você.</p>
+				
+				</div>
+				
+				<div>
+					<ul class="put-list-inline">
+						<li><%= link_to 'Gerar Novo Casting', castings_path, :class => "anchor-btn-silver-light-normal" %></li>
+						<li><%= link_to 'Histórico de Castings', castings_path, :class => "anchor-btn-silver-light-normal" %></li>
+					</ul>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div id="admin-panel-site-clients">
+			
+			<div id="admin-panel-site" class="put-relative auto-size-block put-left admin-container admin-panel-block">
+				
+				<span class="put-absolute admin-inner-panel-icon admin-inner-panel-icon-site">&nbsp;</span>
+				
+				<div class="admin-inner-container">
+					
+					<h3 class="title-uptade-site">Atualizar Site</h3>
+					<p>Atualize seu site escolhendo e editando templates, configurando páginas e permissões de visualização.</p>
+				
+				</div>
+				
+				<div>
+					<ul class="put-list-inline">
+						<li><%= link_to 'Configurar Tema', new_model_path, :class => "anchor-btn-silver-light-normal" %></li>
+						<li><%= link_to 'Editar Visualização', models_path, :class => "anchor-btn-silver-light-normal" %></li>
+					</ul>
+				</div>
+				
+			</div>
+			
+			<div id="admin-panel-clients" class="put-relative auto-size-block put-left admin-container admin-panel-block admin-panel-block-right">
+				
+				<span class="put-absolute admin-inner-panel-icon admin-inner-panel-icon-clients">&nbsp;</span>
+				
+				<div class="admin-inner-container">
+					
+					<h3 class="title-edit-clients">Editar Clientes</h3>
+					<p>Gerencie os contatos de seus clientes atuais ou crie novos dados de acesso para novos clientes e parceiros.</p>
+				
+				</div>
+				
+				<div>
+					<ul class="put-list-inline">
+						<li><%= link_to 'Criar Novo Usuário', new_model_path, :class => "anchor-btn-silver-light-normal" %></li>
+						<li><%= link_to 'Lista de Clientes', models_path, :class => "anchor-btn-silver-light-normal" %></li>
+					</ul>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
 </div>

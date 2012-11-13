@@ -23,4 +23,5 @@
 //= require control_panel
 //= require models
 //= require photos
+//= require admin-css-overwrite
 //= require_self
