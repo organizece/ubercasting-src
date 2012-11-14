@@ -64,8 +64,7 @@ class ModelsController < ApplicationController
     end
   end
 
-  # PUT /models/1
-  # PUT /models/1.json
+  # Method called by the application step-by-step update flow
   def update
     @model = current_agency.models.find_by_id(params[:id])
     @model.attributes = params[:model]
@@ -101,6 +100,20 @@ class ModelsController < ApplicationController
         redirect_to models_path()
       else
         redirect_to new_model_photo_path(@model, {source: 'edit'})
+      end
+    end
+  end
+
+  # Method called via ajax to update the model avatar
+  def update_avatar
+    @model = Model.find(params[:model_id])
+    @model.avatar_photo_id = Integer(params[:avatar_photo_id])
+
+    respond_to do |format|
+      if @model.save
+        format.js { flash[:notice] = 'Avatar atualizado com sucesso.' }
+      else
+        format.js
       end
     end
   end

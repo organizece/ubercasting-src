@@ -15,7 +15,8 @@ class Photo < ActiveRecord::Base
       "url" => image.url,
       "thumbnail_url" => image.url(:thumb),
       "delete_url" => model_photo_path(model_id: model.id, id: id),
-      "delete_type" => "DELETE" 
+      "delete_type" => "DELETE",
+      "change_avatar_url" => model_update_avatar_path(model_id: model.id, avatar_photo_id: id)
     }
   end
 
