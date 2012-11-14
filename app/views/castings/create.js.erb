@@ -1,8 +1,8 @@
-$("#messages").remove();
+$("#alert-msgs").empty();
 <% if @casting.errors.any? %>
-  $('#body_container').prepend("<%= escape_javascript(render('utils/error_messages', errors: @casting.errors)) %>");
+  $('#alert-msgs').prepend("<%= escape_javascript(render('utils/error_messages', errors: @casting.errors)) %>");
 <% else %>
-  $('#body_container').prepend("<%= escape_javascript(render('utils/success_messages')) %>");
+  $('#alert-msgs').prepend("<%= escape_javascript(render('utils/success_messages')) %>");
   $("#castings_search").submit();
   $('#casting_name').val("");
 <% end %>
