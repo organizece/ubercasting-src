@@ -183,6 +183,7 @@ pt:
       photo: Foto
       casting: Casting
       casting_model: Casting/Modelo
+      composite: Composite
 
     attributes:
       agency:
@@ -241,6 +242,12 @@ pt:
         name: Nome
       casting_model:
         score: Ranking
+      composite:
+        main_photo_id: Foto Principal
+        first_sub_photo_id: Primeira Foto
+        second_sub_photo_id: Segunda Foto
+        third_sub_photo_id: Terceira Foto
+        fourth_sub_photo_id: Quarta Foto
 
     errors:
       template:

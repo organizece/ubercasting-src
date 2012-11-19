@@ -29,7 +29,7 @@
       <%= link_to 'Upload Fotos', new_model_photo_path(model, {source: 'edit'}), class: 'btn btn-block' %>
       <% if model.composite %>
         <%= link_to 'Editar Composite', edit_model_composite_path(model, model.composite), class: 'btn btn-block' %>
-        <%= link_to 'Visualizar Composite', model_composite_path(model, model.composite), class: 'btn btn-block' %>
+        <%= link_to 'Visualizar Composite', model_composite_path(model, model.composite), remote: true, class: 'btn btn-block' %>
       <% else %>
         <%= link_to 'Criar Composite', new_model_composite_path(model), class: 'btn btn-block' %>
       <% end %>
