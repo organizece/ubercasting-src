@@ -5,7 +5,7 @@ class CastingsController < ApplicationController
   # GET /castings.json
   def index
     @castings = Casting.search(params[:name], current_agency.id).
-      order(sort_column + " " + sort_direction).page(params[:page]).per(per_page)
+      order(index_sort_column + " " + sort_direction).page(params[:page]).per(per_page)
     @casting = Casting.new
   end
 
@@ -13,12 +13,8 @@ class CastingsController < ApplicationController
   # GET /castings/1.json
   def show
     @casting = Casting.find(params[:id])
-    @casting_models = ModelCasting.where(casting_id: @casting.id)
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @casting }
-    end
+    @casting_models = ModelCasting.where(casting_id: @casting.id).joins(:model).
+      order(show_sort_column + " " + sort_direction).page(params[:page]).per(per_page)
   end
 
   # GET /castings/new
@@ -85,8 +81,17 @@ class CastingsController < ApplicationController
     end
   end
 
-  def sort_column
+  def index_sort_column
     Casting.column_names.include?(params[:order_column]) ? params[:order_column] : "created_at"
+  end
+
+  def show_sort_column
+    column = Model.column_names.include?(params[:order_column]) ? params[:order_column] : nil
+    if !column
+      column = ModelCasting.column_names.include?(params[:order_column]) ? params[:order_column] : "model_castings.created_at"
+    end
+
+    column
   end
   
   def sort_direction

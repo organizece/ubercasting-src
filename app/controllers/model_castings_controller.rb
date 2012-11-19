@@ -10,7 +10,7 @@ class ModelCastingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to casting_path(casting) }
       format.json { head :no_content }
-      format.js { flash[:notice] = 'Modelo desassociado do casting com sucesso.' }
+      format.js { flash[:notice] = 'Modelo removido do casting com sucesso.' }
     end
   end
 

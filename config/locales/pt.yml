@@ -182,6 +182,7 @@ pt:
       model: Modelo
       photo: Foto
       casting: Casting
+      casting_model: Casting/Modelo
 
     attributes:
       agency:
@@ -238,6 +239,8 @@ pt:
         avatar: Avatar
       casting:
         name: Nome
+      casting_model:
+        score: Ranking
 
     errors:
       template:

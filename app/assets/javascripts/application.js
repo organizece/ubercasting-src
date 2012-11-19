@@ -21,6 +21,7 @@
 //= require castings
 //= require composites
 //= require control_panel
+//= require model_castings
 //= require models
 //= require photos
 //= require admin-css-overwrite

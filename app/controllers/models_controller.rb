@@ -145,7 +145,7 @@ class ModelsController < ApplicationController
     respond_to do |format|
       if @model_casting.save
         casting = Casting.find(@model_casting.casting_id)
-        format.js { flash[:notice] = "Modelo associado ao casting #{casting.name} com sucesso." }
+        format.js { flash[:notice] = "Modelo adicionado ao casting #{casting.name} com sucesso." }
       else
         format.js
       end
