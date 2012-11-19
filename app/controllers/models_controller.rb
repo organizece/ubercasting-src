@@ -131,6 +131,27 @@ class ModelsController < ApplicationController
     end
   end
 
+  def open_add_to_casting
+    @model_casting = ModelCasting.new
+    @model_casting.model_id = params[:model_id]
+
+    associated_castings = ModelCasting.where(model_id: @model_casting.model_id)
+    @castings = Casting.where(agency_id: current_agency.id).not_associated_with_model(associated_castings)
+  end
+
+  def save_add_to_casting
+    @model_casting = ModelCasting.new(params[:model_casting])
+
+    respond_to do |format|
+      if @model_casting.save
+        casting = Casting.find(@model_casting.casting_id)
+        format.js { flash[:notice] = "Modelo associado ao casting #{casting.name} com sucesso." }
+      else
+        format.js
+      end
+    end
+  end
+
   def sort_column
     Model.column_names.include?(params[:order_column]) ? params[:order_column] : "name"
   end

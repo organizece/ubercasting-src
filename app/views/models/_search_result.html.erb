@@ -34,7 +34,7 @@
         <%= link_to 'Criar Composite', new_model_composite_path(model), class: 'btn btn-block' %>
       <% end %>
       <%= link_to 'Deletar Modelo', model_path(model), method: :delete, class: 'btn btn-block' %>
-      <a href="#" class='btn btn-block'>Adicionar à casting</a>
+      <%= link_to 'Adicionar à Casting', model_open_add_to_casting_path(model), remote: true, via: :get, class: 'btn btn-block' %>
     </div>
   <% end %>
 </div>

@@ -3,4 +3,7 @@ class ModelCasting < ActiveRecord::Base
 
   belongs_to :model
   belongs_to :casting
+
+  validates :casting_id, presence: true
+  validates :model_id, presence: true
 end
