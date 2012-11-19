@@ -1,10 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>Gerenciar Castings</h1>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @casting.name %>
-</p>
+<h2>Casting: <b><%= @casting.name %></b></h2>
 
-
-<%= link_to 'Edit', edit_casting_path(@casting) %> |
-<%= link_to 'Back', castings_path %>
+<div class="row">
+  <% for casting_model in @casting_models %>
+    <% model = casting_model.model %>
+    <div class="span3">
+      <% if model.avatar %>
+        <%= image_tag model.avatar.image.url(:thumb), class: 'rounded' %>
+      <% else %>
+        <%= image_tag 'avatar.png', class: 'rounded' %>
+      <% end %>
+      <% if model.composite %>
+        <%= link_to 'Visualizar Composite', model_composite_path(model, model.composite), class: 'btn btn-block' %>
+      <% end %>
+      <div id='model-casting-score-<%= casting_model.id %>'>
+        <%= render 'score_buttons', casting_model: casting_model %>
+      </div>
+      <%= link_to 'Remover do Casting', model_casting_path(casting_model), method: :delete, remote: true, class: 'btn btn-block' %>
+    </div>
+  <% end %>
+</div>

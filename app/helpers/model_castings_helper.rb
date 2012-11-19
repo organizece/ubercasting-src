@@ -1,0 +1,2 @@
+module ModelCastingsHelper
+end

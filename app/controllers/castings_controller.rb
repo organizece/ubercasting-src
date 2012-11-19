@@ -13,6 +13,7 @@ class CastingsController < ApplicationController
   # GET /castings/1.json
   def show
     @casting = Casting.find(params[:id])
+    @casting_models = ModelCasting.where(casting_id: @casting.id)
 
     respond_to do |format|
       format.html # show.html.erb

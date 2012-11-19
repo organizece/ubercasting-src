@@ -8,7 +8,7 @@ class Casting < ActiveRecord::Base
   validates :name, presence: true
 
   scope :not_associated_with_model, lambda { |associated_castings|
-    where('id not in (?)', associated_castings.map(&:casting_id)) }
+    where('id not in (?)', associated_castings.map(&:casting_id)) if !associated_castings.empty? }
 
   def self.search(name, agency_id)
     castings = Casting.where(agency_id: agency_id)

@@ -1,5 +1,9 @@
 Ubercasting::Application.routes.draw do
 
+  resources :model_castings, only: [:destroy] do
+    match 'update_score/:score' => 'model_castings#update_score', via: :put, as: :update_score
+  end
+
   resources :castings
 
   match 'home' => 'main_pages#home', via: :get
