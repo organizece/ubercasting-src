@@ -5,7 +5,7 @@ class CastingsController < ApplicationController
   # GET /castings.json
   def index
     @castings = Casting.search(params[:name], current_agency.id).
-      order(sort_column + " " + sort_direction).page(params[:page]).per(per_page)
+      order(index_sort_column).page(params[:page]).per(per_page)
     @casting = Casting.new
   end
 
@@ -13,11 +13,8 @@ class CastingsController < ApplicationController
   # GET /castings/1.json
   def show
     @casting = Casting.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @casting }
-    end
+    @casting_models = ModelCasting.where(casting_id: @casting.id).joins(:model).
+      order(show_sort_column).page(params[:page]).per(per_page)
   end
 
   # GET /castings/new
@@ -46,7 +43,7 @@ class CastingsController < ApplicationController
       if @casting.save
         format.html { redirect_to @casting, notice: 'Casting was successfully created.' }
         format.json { render json: @casting, status: :created, location: @casting }
-        format.js
+        format.js { flash[:notice] = 'Casting was successfully created!' }
       else
         format.html { render action: "new" }
         format.json { render json: @casting.errors, status: :unprocessable_entity }
@@ -80,16 +77,31 @@ class CastingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to castings_url }
       format.json { head :no_content }
-      format.js
+      format.js { flash[:notice] = 'Casting was successfully deleted!' }
     end
   end
 
-  def sort_column
-    Casting.column_names.include?(params[:order_column]) ? params[:order_column] : "created_at"
+  def index_sort_column
+    column = "created_at asc"
+
+    if params[:order_column]
+      sort = params[:order_column].split(';') 
+      column = sort[0] + ' ' + sort[1] if Casting.column_names.include?(sort[0])
+    end
+    
+    column
   end
-  
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+
+  def show_sort_column
+    column = "model_castings.created_at asc"
+
+    if params[:order_column]
+      sort = params[:order_column].split(';') 
+      column = sort[0] + ' ' + sort[1] if Model.column_names.include?(sort[0])
+      column = sort[0] + ' ' + sort[1] if ModelCasting.column_names.include?(sort[0])
+    end
+    
+    column
   end
 
   def per_page

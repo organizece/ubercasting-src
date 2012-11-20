@@ -1,0 +1,7 @@
+$("#alert-msgs").empty();
+<% if @model.errors.any? %>
+  $('#alert-msgs').prepend("<%= escape_javascript(render('utils/error_messages', errors: @model.errors)) %>");
+<% else %>
+  $('#alert-msgs').prepend("<%= escape_javascript(render('utils/success_messages')) %>");
+  <% flash.discard() %> //Need to discard flash messages due problem with them persisting to the next request
+<% end %>
