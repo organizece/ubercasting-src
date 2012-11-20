@@ -64,8 +64,7 @@ class ModelsController < ApplicationController
     end
   end
 
-  # PUT /models/1
-  # PUT /models/1.json
+  # Method called by the application step-by-step update flow
   def update
     @model = current_agency.models.find_by_id(params[:id])
     @model.attributes = params[:model]
@@ -105,6 +104,20 @@ class ModelsController < ApplicationController
     end
   end
 
+  # Method called via ajax to update the model avatar
+  def update_avatar
+    @model = Model.find(params[:model_id])
+    @model.avatar_photo_id = Integer(params[:avatar_photo_id])
+
+    respond_to do |format|
+      if @model.save
+        format.js { flash[:notice] = 'Avatar atualizado com sucesso.' }
+      else
+        format.js
+      end
+    end
+  end
+
   # DELETE /models/1
   # DELETE /models/1.json
   def destroy
@@ -115,6 +128,27 @@ class ModelsController < ApplicationController
       redirect_to models_path and return unless @model
       format.html { redirect_to models_url }
       format.json { head :no_content }
+    end
+  end
+
+  def open_add_to_casting
+    @model_casting = ModelCasting.new
+    @model_casting.model_id = params[:model_id]
+
+    associated_castings = ModelCasting.where(model_id: @model_casting.model_id)
+    @castings = Casting.where(agency_id: current_agency.id).not_associated_with_model(associated_castings)
+  end
+
+  def save_add_to_casting
+    @model_casting = ModelCasting.new(params[:model_casting])
+
+    respond_to do |format|
+      if @model_casting.save
+        casting = Casting.find(@model_casting.casting_id)
+        format.js { flash[:notice] = "Modelo adicionado ao casting #{casting.name} com sucesso." }
+      else
+        format.js
+      end
     end
   end
 

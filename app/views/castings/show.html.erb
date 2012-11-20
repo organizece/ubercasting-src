@@ -1,10 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>Gerenciar Castings</h1>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @casting.name %>
-</p>
+<h2>Casting: <b><%= @casting.name %></b></h2>
 
-
-<%= link_to 'Edit', edit_casting_path(@casting) %> |
-<%= link_to 'Back', castings_path %>
+<div id="search">
+  <%= render 'model_castings/search' %>
+</div>

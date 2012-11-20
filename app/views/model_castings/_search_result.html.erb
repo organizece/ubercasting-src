@@ -1,0 +1,16 @@
+<div class="row">
+  <% for casting_model in @casting_models %>
+    <% model = casting_model.model %>
+    <div class="span3">
+      <%= avatar_tag model.avatar, :search %>
+      <% if model.composite %>
+        <%= link_to 'Visualizar Composite', model_composite_path(model, model.composite), remote: true, class: 'btn btn-block' %>
+      <% end %>
+      <h4><%= model.name %></h4>
+      <div id='model-casting-score-<%= casting_model.id %>'>
+        <%= render 'score_buttons', casting_model: casting_model %>
+      </div>
+      <%= link_to 'Remover do Casting', model_casting_path(casting_model), method: :delete, remote: true, class: 'btn btn-block' %>
+    </div>
+  <% end %>
+</div>

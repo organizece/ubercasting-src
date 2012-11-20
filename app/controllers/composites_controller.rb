@@ -1,4 +1,5 @@
 class CompositesController < ApplicationController
+
   # GET /composites
   # GET /composites.json
   def index
@@ -16,8 +17,8 @@ class CompositesController < ApplicationController
     @composite = Composite.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @composite }
+      format.html
+      format.js
     end
   end
 
