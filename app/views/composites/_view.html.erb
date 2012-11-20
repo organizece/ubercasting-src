@@ -1,9 +1,9 @@
 <div class="row">
-  <%= image_tag photo_url(@composite.main_photo_id, :thumb), class: 'rounded' %>
+  <%= photo_tag(@composite.main_photo_id, :main_composite) %>
 </div>
 <div class="row">
-  <%= image_tag photo_url(@composite.first_sub_photo_id, :thumb), class: 'rounded' %>
-  <%= image_tag photo_url(@composite.second_sub_photo_id, :thumb), class: 'rounded' %>
-  <%= image_tag photo_url(@composite.third_sub_photo_id, :thumb), class: 'rounded' %>
-  <%= image_tag photo_url(@composite.fourth_sub_photo_id, :thumb), class: 'rounded' %>
+  <%= photo_tag(@composite.first_sub_photo_id, :sub_composite) %>
+  <%= photo_tag(@composite.second_sub_photo_id, :sub_composite) %>
+  <%= photo_tag(@composite.third_sub_photo_id, :sub_composite) %>
+  <%= photo_tag(@composite.fourth_sub_photo_id, :sub_composite) %>
 </div>

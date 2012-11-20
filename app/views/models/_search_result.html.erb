@@ -47,11 +47,7 @@
 					<%= check_box_tag model.id, model.id %>
 				</div>
 				
-				<% if model.avatar %>
-			        <%= image_tag model.avatar.image.url(:thumb), class: 'rounded' %>
-			      <% else %>
-			        <%= image_tag 'avatar.png', class: 'rounded' %>
-			      <% end %>
+				<%= avatar_tag model.avatar, :search %>
 			
 			</div>
 			
@@ -59,13 +55,12 @@
 				
 				<ul>
 					<% if model.composite %>
-					<li class="model-box-view-composite"><%= link_to 'Visualizar Composite', model_composite_path(model, model.composite) %></li>
-					<!--<li><%= link_to 'Editar Composite', edit_model_composite_path(model, model.composite) %></li>-->
+					<li class="model-box-view-composite"><%= link_to 'Visualizar Composite', model_composite_path(model, model.composite), remote: true %></li>
 					<% else %>  
 					<li><%= link_to 'Criar Composite', new_model_composite_path(model) %></li>
 					<% end %>
 					<li><h4><%= link_to model.name, model_path(model) %></h4></li>
-					<li class="model-box-add-composite"><%= link_to 'Adicionar à Casting', model_open_add_to_casting_path(model), remote: true, via: :get, class: 'btn btn-block' %></li>
+					<li class="model-box-add-composite"><%= link_to 'Adicionar à Casting', model_open_add_to_casting_path(model), remote: true, via: :get %></li>
 					<li class="model-box-more-links admin-inner-container"><a href="#" onclick="javascript:return false;" class="model-box-open-link">Mais Ações</a></li>
 					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Editar Modelo', edit_model_path(model) %></li>
 					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Upload Fotos', new_model_photo_path(model, {source: 'edit'}) %></li>
@@ -77,5 +72,5 @@
 		</div>
 	
 	<% end %>
-  
+
 </div>

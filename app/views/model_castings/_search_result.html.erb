@@ -2,11 +2,7 @@
   <% for casting_model in @casting_models %>
     <% model = casting_model.model %>
     <div class="span3">
-      <% if model.avatar %>
-        <%= image_tag model.avatar.image.url(:thumb), class: 'rounded' %>
-      <% else %>
-        <%= image_tag 'avatar.png', class: 'rounded' %>
-      <% end %>
+      <%= avatar_tag model.avatar, :search %>
       <% if model.composite %>
         <%= link_to 'Visualizar Composite', model_composite_path(model, model.composite), remote: true, class: 'btn btn-block' %>
       <% end %>
