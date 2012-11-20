@@ -37,7 +37,7 @@ $(function() {
       $("img",this).fadeIn("slow");
       
       if( $(this).prop("id") == "composite-cover" ){
-        $("img",this).css("margin-top","-150px");
+        $("img",this).css("margin-top","-50px");
       }
       
       switch( $(this).prop("id") ){
@@ -60,5 +60,77 @@ $(function() {
       
     }
   });
+
+	
+	// IF HIDDEN INPUTS HAVE VALUES, PLACE IMGS INSIDE COMPOSITE
+	
+	function checkAndPlaceImgs(){
+		
+		var inputTotal = $('div#composite-template input').size();
+		var inputValue = new Array(inputTotal);
+		
+		var divContainer = new Array(inputTotal);
+		
+		var imgSrc = new Array(inputTotal);
+		var imgSrcCount = 0;
+		var imgCurID = 0;
+		var allImgsCount = $('ul#model-gallery img').size();
+		
+		
+		/* COLLECTS AND STORES ALL INPUT HIDDEN VALUES */
+		
+		for (var i = 0; i < inputTotal; i++) {
+			inputValue[i] = $('div#composite-template input:eq('+i+')').val();
+		};
+		
+		if( inputValue[0] != "" ){
+			
+			/* COLLECTS AND STORES ALL COMPOSITE CONTAINER DIVs */
+
+			for (var p = 0; p < inputTotal; p++) {
+				divContainer[p] = $('div#composite-template div.is-droppable:eq('+p+')');
+			};
+
+
+			/* FOR EACH IMG ON THE COMPOSITE, CHECK THE IMG GALLERY ARRAY SEARCHING FOR THE CORRESPONDENT IMG */
+
+			for (var m = 0; m < imgSrc.length; m++) {
+
+				for (var j = 0; j < allImgsCount; j++) {
+
+					imgCurID = $('ul#model-gallery img:eq('+j+')').prop("id");
+
+					if( imgCurID == inputValue[m] ){
+
+						imgSrc[m] = $('ul#model-gallery img:eq('+j+')').prop("src");
+						break;
+					}
+
+				};
+
+			};
+
+			/* PLACE THE IMAGES INSIDE THE COMPOSITE */
+
+			for (var d = 0; d < inputTotal; d++) {
+				divContainer[d].text("");
+				divContainer[d].append('<img src="'+imgSrc[d]+'" alt="Model Photo" height="10">');
+
+				var myImgW = $("img",divContainer[d]).width();
+				var myImgH = $("img",divContainer[d]).height();
+
+				if( myImgW < myImgH ){
+					$("img",divContainer[d]).width(divContainer[d].width());
+				}else{
+					$("img",divContainer[d]).height(divContainer[d].height());
+				};
+
+			};
+			
+		}
+		
+	}
+	
+	checkAndPlaceImgs();
   
 });
