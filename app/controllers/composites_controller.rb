@@ -53,7 +53,7 @@ class CompositesController < ApplicationController
     else
       respond_to do |format|
         if @composite.save
-          format.html { redirect_to models_path, notice: 'Composite was successfully created.' }
+          format.html { redirect_to models_path, notice: 'Composite criado com sucesso.' }
           format.json { render json: @composite, status: :created, location: @composite }
         else
           format.html { render action: "new" }
@@ -74,7 +74,7 @@ class CompositesController < ApplicationController
     else
       respond_to do |format|
         if @composite.update_attributes(params[:composite])
-          format.html { redirect_to models_path, notice: 'Composite was successfully updated.' }
+          format.html { redirect_to models_path, notice: 'Composite atualizado com sucesso.' }
           format.json { head :no_content }
         else
           format.html { render action: "edit" }
