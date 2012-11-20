@@ -25,4 +25,5 @@
 //= require models
 //= require photos
 //= require admin-css-overwrite
+//= require main
 //= require_self

@@ -37,10 +37,36 @@
                 <ul id="primary-links-list">
                     <li><h1 class="nav-logo"><%= link_to 'ÜBER', root_path  %></h1></li>
                     <li><%= link_to 'Home', agency_root_path, :class => "btn-home" %></li>
-                    <li><%= link_to 'Modelos', models_path, :class => "btn-models" %></li>
-                    <li><%= link_to 'Castings', castings_path, :class => "btn-casting" %></li>
-					<li><%= link_to 'Clientes', root_path, :class => "btn-clients" %></li>
-					<li><%= link_to 'Website', root_path, :class => "btn-website" %></li>
+                    <li class="hasdrop">
+						<%= link_to 'Modelos', models_path, :class => "btn-models" %>
+						<ul class="dropdown">
+							<li><%= link_to '» Gerenciar Modelos', models_path %></li>
+							<li><%= link_to '» Adicionar Novo Modelo', new_model_path %></li>
+							<li><%= link_to '» Visualizar Pedidos', new_model_path, :class => "hasfbicon offline" %></li>
+							<li><%= link_to '» Convidar Modelo', new_model_path, :class => "hasfbicon offline" %></li>
+							<li><%= link_to '» Conectar Sites', new_model_path, :class => "hasnewicon" %></li>
+						</ul>
+					</li>
+                    <li class="hasdrop">
+						<%= link_to 'Castings', castings_path, :class => "btn-casting" %>
+						<ul class="dropdown">
+							<li><%= link_to '» Gerar Novo Casting', castings_path %></li>
+							<li><%= link_to '» Histórico de Castings', castings_path %></li>
+						</ul>
+					</li>
+					<li class="hasdrop"><%= link_to 'Clientes', root_path, :class => "btn-clients" %>
+						<ul class="dropdown">
+							<li><%= link_to '» Criar Novo Usuário', root_path %></li>
+							<li><%= link_to '» Lista de Clientes', root_path %></li>
+						</ul>
+					</li>
+					<li class="hasdrop"><%= link_to 'Website', root_path, :class => "btn-website" %>
+						<ul class="dropdown">
+							<li><%= link_to '» Configurar Tema', root_path %></li>
+							<li><%= link_to '» Alterar Visualização', root_path %></li>
+							<li><%= link_to '» Customizar Domínio', root_path %></li>
+						</ul>
+					</li>
                 </ul>
                 
             </div>
