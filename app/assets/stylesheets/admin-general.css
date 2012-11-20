@@ -508,6 +508,7 @@ span.icon-title-model{
 }
 .form-block-4-columns-link{ padding:22px 0 0 0; height:38px; }
 
+.form-block-4-columns textarea,
 .form-block-4-columns input.input-txt-light-4-column,
 .form-block-4-columns select.full-select{ width:285px; }
 
@@ -515,7 +516,7 @@ span.icon-title-model{
 .form-block-4-columns select#model_birthday_2i{ width:142px; }
 
 .form-block-4-columns label.radio{
-	width:100px;
+	width:105px;
 	float:left;
 	margin: 0px 0px 0px 20px;
 	padding:0px !important;
@@ -985,6 +986,20 @@ h3.header-title-basic-info{
 	height:36px;
 	margin-top: 25px;
 	background:#fff url(admin/title-basic-info.jpg) left top no-repeat scroll;
+}
+
+h3.header-title-special-attr{
+	width:472px;
+	height:35px;
+	margin-top: 25px;
+	background:#fff url(admin/title-special-attr.jpg) left top no-repeat scroll;
+}
+
+h3.header-title-general-data{
+	width:236px;
+	height:28px;
+	margin-top: 25px;
+	background:#fff url(admin/title-general-data.jpg) left top no-repeat scroll;
 }
 
 

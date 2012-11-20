@@ -1,48 +1,69 @@
-<h3>Etapa 02 de 05</h3>
-<h2>Atributos e Especialidades</h2>
-<p>Por favor, preencha as informações abaixo e depois clique em "Continuar". Estes não são de preenchimento obrigatório, mas o não preenchimento destes pode prejudicar a performance de suas buscas.</p>
-
-<div class="row">
-  <div class="span2">
-    <%= f.input :height, as: :string, input_html: { class: 'input-small' } %>
-  </div>
-  <div class="span2">
-    <%= f.input :weight, as: :string, input_html: { class: 'input-small' } %>
-  </div>
-  <div class="span2">
-    <%= f.input :bust, as: :string, input_html: { class: 'input-small' } %>
-  </div>
-  <div class="span2">
-    <%= f.input :waist, as: :string, input_html: { class: 'input-small' } %>
-  </div>
-  <div class="span2">
-    <%= f.input :hip, as: :string, input_html: { class: 'input-small' } %>
-  </div>
-  <div class="span2">
-    <%= f.input :mannequin, as: :string, input_html: { class: 'input-small' } %>
-  </div>
+<div class="step-by-step step-active-02">
+	<div class="steps-line">&nbsp;</div>
+	<ul>
+		<li class="step-by-step-01">Step 01</li>
+		<li class="step-by-step-02">Step 02</li>
+		<li class="step-by-step-03">Step 03</li>
+		<li class="step-by-step-04">Step 04</li>
+		<li class="step-by-step-05">Step 05</li>
+	</ul>
 </div>
 
-<div class="row">
-  <div class="span3">
-    <%= f.input :eyes_color, collection: eyes_color, input_html: { class: 'input-medium' } %>
-  </div>
-  <div class="span3">
-    <%= f.input :hair_color, collection: hair_color, input_html: { class: 'input-medium' } %>
-  </div>
-  <div class="span3">
-    <%= f.input :shoes_size, collection: shoes_size, input_html: { class: 'input-medium' } %>
-  </div>
+<div class="auto-size-block admin-inner-container">
+	
+	<!--<h3>Etapa 01 de 05</h3>-->
+
+	<h3 class="header-base-title header-title-special-attr">Atributos e Especialidades</h3>
+	<p class="base-text">Por favor, preencha as informações abaixo e depois clique em "Continuar". Estes não são de preenchimento obrigatório, mas o não preenchimento destes pode prejudicar a performance de suas buscas.</p>
+	
 </div>
 
-<div class="row">
-  <div class="span5">
-    <%= f.input :specialty, collection: specialties, input_html: { class: 'input-medium', multiple: true } %>
-  </div>
+<div class="content-split"></div>
+
+<div class="put-left form-block-2-columns">
+	<%= f.input :height, as: :string %>
 </div>
 
-<div class="row">
-  <div class="span8">
-    <%= f.input :curriculum, input_html: { rows: '3' } %>
-  </div>
+<div class="put-left form-block-2-columns">
+	<%= f.input :weight, as: :string %>
+</div>
+
+<div class="put-left form-block-2-columns">
+	<%= f.input :bust, as: :string %>
+</div>
+
+<div class="put-left form-block-2-columns">
+	<%= f.input :waist, as: :string %>
+</div>
+
+<div class="put-left form-block-2-columns">
+	<%= f.input :hip, as: :string %>
+</div>
+
+<div class="put-left form-block-2-columns">
+	<%= f.input :mannequin, as: :string %>
+</div>
+
+<div class="content-split"></div>
+
+<div class="put-left form-block-4-columns">
+	<%= f.input :eyes_color, collection: eyes_color, input_html: { class: 'full-select' } %>
+</div>
+
+<div class="put-left form-block-4-columns">
+	<%= f.input :hair_color, collection: hair_color, input_html: { class: 'full-select' } %>
+</div>
+
+<div class="put-left form-block-4-columns">
+	<%= f.input :shoes_size, collection: shoes_size, input_html: { class: 'full-select' } %>
+</div>
+
+<div class="content-split"></div>
+
+<div class="put-left form-block-4-columns">
+	<%= f.input :specialty, collection: specialties, input_html: { class: 'full-select', multiple: true } %>
+</div>
+
+<div class="put-left form-block-4-columns">
+	<%= f.input :curriculum, input_html: { rows: '3' } %>
 </div>
