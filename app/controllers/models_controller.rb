@@ -59,7 +59,7 @@ class ModelsController < ApplicationController
       render "new"
     else
       session[:model_step] = nil
-      flash[:notice] = "Model was successfully created."
+      flash[:notice] = "Modelo criado com sucesso."
       redirect_to new_model_photo_path(@model)
     end
   end
@@ -95,7 +95,7 @@ class ModelsController < ApplicationController
       render "edit"
     else
       session[:model_step] = nil
-      flash[:notice] = "Model was successfully updated."
+      flash[:notice] = "Modelo atualizado com sucesso."
       if params[:end_button]
         redirect_to models_path()
       else
