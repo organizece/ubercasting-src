@@ -40,7 +40,28 @@ $(document).ready(function(){
 		
 	}
 	
+	function dropdownMenuNav(){
+		$('li.hasdrop').mouseenter(function(event) {
+			$(this).addClass('hoveractive');
+			$('ul.dropdown',this).addClass('dropdown-active');
+		});
+		
+		$('li.hasdrop').mouseleave(function(event) {
+			$(this).removeClass('hoveractive');
+			$('ul.dropdown',this).removeClass('dropdown-active');
+		});
+	}
+	
+	function searchAdvancedOpts(){
+		$('a#search-criteria-adv-opts').click(function(event) {
+			$('div#search-criteria-advanced').slideToggle(400);
+		});
+	}
+	
 	btnFolderHover();
+	dropdownMenuNav();
+	searchAdvancedOpts();
+
 	//loginPanelSetup();
 	
 });
