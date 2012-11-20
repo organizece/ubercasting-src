@@ -1,19 +1,40 @@
-<div class="page-header">
-  <h1>Adicionar Novo Modelo</h1>
+<div id="admin-model-manage-container" class="put-center full-column-container">
+	
+	<div class="auto-size-block admin-panel-header">
+		
+		<span class="icon-title icon-title-model put-left">&nbsp;</span>
+		<h2 class="put-left clear-margin-padding base-title title-insert-models">Adicionar Novo Modelo</h2>
+		
+	</div>
+	
+	<div class="content-split"></div>
+	
+	<div id="admin-model-insert-container" class="auto-size-block clear-margin put-relative">
+		
+		<div class="admin-panel-full-top clear-margin-padding">&nbsp;</div>
+		
+		<div id="admin-model-insert-content" class="admin-container-top admin-container-top-noborder full-column-width">
+			
+			<%= simple_form_for @model do |f| %>
+			
+				<%= render "models/steps/hidden_fields", { f: f, current_step: @model.current_step} %>
+
+				<%= render "models/steps/#{@model.current_step}_step", f: f %>
+
+				<div class="content-split"></div>
+				
+				<div class="auto-size-block bottom-ctrl-bar">
+					
+					<%= f.submit "« Voltar", class: 'put-left input-btn-silver-light-4-column', :name => "back_button" unless @model.first_step? %>
+					
+					<%= f.submit "Continuar »", class: 'put-right input-btn-gold-light-4-column' %>
+					
+				</div>
+			
+			<% end %>
+			
+		</div>
+		
+	</div>
+	
 </div>
-
-<%= simple_form_for @model do |f| %>
-
-  <%= render "models/steps/hidden_fields", { f: f, current_step: @model.current_step} %>
-
-  <%= render "models/steps/#{@model.current_step}_step", f: f %>
-
-  <div class="row">
-    <div class="span2">
-      <%= f.submit "Voltar", class: 'btn btn-small', :name => "back_button" unless @model.first_step? %>
-    </div>
-    <div class="offset8 span2">
-      <%= f.submit "Continuar", class: 'btn btn-large btn-primary' %>
-    </div>
-  </div>
-<% end %>

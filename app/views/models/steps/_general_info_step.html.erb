@@ -1,36 +1,51 @@
-<h3>Etapa 03 de 05</h3>
-<h2>Dados Gerais</h2>
-<p>Por favor, preencha as informações abaixo e depois clique em "Continuar". Estes campos não são de preenchimento obrigatório, fique a vontade para optar em preenchê-los ou não.</p>
-
-<div class="row">
-  <div class="span5">
-    <%= f.input :bank, input_html: { class: 'input-xlarge' } %>
-  </div>
-  <div class="span5">
-    <%= f.input :bank_agency, input_html: { class: 'input-xlarge' } %>
-  </div>
+<div class="step-by-step step-active-03">
+	<div class="steps-line">&nbsp;</div>
+	<ul>
+		<li class="step-by-step-01">Step 01</li>
+		<li class="step-by-step-02">Step 02</li>
+		<li class="step-by-step-03">Step 03</li>
+		<li class="step-by-step-04">Step 04</li>
+		<li class="step-by-step-05">Step 05</li>
+	</ul>
 </div>
 
-<div class="row">
-  <div class="span5">
-    <%= f.input :bank_account_type, collection: bank_account_types, as: :radio_buttons %>
-  </div>
-  <div class="span5">
-    <%= f.input :bank_account, input_html: { class: 'input-xlarge' } %>
-  </div>
+<div class="auto-size-block admin-inner-container">
+
+	<h3 class="header-base-title header-title-general-data">Dados Gerais</h3>
+	<p class="base-text">Por favor, preencha as informações abaixo e depois clique em "Continuar". Estes campos não são de preenchimento obrigatório, fique a vontade para optar em preenchê-los ou não.</p>
+	
 </div>
 
-<div class="row">
-  <div class="span5">
-    <%= f.input :secondary_phone, input_html: { class: 'input-xlarge' } %>
-  </div>
-  <div class="span5">
-    <%= f.input :secondary_email, input_html: { class: 'input-xlarge' } %>
-  </div>
+<div class="content-split"></div>
+
+<div class="put-left form-block-4-columns">
+	<%= f.input :bank %>
 </div>
 
-<div class="row">
-  <div class="span5">
-    <%= f.input :site_url, input_html: { class: 'input-xlarge' } %>
-  </div>
+<div class="put-left form-block-4-columns">
+	<%= f.input :bank_agency %>
+</div>
+
+<div class="put-left form-block-4-columns">
+	<%= f.input :bank_account_type, collection: bank_account_types, as: :radio_buttons %>
+</div>
+
+<div class="content-split"></div>
+
+<div class="put-left form-block-4-columns">
+	<%= f.input :bank_account %>
+</div>
+
+<div class="put-left form-block-4-columns">
+	<%= f.input :secondary_phone %>
+</div>
+
+<div class="put-left form-block-4-columns">
+	<%= f.input :secondary_email %>
+</div>
+
+<div class="content-split"></div>
+
+<div class="put-left form-block-4-columns">
+	<%= f.input :site_url %>
 </div>

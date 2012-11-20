@@ -185,7 +185,7 @@ module ModelsHelper
 
   def model_order_columns
     columns = []
-    columns << [Model.human_attribute_name(:age), :age]
+    columns << [Model.human_attribute_name(:birthday), :birthday]
     columns << [Model.human_attribute_name(:biotype), :biotype]
     columns << [Model.human_attribute_name(:eyes_color), :eyes_color]
     columns << [Model.human_attribute_name(:hair_color), :hair_color]

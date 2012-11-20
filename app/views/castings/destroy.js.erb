@@ -1,1 +1,5 @@
-  $("#castings_search").submit();
+$("#alert-msgs").empty();
+<% if flash[:notice] %>
+  $('#alert-msgs').prepend("<%= escape_javascript(render('utils/success_messages')) %>");
+<% end %>
+$("#castings_search").submit();
