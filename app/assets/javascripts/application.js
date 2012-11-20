@@ -15,6 +15,7 @@
 //= require jquery-fileupload
 //= require bootstrap
 //= require jquery-fileupload-main
+//= require jquery_maskedinput-1_3_min
 //= require bootstrap_aditions
 //= require find_cep
 //= require agencies
