@@ -41,9 +41,9 @@ class CastingsController < ApplicationController
 
     respond_to do |format|
       if @casting.save
-        format.html { redirect_to @casting, notice: 'Casting was successfully created.' }
+        format.html { redirect_to @casting, notice: 'Casting criado com sucesso.' }
         format.json { render json: @casting, status: :created, location: @casting }
-        format.js { flash[:notice] = 'Casting was successfully created!' }
+        format.js { flash[:notice] = 'Casting criado com sucesso.' }
       else
         format.html { render action: "new" }
         format.json { render json: @casting.errors, status: :unprocessable_entity }
@@ -59,7 +59,7 @@ class CastingsController < ApplicationController
 
     respond_to do |format|
       if @casting.update_attributes(params[:casting])
-        format.html { redirect_to @casting, notice: 'Casting was successfully updated.' }
+        format.html { redirect_to @casting, notice: 'Casting atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,7 +77,7 @@ class CastingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to castings_url }
       format.json { head :no_content }
-      format.js { flash[:notice] = 'Casting was successfully deleted!' }
+      format.js { flash[:notice] = 'Casting deletado com sucesso.' }
     end
   end
 
