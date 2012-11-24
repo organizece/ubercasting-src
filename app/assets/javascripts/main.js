@@ -85,11 +85,22 @@ $(document).ready(function(){
 		
 	}
 	
+	function modelShowSecondInfo(){
+		$('a#btn-model-show-data').click(function(event) {
+			$('div#model-secondary-info').slideToggle(400);
+		});
+		
+		$('a#btn-model-hide-data').click(function(event) {
+			$('div#model-secondary-info').slideUp(400);
+		});
+	}
+	
 	btnFolderHover();
 	dropdownMenuNav();
 	searchAdvancedOpts();
 	mapModelAge();
 	mapModelMeasures();
+	modelShowSecondInfo();
 
 	//loginPanelSetup();
 	

@@ -1,12 +1,54 @@
-<div class="page-header">
-  <% if params[:source] == 'edit' %>
-      <h1>Editar Modelo</h1>
-  <% else %>
-      <h1>Adicionar Novo Modelo</h1>
-  <% end %>
+<div id="model-composite" class="full-column-container put-center">
+	
+	<div id="main-header" class="auto-size-block admin-panel-header">
+		
+		<span class="icon-title icon-title-model put-left">&nbsp;</span>
+		
+		<% if params[:source] == 'edit' %>
+			<h2 class="put-left clear-margin-padding base-title title-manage-models">Editar Modelo</h2>
+		<% else %>
+			<h2 class="put-left clear-margin-padding base-title title-manage-models">Adicionar Novo Modelo</h2>
+		<% end %>
+		
+	</div>
+	
+	<div class="content-split"></div>
+	
+	<div id="model-composite-content" class="auto-size-block clear-margin put-relative">
+		
+		<div class="admin-panel-full-top clear-margin-padding">&nbsp;</div>
+		
+		<div id="content" class="full-column-width content-body">
+			
+			<div id="subheader" class="auto-size-block admin-inner-container">
+				
+				<div class="step-by-step step-active-05">
+					<div class="steps-line">&nbsp;</div>
+					<ul>
+						<li class="step-by-step-01">Step 01</li>
+						<li class="step-by-step-02">Step 02</li>
+						<li class="step-by-step-03">Step 03</li>
+						<li class="step-by-step-04">Step 04</li>
+						<li class="step-by-step-05">Step 05</li>
+					</ul>
+				</div>
+				
+				<h3 class="header-base-title header-title-img-upload">Seleção de Composite</h3>
+				<p class="base-text">Abaixo está a galeria de fotos que você acaba de subir. Selecione uma foto de perfil para o modelo e arraste as fotos para posicioná-las nos espaços do composite.</p>
+				
+			</div>
+			
+			<div class="content-split"></div>
+			
+			<div id="body" class="auto-size-block clear-margin">
+				
+				<%= render 'form' %>
+				
+			</div>
+			
+		</div>
+		
+		
+	</div>
+	
 </div>
-
-<h3>Etapa 05 de 05</h3>
-<h2>Seleção de Composite</h2>
-
-<%= render 'form' %>

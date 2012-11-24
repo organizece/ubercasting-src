@@ -1,3 +1,20 @@
 $("#modals").empty();
 $("#modals").html("<%= escape_javascript(render('composites/modals/view')) %>");
 $("#modal-casting-view").modal('show');
+$("#modal-casting-view").on('shown', function () {
+  
+	$('#modal-casting-view div#composite-cover img').fadeIn("fast");
+	$('#modal-casting-view div#composite-cover img').resizecrop({
+	      width:400,
+	      height:560,
+	      vertical:"top"
+	    });
+	
+	$('#modal-casting-view div.composite-thumbs img').fadeIn("fast");
+	$('#modal-casting-view div.composite-thumbs img').resizecrop({
+		      width:190,
+		      height:220,
+		      vertical:"top"
+	});
+
+});
