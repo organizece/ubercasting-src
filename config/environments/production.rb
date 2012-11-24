@@ -22,7 +22,7 @@ Ubercasting::Application.configure do
 
   config.assets.initialize_on_precompile = false
 
-  config.assets.precompile += ['dragdrop_composite.js', 'main_pages.css', 'main_pages.js', 'modelblock.js', 'home.css']
+  config.assets.precompile += ['dragdrop_composite.js', 'jquery_resizecrop-103_min.js', 'main_pages.css', 'main_pages.js', 'modelblock.js', 'home.css']
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
