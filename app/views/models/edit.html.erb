@@ -1,11 +1,11 @@
 <div id="admin-model-manage-container" class="put-center full-column-container">
   
-  <div class="auto-size-block admin-panel-header">
-    
-    <span class="icon-title icon-title-model put-left">&nbsp;</span>
-    <h2 class="put-left clear-margin-padding base-title title-manage-models">Editar Modelo</h2>
-    
-  </div>
+  	<div class="auto-size-block admin-panel-header">
+		
+		<span class="icon-title icon-title-model put-left">&nbsp;</span>
+		<h2 class="put-left clear-margin-padding base-title title-edit-models">Editar Modelo</h2>
+		
+	</div>
   
   <div class="content-split"></div>
   
@@ -25,11 +25,11 @@
         
         <div class="auto-size-block bottom-ctrl-bar">
           
-          <%= f.submit "« Voltar", class: 'put-left input-btn-silver-light-4-column', :name => "back_button" unless @model.first_step? %>
-          
-          <%= f.submit "Continuar »", class: 'put-right input-btn-gold-light-4-column' %>
-
-          <%= f.submit "Finalizar", class: 'put-right input-btn-gold-light-4-column', :name => "end_button" %>
+          	<%= f.submit "Voltar", class: 'put-left input-btn-silver-light-4-column', :name => "back_button" unless @model.first_step? %>
+			
+			<%= f.submit "Finalizar", class: 'put-left-margin input-btn-gold-light-4-column', :name => "end_button" %>
+			
+			<%= f.submit "Continuar", class: 'put-right input-btn-gold-light-4-column' %>
           
         </div>
       

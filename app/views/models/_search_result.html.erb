@@ -63,6 +63,7 @@
 					<li class="model-box-add-composite"><%= link_to 'Adicionar à Casting', model_open_add_to_casting_path(model), remote: true, via: :get %></li>
 					<li class="model-box-more-links admin-inner-container"><a href="#" onclick="javascript:return false;" class="model-box-open-link">Mais Ações</a></li>
 					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Editar Modelo', edit_model_path(model) %></li>
+					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Editar Composite', edit_model_composite_path(model,model.composite) %></li>
 					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Upload Fotos', new_model_photo_path(model, {source: 'edit'}) %></li>
 					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Deletar Modelo', model_path(model), method: :delete %></li>
 				</ul>

@@ -1,5 +1,5 @@
 $(function() {
-  
+
   // there's the gallery and the trash
   var $gallery = $( "#model-gallery" ),
     $composite = $( "#composite-template" );
@@ -13,53 +13,47 @@ $(function() {
     cursor: "move"
   });
   
-  // let the trash be droppable, accepting the gallery items
-  $( "div#composite-template div.is-droppable" ).droppable({
-    drop: function( event, ui ) {
-      
-      var imgSrc = $("img",ui.draggable).prop("src");
-      
-      $(this).text(" ");
-      $('<img src="'+imgSrc+'" alt="Model Photo" style="display:none;">').appendTo($(this));
-      
-      var holderWidth = $(this).width();
-      var holderHeight = $(this).height();
-      
-      var imgW = $("img",this).width();
-      var imgH = $("img",this).height();
-      
-      if( imgW < holderWidth || imgW > holderWidth ){
-        
-        $("img",this).width(holderWidth);
-      
-      }
-      
-      $("img",this).fadeIn("slow");
-      
-      if( $(this).prop("id") == "composite-cover" ){
-        $("img",this).css("margin-top","-50px");
-      }
-      
-      switch( $(this).prop("id") ){
-        case "composite-cover":
-          $("input#composite_main_photo_id").val( $("img",ui.draggable).prop("id") );
-        break;
-        case "composite-01":
-          $("input#composite_first_sub_photo_id").val( $("img",ui.draggable).prop("id") );
-        break;
-        case "composite-02":
-          $("input#composite_second_sub_photo_id").val( $("img",ui.draggable).prop("id") );
-        break;
-        case "composite-03":
-          $("input#composite_third_sub_photo_id").val( $("img",ui.draggable).prop("id") );
-        break;
-        case "composite-04":
-          $("input#composite_fourth_sub_photo_id").val( $("img",ui.draggable).prop("id") );
-        break;
-      }
-      
-    }
-  });
+	// let the trash be droppable, accepting the gallery items
+	$( "div#composite-template div.is-droppable" ).droppable({
+    	drop: function( event, ui ) {
+			var imgSrc = $("img",ui.draggable).prop("src");
+
+		    $(this).text(" ");
+		    $('<img src="'+imgSrc+'" alt="Model Photo" style="display:none;">').appendTo($(this));
+
+		    var holderWidth = $(this).width();
+		    var holderHeight = $(this).height();
+
+		    var imgW = $("img",this).width();
+		    var imgH = $("img",this).height();
+			
+			$("img",this).resizecrop({
+			      width:holderWidth,
+			      height:holderHeight,
+			      vertical:"top"
+			    });
+
+		    $("img",this).fadeIn("fast");
+
+		    switch( $(this).prop("id") ){
+		        case "composite-cover":
+		          $("input#composite_main_photo_id").val( $("img",ui.draggable).prop("id") );
+		        break;
+		        case "composite-01":
+		          $("input#composite_first_sub_photo_id").val( $("img",ui.draggable).prop("id") );
+		        break;
+		        case "composite-02":
+		          $("input#composite_second_sub_photo_id").val( $("img",ui.draggable).prop("id") );
+		        break;
+		        case "composite-03":
+		          $("input#composite_third_sub_photo_id").val( $("img",ui.draggable).prop("id") );
+		        break;
+		        case "composite-04":
+		          $("input#composite_fourth_sub_photo_id").val( $("img",ui.draggable).prop("id") );
+		        break;
+		    }
+		}
+	});
 
 	
 	// IF HIDDEN INPUTS HAVE VALUES, PLACE IMGS INSIDE COMPOSITE
@@ -119,18 +113,44 @@ $(function() {
 				var myImgW = $("img",divContainer[d]).width();
 				var myImgH = $("img",divContainer[d]).height();
 
-				if( myImgW < myImgH ){
-					$("img",divContainer[d]).width(divContainer[d].width());
-				}else{
-					$("img",divContainer[d]).height(divContainer[d].height());
-				};
-
+				$("img",divContainer[d]).resizecrop({
+				      width:divContainer[d].width(),
+				      height:divContainer[d].height(),
+				      vertical:"top"
+				    });
 			};
 			
 		}
 		
 	}
+
+	// CHANGE COMPOSITE TEMPLATE
+	
+	function setupCompositeTemplate(){
+		$('select#template-composite').change(function(event) {
+			
+			var templateType = $(this).val();
+			
+			$('div#composite-template').removeClass('composite-type-01');
+			$('div#composite-template').removeClass('composite-type-02');
+			$('div#composite-template').removeClass('composite-type-03');
+			
+			switch ( templateType ){
+				case "template01":
+					$('div#composite-template').addClass('composite-type-01');
+				break;
+				case "template02":
+					$('div#composite-template').addClass('composite-type-02');
+				break;
+				case "template03":
+					$('div#composite-template').addClass('composite-type-03');
+				break;
+			}
+			
+		});
+	}
 	
 	checkAndPlaceImgs();
+	setupCompositeTemplate();
   
 });

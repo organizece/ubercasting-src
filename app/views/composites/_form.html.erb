@@ -1,39 +1,140 @@
 <%= form_for([@model, @composite]) do |f| %>
   <%= hidden_field_tag :source, params[:source] %>
 
-  <div id="container-composite">
+  <div id="container-composite" class="auto-size-block clear-margin-padding">
     
-    <div id="composite-template" class="ui-widget ui-helper-clearfix">
-        <div id="composite-cover" class="is-droppable">Capa Composite</div>
-        <div id="composite-01" class="is-droppable">Imagem 01 Composite</div>
-        <div id="composite-02" class="is-droppable">Imagem 02 Composite</div>
-        <div id="composite-03" class="is-droppable">Imagem 03 Composite</div>
-        <div id="composite-04" class="is-droppable">Imagem 04 Composite</div>
+	<div id="composite-template" class="auto-size-block composite-panel composite-type-01 ui-widget ui-helper-clearfix">
 
-        <%= f.hidden_field :main_photo_id %>
-        <%= f.hidden_field :first_sub_photo_id %>
-        <%= f.hidden_field :second_sub_photo_id %>
-        <%= f.hidden_field :third_sub_photo_id %>
-        <%= f.hidden_field :fourth_sub_photo_id %>
-    </div>
+		<div class="composite-coverimg put-left auto-size-block">
+
+			<div id="composite-cover" class="is-droppable auto-size-block put-relative">Capa Composite</div>
+
+			<div class="composite-template-select auto-size-block">
+
+				<label class="put-left">Template Composite:</label>
+				<select name="template-composite" id="template-composite" onchange="" size="1" class="put-left-margin">
+					<option value="template01">Template 01</option>
+					<option value="template02">Template 02</option>
+					<option value="template03">Template 03</option>
+				</select>
+
+			</div>
+
+		</div>
+
+		<div class="composite-info put-right auto-size-block">
+
+			<div class="composite-header auto-size-block">
+				<h3><%= @composite.model.name %></h3>
+				<ul class="pt-br put-list-inline">
+					<li>
+						<strong>Alt</strong>:
+					    <%= @composite.model.height %>
+					</li>
+					<li>
+						<strong>Peso</strong>:
+					    <%= @composite.model.weight %>
+					</li>
+					<li>
+						<strong>Manequim</strong>:
+					    <%= @composite.model.mannequin %>
+					</li>
+					<li>
+						<strong>Olhos</strong>:
+					    <%= @composite.model.eyes_color %>
+					</li>
+					<li>
+						<strong>Cabelo</strong>:
+					    <%= @composite.model.hair_color %>
+					</li>
+				</ul>
+				
+				<div class="content-split"></div>
+				
+				<ul class="en-us put-list-inline">
+					<li>
+						<strong>Height</strong>:
+					    <%= @composite.model.height %>
+					</li>
+					<li>
+						<strong>Weight</strong>:
+					    <%= @composite.model.weight %>
+					</li>
+					<li>
+						<strong>Mannequin</strong>:
+					    <%= @composite.model.mannequin %>
+					</li>
+					<li>
+						<strong>Eyes</strong>:
+					    <%= @composite.model.eyes_color %>
+					</li>
+					<li>
+						<strong>Hair</strong>:
+					    <%= @composite.model.hair_color %>
+					</li>
+				</ul>
+			</div>
+
+			<div class="composite-thumbs auto-size-block">
+
+				<div id="composite-01" class="is-droppable">Imagem 01 Composite</div>
+		        <div id="composite-02" class="is-droppable">Imagem 02 Composite</div>
+
+				<div class="content-split"></div>
+
+		        <div id="composite-03" class="is-droppable">Imagem 03 Composite</div>
+		        <div id="composite-04" class="is-droppable">Imagem 04 Composite</div>
+
+			</div>
+			
+			<div class="composite-brands">
+				<span id="BrandAgendy" class="auto-size-block put-left">
+					Logo Agência &copy;
+				</span>
+				<span id="UberPowered" class="auto-size-block put-right">
+					<%= image_tag "admin/uber-powered-by.png" %>
+				</span>
+			</div>
+
+		</div>
+
+		<%= f.hidden_field :main_photo_id %>
+	    <%= f.hidden_field :first_sub_photo_id %>
+	    <%= f.hidden_field :second_sub_photo_id %>
+	    <%= f.hidden_field :third_sub_photo_id %>
+	    <%= f.hidden_field :fourth_sub_photo_id %>
+
+	</div>
+	
+	<div id="composite-action" class="auto-size-block actions-tab">
+		<p class="callout">Para inserir uma foto no composite, basta arrastá-la até o espaço desejado.</p>
+	</div>
       
     <ul id="model-gallery" class="gallery ui-helper-reset ui-helper-clearfix">
+	
       <% for photo in @composite.model.photos.each %>
-        <li class="is-draggable ui-widget-content ui-corner-tr">
-          <h5><%= photo.image_file_name %></h5>
+        
+		<li class="is-draggable ui-widget-content ui-corner-tr">
+			
+          <!--<h5><%= photo.image_file_name %></h5>-->
           <%= image_tag photo.image.url(:main_composite), alt: photo.image_file_name, id: photo.id %>
-          <p>Clique e arraste-me para a posição do composite desejada.</p>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+          <!--<p>Clique e arraste-me para a posição do composite desejada.</p>-->
 
-  <div class="row">
-    <div class="span2">
-      <%= f.submit "Voltar", class: 'btn btn-small', :name => "back_button" %>
-    </div>
-    <div class="offset8 span2">
-      <%= f.submit "Finalizar", class: 'btn btn-large btn-primary' %>
-    </div>
+        </li>
+
+      <% end %>
+
+    </ul>
+
   </div>
+	
+	<div class="content-split"></div>
+
+	<div class="auto-size-block bottom-ctrl-bar">
+		
+		<%= f.submit "Voltar", class: 'put-left input-btn-silver-light-4-column', :name => "back_button" %>
+		<%= f.submit "Finalizar", class: 'put-right input-btn-gold-light-4-column' %>
+		
+	</div>
+
 <% end %>
