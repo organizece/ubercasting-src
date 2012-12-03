@@ -1,12 +1,45 @@
-<div class="page-header">
-  <h1>Gerenciar Castings</h1>
+<div id="casting-manager" class="full-column-container put-center">
+	
+	<div id="main-header" class="auto-size-block admin-panel-header">
+		
+		<span class="icon-title icon-title-cloud put-left">&nbsp;</span>
+		<h2 class="put-left clear-margin-padding base-title title-manage-castings">Gerenciar Castings</h2>
+		
+	</div>
+	
+	<div class="content-split"></div>
+	
+	<div id="casting-manager-content" class="auto-size-block clear-margin put-relative">
+		
+		<div class="admin-panel-full-top clear-margin-padding">&nbsp;</div>
+		
+		<div id="content" class="full-column-width content-body">
+			
+			<div id="subheader" class="auto-size-block admin-inner-container">
+				
+				<span class="put-absolute admin-panel-header-icon admin-panel-header-icon-casting">&nbsp;</span>
+				
+				<h3 class="header-base-title header-title-casting-list">Lista de Castings</h3>
+				<p class="base-text">Navegue pelas listas de castings já criadas ou crie novas listas para serem compartilhadas.</p>
+				
+			</div>
+			
+			<div class="content-split"></div>
+			
+			<div id="body" class="auto-size-block clear-margin">
+				
+				<div id="search">
+				  
+					<%= render 'search' %>
+				
+				</div>
+
+				<%= render 'form' %>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
 </div>
-
-<h2>Lista de Castings</h2>
-<p>Navegue pelas listas de castings já criadas ou crie novas listas para serem compartilhadas.</p>
-
-<div id="search">
-  <%= render 'search' %>
-</div>
-
-<%= render 'form' %>

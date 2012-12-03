@@ -44,7 +44,7 @@
 			<div class="model-box-img">
 				
 				<div class="model-box-checkbox">
-					<%= check_box_tag model.id, model.id %>
+					<%= check_box_tag model, model.id %>
 				</div>
 				
 				<%= avatar_tag model.avatar, :search %>
@@ -68,7 +68,7 @@
 					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Editar Composite', edit_model_composite_path(model,model.composite) %></li>
 					<% end %>
 					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Upload Fotos', new_model_photo_path(model, {source: 'edit'}) %></li>
-					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Deletar Modelo', model_path(model), method: :delete %></li>
+					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Deletar Modelo', model_path(model), method: :delete, :confirm => "Tem certeza que deseja excluir este modelo?" %></li>
 				</ul>
 				
 			</div>

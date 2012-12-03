@@ -16,5 +16,13 @@ $("#modal-casting-view").on('shown', function () {
 		      height:220,
 		      vertical:"top"
 	});
+	
+	$('#modal-casting-view div.composite-template-select a#modal-add-casting').click(function(){
+		$("#modal-casting-view").modal('hide');
+	});
+	
+	$('#modal-casting-view div.modal-nav-bar a').click(function(){
+		$("#modal-casting-view").modal('hide');
+	});
 
 });
