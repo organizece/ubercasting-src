@@ -94,7 +94,7 @@
 				
 				<div class="content-split"></div>
 				
-				<div id="model-secondary-info" class="body-content-padding">
+				<div id="model-secondary-info" class="auto-size-block body-content-padding admin-inner-container">
 					<ul class="auto-size-block put-left">
 						<li>
 							<strong><%= Model.human_attribute_name(:shoes_size) %>:</strong>
@@ -183,6 +183,154 @@
 						    <%= @model.site_url %>
 						</li>
 					</ul>
+				</div>
+				
+				<div class="content-split"></div>
+				
+				<% if @model.composite %>
+					
+					<div id="model-info-composite" class="auto-size-block admin-inner-container">
+					
+						<div class="model-show-inner-header">
+
+							<h3 class="put-left">Composite</h3>
+
+							<%= link_to 'Editar Composite', edit_model_composite_path(@model,@model.composite), :class => "put-right anchor-btn-silver-light-normal" %>
+
+						</div>
+						
+						<div id="composite-template" class="auto-size-block composite-panel composite-type-01 ui-widget ui-helper-clearfix">
+
+							<div class="composite-coverimg put-left auto-size-block">
+
+								<div id="composite-cover" class="is-droppable auto-size-block put-relative">
+									<%= photo_tag(@model.composite.main_photo_id, :main_composite) %>
+								</div>
+
+								<div class="composite-template-select auto-size-block"></div>
+
+							</div>
+
+							<div class="composite-info put-right auto-size-block">
+
+								<div class="composite-header auto-size-block">
+									<h3><%= @model.name %></h3>
+									<ul class="pt-br put-list-inline">
+										<li>
+											<strong>Alt</strong>:
+										    <%= @model.height %>
+										</li>
+										<li>
+											<strong>Peso</strong>:
+										    <%= @model.weight %>
+										</li>
+										<li>
+											<strong>Manequim</strong>:
+										    <%= @model.mannequin %>
+										</li>
+										<li>
+											<strong>Olhos</strong>:
+										    <%= @model.eyes_color %>
+										</li>
+										<li>
+											<strong>Cabelo</strong>:
+										    <%= @model.hair_color %>
+										</li>
+									</ul>
+
+									<div class="content-split"></div>
+
+									<ul class="en-us put-list-inline">
+										<li>
+											<strong>Height</strong>:
+										    <%= @model.height %>
+										</li>
+										<li>
+											<strong>Weight</strong>:
+										    <%= @model.weight %>
+										</li>
+										<li>
+											<strong>Mannequin</strong>:
+										    <%= @model.mannequin %>
+										</li>
+										<li>
+											<strong>Eyes</strong>:
+										    <%= @model.eyes_color %>
+										</li>
+										<li>
+											<strong>Hair</strong>:
+										    <%= @model.hair_color %>
+										</li>
+									</ul>
+								</div>
+
+								<div class="composite-thumbs auto-size-block">
+
+									<div id="composite-01" class="is-droppable">
+										<%= photo_tag(@model.composite.first_sub_photo_id, :sub_composite) %>
+									</div>
+							        <div id="composite-02" class="is-droppable">
+										<%= photo_tag(@model.composite.second_sub_photo_id, :sub_composite) %>
+									</div>
+
+									<div class="content-split"></div>
+
+							        <div id="composite-03" class="is-droppable">
+										<%= photo_tag(@model.composite.third_sub_photo_id, :sub_composite) %>
+									</div>
+							        <div id="composite-04" class="is-droppable">
+										<%= photo_tag(@model.composite.fourth_sub_photo_id, :sub_composite) %>
+									</div>
+
+								</div>
+
+								<div class="composite-brands">
+									<span id="BrandAgendy" class="auto-size-block put-left">
+										Logo Agência &copy;
+									</span>
+									<span id="UberPowered" class="auto-size-block put-right">
+										<%= image_tag "admin/uber-powered-by.png" %>
+									</span>
+								</div>
+
+							</div>
+							
+						</div>
+					
+					</div>
+					
+					<div class="content-split"></div>
+					
+				<% end %>
+				
+				<div id="model-photo-gallery" class="auto-size-block">
+					
+					<div class="model-show-inner-header">
+					
+						<h3 class="put-left">Galeria de Fotos</h3>
+
+						<%= link_to 'Editar Fotos', new_model_photo_path(@model, {source: 'edit'}), :class => "put-right anchor-btn-silver-light-normal" %>
+					
+					</div>
+					
+					<div class="content-split"></div>
+					
+					<ul id="model-gallery" class="gallery ui-helper-reset ui-helper-clearfix">
+
+				      <% for photo in @model.photos.each %>
+
+						<li class="is-draggable ui-widget-content ui-corner-tr">
+
+				          <!--<h5><%= photo.image_file_name %></h5>-->
+				          <%= image_tag photo.image.url(:sub_composite), alt: photo.image_file_name, id: photo.id %>
+				          <!--<p>Clique e arraste-me para a posição do composite desejada.</p>-->
+
+				        </li>
+
+				      <% end %>
+
+				    </ul>
+					
 				</div>
 				
 				<div class="content-split"></div>
