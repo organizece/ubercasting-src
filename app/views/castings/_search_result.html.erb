@@ -1,13 +1,20 @@
-<div class="row">
-  <table class="table table-striped">
-    <% for casting in @castings %>
-      <tr>
-        <td></td>
-        <td><%= casting.name %></td>
-        <td><%= link_to 'Compartilhar', castings_path, class: 'btn btn-small btn-block' %></td>
-        <td><%= link_to 'Visualizar', casting_path(casting), class: 'btn btn-small btn-block' %></td>
-        <td><%= link_to 'Excluir', casting_path(casting), method: :delete, remote: true, class: 'btn btn-small btn-block' %></td>
-      </tr>
-    <% end %>
-  </table>
+<div id="casting-list" class="request-list">
+	
+	<% for casting in @castings %>
+		
+		<div class="request-line">
+			<ul class="requst-info">
+				<li><%= check_box_tag casting.id, casting.id %></li>
+				<li><%= casting.name %></li>
+			</ul>
+			
+			<ul class="requst-action">
+				<li class="request-icon request-share"><%= link_to 'Compartilhar', castings_path, title: 'Compartilhar' %></li>
+				<li class="request-icon request-view"><%= link_to 'Visualizar', casting_path(casting), title: 'Visualizar' %></li>
+				<li class="request-icon request-del"><%= link_to 'Excluir', casting_path(casting), method: :delete, remote: true, title: 'Excluir' %></li>
+			</ul>
+		</div>
+		
+	<% end %>
+	
 </div>
