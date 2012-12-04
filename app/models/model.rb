@@ -33,7 +33,7 @@ class Model < ActiveRecord::Base
   belongs_to :agency
   has_many :photos, dependent: :destroy
   has_one :composite, dependent: :destroy
-  has_many :model_castings
+  has_many :model_castings, dependent: :destroy
   has_many :castings, through: :model_castings
 
   attr_accessible :name, :birthday, :age, :gender, :biotype, :responsible_name, :responsible_birthday, :responsible_cpf, :responsible_rg,
@@ -53,7 +53,6 @@ class Model < ActiveRecord::Base
   validates :responsible_name, presence: true, if: lambda { |o| o.minor_aged? && o.basic_info_step? }
   validates :responsible_birthday, presence: true, if: lambda { |o| o.minor_aged? && o.basic_info_step? }
   validates :responsible_cpf, presence: true, cpf: true, if: lambda { |o| o.minor_aged? && o.basic_info_step? }
-  validates :responsible_rg, presence: true, if: lambda { |o| o.minor_aged? && o.basic_info_step? }
 
   validates :height, numericality: true, allow_nil: true, if: :attr_specs_step?
   validates :weight, numericality: true, allow_nil: true, if: :attr_specs_step?

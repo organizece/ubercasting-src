@@ -6,7 +6,14 @@
 			<%= photo_tag(@composite.main_photo_id, :main_composite) %>
 		</div>
 
-		<div class="composite-template-select auto-size-block"></div>
+		<div class="composite-template-select auto-size-block">
+			<ul class="btn-silver-list">
+				<li><a href="javascript:return false;" class="offline">Salvar em PDF</a></li>
+				<li><%= link_to "Mais Informações", model_path(@composite.model) %></li>
+				<li><%= link_to 'Adicionar à Casting', castings_open_add_models_path({models: @composite.model.id}), remote: true, via: :get, :id=>"modal-add-casting" %></li>
+			</ul>
+			
+		</div>
 
 	</div>
 

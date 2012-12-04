@@ -1,1 +1,2 @@
 $("#models").html("<%= escape_javascript(render('search_result')) %>");
+$("#add_all_models").attr('href', '<%= castings_open_add_models_path({models: @models_ids}) %>');

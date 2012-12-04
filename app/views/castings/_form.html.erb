@@ -1,13 +1,11 @@
-<h2>Novo Casting</h2>
-<p>Para criar um novo casting, digite o seu nome no campo abaixo e depois clique em <b>'Adicionar Novo Casting'</b></p>
+<h3 class="title-new-casting">Novo Casting</h3>
+<p class="base-text">Para criar um novo casting, digite o seu nome no campo abaixo e depois clique em <b>'Adicionar Novo Casting'</b></p>
 
 <%= form_for @casting, remote: true do |f| %>
-  <div class="row">
-    <div class="span7">
-      <%= f.text_field :name, class: 'input-xxlarge' %>
-    </div>
-    <div class="span2">
-      <%= f.submit 'Adicionar Novo Casting', class: 'btn' %>
-    </div>
-  </div>
+	
+	<ul id="new-casting-list" class="auto-size-block put-list-inline">
+		<li><%= f.text_field :name, class: 'input-txt-light-8-columns' %></li>
+		<li><%= f.submit 'Adicionar Novo Casting', class: 'btn-silver-light-fluid' %></li>
+	</ul>
+	
 <% end %>
