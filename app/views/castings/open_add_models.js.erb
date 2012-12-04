@@ -1,3 +1,9 @@
 $("#modals").empty();
 $("#modals").html("<%= escape_javascript(render('castings/modals/add_models')) %>");
 $("#modal-add-model").modal('show');
+$("#modal-add-model").on('shown', function () {
+  
+	//Removes Focus From Modal
+	$("#modal-add-model").blur();
+
+});

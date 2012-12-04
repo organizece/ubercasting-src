@@ -184,8 +184,20 @@ p.base-text{
 .paginator span,
 .actions-tab span{ text-transform: uppercase; font-weight: bold; margin-right: 10px; }
 
+.paginator input.input-txt-light,
+.actions-tab input.input-txt-light{
+	width:225px;
+	height:16px !important;
+	display: block !important;
+	border: 1px solid #a1a1a1 !important;
+	font-size: 100%;
+	background:#fff url(admin/bg-input-light.jpg) left top repeat-x scroll !important;
+}
+
 .paginator a,
-.actions-tab a{
+.actions-tab a,
+.paginator input.action-btn,
+.actions-tab input.action-btn{
 	width:auto;
 	height:auto;
 	background-color: #d0c6c6;
@@ -201,7 +213,18 @@ p.base-text{
 }
 
 .paginator a:hover,
-.actions-tab a:hover{ border-bottom:1px solid #b2a9a9; border-top:1px solid #fafafa; }
+.actions-tab a:hover,
+.paginator input.action-btn:hover,
+.actions-tab input.action-btn:hover{ border-bottom:1px solid #b2a9a9; border-top:1px solid #fafafa; }
+
+.paginator input.action-btn,
+.actions-tab input.action-btn{
+	margin: -1px 0px 0px 3px;
+	padding: 2px 25px;
+	border-right: none;
+	border-left: none;
+	font-size: 105%;
+}
 
 .paginator p.callout,
 .actions-tab p.callout{
@@ -318,8 +341,9 @@ p.base-text{
 }
 
 
-/*  INPUT, BUTTON AND ANCHORS ELEMENTS  ****************************/
+/*  INPUTS, BUTTON AND ANCHORS ELEMENTS  ****************************/
 
+/* TEXT */
 .input-txt-light-4-column{
 	width:295px;
 	height:23px !important;
@@ -328,6 +352,24 @@ p.base-text{
 	background:#fff url(admin/bg-input-light.jpg) left top repeat-x scroll !important;
 }
 
+.input-txt-light-6-columns{
+	width:530px;
+	height:23px !important;
+	display: block !important;
+	border: 1px solid #a1a1a1 !important;
+	background:#fff url(admin/bg-input-light.jpg) left top repeat-x scroll !important;
+}
+
+.input-txt-light-8-columns{
+	width: 610px;
+	height:23px !important;
+	display: block !important;
+	border: 1px solid #a1a1a1 !important;
+	background:#fff url(admin/bg-input-light.jpg) left top repeat-x scroll !important;
+}
+
+
+/* Silver Buttons */
 .input-btn-silver-light-4-column{
 	width:300px !important;
 	height:38px;
@@ -340,20 +382,6 @@ p.base-text{
 	text-transform: uppercase;
 	text-shadow: #fff 0px 1px 1px;
 	margin:7px 0px;
-}
-
-.anchor-btn-silver-light-4-column{
-	width:300px !important;
-	height:28px;
-	padding-top: 10px;
-	display: block;
-	border: none;
-	background:#fff url(admin/btn-bg-gray-4-column.jpg) left bottom no-repeat scroll !important;
-	color: #000;
-	font-size: 18px;
-	text-align: center;
-	text-transform: uppercase;
-	text-shadow: #fff 0px 1px 1px;
 }
 
 a.btn-silver-light-fluid,
@@ -399,6 +427,35 @@ span.btn-silver-light-fluid,
 	text-shadow: #fff 0px 1px 1px;
 }
 
+.anchor-btn-silver-light-4-column{
+	width:300px !important;
+	height:28px;
+	padding-top: 10px;
+	display: block;
+	border: none;
+	background:#fff url(admin/btn-bg-gray-4-column.jpg) left bottom no-repeat scroll !important;
+	color: #000;
+	font-size: 18px;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: #fff 0px 1px 1px;
+}
+
+.anchor-btn-silver-medium-base{
+	width: 143px;
+	height: 29px;
+	display: block;
+	font-size: 95%;
+	color: #000;
+	text-shadow: #fff 0px 1px 1px;
+	-moz-text-shadow: #fff 0px 1px 1px;
+	-webkit-text-shadow: #fff 0px 1px 1px;
+	padding: 9px 0px 0px 50px;
+}
+.anchor-btn-silver-medium-share{ background: #fff url(admin/bg-btn-silver-medium-share.jpg) left top no-repeat scroll; }
+.anchor-btn-silver-medium-return{ background: #fff url(admin/bg-btn-silver-medium-return.jpg) left top no-repeat scroll; padding: 9px 0px 0px 60px; }
+
+/* Gold Buttons */
 .input-btn-gold-light-4-column{
 	width:300px !important;
 	height:38px;
@@ -427,6 +484,8 @@ span.btn-silver-light-fluid,
 	text-shadow: #fff 0px 1px 1px;
 }
 
+
+/* Button Icons */
 .btn-icon-delete{
 	width: 14px;
 	height: 16px;
@@ -455,6 +514,8 @@ span.btn-silver-light-fluid,
 .btn-icon-cancel a,
 .btn-icon-cancel p{ text-indent: -10000px; background: none; border: none; display:none; }
 
+
+/* Button List */
 .btn-silver-list{
 	list-style: none;
 	margin: 0px;
@@ -485,6 +546,8 @@ span.btn-silver-light-fluid,
 	text-align: center;
 	text-shadow: #fff 0px 1px 1px;
 }
+
+
 
 /*  SPAN ICONS ELEMENTS  ****************************/
 
@@ -641,6 +704,49 @@ span.icon-title-cloud{
 	font-size: 14px;
 	color: #000;
 	padding-top: 10px;
+}
+
+.model-box .stars-group{
+	width: 170px;
+	height: 23px;
+	display: block;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 7px 0px;
+}
+
+.model-box .stars-group ul{
+	list-style: none;
+	width: auto;
+	height: 23px;
+	display: block;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.model-box .stars-group ul li{
+	list-style: none;
+	width: 23px;
+	height: 23px;
+	display: block;
+	float: left;
+	border: none;
+	background: none;
+	margin: 0px 5px;
+	padding: 0px;
+}
+
+.model-box .stars-group ul li a.star{
+	width: 23px;
+	height: 23px;
+	display: block;
+	background: #fff url(admin/bg-icon-star.jpg) left top no-repeat scroll;
+}
+
+.model-box .stars-group ul li a.star:hover,
+.model-box .stars-group ul li a.star-on{
+	background-position: bottom left;
 }
 
 
@@ -836,10 +942,11 @@ span.icon-title-cloud{
 	overflow: auto;
 }
 
-.modal-body #composite-template div.composite-template-select{ margin: 12px 0px 0px 9px; }
+.modal-body #composite-template div.composite-template-select{ margin: 12px 0px 0px 9px; display:none; }
 
 .modal-body #composite-template div.composite-template-select ul li a{ margin: 0px 2px 0px 0px; padding: 8px 19px 0px 19px; }
 
+/* COMPOSITE MODAL NAV BAR */
 .modal-nav-bar{ width: auto; height: auto; }
 
 .modal-nav-bar a{
@@ -874,6 +981,62 @@ span.icon-title-cloud{
 .modal-nav-bar a#model-comp-left{ left:0px; }
 .modal-nav-bar a#model-comp-right{ right:0px; }
 
+/* COMPOSITE MODAL STAR GROUP */
+.modal-body .stars-group{
+	width: 170px;
+	height: 23px;
+	display: block;
+	overflow: hidden;
+	margin: 2px auto;
+	padding: 3px 20px 3px 20px;
+	background-color: #fff;
+	border: 1px solid #999;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	box-shadow: 0px 1px 1px 0px #bdbcbc;
+	-moz-box-shadow: 0px 1px 1px 0px #bdbcbc;
+	-webkit-box-shadow: 0px 1px 1px 0px #bdbcbc;
+}
+
+.modal-body .stars-group ul{
+	list-style: none;
+	width: auto;
+	height: 23px;
+	display: block;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.modal-body .stars-group ul li{
+	list-style: none;
+	width: 23px;
+	height: 23px;
+	display: block;
+	float: left;
+	border: none;
+	background: none;
+	margin: 0px 5px;
+	padding: 0px;
+}
+
+.modal-body .stars-group ul li a.star{
+	width: 23px;
+	height: 23px;
+	display: block;
+	background: #fff url(admin/bg-icon-star.jpg) left top no-repeat scroll;
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+.modal-body .stars-group ul li a.star:hover,
+.modal-body .stars-group ul li a.star-on{
+	background-position: bottom left;
+}
+
+
+
 
 /*  COMPOSITE  ****************************/
 
@@ -903,6 +1066,86 @@ span.icon-title-cloud{
 	-webkit-box-shadow: 0px 1px 1px 0px #898989;
 }
 
+
+
+/*  REQUEST LIST  ****************************/
+
+.request-list{
+	width: 97%;
+	height: auto;
+	display: block;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 10px 0px;
+}
+
+.request-list .request-line{
+	width: 100%;
+	height: 20px;
+	display: block;
+	background-color: #f3f3f3;
+	border-top: 1px solid #a1a1a1;
+	border-bottom: 2px solid #fff;
+	margin: 0px;
+	padding: 10px 0px;
+}
+
+.request-list .request-line .requst-action,
+.request-list .request-line .requst-info{
+	list-style: none;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
+}
+
+.request-list .request-line .requst-info{
+	float: left;
+}
+
+.request-list .request-line .requst-action{
+	float: right;
+	margin: 2px 20px 0px 0px;
+}
+
+.request-list .request-line .requst-action li,
+.request-list .request-line .requst-info li{
+	list-style: none;
+	width: auto;
+	height: auto;
+	display: block;
+	margin: 0px 0px 0px 15px;
+	padding: 0px;
+	float: left;
+	font-size: 95%;
+	color: #6e6e6e;
+}
+
+.request-list .request-line .requst-info li input{ margin: 0px; }
+
+.request-list .request-line .requst-action li.request-icon{ margin: 0px 20px; }
+
+.request-list .request-line .requst-action li.request-icon a{
+	height: 18px;
+	display: block;
+	text-indent: -10000px;
+	background: #f3f3f3 url(admin/bg-icon-request-action.jpg) left top no-repeat scroll;
+}
+
+.request-list .request-line .requst-action li.request-share a{
+	width: 23px;
+	background-position: top left;
+}
+.request-list .request-line .requst-action li.request-view a{
+	width: 28px;
+	background-position: -51px top;
+}
+.request-list .request-line .requst-action li.request-del a{
+	width: 14px;
+	background-position: -108px top;
+}
 
 
 /**************************************/
@@ -1440,6 +1683,30 @@ h3.header-title-casting-list{
 	margin-top: 25px;
 	background:transparent url(admin/title-casting-list.png) left top no-repeat scroll;
 }
+
+h3.title-new-casting{
+	width:157px;
+	height:27px;
+	margin-top: 25px;
+	margin-left: 15px;
+	text-indent: -10000px;
+	background:#fff url(admin/title-new-casting.jpg) left top no-repeat scroll;
+}
+
+h3.title-add-to-casting{
+	width:329px;
+	height:27px;
+	margin-top: 25px;
+	margin-left: 15px;
+	text-indent: -10000px;
+	background:#fff url(admin/title-add-to-casting.jpg) left top no-repeat scroll;
+}
+
+ul#new-casting-list{
+	margin:0px 0px 0px 15px;
+}
+
+div#casting-models-info-content div#subheader{ padding-bottom: 15px; }
 
 
 
