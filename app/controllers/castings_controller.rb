@@ -104,6 +104,53 @@ class CastingsController < ApplicationController
     column
   end
 
+  def open_add_models
+    @castings = Casting.where(agency_id: current_agency.id)
+  end
+
+  def save_add_models
+    models = params[:models].split(',') if params[:models]
+
+    casting = nil
+    if params[:type].to_sym == :create_and_add
+      casting = Casting.new
+      casting.name = params[:casting_name]
+      casting.agency = current_agency
+      if casting.valid?
+        casting.save
+      else
+        flash[:error] = casting.errors
+      end
+    elsif params[:type].to_sym == :add_only
+      casting = Casting.find(params[:casting_id])
+    end
+
+    # Only try to add a new relation if there is a valid casting
+    if !flash[:error] && casting
+      models.each do |model_id|
+        model_casting = ModelCasting.new
+        model_casting.casting_id = casting.id if casting
+        model_casting.model_id = Integer(model_id)
+        # Only try to add a new relation if it don't exists
+        unless ModelCasting.find_by_casting_id_and_model_id(model_casting.casting_id, model_casting.model_id)
+          if model_casting.valid?
+            model_casting.save
+          else
+            flash[:error] += model_casting.errors
+          end
+        end
+      end
+    end
+
+    respond_to do |format|
+      if flash[:error]
+        format.js
+      else
+        format.js { flash[:notice] = "Modelos adicionados ao casting #{casting.name} com sucesso." }
+      end
+    end
+  end
+
   def per_page
     ITENS_PER_PAGE.include?(params[:itens_per_page]) ? params[:itens_per_page] : 6
   end

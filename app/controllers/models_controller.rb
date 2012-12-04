@@ -5,8 +5,15 @@ class ModelsController < ApplicationController
   # GET /models
   # GET /models.json
   def index
-    @models = Model.search(ModelSearchCriteria.build_criteria(params, current_agency)).
-      order(sort_column + " " + sort_direction).page(params[:page]).per(per_page)
+    @models = Model.search(ModelSearchCriteria.build_criteria(params, current_agency))
+
+    @models_ids = []
+    @models.each do |model|
+      @models_ids << model.id
+    end
+    @models_ids = @models_ids.join(',')
+
+    @models = @models.order(sort_column + " " + sort_direction).page(params[:page]).per(per_page)
   end
 
   # GET /models/1
@@ -128,27 +135,6 @@ class ModelsController < ApplicationController
       redirect_to models_path and return unless @model
       format.html { redirect_to models_url }
       format.json { head :no_content }
-    end
-  end
-
-  def open_add_to_casting
-    @model_casting = ModelCasting.new
-    @model_casting.model_id = params[:model_id]
-
-    associated_castings = ModelCasting.where(model_id: @model_casting.model_id)
-    @castings = Casting.where(agency_id: current_agency.id).not_associated_with_model(associated_castings)
-  end
-
-  def save_add_to_casting
-    @model_casting = ModelCasting.new(params[:model_casting])
-
-    respond_to do |format|
-      if @model_casting.save
-        casting = Casting.find(@model_casting.casting_id)
-        format.js { flash[:notice] = "Modelo adicionado ao casting #{casting.name} com sucesso." }
-      else
-        format.js
-      end
     end
   end
 
