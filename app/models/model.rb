@@ -33,7 +33,7 @@ class Model < ActiveRecord::Base
   belongs_to :agency
   has_many :photos, dependent: :destroy
   has_one :composite, dependent: :destroy
-  has_many :model_castings
+  has_many :model_castings, dependent: :destroy
   has_many :castings, through: :model_castings
 
   attr_accessible :name, :birthday, :age, :gender, :biotype, :responsible_name, :responsible_birthday, :responsible_cpf, :responsible_rg,

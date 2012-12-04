@@ -9,11 +9,12 @@ Ubercasting::Application.routes.draw do
 
   resources :models do
     match 'update_avatar/:avatar_photo_id' => 'models#update_avatar', via: :put, as: :update_avatar
-    match 'open_add_to_casting/' => 'models#open_add_to_casting', via: :get, as: :open_add_to_casting
-    match 'add_to_casting/' => 'models#save_add_to_casting', via: :post, as: :add_to_casting
     resources :photos, except: [:edit, :update]
     resources :composites, except: [:index, :destroy]
   end
+
+  get 'castings/open_add_models/'
+  post 'castings/save_add_models/'
 
   resources :castings
 
