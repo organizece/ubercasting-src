@@ -1,9 +1,13 @@
-<div class="btn-group">
-  <% (1..5).each do |score| %>
-    <% if casting_model.score and casting_model.score >= score %>
-      <%= link_to score, model_casting_update_score_path(casting_model, score: score), remote: true, method: :put, class: 'btn btn-inverse' %>
-    <% else %>
-      <%= link_to score, model_casting_update_score_path(casting_model, score: score), remote: true, method: :put, class: 'btn' %>
-    <% end %>
-  <% end %>
+<div class="btn-group stars-group">
+	<ul>
+		<% (1..5).each do |score| %>
+		
+			<% if casting_model.score and casting_model.score >= score %>
+				<li><%= link_to score, model_casting_update_score_path(casting_model, score: score), remote: true, method: :put, class: 'star star-on' %></li>
+			<% else %>
+				<li><%= link_to score, model_casting_update_score_path(casting_model, score: score), remote: true, method: :put, class: 'star' %></li>
+			<% end %>
+		
+		<% end %>
+	</ul>
 </div>
