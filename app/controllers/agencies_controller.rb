@@ -17,7 +17,7 @@ class AgenciesController < ActionController::Base
 
       respond_to do |format|
         if @agency.update_attributes(params[:agency])
-          format.html { redirect_to @agency, notice: 'Agency was successfully updated.' }
+          format.html { redirect_to action: "connect_sites", notice: 'Agency foi atualizada com sucesso.' }
           format.json { head :no_content }
         else
           format.html { render action: :edit }
@@ -28,6 +28,10 @@ class AgenciesController < ActionController::Base
 
     def first_access?
       redirect_to edit_agency_path(current_agency) if current_agency.domain == nil
+    end
+    
+    def connect_sites
+      @agency = current_agency
     end
 
 end

@@ -34,8 +34,6 @@ $("#modal-casting-view").on('shown', function () {
 		var modelID = $("div.composite-open").index();
 		var allModelsCount = $("div.model-box").size();
 		
-		clearCompositeOpen();
-		
 		if( myID.indexOf("right") != -1 ){
 			
 			if( modelID < (allModelsCount - 1) ){
@@ -77,15 +75,35 @@ $("#modal-casting-view").on('shown', function () {
 			
 			var currentScore = $("div.composite-open div.model-box-links ul li:eq(2)").html();
 			$("div.composite-coverimg div.composite-template-select").html(currentScore);
-			
 			$("div.composite-coverimg div.composite-template-select").fadeIn(400);
-			
 			
 		}else{
 			$("div.composite-coverimg div.composite-template-select").fadeIn(400);
 		};
 		
 	}
+	
 	copyScore();
 
+});
+
+$("#modal-casting-view").on('hide', function () {
+	
+	function updateScore(){
+		
+		var castingContainer = $("div#casting-models-result").length;
+		
+		if( castingContainer > 0 ){
+			
+			var currentID = $("div.composite-open").index();
+			var currentScore = $("div.composite-coverimg div.composite-template-select").html();
+			$("div#casting-models-result div.model-box:eq("+currentID+") div.model-box-links ul li:eq(2) div").remove();
+			$("div#casting-models-result div.model-box:eq("+currentID+") div.model-box-links ul li:eq(2)").html(currentScore);
+			
+		};
+		
+	}
+	
+	updateScore();
+	
 });
