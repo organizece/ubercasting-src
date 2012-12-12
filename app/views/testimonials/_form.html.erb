@@ -1,0 +1,37 @@
+<%= form_for(@testimonial, :html => {:class => "form-horizontal"}) do |f| %>
+	
+	<div class="control-group">
+	
+		<%= f.label :from, "De", :class => "control-label" %>
+	
+		<div class="controls">
+			<%= f.text_field :from, :value => "#{@testimonial.from}", :class => "input-txt-light-full" %>
+		</div>
+	
+	</div>
+	
+	<div class="control-group">
+	
+		<%= f.label :title, "Título", :class => "control-label" %>
+	
+		<div class="controls">
+			<%= f.text_field :title, :value => "#{@testimonial.title}", :class => "input-txt-light-full" %>
+		</div>
+	
+	</div>
+	
+	<div class="control-group">
+	
+		<%= f.label :body, "Texto", :class => "control-label" %>
+	
+		<div class="controls">
+			<%= f.text_area :body, :value => "#{@testimonial.body}" %>
+		</div>
+	
+	</div>
+	
+	<div class="save-edit-action-bar">
+	    <%= f.submit "Gravar", :class => "put-right input-btn-gold-light-4-column" %>
+	</div>
+
+<% end %>

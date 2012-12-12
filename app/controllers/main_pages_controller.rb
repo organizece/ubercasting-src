@@ -10,7 +10,7 @@ class MainPagesController < ApplicationController
   def tour
   end
 
-  def testemonials
+  def viewtestimonials
   end
   
 end
