@@ -10,6 +10,31 @@ html, body{ background-color: #111111; }
 
 h1, h2, h3, h4, h5, h6{ margin-top:0px; margin-bottom:0px; }
 
+@font-face{
+	font-family: 'Conv_Nexa';
+	src: url('fonts/Nexa_Light.eot');
+	src: url('fonts/Nexa_Light.ttf') format('truetype'), url('fonts/Nexa_Light.svg') format('svg'), url('fonts/Nexa_Light.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face{
+	font-family: 'Conv_Nexa';
+	src: url('fonts/Nexa_Bold.eot');
+	src: url('fonts/Nexa_Bold.ttf') format('truetype'), url('fonts/Nexa_Bold.svg') format('svg'), url('fonts/Nexa_Bold.otf') format('opentype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+.demo{
+	font-family:'Conv_Nexa',Sans-Serif;
+	width:800px;
+	margin:10px auto;
+	text-align:left;
+	border:1px solid #666;
+	padding:10px;
+}
+
 div#container{ 
 	width:100%;
 	height:auto;
@@ -128,6 +153,27 @@ h2.base-title{
 	margin-bottom: 15px;
 }
 
+h2.font-title{
+	font-family:'Conv_Nexa',Sans-Serif;
+	font-size: 230%;
+	text-shadow: #FFF 0px 1px 1px;
+	margin: -4px 0px 15px 0px;
+	display: block;
+	font-weight: normal;
+}
+
+h2 span.font-title-bold{ font-weight: bold; }
+
+h2.font-body-title{
+	font-family:'Conv_Nexa',Sans-Serif;
+	font-size: 230%;
+	text-shadow: #FFF 0px 1px 1px;
+	display: block;
+	font-weight: normal;
+}
+
+h2 span.font-body-title-bold{ font-weight: bold; }
+
 h3.header-base-title{
 	height:20px;
 	display:block;
@@ -154,6 +200,17 @@ p.base-text{
 	line-height:16px;
 }
 
+p.inner-header-base-text{
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	font-size: 100%;
+	color:#646464;
+	width:auto;
+	height:auto;
+	display: block;
+	margin: 10px 15px;
+	padding-bottom: 12px;
+	line-height:16px;
+}
 
 
 /*  PAGINATOR AND ACTIONS TABS  ****************************/
@@ -1708,6 +1765,96 @@ ul#new-casting-list{
 
 div#casting-models-info-content div#subheader{ padding-bottom: 15px; }
 
+
+
+/**************************************/
+/*  CONNECT WEB SITES  ****************/
+/**************************************/
+
+.connect-method{
+	width: 100%;
+	margin: 20px 0px 20px 0px;
+	padding: 0px 0px 20px 15px;
+	border-bottom: 1px solid #a1a1a1;
+}
+
+.connect-method-borderless{ border: none; }
+
+.connect-method p{
+	font-size: 95%;
+	color: #4c4c4c;
+}
+
+.connect-method .connect-method-code{
+	width: 95%;
+	display: block;
+	background-color: #fef3f3;
+	border: 1px solid #b4b4b4;
+	padding: 14px 0px 5px 15px;
+}
+
+.connect-method .connect-method-code ul,
+.connect-method .connect-method-code ul li{
+	font-family: "Courier New", Courier, monospace;
+}
+
+.connect-method .connect-method-code ul{ list-style: decimal; padding-left: 5px; font-weight: bold; }
+
+.connect-method .connect-method-code ul li{ font-weight: normal; border-left: 1px solid #999; padding-left: 10px; }
+.connect-method .connect-method-code ul li.inner-line{ padding-left: 25px; }
+
+.uber-btn-container{
+	width: 20%;
+	height: auto;
+	overflow: hidden;
+	margin: 10px 5px;
+	padding: 5px 5px;
+}
+
+.uber-btn-container-bgblack{
+	background-color: #000;
+}
+
+.uber-btn-container a.uber-black-btn{
+	width: auto;
+	height: 26px;
+	display: block;
+	padding: 11px 0px 0px 68px;
+	color: #fff200;
+	font-size: 95%;
+	font-style: italic;
+	background: #fff url(admin/uber-black-btn.jpg) left top no-repeat scroll;
+}
+
+.uber-btn-container a.uber-black-btn span{
+	background-color: #231f20;
+	margin: -8px 0px 0px -6px;
+	width: 130px;
+	height: 26px;
+	padding: 10px 10px 9px 5px;
+}
+@-moz-document url-prefix() { .uber-btn-container a.uber-black-btn span { padding: 10px 10px 8px 5px; } } 
+
+.uber-btn-container a.uber-gold-btn{
+	width: auto;
+	height: 26px;
+	display: block;
+	padding: 11px 0px 0px 68px;
+	color: #000;
+	font-size: 95%;
+	font-style: italic;
+	background: #000 url(admin/uber-gold-btn.jpg) left top no-repeat scroll;
+}
+
+.uber-btn-container a.uber-gold-btn span{
+	background-color: #f1e503;
+	margin: -8px 0px 0px -11px;
+	width: 130px;
+	height: 26px;
+	padding: 10px 10px 9px 5px;
+}
+
+@-moz-document url-prefix() { .uber-btn-container a.uber-gold-btn span { padding: 10px 10px 8px 5px; } } 
 
 
 

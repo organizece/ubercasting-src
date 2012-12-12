@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag    "internal" %>
+
+<div id="main-content-container">
+	
+	<div id="content-wrapper">
+		
+		<div id="header">
+			<h2>Novo Depoimento</h2>
+		</div>
+		
+		<div id="body">
+			
+			<% unless notice.nil? %>
+				
+				<div class="alert alert-success"><%= notice %></div>
+			
+			<% end %>
+			
+			<ul class="testimonial-item">
+				<li class="testimonial-body"><%= @testimonial.body %></li>
+				<li class="testimonial-info"><%= @testimonial.from %> | <%= @testimonial.title %></li>
+				<li>
+					<%= link_to "Editar", edit_testimonial_path(@testimonial), :class => "put-right btn-silver-light-fluid" %>
+					<%= link_to "Excluir", @testimonial, method: :delete, data: {confirm: "Deseja excluir este depoimento?"}, :class => "put-right btn-silver-light-fluid" %>
+				</li>
+			</ul>
+			
+			<div id="btn-controller">
+				
+				<%= link_to "Voltar", testimonials_path, :class => "anchor-btn-silver-light-normal" %>	
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</div>
