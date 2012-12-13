@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag    "internal" %>
+
+<div id="main-content-container">
+	
+	<div id="content-wrapper">
+		
+		<div id="header">
+			<h2>Confira os <span>Depoimentos</span> de quem já está com a Über</h2>
+		</div>
+		
+		<div id="body">
+			
+			<% @testimonials.each do |testimonial| %>
+				
+				<ul class="testimonial-item">
+					<li class="testimonial-body"><%= testimonial.body %></li>
+					<li class="testimonial-info"><%= testimonial.from %> | <%= testimonial.title %></li>
+					<li>
+						<%= link_to "Exibir", testimonial, :class => "put-right btn-silver-light-fluid" %>
+						<%= link_to "Editar", edit_testimonial_path(testimonial), :class => "put-right btn-silver-light-fluid" %>
+						<%= link_to "Excluir", testimonial, method: :delete, data: { confirm: "Deseja excluir este depoimento?" }, :class => "put-right btn-silver-light-fluid" %>
+					</li>
+				</ul>
+				
+			<% end %>
+			
+			<div id="btn-controller">
+				
+				<%= link_to "Adicionar Depoimento", new_testimonial_path, :class => "anchor-btn-gold-light-4-column put-right" %>	
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</div>

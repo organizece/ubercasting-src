@@ -1,0 +1,109 @@
+<div id="connect-sites" class="full-column-container put-center">
+	
+	<div id="main-header" class="auto-size-block admin-panel-header">
+		<span class="icon-title icon-title-gear put-left">&nbsp;</span>
+		<h2 class="put-left clear-margin-padding font-title">Conectar <span class="font-title-bold">Sites</span></h2>
+	</div>
+	
+	<div class="content-split"></div>
+	
+	<div id="connect-sites-content" class="auto-size-block clear-margin put-relative">
+		
+		<div class="admin-panel-full-top clear-margin-padding">&nbsp;</div>
+		
+		<div id="content" class="full-column-width content-body">
+			
+			<div id="subheader" class="auto-size-block admin-inner-container">
+				
+				<p class="inner-header-base-text">O conteúdo desta página permite que você interligue o seu ÜBER site com o seu site pessoal, caso possua um. Para garantir que as instruções abaixo sejam corretamente aplicadas, recomendamos a utilização da consultoria de um profissional de TI.</p>
+				
+			</div>
+			
+			<div class="content-split"></div>
+			
+			<div id="body" class="auto-size-block clear-margin">
+				
+				<div id="connect-method-01" class="connect-method">
+					
+					<h2 class="font-body-title">Método <span class="font-body-title-bold">01</span></h2>
+					<p>E o método mais simples. Basta copiar e colar o endereço abaixo dentro de um link em seu site:</p>
+					<div class="connect-method-code">
+						<ul>
+							<li>http://<%= @agency.domain %>.ubercasting.com.br/gallery</li>
+						</ul>
+					</div>
+					
+				</div>
+				
+				<div id="connect-method-02" class="connect-method">
+					
+					<h2 class="font-body-title">Método <span class="font-body-title-bold">02</span></h2>
+					<p>Método para a inserção de um botão default em seu site, igual ao modelo abaixo:</p>
+					
+					<div class="uber-btn-container">
+						<a href="http://<%= @agency.domain %>.ubercasting.com.br/gallery" class="uber-black-btn">
+							<span>Casting</span>
+						</a>
+					</div>
+					
+					<p>Para que o botão seja exibido corretamente, basta copiar e colar o código abaixo:</p>
+					<div class="connect-method-code">
+						<ul>
+							<li>&lt;link rel="stylesheet" type="text/css" href="http://ubercasting.com.br/css/exports/uberblackbtn.css" /&gt;</li>
+							<li>&lt;div class="uber-btn-container"&gt;</li>
+							<li class="inner-line">&lt;a href="http://<%= @agency.domain %>.ubercasting.com.br/gallery" class="uber-black-btn"&gt;</li>	
+							<li class="inner-inner-line">&lt;span&gt;Casting&lt;/span&gt;</li>
+							<li class="inner-line">&lt;/a&gt;</li>
+							<li>&lt;/div&gt;</li>
+						</ul>
+					</div>
+					
+				</div>
+				
+				<div id="connect-method-03" class="connect-method">
+					
+					<h2 class="font-body-title">Método <span class="font-body-title-bold">03</span></h2>
+					<p>Método para a inserção de um botão amarelo em seu site, igual ao modelo abaixo:</p>
+					
+					<div class="uber-btn-container uber-btn-container-bgblack">
+						<a href="http://<%= @agency.domain %>.ubercasting.com.br/gallery" class="uber-gold-btn">
+							<span>Casting</span>
+						</a>
+					</div>
+					
+					<p>Para que o botão seja exibido corretamente, basta copiar e colar o código abaixo:</p>
+					<div class="connect-method-code">
+						<ul>
+							<li>&lt;link rel="stylesheet" type="text/css" href="http://ubercasting.com.br/css/exports/ubergoldbtn.css" /&gt;</li>
+							<li>&lt;div class="uber-btn-container"&gt;</li>
+							<li class="inner-line">&lt;a href="http://<%= @agency.domain %>.ubercasting.com.br/gallery" class="uber-gold-btn"&gt;</li>	
+							<li class="inner-inner-line">&lt;span&gt;Casting&lt;/span&gt;</li>
+							<li class="inner-line">&lt;/a&gt;</li>
+							<li>&lt;/div&gt;</li>
+						</ul>
+					</div>
+					
+				</div>
+				
+				<div id="connect-method-04" class="connect-method connect-method-borderless">
+					
+					<h2 class="font-body-title">Método <span class="font-body-title-bold">04</span></h2>
+					<p>Este é um método de redirecionamento simples. Para que funcione, você deve copiar e colar o trecho de código abaixo na página inicial de seu site, dentro dos limites da tag &lt;head&gt;...&lt;/head&gt;</p>
+					
+					<div class="connect-method-code">
+						<ul>
+							<li>&lt;script type="text/javascript"&gt;</li>
+							<li class="inner-line">window.location = "http://<%= @agency.domain %>.ubercasting.com.br";</li>
+							<li>&lt;/script&gt;</li>
+						</ul>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</div>
