@@ -1,5 +1,7 @@
 <%= form_tag casting_path(@casting), :method => 'get', :id => "casting_models_search" do %>
 	
+	<%= javascript_include_tag "composite-nav" %>
+	
 	<div id="casting_models_criteria" class="clear-margin-padding auto-size-block">
 		<%= render 'model_castings/search_criteria' %>
 	</div>
