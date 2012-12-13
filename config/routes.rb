@@ -28,7 +28,10 @@ Ubercasting::Application.routes.draw do
 
   match "control_panel/" => "control_panel#show", as: :agency_root
 
-  #root :to => "control_panel#show"
+  match "/:subdomain/home" => "websites#home", as: :websites_home
+  match "/:subdomain/about" => "websites#about", as: :websites_about
+  match "/:subdomain/contact_us" => "websites#contact_us", as: :websites_contact_us
+
   root :to => "main_pages#home"
 
 end
