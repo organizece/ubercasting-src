@@ -1,6 +1,6 @@
 class BodyToTextTestimonial < ActiveRecord::Migration
   def up
-    change_column :testimonials, :body, :text, :limit => 1000, :null => false
+    change_column :testimonials, :body, :text, :limit => nil, :null => false
   end
 
   def down
