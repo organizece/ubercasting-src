@@ -182,10 +182,15 @@ h3.header-base-title{
 }
 
 h3.header-base-title-text{
-	height:20px;
-	display:block;
+	font-family:'Conv_Nexa',Sans-Serif;
+	font-size: 230%;
+	text-shadow: #FFF 0px 1px 1px;
 	margin: 10px 15px;
+	padding-top: 10px;
 	padding-bottom: 20px;
+	height:20px;
+	display: block;
+	font-weight: normal;
 }
 
 p.base-text{
@@ -605,6 +610,9 @@ span.btn-silver-light-fluid,
 }
 
 
+/* TIPS */
+span.tip{ font-size: 80%; margin: -15px 0px 0px 5px; display: block; }
+
 
 /*  SPAN ICONS ELEMENTS  ****************************/
 
@@ -727,7 +735,12 @@ span.icon-title-cloud{
 	font-size: 14px;
 	padding: 10px 10px;
 }
-.model-box .model-box-links ul li h4 a{ color:#000; }
+.model-box .model-box-links ul li h4 a{ 
+	color:#000; 
+	background: #FFF url(admin/icon-model-zoom.jpg) left 2px no-repeat scroll; 
+	padding-left: 20px;
+	margin-left: -12px;
+}
 
 .model-box .model-box-links ul li.model-box-add-composite{
 	width:auto;
@@ -764,7 +777,7 @@ span.icon-title-cloud{
 }
 
 .model-box .stars-group{
-	width: 170px;
+	width: 200px;
 	height: 23px;
 	display: block;
 	overflow: hidden;
@@ -778,7 +791,7 @@ span.icon-title-cloud{
 	height: 23px;
 	display: block;
 	overflow: hidden;
-	margin: 0 auto;
+	margin: 0px 0px 0px -5px;
 	padding: 0;
 }
 
@@ -804,6 +817,13 @@ span.icon-title-cloud{
 .model-box .stars-group ul li a.star:hover,
 .model-box .stars-group ul li a.star-on{
 	background-position: bottom left;
+}
+
+.model-box .stars-group ul li a.clear-stars{
+	width: 23px;
+	height: 23px;
+	display: block;
+	background: #fff url(admin/bg-icon-star-clear.jpg) left top no-repeat scroll;
 }
 
 
@@ -1040,7 +1060,7 @@ span.icon-title-cloud{
 
 /* COMPOSITE MODAL STAR GROUP */
 .modal-body .stars-group{
-	width: 170px;
+	width: 200px;
 	height: 23px;
 	display: block;
 	overflow: hidden;
@@ -1062,7 +1082,7 @@ span.icon-title-cloud{
 	height: 23px;
 	display: block;
 	overflow: hidden;
-	margin: 0 auto;
+	margin: 0px 0px 0px -5px;
 	padding: 0;
 }
 
@@ -1092,6 +1112,12 @@ span.icon-title-cloud{
 	background-position: bottom left;
 }
 
+.modal-body .stars-group ul li a.clear-stars{
+	width: 23px;
+	height: 23px;
+	display: block;
+	background: #fff url(admin/bg-icon-star-clear.jpg) left top no-repeat scroll;
+}
 
 
 
@@ -1802,6 +1828,7 @@ div#casting-models-info-content div#subheader{ padding-bottom: 15px; }
 
 .connect-method .connect-method-code ul li{ font-weight: normal; border-left: 1px solid #999; padding-left: 10px; }
 .connect-method .connect-method-code ul li.inner-line{ padding-left: 25px; }
+.connect-method .connect-method-code ul li.inner-inner-line{ padding-left: 55px; }
 
 .uber-btn-container{
 	width: 20%;
