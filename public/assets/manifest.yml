@@ -20,6 +20,7 @@ admin/bg-composite-grafite.jpg: admin/bg-composite-grafite-a829817619d3fde398ce7
 admin/bg-container.jpg: admin/bg-container-3c3614a92dd861ff1aa082f5d8077f4d.jpg
 admin/bg-ctrl-bar.png: admin/bg-ctrl-bar-8d8b42f43d58b6a8f1ba6817426ac33f.png
 admin/bg-icon-request-action.jpg: admin/bg-icon-request-action-22956c539cee5d31bb7f914d6528bba2.jpg
+admin/bg-icon-star-clear.jpg: admin/bg-icon-star-clear-293aa307d805c5b581d275fd069db750.jpg
 admin/bg-icon-star.jpg: admin/bg-icon-star-7eb3acd5cd1c1b6fd82c0daf0bacf02d.jpg
 admin/bg-icon-title-cloud.png: admin/bg-icon-title-cloud-747413bf38f9bd38624610d510ab3e1e.png
 admin/bg-icon-title-model.png: admin/bg-icon-title-model-87c99aeabb4dd0d3db14ca02e1a86b4a.png
@@ -49,6 +50,7 @@ admin/btn-requests-tip-hover.jpg: admin/btn-requests-tip-hover-38a2ea9898548c7a4
 admin/btn-requests-tip.jpg: admin/btn-requests-tip-4909a3b94a5a96662e79c9e19eb0f730.jpg
 admin/icon-header-section.png: admin/icon-header-section-0f5c66f33687ff1a7855e0912f9d3e5b.png
 admin/icon-inner-panel.png: admin/icon-inner-panel-796e7e99e5481e2d49e8c0126ed0cbc6.png
+admin/icon-model-zoom.jpg: admin/icon-model-zoom-f8236f332fe62c449e20bac800dc0dcb.jpg
 admin/icon-view-composite.jpg: admin/icon-view-composite-b67672f76b7ab7b690f0afbcfe772fd6.jpg
 admin/link-icon.png: admin/link-icon-131e6b3be66aedf5eec5174399ba360a.png
 admin/title-add-to-casting.jpg: admin/title-add-to-casting-f7134faec7bec22724d7c98cd8122f4d.jpg
@@ -129,12 +131,13 @@ nav/nav-container-btn-planos.jpg: nav/nav-container-btn-planos-0a4db05bfbcae3867
 nav/nav-container-btn-quemsomos.png: nav/nav-container-btn-quemsomos-0db11ae4d9f428368cdbf3f0d0098e8e.png
 nav/nav-container-btn-tour.png: nav/nav-container-btn-tour-8d0054c06187fe4d7ccc689d989e7ac9.png
 nav/nav-container-logo.png: nav/nav-container-logo-0a5ad57484c993b37db162f72e7697af.png
-application.js: application-b182664df618ba3f404e1d24c8cd8a0a.js
+application.js: application-eb908952840c5ba5bb83be974c6c5cc8.js
+composite-nav.js: composite-nav-aa6c1162ae5baa42880c7f720a55d1ca.js
 dragdrop_composite.js: dragdrop_composite-3f5f2de6536361ac1b5ebf5b231a5e7e.js
 jquery_resizecrop-103_min.js: jquery_resizecrop-103_min-671dda00d1ac3feb28cc463cb15bbcc5.js
-main_pages.js: main_pages-8f2ab558c53c45fee76fb8c081de46a5.js
+main_pages.js: main_pages-d3cb24369b926d84677695970ebc8d35.js
 modelblock.js: modelblock-048c19c7c5583b5151e60ce06ddde418.js
-application.css: application-eeaf4b3719312740ec3f94828daf412a.css
+application.css: application-cb7458adbd34b47baf8ca52baf0971db.css
 home.css: home-1721c9f210aa5c5582149f5ac5ce5b2e.css
 internal.css: internal-87222c7d3a37f9e46efa5d8a6534ff6a.css
 main_pages.css: main_pages-a960132fb4d21be720dcc642e7f8bef3.css
