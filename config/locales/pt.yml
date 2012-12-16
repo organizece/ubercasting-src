@@ -184,6 +184,7 @@ pt:
       casting: Casting
       casting_model: Casting/Modelo
       composite: Composite
+      website: Website
 
     attributes:
       agency:
@@ -248,6 +249,43 @@ pt:
         second_sub_photo_id: Segunda Foto
         third_sub_photo_id: Terceira Foto
         fourth_sub_photo_id: Quarta Foto
+      website:
+        subdomain: Subdomínio
+        visualization_mode: Modo de Visualização
+        theme: Tema
+        footer: Rodapé
+        footer_navigation_itens: Itens de Navegação do Rodapé
+        logo: Logomarca
+        logo_url: Endereço da Logomarca
+        body_background_image: Imagem de fundo do site
+        body_background_color: Cor de fundo do site
+        body_font_family: Tipo de fonte do site
+        body_font_size: Tamanho da fonte do site
+        body_font_color: Cor da fonte do site
+        header_background_color: Cor de fundo do cabeçalho
+        header_font_family: Tipo de fonte do cabeçalho
+        header_font_size: Tamanho da fonte do cabeçalho
+        header_font_color: Cor da fonte do cabeçalho
+        navigation_background_color: Cor de fundo do menu de navegação
+        navigation_font_family: Tipo de fonte do menu de navegaçnao
+        navigation_font_size: Tamanho da fonte do menu de navegaçnao
+        navigation_font_color: Cor da fonte do menu de navegaçnao
+        content_background_color: Cor de fundo do conteúdo
+        content_font_family: Tipo de fonte do conteúdo
+        content_font_size: Tamanho da fonte do conteúdo
+        content_font_color: Cor da fonte do conteúdo
+        footer_background_color: Cor de fundo do rodapé
+        footer_font_family: Tipo de fonte do rodapé
+        footer_font_size: Tamanho da fonte do rodapé
+        footer_font_color: Cor da fonte do rodapé
+        home: Home
+        models: Modelos
+        castings: Castings
+        about: Sobre
+        contact_us: Contato
+        create_account: Criar Conta
+        my_site: Meu Site/Blog
+        be_a_model: Seja Modelo
 
     errors:
       template:

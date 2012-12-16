@@ -1,0 +1,43 @@
+<div class='row'>
+  <div class='span12'>
+    <h3>Logomarca</h3>
+  </div>
+</div>
+
+<%= form_for @website do |f| %>
+  <div class='row'>
+    <div class='span5' id="logo-actions">
+      <% if @website.logo %>
+        <div id='logo-update'>
+          <%= image_tag @website.logo if @website.logo %>
+          <a href="#" id="logo-update">Alterar</a>
+        </div>
+        <div id='logo-field' style='display:none;'>
+          <%= f.label :logo %>
+          <%= f.file_field :logo %>
+          ou
+          <a href="#" id="logo-update-cancel">Cancelar</a>
+        </div>
+      <% else %>
+        <%= f.label :logo %>
+        <%= f.file_field :logo %>
+      <% end %>
+    </div> 
+    <div class='span2'>
+      OU
+    </div> 
+    <div class='span5'>
+      <%= f.label :logo_url %>
+      <%= f.text_field :logo_url %>
+    </div>    
+  </div>
+
+  <div class='row'>
+    <div class='offset8 span2'>
+      <%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn' } %>
+    </div>
+    <div class='span2'>
+      <%= f.submit 'Salvar Configurações', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

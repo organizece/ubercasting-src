@@ -1,0 +1,28 @@
+<div class='row'>
+  <div class='span12'>
+    <h3>Rodapé</h3>
+  </div>
+</div>
+
+<%= form_for @website do |f| %>
+  <div class='row'>
+    <div class='span12'>
+      <%= f.text_area :footer %>
+    </div>    
+  </div>
+  <div class='row'>
+    <div class='span12'>
+      <%= f.check_box :footer_navigation_itens %>
+      <%= f.label :footer_navigation_itens %>
+    </div>    
+  </div>
+
+  <div class='row'>
+    <div class='offset8 span2'>
+      <%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn' } %>
+    </div>
+    <div class='span2'>
+      <%= f.submit 'Salvar Configurações', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
