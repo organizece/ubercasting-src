@@ -29,6 +29,7 @@ Ubercasting::Application.routes.draw do
   resources :testimonials
 
   resources :websites, only: [:edit, :update]
+  get 'websites/verify_subdomain'
 
   match 'connect_sites' => 'agencies#connect_sites', via: :get
 

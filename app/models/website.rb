@@ -11,4 +11,7 @@ class Website < ActiveRecord::Base
   has_attached_file :body_background_image
 
   belongs_to :agency
+
+  validates :subdomain, uniqueness: true
+  
 end

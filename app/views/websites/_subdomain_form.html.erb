@@ -1,0 +1,23 @@
+<div class='row'>
+  <div class='span12'>
+    <h3>Escolha seu Domínio:</h3>
+  </div>
+</div>
+
+<%= form_for @website do |f| %>
+  <div class='row'>
+    <div class='span12'>
+      www.ubercasting.com/<%= f.text_field :subdomain %>
+      <%= link_to 'Verificar', websites_verify_subdomain_path, remote: true, class: 'btn', id: 'verify_subdomain' %>
+    </div>    
+  </div>
+
+  <div class='row'>
+    <div class='offset8 span2'>
+      <%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn' } %>
+    </div>
+    <div class='span2'>
+      <%= f.submit 'Salvar Configurações', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

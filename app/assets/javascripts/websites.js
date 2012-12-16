@@ -7,4 +7,9 @@ $(function() {
       $("#logo-actions #logo-field #website_logo").val("");
     }
   });
+
+  $("#verify_subdomain").live('click', function() {
+    $.getScript(this.href + '?subdomain=' + $('#website_subdomain').val());
+    return false;
+  });
 });

@@ -1,0 +1,7 @@
+$("#alert-msgs").empty();
+<% if flash[:notice] %>
+  $('#alert-msgs').prepend("<%= escape_javascript(render('utils/success_messages')) %>");
+  <% flash.discard() %>
+<% else %>
+  $('#alert-msgs').prepend("<%= escape_javascript(render('utils/error_message')) %>");
+<% end %>

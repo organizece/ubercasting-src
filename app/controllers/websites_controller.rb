@@ -20,4 +20,15 @@ class WebsitesController < ApplicationController
     end
   end
 
+  def verify_subdomain
+    website = Website.find_by_subdomain(params[:subdomain])
+    respond_to do |format|
+      if website && website.agency != current_agency
+        format.js { flash[:error] = 'Dominio ja utilizado!' }
+      else
+        format.js { flash[:notice] = 'Dominio livre!' }
+      end
+    end
+  end
+
 end
