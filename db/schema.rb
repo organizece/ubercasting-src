@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121213203712) do
+ActiveRecord::Schema.define(:version => 20121216182612) do
 
   create_table "agencies", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(:version => 20121213203712) do
     t.string   "cnpj"
     t.string   "owner_name"
     t.string   "owner_cpf"
-    t.string   "domain"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
@@ -57,6 +56,24 @@ ActiveRecord::Schema.define(:version => 20121213203712) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
   end
+
+  create_table "customers", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "customers", ["email"], :name => "index_customers_on_email", :unique => true
+  add_index "customers", ["reset_password_token"], :name => "index_customers_on_reset_password_token", :unique => true
 
   create_table "model_castings", :force => true do |t|
     t.integer  "model_id"
@@ -129,6 +146,54 @@ ActiveRecord::Schema.define(:version => 20121213203712) do
     t.text     "body",                      :null => false
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+  end
+
+  create_table "websites", :force => true do |t|
+    t.string   "subdomain"
+    t.string   "visualization_mode"
+    t.string   "theme",                              :default => "subdomain_default"
+    t.text     "footer"
+    t.boolean  "footer_navigation_itens"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "body_background_image_file_name"
+    t.string   "body_background_image_content_type"
+    t.integer  "body_background_image_file_size"
+    t.datetime "body_background_image_updated_at"
+    t.string   "body_background_color"
+    t.string   "body_font_family"
+    t.string   "body_font_size"
+    t.string   "body_font_color"
+    t.string   "header_background_color"
+    t.string   "header_font_family"
+    t.string   "header_font_size"
+    t.string   "header_font_color"
+    t.string   "navigation_background_color"
+    t.string   "navigation_font_family"
+    t.string   "navigation_font_size"
+    t.string   "navigation_font_color"
+    t.string   "content_background_color"
+    t.string   "content_font_family"
+    t.string   "content_font_size"
+    t.string   "content_font_color"
+    t.string   "footer_background_color"
+    t.string   "footer_font_family"
+    t.string   "footer_font_size"
+    t.string   "footer_font_color"
+    t.boolean  "home",                               :default => true
+    t.boolean  "models",                             :default => true
+    t.boolean  "castings",                           :default => true
+    t.boolean  "about",                              :default => true
+    t.boolean  "contact_us",                         :default => true
+    t.boolean  "create_account",                     :default => true
+    t.boolean  "my_site",                            :default => true
+    t.boolean  "be_a_model",                         :default => true
+    t.integer  "agency_id"
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
+    t.string   "logo_url"
   end
 
 end

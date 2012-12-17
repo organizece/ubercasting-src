@@ -4,15 +4,10 @@ class Agency < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-         :name, :cnpj, :owner_name, :owner_cpf, :domain
-
+         :name, :cnpj, :owner_name, :owner_cpf
+         
   has_many :models
   has_many :castings
-
-  validates :domain, presence: true, if: :confirmed?
-
-  def confirmed?
-    confirmed_at != nil
-  end
+  has_one  :website
 
 end

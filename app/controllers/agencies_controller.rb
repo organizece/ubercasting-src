@@ -27,7 +27,7 @@ class AgenciesController < ActionController::Base
     end
 
     def first_access?
-      redirect_to edit_agency_path(current_agency) if current_agency.domain == nil
+      redirect_to edit_agency_path(current_agency) if current_agency.website
     end
     
     def connect_sites
