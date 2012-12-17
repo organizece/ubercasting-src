@@ -16,4 +16,5 @@
 //= require bootstrap_aditions
 //= require castings
 //= require models
+//= require main
 //= require_self
