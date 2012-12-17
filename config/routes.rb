@@ -1,6 +1,6 @@
 Ubercasting::Application.routes.draw do
 
-  resources :testimonials
+  devise_for :customers
 
   devise_for :agencies, :controllers => { :sessions => "agencies/sessions" }
 
@@ -25,12 +25,24 @@ Ubercasting::Application.routes.draw do
   end
 
   resources :agencies, except: [:index]
-  
+
+  resources :testimonials
+
+  resources :websites, only: [:edit, :update]
+  get 'websites/verify_subdomain'
+
   match 'connect_sites' => 'agencies#connect_sites', via: :get
 
   match "find_cep/:cep" => "utilities#find_cep", via: :get, as: :find_cep
 
   match "control_panel/" => "control_panel#show", as: :agency_root
+
+  match "customer_panel/" => "main_pages#who_we_are", as: :customer_root
+
+  match "/:subdomain/home" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
+  match "/:subdomain/about" => "subdomain_websites#about", via: :get, as: :subdomain_websites_about
+  match "/:subdomain/contact_us" => "subdomain_websites#contact_us", via: :get, as: :subdomain_websites_contact_us
+  match "/:subdomain/models" => "subdomain_models#index", via: :get, as: :subdomain_website_models
 
   root :to => "main_pages#home"
 

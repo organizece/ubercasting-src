@@ -1,0 +1,77 @@
+<%= javascript_include_tag "composite-nav" %>
+<%= javascript_include_tag "modelblock" %>
+
+<div id="search-paginator" class="auto-size-block paginator">
+	
+	<ul>
+		<li class="put-left itens_per_page">
+			Itens por página:&nbsp;&nbsp;
+		    <%= select_tag :itens_per_page, options_for_select(itens_per_page, params[:itens_per_page]), class: 'input-mini' %>
+		</li>
+		<li class="pagination">
+			<%= paginate @models %>
+		</li>
+		<li class="put-right order_column">
+			Ordenar por:&nbsp;&nbsp;
+		    <%= select_tag :order_column, options_for_select(model_order_columns, params[:order_column]), :include_blank => true, class: 'input-medium' %>
+		</li>
+	</ul>
+	
+</div>
+
+<% if @visualization_mode == 'total_access' %>
+	<div id="search-casting-actions" class="auto-size-block actions-tab">
+		
+		<ul>
+			<li>
+				<span>Casting:</span>
+				<%= link_to "Adicionar Selecionados", castings_open_add_models_path, id: :add_selected %>
+			</li>
+			<li>
+				<%= link_to "Adicionar Todos", castings_open_add_models_path({models: @models_ids}), remote: true, id: :add_all_models %>
+			</li>
+			<li>
+				<%= link_to "Visualizar Castings", castings_path %>
+			</li>
+		</ul>
+		
+	</div>
+<% end %>
+
+<div id="search-models-result" class="auto-size-block">
+	
+	<% for model in @models %>
+	
+		<div class="model-box">
+			
+			<div class="model-box-img">
+				
+				<% if @visualization_mode == 'total_access' %>
+					<div class="model-box-checkbox">
+						<%= check_box_tag model, model.id %>
+					</div>
+				<% end %>
+				
+				<%= avatar_tag model.avatar, :search %>
+			
+			</div>
+			
+			<div class="model-box-links">
+				
+				<ul>
+					<% if model.composite %>
+					<li class="model-box-view-composite"><%= link_to 'Visualizar Composite', model_composite_path(model, model.composite), remote: true %></li>
+					<% else %>  
+					<li class="model-box-view-composite"><%= link_to 'Criar Composite', new_model_composite_path(model) %></li>
+					<% end %>
+					<li><h4><%= model.name %></h4></li>
+					<li class="model-box-add-composite"><%= link_to 'Adicionar à Casting', castings_open_add_models_path({models: model.id}), remote: true, via: :get %></li>
+				</ul>
+				
+			</div>
+			
+		</div>
+	
+	<% end %>
+
+</div>

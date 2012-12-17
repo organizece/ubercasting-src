@@ -1,0 +1,35 @@
+<div class='row'>
+  <div class='span12'>
+    <h3>Modo de Visualização</h3>
+  </div>
+</div>
+
+<%= form_for @website do |f| %>
+  <div class='row'>
+    <div class='span12'>
+      <%= f.radio_button :visualization_mode, :open %>
+      <%= f.label :visualization_mode_open, 'Liberado' %>
+    </div>    
+  </div>
+  <div class='row'>
+    <div class='span12'>
+      <%= f.radio_button :visualization_mode, :partially_restricted %>
+      <%= f.label :visualization_mode_partially_restricted, 'Parcialmente Restrito' %>
+    </div>    
+  </div>
+  <div class='row'>
+    <div class='span12'>
+      <%= f.radio_button :visualization_mode, :restricted %>
+      <%= f.label :visualization_mode_restricted, 'Totalmente Restrito' %>
+    </div>    
+  </div>
+
+  <div class='row'>
+    <div class='offset8 span2'>
+      <%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn' } %>
+    </div>
+    <div class='span2'>
+      <%= f.submit 'Salvar Configurações', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
