@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121216182612) do
+ActiveRecord::Schema.define(:version => 20121218040523) do
 
   create_table "agencies", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -33,6 +33,28 @@ ActiveRecord::Schema.define(:version => 20121216182612) do
     t.string   "owner_cpf"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "account_type"
+    t.string   "account_period"
+    t.string   "account_payment"
+    t.text     "agency_about"
+    t.string   "insc_state"
+    t.string   "insc_city"
+    t.string   "fancy_name"
+    t.string   "social_name"
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "cep"
+    t.string   "address"
+    t.string   "address_number"
+    t.string   "neighborhood"
+    t.string   "complement"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "agencies", ["confirmation_token"], :name => "index_agencies_on_confirmation_token", :unique => true
