@@ -2,7 +2,7 @@ Ubercasting::Application.routes.draw do
 
   devise_for :customers
 
-  devise_for :agencies, :controllers => { :sessions => "agencies/sessions" }
+  devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations" }, :path_prefix => 'my'
 
   match 'home' => 'main_pages#home', via: :get
   match 'who_we_are' => 'main_pages#who_we_are', via: :get
