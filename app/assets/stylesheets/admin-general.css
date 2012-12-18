@@ -1313,7 +1313,7 @@ div#nav-container div#nav-wrapper div#secundary-links{
 	float:right;
 }
 
-div#nav-container div#nav-wrapper div#secundary-links ul li{ display:block; padding-top: 20px; }
+div#nav-container div#nav-wrapper div#secundary-links ul li{ display:block; padding-top: 20px; margin-right: 20px; }
 div#nav-container div#nav-wrapper div#secundary-links ul li a{
 	font-size: 13px;
 	color: #fff;
@@ -1882,6 +1882,106 @@ div#casting-models-info-content div#subheader{ padding-bottom: 15px; }
 }
 
 @-moz-document url-prefix() { .uber-btn-container a.uber-gold-btn span { padding: 10px 10px 8px 5px; } } 
+
+
+
+/**************************************/
+/*  EDIT AGENCY INFO  *****************/
+/**************************************/
+
+div#edit-agency-content h2{ margin-left: 15px; margin-top: 10px; }
+
+div#edit-agency-content span{ font-weight: bold; }
+
+div#edit-agency-content div#body{ padding: 20px 0px 0px 0px; }
+
+div#edit-agency-content div#body p.help-block{ font-size: 80%; margin: 0; }
+
+div#edit-agency-profile-pic{
+	width: 20%;
+	height: auto;
+	display: block;
+	overflow: hidden;
+	padding-top: 15px;
+	padding-left: 20px;
+}
+
+div#edit-agency-profile-pic div#profile-pic-container{
+	width: 128px;
+	height: 128px;
+	background-color: #fff;
+	border: 1px solid #a1a1a1;
+	padding: 5px;
+	margin: 0 auto;
+}
+
+div#edit-agency-profile-pic div#profile-pic-container img{
+	width: 128px;
+	height: 128px;
+	display: block;
+	margin: 0 auto;
+}
+
+div#edit-agency-inputs h3{
+	color: #737373;
+	font-size: 140%;
+	font-weight: normal;
+}
+
+div#edit-agency-inputs div.edit-agency-input-group{
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #a1a1a1;
+}
+
+div#edit-agency-inputs div.form-block-4-columns,
+div#edit-agency-inputs div.form-block-4-columns-link{
+	margin: 0px 0 0 16px;
+	padding: 0px;
+}
+div#edit-agency-inputs div.form-block-4-columns-link{ padding: 22px 0 0 0; }
+
+div#edit-agency-basic-info input#agency_email{ width: 600px; }
+
+div#edit-agency-payment-info ul.payments{ margin-top: 20px; }
+div#edit-agency-payment-info ul.payments,
+div#edit-agency-payment-info ul.payments li{ list-style: none; padding-bottom: 20px; }
+div#edit-agency-payment-info ul.payments li{ display: block; float: left; margin-right: 12%; }
+div#edit-agency-payment-info ul.payments li input{ margin-right: 10px; }
+
+div#edit-agency-cancel{ border-top: 1px solid #a1a1a1; margin-top: 20px; }
+
+div#edit-agency-cancel p{ padding-left: 20px; }
+
+div#edit-agency-cancel a{
+	width:20%;
+	height:29px;
+	display: block;
+	padding: 8px 10px 0px 10px;
+	margin-left: 20px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border-left: 1px solid #81817b;
+	border-top: 1px solid #81817b;
+	border-right: 1px solid #81817b;
+	background:#fff url(admin/btn-bg-gray-fluid.jpg) left top repeat-x scroll !important;
+	color: #000 !important;
+	font-size: 13px;
+	text-align: center;
+	text-shadow: #fff 0px 1px 1px;
+}
+
+div#edit-agency-agency-info div.form-block-4-columns{ margin-bottom: 15px; }
+
+div#edit-agency-agency-info div.form-block-4-columns textarea#agency_agency_about{
+	width: 600px;
+	height: 120px;
+	display: block;
+}
+
 
 
 
