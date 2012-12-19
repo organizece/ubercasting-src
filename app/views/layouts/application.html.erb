@@ -63,9 +63,9 @@
 					</li>
 					<li class="hasdrop"><%= link_to 'Website', edit_website_path(current_agency.website), :class => "btn-website" %>
 						<ul class="dropdown">
-							<li><%= link_to '» Configurar Tema', root_path, :class => "offline" %></li>
-							<li><%= link_to '» Alterar Visualização', root_path, :class => "offline" %></li>
-							<li><%= link_to '» Customizar Domínio', root_path, :class => "offline" %></li>
+							<li><%= link_to '» Configurar Tema', edit_website_path(current_agency.website) %></li>
+							<li><%= link_to '» Alterar Visualização', edit_website_path(current_agency.website) %></li>
+							<li><%= link_to '» Customizar Domínio', edit_website_path(current_agency.website) %></li>
 						</ul>
 					</li>
                 </ul>
