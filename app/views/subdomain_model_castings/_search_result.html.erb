@@ -1,0 +1,40 @@
+<div id="casting-models-result" class="auto-size-block">
+	
+	<% for casting_model in @casting_models %>
+	
+		<div class="model-box">
+			<% model = casting_model.model %>
+			
+			<div class="model-box-img">
+				
+				<div class="model-box-checkbox">
+					<%= check_box_tag model, model.id %>
+				</div>
+				
+				<%= avatar_tag model.avatar, :search %>
+			
+			</div>
+			
+			<div class="model-box-links">
+				
+				<ul>
+					<% if model.composite %>
+					<li class="model-box-view-composite"><%= link_to 'Visualizar Composite', model_composite_path(model, model.composite), remote: true %></li>
+					<% end %>
+					<li><h4><%= link_to model.name, model_path(model) %></h4></li>
+					<li>
+						<div id='model-casting-score-<%= casting_model.id %>'>
+							<%= render 'score_buttons', casting_model: casting_model %>
+						</div>
+					</li>
+					<li class="model-box-add-composite"><%= link_to 'Remover do Casting', model_casting_path(casting_model), method: :delete, remote: true %></li>
+					
+				</ul>
+				
+			</div>
+			
+		</div>
+		
+	<% end %>
+	
+</div>

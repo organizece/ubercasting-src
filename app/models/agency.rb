@@ -8,6 +8,10 @@ class Agency < ActiveRecord::Base
          
   has_many :models
   has_many :castings
+  has_many :customer_castings
   has_one  :website
+
+  has_many :customer_casting_messages, as: :sender
+  has_many :customer_casting_messages, as: :receiver
 
 end

@@ -43,6 +43,10 @@ Ubercasting::Application.routes.draw do
   match "/:subdomain/about" => "subdomain_websites#about", via: :get, as: :subdomain_websites_about
   match "/:subdomain/contact_us" => "subdomain_websites#contact_us", via: :get, as: :subdomain_websites_contact_us
   match "/:subdomain/models" => "subdomain_models#index", via: :get, as: :subdomain_website_models
+  match "/:subdomain/castings" => "subdomain_castings#index", via: :get, as: :subdomain_website_castings
+  match "/:subdomain/castings" => "subdomain_castings#create", via: :post, as: :subdomain_website_castings
+  match "/:subdomain/castings/:id" => "subdomain_castings#show", via: :get, as: :subdomain_website_casting
+  match "/:subdomain/castings/:id" => "subdomain_castings#destroy", via: :delete, as: :subdomain_website_casting
 
   root :to => "main_pages#home"
 

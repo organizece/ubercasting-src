@@ -1,0 +1,11 @@
+<%= form_tag subdomain_website_castings_path(@website.subdomain), :method => 'get', :id => "castings_search" do %>
+	
+	<div id="castings_criteria" class="clear-margin-padding auto-size-block">
+		<%= render 'search_criteria' %>
+	</div>
+	
+	<div id="castings" class="full-column-width admin-inner-container">
+		<%= render 'search_result' %>
+	</div>
+	
+<% end %>
