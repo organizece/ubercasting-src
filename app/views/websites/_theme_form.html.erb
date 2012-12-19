@@ -1,24 +1,89 @@
-<div class='row'>
-  <div class='span12'>
-    <h3>Escolha um Tema:</h3>
-  </div>
+<div id="website-theme-content" class="website-content-config">
+	
+	<h4>Escolha um Tema:</h4>
+	
+	<div class="content-split"></div>
+	
+	<%= form_for @website do |f| %>
+	
+	<div id="website-theme-input">
+		<!-- Pensar em como armazenar todos os temas -->
+	    
+		<ul>
+			<li class="theme-active">
+				<%= f.radio_button :theme, :subdomain_default %>
+			    <%= f.label :theme_subdomain_default, 'Padrão' %>
+			</li>
+			<li>
+				<input type="radio" name="website[theme]" value="Cubic Theme" id="cubic_theme">
+			    <%= f.label :theme_subdomain_default, 'Cubic Theme' %>
+			</li>
+		</ul>
+	</div>
+	
+	<div id="website-theme-preview">
+		<div id="website-theme-preview-thumb">
+			<%= image_tag "thumbs/01.jpg" %>
+		</div>
+	</div>
+	
+	<div id="website-theme-config">
+		
+		<div id="theme-config-header">
+			<ul>
+				<li class="active"><a href="javascript: return false;">Default</a></li>
+				<li><a href="javascript: return false;">Custom</a></li>
+			</ul>
+		</div>
+		
+		<div id="theme-config-body" class="auto-size-block">
+			
+			<div id="theme-body-part" class="auto-size-block">
+				<select name="website-theme-parts" id="website-theme-parts" onchange="" size="1">
+					<option value="body">Corpo</option>
+					<option value="header">Cabeçalho</option>
+					<option value="nav-container">Navegação</option>
+					<option value="content-container">Conteúdo</option>
+					<option value="footer">Rodapé</option>
+				</select>
+			</div>
+			
+			<div id="theme-body-config" class="auto-size-block">
+				<ul class="clear-list clear-margin-padding">
+					<li class="put-left">
+						<label for="website-background-img">Imagem de Fundo</label>
+						<input type="text" name="website-background-img" value="website-background-img" id="website-background-img">
+					</li>
+					<li class="put-right">
+						<label for="website-background-color">Cor de Fundo</label>
+						<input type="text" name="website-background-color" value="website-background-color" id="website-background-color">
+					</li>
+					<li class="put-left">
+						<label for="font-family">Tipografia</label>
+						<input type="text" name="font-family" value="font-family" id="font-family">
+					</li>
+					<li class="put-right">
+						<label for="font-size">Tamanho Tipografia</label>
+						<input type="text" name="font-size" value="font-size" id="font-size">
+					</li>
+					<li class="full-item">
+						<label for="color">Cor Tipografia</label>
+						<input type="text" name="color" value="color" id="color">
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	<div class="content-split"></div>
+	
+	<div class="website-content-btns">
+		<%= f.submit 'Salvar Configurações', class: 'input-btn-gold-liquid put-right' %>
+		<%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn-silver-light-fluid put-right' } %>
+	</div>
+	
+	<% end %>
+	
 </div>
-
-<%= form_for @website do |f| %>
-  <div class='row'>
-    <div class='span12'>
-      <!-- Pensar em como armazenar todos os temas -->
-      <%= f.radio_button :theme, :subdomain_default %>
-      <%= f.label :theme_subdomain_default, 'Padrão' %>
-    </div>    
-  </div>
-
-  <div class='row'>
-    <div class='offset8 span2'>
-      <%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn' } %>
-    </div>
-    <div class='span2'>
-      <%= f.submit 'Salvar Configurações', class: 'btn btn-primary' %>
-    </div>
-  </div>
-<% end %>

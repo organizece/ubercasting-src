@@ -65,6 +65,8 @@ div#container{
 .clear-margin{ margin: 0px; }
 .clear-padding{ padding: 0px; }
 .clear-margin-padding{ margin: 0px; padding: 0px; }
+.clear-list,
+.clear-list li{ list-style: none; }
 
 .put-list-inline,
 .put-list-inline li{ list-style: none; display: inline-block; margin: 10px 5px; }
@@ -414,6 +416,14 @@ p.inner-header-base-text{
 	background:#fff url(admin/bg-input-light.jpg) left top repeat-x scroll !important;
 }
 
+.input-txt-light-5-columns{
+	width:380px;
+	height:23px !important;
+	display: block !important;
+	border: 1px solid #a1a1a1 !important;
+	background:#fff url(admin/bg-input-light.jpg) left top repeat-x scroll !important;
+}
+
 .input-txt-light-6-columns{
 	width:530px;
 	height:23px !important;
@@ -546,6 +556,21 @@ span.btn-silver-light-fluid,
 	text-shadow: #fff 0px 1px 1px;
 }
 
+.input-btn-gold-liquid{
+	width:auto;
+	height:42px;
+	display: block;
+	border: 1px solid #807a21;
+	background:#fff url(admin/btn-bg-gold-liquid.jpg) left bottom repeat-x scroll !important;
+	color: #000;
+	font-size: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: #fff 0px 2px 1px;
+	box-shadow: 0px 1px 1px 0px #bab78a;
+	-moz-box-shadow: 0px 1px 1px 0px #bab78a;
+	-webkit-box-shadow: 0px 1px 1px 0px #bab78a;
+}
 
 /* Button Icons */
 .btn-icon-delete{
@@ -1983,6 +2008,299 @@ div#edit-agency-agency-info div.form-block-4-columns textarea#agency_agency_abou
 }
 
 
+
+/**************************************/
+/*  WEBSITE CONFIGURATION  ************/
+/**************************************/
+
+/*  PAGE CONFIGS  ************/
+
+div#website-content-container div#subheader h2{ margin: 10px 0 0 15px; }
+
+div#website-content-container div#website-content-nav{
+	background-color: #ededed;
+	border-bottom: 1px solid #a1a1a1;
+	width:100%;
+	height: 65px;
+	display: block;
+	position: relative;
+}
+
+div#website-content-container div#website-content-nav ul,
+div#website-content-container div#website-content-nav ul li{ list-style: none; }
+
+div#website-content-container div#website-content-nav ul{
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: hidden;
+}
+
+div#website-content-container div#website-content-nav ul li{ 
+	width: 213px;
+	height: 90px;
+	display: block; 
+	float: left;
+	position: static;
+	display: block;
+	left: 10%;
+	margin-top: -1px;
+	z-index: 999;
+}
+
+div#website-content-container div#website-content-nav ul li:hover,
+div#website-content-container div#website-content-nav ul li.website-nav-active{ background: transparent url(admin/bg-website-nav.png) left top no-repeat scroll; }
+
+div#website-content-container div#website-content-nav ul li a{
+	color: #6b6b6b;
+	font-size: 110%;
+	display: block;
+	padding: 11% 0px 0px 11%;
+}
+
+/*  PAGE CLASSES  ************/
+
+div.website-content-config{
+	width: 97%;
+	height: auto;
+	overflow: hidden;
+	display: block;
+	margin: 35px auto;
+}
+
+div.website-content-config h4{
+	color: #4c4c4c;
+	font-size: 180%;
+	font-weight: normal;
+	display: block;
+	clear: both;
+	margin-bottom: 5px;
+}
+
+div.website-content-config p{
+	color: #7c7c7c;
+	font-size: 90%;
+	font-weight: normal;
+	display: block;
+	clear: both;
+	margin-bottom: 20px;
+	line-height: 1.2em;
+}
+
+div.website-content-config div.website-content-btns{
+	width: 99%;
+	height: 54px;
+	display: block;
+	overflow: hidden;
+	margin-top: 20px;
+	background-color: #f4f4f4;
+	border-bottom: 1px solid #a1a1a1;
+	padding: 18px 40px 0px 0px;
+}
+
+div.website-content-config div.website-content-btns input.input-btn-gold-liquid{ height: 37px; padding-right: 20px; padding-left: 20px; }
+
+/*  THEME SUBDOMAIN CONFIG  ************/
+
+div.website-content-config div#website-subdomain-input span,
+div.website-content-config div#website-subdomain-input input,
+div.website-content-config div#website-subdomain-input a{ float: left; }
+
+div.website-content-config div#website-subdomain-input span{ padding: 10px 5px 0px 0px; }
+
+div.website-content-config div#website-subdomain-input input{ margin-top: 2px; }
+
+div.website-content-config div#website-subdomain-input a.btn-silver-light-fluid{ width: 10% !important; margin-left: 10px; }
+
+/*  THEME CONFIGURATION  ************/
+
+/*  THEME INPUTS  ************/
+div#website-theme-input,
+div#website-theme-preview,
+div#website-theme-config{
+	width: 30%;
+	height: auto;
+	display: block;
+	overflow: hidden;
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+div#website-theme-input ul,
+div#website-theme-input ul li{ list-style: none; margin: 0; padding: 0; }
+
+div#website-theme-input ul{ width: auto; height: auto; display: block; margin: 10px 0px; }
+
+div#website-theme-input ul li{
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: hidden;
+	background-color: #f3f3f3;
+	border-top: 1px solid #a1a1a1;
+	border-bottom: 2px solid #fff;
+	margin: 0;
+	padding: 5px 5px;
+}
+
+div#website-theme-input ul li:hover,
+div#website-theme-input ul li.theme-active{
+	background-color: #c1efff;
+}
+
+div#website-theme-input ul li input,
+div#website-theme-input ul li label{ display: block; float: left; margin-left: 10px; }
+
+div#website-theme-preview-thumb,
+div#website-theme-preview-thumb img{
+	width: 100%;
+	height: 200px;
+	display: block;
+}
+
+/*  THEME PREVIEW  ************/
+div#website-theme-preview{ 
+	background-color: #fff; 
+	border: 1px solid #a1a1a1; 
+	margin-top: 10px;
+	padding: 10px; 
+}
+
+div#website-theme-preview-thumb{ 
+	background-color: #f3f3f3; 
+	box-shadow: 0px 1px 1px 0px #333;
+}
+
+
+/*  THEME PART CONFIG  ************/
+div#website-theme-config div#theme-config-header{
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: hidden;
+	clear: both;
+}
+
+div#website-theme-config div#theme-config-header ul,
+div#website-theme-config div#theme-config-header ul li{ list-style: none; margin: 0; padding: 0; }
+
+div#website-theme-config div#theme-config-header ul{ 
+	display: block; 
+	height: auto; 
+	overflow: hidden; 
+	margin: 10px 0px; 
+	border-bottom: 1px solid #999;
+}
+
+div#website-theme-config div#theme-config-header ul li{ 
+	display: block; 
+	float: left; 
+	margin-right: 10px; 
+	margin-bottom: 5px; 
+	padding: 5px 10px; 
+	font-size: 90%;
+}
+
+div#website-theme-config div#theme-config-header ul li:hover,
+div#website-theme-config div#theme-config-header ul li.active{ background-color: #a1a1a1; border-radius: 7px; }
+
+div#website-theme-config div#theme-config-header ul li a{ color: #a1a1a1; }
+div#website-theme-config div#theme-config-header ul li:hover a,
+div#website-theme-config div#theme-config-header ul li.active a{ color: #fff; text-decoration: none; }
+
+div#website-theme-config div#theme-body-part{ border-bottom: 1px solid #999; }
+
+div#website-theme-config select#website-theme-parts{ width: 100%; }
+
+div#website-theme-config div#theme-body-config,
+div#website-theme-config div#theme-body-config label,
+div#website-theme-config div#theme-body-config input{ font-size: 0.9em; }
+
+div#website-theme-config div#theme-body-config ul{ margin-top: 5px; }
+
+div#website-theme-config div#theme-body-config ul li{ width: 46%; display: block; }
+div#website-theme-config div#theme-body-config ul li.put-right{ margin-right: 2px; }
+div#website-theme-config div#theme-body-config ul li.full-item{ width: 100%; clear: both; }
+
+div#website-theme-config div#theme-body-config ul li input,
+div#website-theme-config div#theme-body-config ul li label{ width: 90%; }
+div#website-theme-config div#theme-body-config ul li.full-item input{ width: 95%; }
+
+/*  THEME LOGO CONFIG  ************/
+
+div#logo-actions,
+div.or-horizontal-split,
+div#logo-url{ float: left; margin-right: 20px; }
+
+div#logo-actions h4,
+div#logo-url h4{ margin-bottom: 15px; }
+
+div#logo-actions div#logo-update img{ 
+	border: 1px solid #a1a1a1; 
+	display: block;
+	padding: 10px;
+	background-color: #fff;
+	margin-bottom: 10px;
+	width: 48%;
+}
+
+div#logo-actions div#logo-update a,
+div#logo-actions div#logo-field a{ width: 48% !important; }
+
+div.or-horizontal-split{
+	width: 54px;
+	height: 76px;
+	display: block;
+	background: #fff url(admin/img-or-split.jpg) left top no-repeat scroll;
+	margin: 10px 20px;
+	text-indent: -10000px;
+}
+
+div#logo-url{ margin: 0px 0px 0px 30px; }
+div#logo-url input{ font-size: 100%; }
+div#logo-url label{ font-size: 80%; }
+
+/*  THEME PAGE NAVIGATION CONFIG  ************/
+
+ul#page-navs-opt{ margin: 0; padding: 0; }
+ul#page-navs-opt li{ margin-right: 10px; }
+ul#page-navs-opt li label,
+ul#page-navs-opt li input{ float: right; margin-right: 5px; }
+
+/*  THEME VISUALIZATOIN CONFIG  ************/
+
+div.website-view-block{ margin-bottom: 20px; }
+
+div.website-view-block label,
+div.website-view-block input{ float: left; }
+
+div.website-view-block label{ font-size: 140%; margin-left: 10px; }
+
+div.website-view-block p{ margin: 0; padding: 0; }
+
+div.alert-box{ 
+	width: auto;
+	height: 79px;
+	display: block;
+	background: #fff url(admin/bg-alert-box.jpg) left top repeat-x scroll;
+	margin: 10px 0px;
+	padding: 15px 0px 0px 20px;
+}
+
+div.video-explain p{ 
+	min-width: 70px;
+	min-height: 50px;
+	background: transparent url(admin/bg-icon-question.jpg) left top no-repeat scroll;
+	font-size: 100%; 
+	display: block;
+	padding: 17px 0px 0px 90px;
+}
+
+/*  THEME CONFIG FOOTER  ************/
+div#website-footer-content div#footer-config label,
+div#website-footer-content div#footer-config input{ float: left; margin-right: 10px; }
+div#website-footer-content textarea#website_footer{ width: 96%; height: 110px; }
 
 
 /**************************************/
