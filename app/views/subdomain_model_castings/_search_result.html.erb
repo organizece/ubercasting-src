@@ -27,7 +27,7 @@
 							<%= render 'score_buttons', casting_model: casting_model %>
 						</div>
 					</li>
-					<li class="model-box-add-composite"><%= link_to 'Remover do Casting', model_casting_path(casting_model), method: :delete, remote: true %></li>
+					<li class="model-box-add-composite"><%= link_to 'Remover do Casting', subdomain_model_casting_path(params[:subdoamin], casting_model), method: :delete, remote: true %></li>
 					
 				</ul>
 				

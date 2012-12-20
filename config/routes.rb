@@ -62,6 +62,10 @@ Ubercasting::Application.routes.draw do
   match "/:subdomain/castings/:id" => "subdomain_castings#destroy", via: :delete, as: :subdomain_casting
   match "/:subdomain/castings/:id/remove_models" => "subdomain_castings#remove_models", via: :get, as: :subdomain_casting_remove_models
 
+  match "/:subdomain/model_castings/:id" => "subdomain_model_castings#destroy", via: :delete, as: :subdomain_model_casting
+  match "/:subdomain/model_castings/:id/update_score/:score" => "subdomain_model_castings#update_score", via: :put, as: :subdomain_model_casting_update_score
+
+
   root :to => "main_pages#home"
 
 end
