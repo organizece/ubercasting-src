@@ -20,6 +20,7 @@
 //= require castings
 //= require composites
 //= require models
+//= require model_castings
 //= require main
 //= require subdomain-default
 //= require_self

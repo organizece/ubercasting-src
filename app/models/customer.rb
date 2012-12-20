@@ -7,5 +7,9 @@ class Customer < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
+
+  has_many :customer_castings, dependent: :destroy
+  has_many :customer_casting_messages, as: :sender
+  has_many :customer_casting_messages, as: :receiver
+
 end

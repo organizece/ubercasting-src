@@ -17,8 +17,11 @@ Ubercasting::Application.routes.draw do
 
   get 'castings/open_add_models/'
   post 'castings/save_add_models/'
+  get 'castings/destroy_selected'
 
-  resources :castings
+  resources :castings do
+    match 'remove_models' => 'castings#remove_models', via: :get, as: :remove_models
+  end
 
   resources :model_castings, only: [:destroy] do
     match 'update_score/:score' => 'model_castings#update_score', via: :put, as: :update_score
@@ -39,11 +42,25 @@ Ubercasting::Application.routes.draw do
 
   match "customer_panel/" => "main_pages#who_we_are", as: :customer_root
 
+  # Subdomain routes to static pages
+  match "/:subdomain" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
   match "/:subdomain/home" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
   match "/:subdomain/about" => "subdomain_websites#about", via: :get, as: :subdomain_websites_about
   match "/:subdomain/contact_us" => "subdomain_websites#contact_us", via: :get, as: :subdomain_websites_contact_us
   match "/:subdomain/be_model" => "subdomain_websites#be_model", via: :get, as: :subdomain_websites_be_model
-  match "/:subdomain/models" => "subdomain_models#index", via: :get, as: :subdomain_website_models
+
+  # Subdomain routes to models pages
+  match "/:subdomain/models" => "subdomain_models#index", via: :get, as: :subdomain_models
+
+  # Subdomain routes to castings pages
+  match '/:subdomain/castings/add_models/' => "subdomain_castings#open_add_models", via: :get, as: :subdomain_castings_add_models
+  match '/:subdomain/castings/add_models/' => "subdomain_castings#save_add_models", via: :post, as: :subdomain_castings_add_models
+  match "/:subdomain/castings/destroy_selected" => "subdomain_castings#destroy_selected", via: :get, as: :subdomain_castings_destroy_selected
+  match "/:subdomain/castings" => "subdomain_castings#index", via: :get, as: :subdomain_castings
+  match "/:subdomain/castings" => "subdomain_castings#create", via: :post, as: :subdomain_castings
+  match "/:subdomain/castings/:id" => "subdomain_castings#show", via: :get, as: :subdomain_casting
+  match "/:subdomain/castings/:id" => "subdomain_castings#destroy", via: :delete, as: :subdomain_casting
+  match "/:subdomain/castings/:id/remove_models" => "subdomain_castings#remove_models", via: :get, as: :subdomain_casting_remove_models
 
   root :to => "main_pages#home"
 

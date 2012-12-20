@@ -1,0 +1,44 @@
+<div id="casting-models-information" class="full-column-container put-center">
+  
+  <div id="main-header" class="auto-size-block admin-panel-header">
+    
+    <span class="icon-title icon-title-cloud put-left">&nbsp;</span>
+    <h2 class="put-left clear-margin-padding base-title title-manage-castings">Gerenciar Castings</h2>
+    
+  </div>
+  
+  <div class="content-split"></div>
+  
+  <div id="casting-models-info-content" class="auto-size-block clear-margin put-relative">
+    
+    <div class="admin-panel-full-top clear-margin-padding">&nbsp;</div>
+    
+    <div id="content" class="full-column-width content-body">
+      
+      <div id="subheader" class="auto-size-block admin-inner-container">
+        
+        <span class="put-absolute admin-panel-header-icon admin-panel-header-icon-casting">&nbsp;</span>
+        <h3 class="put-left header-base-title-text">Casting: <strong><%= @casting.name %></strong></h3>
+        
+        <ul class="put-right put-list-inline">
+          <li><%= link_to 'Compartilhar Castings', castings_path, title: 'Compartilhar', class: 'anchor-btn-silver-medium-base anchor-btn-silver-medium-share offline' %></li>
+          <li><%= link_to "Visualizar Castings", subdomain_castings_path(@website.subdomain), class: 'anchor-btn-silver-medium-base anchor-btn-silver-medium-return' %></li>
+        </ul>
+        
+      </div>
+      
+      <div class="content-split"></div>
+      
+      <div id="body" class="auto-size-block clear-margin">
+        
+        <div id="search">
+          <%= render 'subdomain_model_castings/search' %>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</div>

@@ -79,6 +79,26 @@ ActiveRecord::Schema.define(:version => 20121219161941) do
     t.datetime "updated_at",          :null => false
   end
 
+  create_table "customer_casting_messages", :force => true do |t|
+    t.integer  "sender_id"
+    t.string   "sender_type"
+    t.integer  "receiver_id"
+    t.string   "receiver_type"
+    t.text     "content"
+    t.boolean  "read"
+    t.integer  "customer_casting_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "customer_castings", :force => true do |t|
+    t.string   "name"
+    t.integer  "agency_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "customers", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -103,6 +123,14 @@ ActiveRecord::Schema.define(:version => 20121219161941) do
     t.integer  "score"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "model_customer_castings", :force => true do |t|
+    t.integer  "customer_casting_id"
+    t.integer  "model_id"
+    t.integer  "score"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "models", :force => true do |t|
