@@ -110,6 +110,7 @@ class CastingsController < ApplicationController
 
   def open_add_models
     @castings = Casting.where(agency_id: current_agency.id)
+    @customer_castings = CustomerCasting.where(agency_id: current_agency.id)
   end
 
   def save_add_models

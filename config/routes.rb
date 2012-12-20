@@ -1,6 +1,6 @@
 Ubercasting::Application.routes.draw do
 
-  devise_for :customers
+  devise_for :customers, :controllers => { :sessions => "agencies/sessions" }
 
   devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations" }, :path_prefix => 'my'
 
@@ -15,6 +15,7 @@ Ubercasting::Application.routes.draw do
     resources :composites, except: [:index, :destroy]
   end
 
+  # Routes to Casting pages
   get 'castings/open_add_models/'
   post 'castings/save_add_models/'
   get 'castings/destroy_selected'
@@ -25,6 +26,18 @@ Ubercasting::Application.routes.draw do
 
   resources :model_castings, only: [:destroy] do
     match 'update_score/:score' => 'model_castings#update_score', via: :put, as: :update_score
+  end
+
+  # Routes do Customer Casting Routes
+  post 'customer_castings/save_add_models/'
+  get 'customer_castings/destroy_selected'
+
+  resources :customer_castings, only: [:index, :show, :destroy] do
+    match 'remove_models' => 'customer_castings#remove_models', via: :get, as: :remove_models
+  end
+
+  resources :model_customer_castings, only: [:destroy] do
+    match 'update_score/:score' => 'model_customer_castings#update_score', via: :put, as: :update_score
   end
 
   resources :agencies, except: [:index]
@@ -61,6 +74,10 @@ Ubercasting::Application.routes.draw do
   match "/:subdomain/castings/:id" => "subdomain_castings#show", via: :get, as: :subdomain_casting
   match "/:subdomain/castings/:id" => "subdomain_castings#destroy", via: :delete, as: :subdomain_casting
   match "/:subdomain/castings/:id/remove_models" => "subdomain_castings#remove_models", via: :get, as: :subdomain_casting_remove_models
+
+  match "/:subdomain/model_castings/:id" => "subdomain_model_castings#destroy", via: :delete, as: :subdomain_model_casting
+  match "/:subdomain/model_castings/:id/update_score/:score" => "subdomain_model_castings#update_score", via: :put, as: :subdomain_model_casting_update_score
+
 
   root :to => "main_pages#home"
 

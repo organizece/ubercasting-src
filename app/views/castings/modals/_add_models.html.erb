@@ -52,4 +52,38 @@
     </div>
 
   <% end %>
+
+  <div class="modal-header">
+    <h3 class="title-add-to-casting">Adicionar Modelo à Pedido de Casting</h3>
+  </div>
+
+	<%= form_tag customer_castings_save_add_models_path, method: :post, remote: true do %>
+		
+		<%= hidden_field_tag :models, params[:models] %>
+		<%= hidden_field_tag :type, :add_only %>
+		
+		<div class="modal-body">
+			<div id="casting-list" class="request-list">
+				<% for casting in @customer_castings %>
+					<div class="request-line">
+						<ul class="requst-info">
+							<li><%= radio_button_tag :casting_id, casting.id %></li>
+							<li><%= casting.customer.email %></li>
+							<li><%= casting.name %></li>
+						</ul>
+					</div>
+				<% end %>
+			</div>
+		</div>
+
+    <div class="modal-footer">
+		
+		<ul class="auto-size-block put-list-inline put-right">
+			<li><%= submit_tag 'Adicionar', class: 'input-btn-gold-light-4-column' %></li>
+			<li><button class="btn-silver-light-fluid" data-dismiss="modal" aria-hidden="true">Cancelar</button></li>
+		</ul>
+		
+    </div>
+
+  <% end %>
 </div>

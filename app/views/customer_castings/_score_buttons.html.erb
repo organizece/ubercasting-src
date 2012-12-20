@@ -1,0 +1,16 @@
+<div class="btn-group stars-group">
+	<ul>
+		<li><%= link_to "0", model_customer_casting_update_score_path(casting_model, score: 0), remote: true, method: :put, class: 'clear-stars' %></li>
+		
+		<% (1..5).each do |score| %>
+		
+			<% if casting_model.score and casting_model.score >= score %>
+				<li><%= link_to score, model_customer_casting_update_score_path(casting_model, score: score), remote: true, method: :put, class: 'star star-on' %></li>
+			<% else %>
+				<li><%= link_to score, model_customer_casting_update_score_path(casting_model, score: score), remote: true, method: :put, class: 'star' %></li>
+			<% end %>
+		
+		<% end %>
+		
+	</ul>
+</div>

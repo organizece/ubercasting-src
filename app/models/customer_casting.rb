@@ -8,7 +8,7 @@ class CustomerCasting < ActiveRecord::Base
 
   def self.search(name, agency_id, customer_id)
     castings = CustomerCasting.where(agency_id: agency_id)
-    castings = castings.where(customer_id: customer_id)
+    castings = castings.where(customer_id: customer_id) if customer_id
     name = "%#{name}%"
     castings = castings.where("name like ? ", name) unless name.blank?
 
