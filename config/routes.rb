@@ -54,10 +54,12 @@ Ubercasting::Application.routes.draw do
   # Subdomain routes to castings pages
   match '/:subdomain/castings/add_models/' => "subdomain_castings#open_add_models", via: :get, as: :subdomain_castings_add_models
   match '/:subdomain/castings/add_models/' => "subdomain_castings#save_add_models", via: :post, as: :subdomain_castings_add_models
+  match "/:subdomain/castings/destroy_selected" => "subdomain_castings#destroy_selected", via: :get, as: :subdomain_castings_destroy_selected
   match "/:subdomain/castings" => "subdomain_castings#index", via: :get, as: :subdomain_castings
   match "/:subdomain/castings" => "subdomain_castings#create", via: :post, as: :subdomain_castings
   match "/:subdomain/castings/:id" => "subdomain_castings#show", via: :get, as: :subdomain_casting
   match "/:subdomain/castings/:id" => "subdomain_castings#destroy", via: :delete, as: :subdomain_casting
+  match "/:subdomain/castings/:id/remove_models" => "subdomain_castings#remove_models", via: :get, as: :subdomain_casting_remove_models
 
   root :to => "main_pages#home"
 

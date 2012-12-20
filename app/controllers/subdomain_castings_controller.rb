@@ -13,8 +13,15 @@ class SubdomainCastingsController < ApplicationController
   def show
     @website = Website.find_by_subdomain(params[:subdomain])
     @casting = CustomerCasting.find(params[:id])
-    @casting_models = ModelCustomerCasting.where(customer_casting_id: @casting.id).joins(:model).
-      order(show_sort_column).page(params[:page]).per(per_page)
+    @casting_models = ModelCustomerCasting.where(customer_casting_id: @casting.id).joins(:model)
+
+    @casting_models_ids = []
+    @casting_models.each do |casting_model|
+      @casting_models_ids << casting_model.id
+    end
+    @casting_models_ids = @casting_models_ids.join(',')
+
+    @casting_models = @casting_models.order(show_sort_column).page(params[:page]).per(per_page)
   end
 
   def create
@@ -43,6 +50,26 @@ class SubdomainCastingsController < ApplicationController
       format.html { redirect_to castings_url }
       format.json { head :no_content }
       format.js { flash[:notice] = 'Casting deletado com sucesso.' }
+    end
+  end
+
+  def destroy_selected
+    castings = params[:castings].split(',') if params[:castings]
+    if castings
+      castings.each do |casting_id|
+        model_casting = CustomerCasting.find(Integer(casting_id))
+        model_casting.destroy
+      end
+    else
+      flash[:error] = 'Selecione ao menos um casting.'
+    end
+
+    respond_to do |format|
+      if flash[:error]
+        format.js
+      else
+        format.js { flash[:notice] = 'Castings removidos com sucesso.' }
+      end
     end
   end
 
@@ -92,6 +119,26 @@ class SubdomainCastingsController < ApplicationController
         format.js
       else
         format.js { flash[:notice] = "Modelos adicionados ao casting #{casting.name} com sucesso." }
+      end
+    end
+  end
+
+  def remove_models
+    if params[:model_castings].blank?
+      flash[:error] = 'Selecione ao menos um modelo.'
+    else
+      model_castings = params[:model_castings].split(',')
+      model_castings.each do |model_casting_id|
+        model_casting = ModelCustomerCasting.find(Integer(model_casting_id))
+        model_casting.destroy
+      end
+    end
+
+    respond_to do |format|
+      if flash[:error]
+        format.js
+      else
+        format.js { flash[:notice] = 'Modelos removidos com sucesso.' }
       end
     end
   end

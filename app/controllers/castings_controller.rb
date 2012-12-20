@@ -156,14 +156,14 @@ class CastingsController < ApplicationController
   end
 
   def remove_models
-    model_castings = params[:model_castings].split(',') if params[:model_castings]
-    if model_castings
+    if params[:model_castings].blank?
+      flash[:error] = 'Selecione ao menos um modelo.'
+    else
+      model_castings = params[:model_castings].split(',')
       model_castings.each do |model_casting_id|
         model_casting = ModelCasting.find(Integer(model_casting_id))
         model_casting.destroy
       end
-    else
-      flash[:error] = 'Selecione ao menos um modelo.'
     end
 
     respond_to do |format|

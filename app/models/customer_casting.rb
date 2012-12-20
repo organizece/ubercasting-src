@@ -3,8 +3,8 @@ class CustomerCasting < ActiveRecord::Base
 
   belongs_to :agency
   belongs_to :customer
-  has_many :model_customer_castings
-  has_many :customer_casting_messages
+  has_many :model_customer_castings, dependent: :destroy
+  has_many :customer_casting_messages, dependent: :destroy
 
   def self.search(name, agency_id, customer_id)
     castings = CustomerCasting.where(agency_id: agency_id)
