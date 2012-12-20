@@ -1,6 +1,6 @@
 Ubercasting::Application.routes.draw do
 
-  devise_for :customers
+  devise_for :customers, :controllers => { :sessions => "agencies/sessions" }
 
   devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations" }, :path_prefix => 'my'
 
