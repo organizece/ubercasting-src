@@ -30,7 +30,7 @@
 			<%= submit_tag "Buscar", :name => nil, class: 'action-btn' %>
 		</li>
 		<li>
-			<%= link_to "Excluir Selecionados", castings_destroy_selected_path, class: "action-btn", id: :remove_selected %>
+			<%= link_to "Excluir Selecionados", subdomain_castings_destroy_selected_path(params[:subdomain]), class: "action-btn", id: :remove_selected %>
 		</li>
 	</ul>
 	

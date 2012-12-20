@@ -15,8 +15,12 @@ class Agency < ActiveRecord::Base
           :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :agency_about,
           :insc_state, :insc_city, :fancy_name, :social_name, :phone, :fax, :agency_about
          
-  has_many :models
-  has_many :castings
-  has_one  :website
+  has_many :models, dependent: :destroy
+  has_many :castings, dependent: :destroy
+  has_many :customer_castings, dependent: :destroy
+  has_one  :website, dependent: :destroy
+
+  has_many :customer_casting_messages, as: :sender
+  has_many :customer_casting_messages, as: :receiver
 
 end

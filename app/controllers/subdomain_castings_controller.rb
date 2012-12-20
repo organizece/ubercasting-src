@@ -1,50 +1,33 @@
-class CastingsController < ApplicationController
-  before_filter :authenticate_agency!
+class SubdomainCastingsController < ApplicationController
+  layout :subdomain_layout
 
-  # GET /castings
-  # GET /castings.json
+  before_filter :authenticate_customer!
+
   def index
-    @castings = Casting.search(params[:name], current_agency.id).
+    @website = Website.find_by_subdomain(params[:subdomain])
+    @castings = CustomerCasting.search(params[:name], @website.agency.id, current_customer.id).
       order(index_sort_column).page(params[:page]).per(per_page)
-    @casting = Casting.new
+    @casting = CustomerCasting.new
   end
 
-  # GET /castings/1
-  # GET /castings/1.json
   def show
-    @casting = Casting.find(params[:id])
-    @casting_models = ModelCasting.where(casting_id: @casting.id).joins(:model)
+    @website = Website.find_by_subdomain(params[:subdomain])
+    @casting = CustomerCasting.find(params[:id])
+    @casting_models = ModelCustomerCasting.where(customer_casting_id: @casting.id).joins(:model)
 
     @casting_models_ids = []
     @casting_models.each do |casting_model|
       @casting_models_ids << casting_model.id
     end
     @casting_models_ids = @casting_models_ids.join(',')
-  
+
     @casting_models = @casting_models.order(show_sort_column).page(params[:page]).per(per_page)
   end
 
-  # GET /castings/new
-  # GET /castings/new.json
-  def new
-    @casting = Casting.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @casting }
-    end
-  end
-
-  # GET /castings/1/edit
-  def edit
-    @casting = Casting.find(params[:id])
-  end
-
-  # POST /castings
-  # POST /castings.json
   def create
-    @casting = Casting.new(params[:casting])
-    @casting.agency = current_agency
+    @casting = CustomerCasting.new(params[:customer_casting])
+    @casting.agency = Website.find_by_subdomain(params[:subdomain]).agency
+    @casting.customer = current_customer
 
     respond_to do |format|
       if @casting.save
@@ -59,26 +42,8 @@ class CastingsController < ApplicationController
     end
   end
 
-  # PUT /castings/1
-  # PUT /castings/1.json
-  def update
-    @casting = Casting.find(params[:id])
-
-    respond_to do |format|
-      if @casting.update_attributes(params[:casting])
-        format.html { redirect_to @casting, notice: 'Casting atualizado com sucesso.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @casting.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /castings/1
-  # DELETE /castings/1.json
   def destroy
-    @casting = Casting.find(params[:id])
+    @casting = CustomerCasting.find(params[:id])
     @casting.destroy
 
     respond_to do |format|
@@ -92,7 +57,7 @@ class CastingsController < ApplicationController
     castings = params[:castings].split(',') if params[:castings]
     if castings
       castings.each do |casting_id|
-        model_casting = Casting.find(Integer(casting_id))
+        model_casting = CustomerCasting.find(Integer(casting_id))
         model_casting.destroy
       end
     else
@@ -109,34 +74,37 @@ class CastingsController < ApplicationController
   end
 
   def open_add_models
-    @castings = Casting.where(agency_id: current_agency.id)
+    agency = Website.find_by_subdomain(params[:subdomain]).agency
+    @castings = CustomerCasting.where(agency_id: agency.id).where(customer_id: current_customer.id)
   end
 
   def save_add_models
+    agency = Website.find_by_subdomain(params[:subdomain]).agency
     models = params[:models].split(',') if params[:models]
 
     casting = nil
     if params[:type].to_sym == :create_and_add
-      casting = Casting.new
+      casting = CustomerCasting.new
       casting.name = params[:casting_name]
-      casting.agency = current_agency
+      casting.agency = agency
+      casting.customer = current_customer
       if casting.valid?
         casting.save
       else
         flash[:error] = casting.errors
       end
     elsif params[:type].to_sym == :add_only
-      casting = Casting.find(params[:casting_id])
+      casting = CustomerCasting.find(params[:casting_id])
     end
 
     # Only try to add a new relation if there is a valid casting
     if !flash[:error] && casting
       models.each do |model_id|
-        model_casting = ModelCasting.new
-        model_casting.casting_id = casting.id if casting
+        model_casting = ModelCustomerCasting.new
+        model_casting.customer_casting_id = casting.id if casting
         model_casting.model_id = Integer(model_id)
         # Only try to add a new relation if it don't exists
-        unless ModelCasting.find_by_casting_id_and_model_id(model_casting.casting_id, model_casting.model_id)
+        unless ModelCustomerCasting.find_by_customer_casting_id_and_model_id(model_casting.customer_casting_id, model_casting.model_id)
           if model_casting.valid?
             model_casting.save
           else
@@ -161,7 +129,7 @@ class CastingsController < ApplicationController
     else
       model_castings = params[:model_castings].split(',')
       model_castings.each do |model_casting_id|
-        model_casting = ModelCasting.find(Integer(model_casting_id))
+        model_casting = ModelCustomerCasting.find(Integer(model_casting_id))
         model_casting.destroy
       end
     end
@@ -176,25 +144,33 @@ class CastingsController < ApplicationController
   end
 
 private
+  def subdomain_layout
+    if params[:subdomain] && !params[:subdomain].empty?
+      website = Website.find_by_subdomain(params[:subdomain])
+      website.theme
+    else
+      'subdomain_default'
+    end
+  end
 
   def index_sort_column
     column = "created_at asc"
 
     if params[:order_column]
       sort = params[:order_column].split(';') 
-      column = sort[0] + ' ' + sort[1] if Casting.column_names.include?(sort[0])
+      column = sort[0] + ' ' + sort[1] if CustomerCasting.column_names.include?(sort[0])
     end
     
     column
   end
 
   def show_sort_column
-    column = "model_castings.created_at asc"
+    column = "model_customer_castings.created_at asc"
 
     if params[:order_column]
       sort = params[:order_column].split(';') 
       column = sort[0] + ' ' + sort[1] if Model.column_names.include?(sort[0])
-      column = sort[0] + ' ' + sort[1] if ModelCasting.column_names.include?(sort[0])
+      column = sort[0] + ' ' + sort[1] if ModelCustomerCasting.column_names.include?(sort[0])
     end
     
     column

@@ -1,0 +1,13 @@
+<%= form_tag subdomain_casting_path(@website.subdomain, @casting), :method => 'get', :id => "casting_models_search" do %>
+	
+	<%= javascript_include_tag "composite-nav" %>
+	
+	<div id="casting_models_criteria" class="clear-margin-padding auto-size-block">
+		<%= render 'subdomain_model_castings/search_criteria' %>
+	</div>
+	
+	<div id="casting_models" class="full-column-width">
+		<%= render 'subdomain_model_castings/search_result' %>
+	</div>
+	
+<% end %>
