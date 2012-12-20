@@ -43,6 +43,17 @@
 		</ul>
 		
 		<div class="content-split"></div>
+		
+		<div id="page-nav-external-site" class="auto-size-block">
+			
+			<h4>Adicionar endereço de seu site/blog</h4>
+			
+			<%= f.label :external_site, "Adicione o endereço no campo abaixo:" %>
+		    <%= f.text_field :external_site, :class => "input-txt-light-5-columns" %>
+		
+		</div>
+		
+		<div class="content-split"></div>
 
 	  	<div class="website-content-btns">
 			<%= f.submit 'Salvar Configurações', class: 'input-btn-gold-liquid put-right' %>

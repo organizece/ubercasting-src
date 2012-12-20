@@ -18,7 +18,7 @@
 				<% if @website.logo.url == "/logos/original/missing.png" %>
 					<%= image_tag "img-no-photo.jpg" %>
 				<% else %>
-					<%= image_tag @website.logo if @website.logo %>
+					<%= image_tag @website.logo.url(:logo) if @website.logo %>
 				<% end %>
 				
 		          <a href="#" id="logo-update" class="btn-silver-light-fluid">Alterar</a>
