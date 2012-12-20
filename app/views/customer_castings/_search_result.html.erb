@@ -1,0 +1,20 @@
+<div id="casting-list" class="request-list">
+	
+	<% for casting in @castings %>
+		
+		<div class="request-line">
+			<ul class="requst-info">
+				<li><%= check_box_tag casting.id, casting.id %></li>
+				<li><%= casting.customer.email %></li>
+				<li><%= casting.name %></li>
+			</ul>
+			
+			<ul class="requst-action">
+				<li class="request-icon request-view"><%= link_to 'Visualizar', customer_casting_path(casting), title: 'Visualizar' %></li>
+				<li class="request-icon request-del"><%= link_to 'Excluir', customer_casting_path(casting), method: :delete, remote: true, title: 'Excluir' %></li>
+			</ul>
+		</div>
+		
+	<% end %>
+	
+</div>

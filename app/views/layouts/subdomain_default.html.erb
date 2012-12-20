@@ -38,11 +38,11 @@
 							<% end %>
 
 							<% if @website.models %>
-							<li><%= link_to 'Modelos', subdomain_website_models_path %></li>
+							<li><%= link_to 'Modelos', subdomain_models_path(params[:subdomain]) %></li>
 							<% end %>
 
 							<% if @website.castings %>
-							<li><%= link_to 'Castings', castings_path %></li>
+							<li><%= link_to 'Castings', subdomain_castings_path(params[:subdomain]) %></li>
 							<% end %>
 
 							<% if @website.contact_us %>
@@ -110,11 +110,11 @@
 						<% end %>
 
 						<% if @website.models %>
-						<li><%= link_to 'Modelos', subdomain_website_models_path %></li>
+						<li><%= link_to 'Modelos', subdomain_models_path(params[:subdomain]) %></li>
 						<% end %>
 
 						<% if @website.castings %>
-						<li><%= link_to 'Castings', castings_path %></li>
+						<li><%= link_to 'Castings', subdomain_castings_path(params[:subdomain]) %></li>
 						<% end %>
 
 						<% if @website.contact_us %>
