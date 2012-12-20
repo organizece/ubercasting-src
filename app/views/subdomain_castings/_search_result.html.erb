@@ -10,8 +10,8 @@
 			
 			<ul class="requst-action">
 				<li class="request-icon request-share"><%= link_to 'Compartilhar', castings_path, title: 'Compartilhar' %></li>
-				<li class="request-icon request-view"><%= link_to 'Visualizar', subdomain_website_casting_path(@website.subdomain, casting), title: 'Visualizar' %></li>
-				<li class="request-icon request-del"><%= link_to 'Excluir', subdomain_website_casting_path(@website.subdomain, casting), method: :delete, remote: true, title: 'Excluir' %></li>
+				<li class="request-icon request-view"><%= link_to 'Visualizar', subdomain_casting_path(@website.subdomain, casting), title: 'Visualizar' %></li>
+				<li class="request-icon request-del"><%= link_to 'Excluir', subdomain_casting_path(@website.subdomain, casting), method: :delete, remote: true, title: 'Excluir' %></li>
 			</ul>
 		</div>
 		

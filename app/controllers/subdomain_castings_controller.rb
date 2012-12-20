@@ -1,6 +1,8 @@
 class SubdomainCastingsController < ApplicationController
   layout :subdomain_layout
 
+  before_filter :authenticate_customer!
+
   def index
     @website = Website.find_by_subdomain(params[:subdomain])
     @castings = CustomerCasting.search(params[:name], @website.agency.id, current_customer.id).
@@ -41,6 +43,56 @@ class SubdomainCastingsController < ApplicationController
       format.html { redirect_to castings_url }
       format.json { head :no_content }
       format.js { flash[:notice] = 'Casting deletado com sucesso.' }
+    end
+  end
+
+  def open_add_models
+    agency = Website.find_by_subdomain(params[:subdomain]).agency
+    @castings = CustomerCasting.where(agency_id: agency.id).where(customer_id: current_customer.id)
+  end
+
+  def save_add_models
+    agency = Website.find_by_subdomain(params[:subdomain]).agency
+    models = params[:models].split(',') if params[:models]
+
+    casting = nil
+    if params[:type].to_sym == :create_and_add
+      casting = CustomerCasting.new
+      casting.name = params[:casting_name]
+      casting.agency = agency
+      casting.customer = current_customer
+      if casting.valid?
+        casting.save
+      else
+        flash[:error] = casting.errors
+      end
+    elsif params[:type].to_sym == :add_only
+      casting = CustomerCasting.find(params[:casting_id])
+    end
+
+    # Only try to add a new relation if there is a valid casting
+    if !flash[:error] && casting
+      models.each do |model_id|
+        model_casting = ModelCustomerCasting.new
+        model_casting.customer_casting_id = casting.id if casting
+        model_casting.model_id = Integer(model_id)
+        # Only try to add a new relation if it don't exists
+        unless ModelCustomerCasting.find_by_customer_casting_id_and_model_id(model_casting.customer_casting_id, model_casting.model_id)
+          if model_casting.valid?
+            model_casting.save
+          else
+            flash[:error] += model_casting.errors
+          end
+        end
+      end
+    end
+
+    respond_to do |format|
+      if flash[:error]
+        format.js
+      else
+        format.js { flash[:notice] = "Modelos adicionados ao casting #{casting.name} com sucesso." }
+      end
     end
   end
 
