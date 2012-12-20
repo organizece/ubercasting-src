@@ -67,9 +67,9 @@
                         <li class="hasdrop"><%= link_to 'Website', root_path, :class => "btn-website" %>
                     <% end %>
 						<ul class="dropdown">
-							<li><%= link_to '» Configurar Tema', root_path, :class => "offline" %></li>
-							<li><%= link_to '» Alterar Visualização', root_path, :class => "offline" %></li>
-							<li><%= link_to '» Customizar Domínio', root_path, :class => "offline" %></li>
+							<li><%= link_to '» Configurar Tema', edit_website_path(current_agency.website) %></li>
+							<li><%= link_to '» Alterar Visualização', edit_website_path(current_agency.website) %></li>
+							<li><%= link_to '» Customizar Domínio', edit_website_path(current_agency.website) %></li>
 						</ul>
 					</li>
                 </ul>
@@ -79,6 +79,7 @@
             <div id="secundary-links">
                 
                 <ul id="secundary-links-list">
+					<li><%= link_to 'Minha Conta', edit_agency_registration_path %></li>
                     <li><%= link_to 'Sair »', destroy_agency_session_path %></li>
                 </ul>
                 

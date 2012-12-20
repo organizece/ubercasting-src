@@ -244,6 +244,262 @@ $(document).ready(function(){
 		}
 	}
 	
+	function registerFlow(){
+		
+		var hasRegister = $('div.register-flow').length;
+		var hasAgencyUpdate = $('div#edit-agency-content').length;
+		
+		if ( hasRegister != 0 ){ setupRegisterFlow(); };
+		if ( hasAgencyUpdate != 0 ){ setupAgencyUpdate(); };
+		
+	}
+	
+	function setupRegisterFlow(){
+		
+		// PLANS DEFINITION
+		var freeMonthPrice = 0;
+		var topMonthPrice = 100;
+		var uberMonthPrice = 225;
+		
+		var freeTemplates = 1;
+		var topTemplates = 5;
+		var uberTemplates = 10;
+		
+		var freeModels = 5;
+		var topModels = 50;
+		var uberModels = 1000;
+		
+		var freeDomain = false;
+		var topDomain = true;
+		var uberDomain = true;
+		
+		var currentPlanPeriod = "";
+		var currentPlanType = "";
+		
+		//CHECK IF RAILS RETURNED A FORM VALIDATION MESSAGE
+		if( $('div.alert').length != 0 ){
+			var errorVal = $('span.help-inline').parent("div.controls").find("input").val();
+			var errorMsg = $('span.help-inline:eq('+0+')').text();
+			$('div.alert').text(errorVal+" "+errorMsg);
+		}
+		
+		//APPLY INPUT MASKS
+		$("#agency_cnpj").mask("99.999.999/9999-99");
+		$("#agency_owner_cpf").mask("999.999.999-99");
+		
+		// PLANS: PERIOD AND TYPE: NAVIGATION AND VALIDATION
+		$('div#plan-period li a').click(function(event) {
+			
+			// Make Opt Active
+			$('div#plan-period li a').removeClass('period-active');
+			$(this).addClass('period-active');
+			
+			// Set up PLAN PERIOD input hidden and update prices
+			switch( $(this).text() ){
+				case "Mensal":
+					$('input#agency_account_period').val("monthly");
+					$('div#plan-type div#type-02 p.price-top').html("R$"+topMonthPrice+",00<span>/mês</span>");
+					$('div#plan-type div#type-03 p.price-top').html("R$"+uberMonthPrice+",00<span>/mês</span>");
+				break;
+				case "Semestral":
+					$('input#agency_account_period').val("semiannual");
+					$('div#plan-type div#type-02 p.price-top').html("R$"+(topMonthPrice*6)+",00<span>/total</span>");
+					$('div#plan-type div#type-03 p.price-top').html("R$"+(uberMonthPrice*6)+",00<span>/total</span>");
+				break;
+				case "Anual":
+					$('input#agency_account_period').val("annual");
+					$('div#plan-type div#type-02 p.price-top').html("R$"+(topMonthPrice*12)+",00<span>/total</span>");
+					$('div#plan-type div#type-03 p.price-top').html("R$"+(uberMonthPrice*12)+",00<span>/total</span>");
+				break;
+			}
+			
+		});
+		
+		//Set Up PLAN TYPE input hidden, fill up the summary folder with account data and change step
+		$('div#plan-type div a').click(function(event) {
+			
+			//Fill Information Up
+			switch( $(this).parent("div").attr("id") ){
+				case "type-01":
+					currentPlanType = "free";
+					$('input#agency_account_type').val("free");
+					$('div.plan-summary-folder ul li.plan-summary-period').text("Plano: FREE");
+					$('div.plan-summary-folder ul li.plan-summary-template').text("Templates para o site: "+freeTemplates);
+					$('div.plan-summary-folder ul li.plan-summary-models').text("Modelos para cadastro: "+freeModels);
+					$('div.plan-summary-folder ul li.plan-summary-domain').text("Domínio próprio: Não");
+				break;
+				case "type-02":
+					currentPlanType = "top";
+					$('input#agency_account_type').val("top");
+					$('div.plan-summary-folder h4.plan-summary-type').text("Plano Top");
+					$('div.plan-summary-folder ul li.plan-summary-period').text("Plano: TOP");
+					$('div.plan-summary-folder ul li.plan-summary-template').text("Templates para o site: "+topTemplates);
+					$('div.plan-summary-folder ul li.plan-summary-models').text("Modelos para cadastro: "+topModels);
+					$('div.plan-summary-folder ul li.plan-summary-domain').text("Domínio próprio: Sim");
+					
+					if( $('input#agency_account_period').val() == "monthly" ){
+						$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+topMonthPrice+",00 <span>/mês</span>");
+					}else if( $('input#agency_account_period').val() == "semiannual" ){
+						$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+(topMonthPrice*6)+",00 <span>/total</span>");
+					}else{
+						$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+(topMonthPrice*12)+",00 <span>/total</span>");
+					};
+					
+				break;
+				case "type-03":
+					currentPlanType = "uber";
+					$('input#agency_account_type').val("uber");
+					$('div.plan-summary-folder h4.plan-summary-type').text("Plano Über");
+					$('div.plan-summary-folder ul li.plan-summary-period').text("Plano: ÜBER");
+					$('div.plan-summary-folder ul li.plan-summary-template').text("Templates para o site: "+uberTemplates);
+					$('div.plan-summary-folder ul li.plan-summary-models').text("Modelos para cadastro: "+uberModels);
+					$('div.plan-summary-folder ul li.plan-summary-domain').text("Domínio próprio: Sim");
+					
+					if( $('input#agency_account_period').val() == "monthly" ){
+						$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+uberMonthPrice+",00 <span>/mês</span>");
+					}else if( $('input#agency_account_period').val() == "semiannual" ){
+						$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+(uberMonthPrice*6)+",00 <span>/total</span>");
+					}else{
+						$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+(uberMonthPrice*12)+",00 <span>/total</span>");
+					};
+					
+				break;
+			}
+			
+			//Apply First Step
+			if( $(this).parent("div").attr("id") == "type-01" ){
+				$('div#plans').fadeOut('fast', function() {
+					$('div#register-pay-01').remove();
+					$('div#register-pay-02').remove();
+					$('div#register-pay-03').remove();
+					$('div#register-free').fadeIn('slow');
+				});
+			}else{
+				$('div#plans').fadeOut('fast', function() {
+					$('div#register-free').remove();
+					$('div#register-pay-01').fadeIn('slow');
+				});
+			};
+			
+			//If Account Type Is Not Free, Start Contrroling Form Steps And Validate Fields
+			if( currentPlanType != "free" ){
+				
+				//BTN CONTINUE
+				$('div.form-register-field a.btn-continue').click(function(event) {
+					
+					var myFormId = $(this).parents("div.form-register").parents("div").attr("id");
+					var myFormRegister = $(this).parents("div.form-register");
+					var formValid = registerFormValidation(myFormRegister);
+					
+					if(formValid){
+						switch( myFormId ){
+							case "register-pay-01":
+								$('div#register-pay-01').fadeOut('fast', function() {
+									$('div#register-pay-02').fadeIn('slow');
+								});
+							break;
+							case "register-pay-02":
+								$('div#register-pay-02').fadeOut('fast', function() {
+									$('div#register-pay-03').fadeIn('slow');
+								});
+							break;
+						}
+					};
+					
+				});
+				
+				//BTN BACK
+				$('div.form-register-field a.btn-back').click(function(event) {
+					var myFormId = $(this).parents("div.form-register").parents("div").attr("id");
+					switch( myFormId ){
+						case "register-pay-02":
+							$('div#register-pay-02').fadeOut('fast', function() {
+								$('div#register-pay-01').fadeIn('slow');
+							});
+						break;
+						case "register-pay-03":
+							$('div#register-pay-03').fadeOut('fast', function() {
+								$('div#register-pay-02').fadeIn('slow');
+							});
+						break;
+					}
+				});
+				
+			}else{
+				
+				$('div.form-register-field input.input-btn-gold-light-4-column').click(function(event) {
+					var myFormRegister = $(this).parents("div.form-register");
+					var formValid = registerFormValidation(myFormRegister);
+					
+					if (formValid) {
+						return true;
+					}else{
+						return false;
+					};
+					
+				});
+				
+			};
+			
+		});
+		
+	}
+	
+	function registerFormValidation(form){
+		
+		var defaultErrorMsg = '<div class="field-error-msg"><p>* Este campo é orbigatório.</p></div>';
+		var totalLoop = form.find("input.required").length;
+		var formInputs = new Array();
+		var formInputContainer = "";
+		var formInputItem = "";
+		var valid = false;
+		
+		for (var i = 0; i < totalLoop; i++) {
+			formInputs.push( form.find("input.required:eq("+i+")") );
+			formInputItem = formInputs[ formInputs.length - 1 ];
+			formInputContainer = formInputItem.parents("div.form-register-field");
+			
+			if ( formInputItem.val() == "" || formInputItem.val() == "undefined" || formInputItem.val() == undefined ){
+				if( formInputContainer.find("div.field-error-msg").length == 0 ){
+					formInputContainer.append(defaultErrorMsg);
+				}
+			}else{
+				if( formInputContainer.find("div.field-error-msg").length != 0 ){
+					formInputContainer.find("div.field-error-msg").remove();
+				};
+			}
+			
+		};
+		
+		for (var p = 0; p < formInputs.length; p++) {
+			if ( formInputs[p].val() == "" || formInputs[p].val() == "undefined" || formInputs[p].val() == undefined ){
+				valid = false;
+				break;
+			}
+			
+			if( p == ( formInputs.length - 1 ) ){
+				valid = true;
+			};
+		};
+		
+		if ( !valid ){
+			return false;
+		}else{
+			return true;
+		};
+		
+	}
+	
+	function setupAgencyUpdate(){
+		//APPLY INPUT MASKS
+		$("#agency_cnpj").mask("99.999.999/9999-99");
+		$("#agency_owner_cpf").mask("999.999.999-99");
+		$("#agency_insc_state").mask("99.999.999");
+		$("#agency_insc_city").mask("99.999.999");
+		$("#agency_phone").mask("(99)9999-9999");
+		$("#agency_fax").mask("(99)9999-9999");
+	}
+	
 	btnFolderHover();
 	dropdownMenuNav();
 	searchAdvancedOpts();
@@ -252,6 +508,7 @@ $(document).ready(function(){
 	modelShowSecondInfo();
 	modelFormValidation();
 	checkModelAgeBox();
+	registerFlow();
 
 	//loginPanelSetup();
 	

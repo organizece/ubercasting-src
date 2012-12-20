@@ -1,35 +1,49 @@
-<div class='row'>
-  <div class='span12'>
-    <h3>Modo de Visualização</h3>
-  </div>
+<div id="website-view-content" class="website-content-config">
+	
+	<h4>Modo de Visualização:</h4>
+	<p>Selecione qual o tipo de visualização de seu site. Note que cada uma delas pode afetar o desempenho do site com os clientes.</p>
+	
+	<div class="content-split"></div>
+	
+	<%= form_for @website do |f| %>
+		
+		<div id="view-clear" class="auto-size-block website-view-block">
+			<%= f.radio_button :visualization_mode, :open %>
+			<%= f.label :visualization_mode_open, 'Liberado' %>
+			<div class="content-split"></div>
+			<p>Nesse tipo de visualização, qualquer visitante, cadastrado ou não, pode fazer buscas e visualizar informações de seus modelos cadastrados.</p>
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div id="view-partial-restrict" class="auto-size-block website-view-block">
+			<%= f.radio_button :visualization_mode, :partially_restricted %>
+			<%= f.label :visualization_mode_partially_restricted, 'Parcialmente Restrito' %>
+			<div class="content-split"></div>
+			<p>Nessa visualização, visitantes podem fazer buscas e visualizar os modelos, porém não tem acesso a seus nomes e nem as informações cadastradas sobre ele. Note que a página "Criar Conta" deve estar ligada para que essa mudança tenha efeito.</p>
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div id="view-total-restrict" class="auto-size-block website-view-block">
+			<%= f.radio_button :visualization_mode, :restricted %>
+			<%= f.label :visualization_mode_restricted, 'Totalmente Restrito' %>
+			<div class="content-split"></div>
+			<p>Nessa visualização, visitantes podem fazer buscas e visualizar os modelos, porém não tem acesso a seus nomes e nem as informações cadastradas sobre ele. Note que a página "Criar Conta" deve estar ligada para que essa mudança tenha efeito.</p>
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div class="alert-box video-explain">
+			<p>Confuso? <a href="#">Assista nosso vídeo</a> e entenda como este mecanismo funciona na prática.</p>
+		</div>
+
+		<div class="website-content-btns">
+		<%= f.submit 'Salvar Configurações', class: 'input-btn-gold-liquid put-right' %>
+		<%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn-silver-light-fluid put-right' } %>
+		</div>
+
+	<% end %>
+	
 </div>
 
-<%= form_for @website do |f| %>
-  <div class='row'>
-    <div class='span12'>
-      <%= f.radio_button :visualization_mode, :open %>
-      <%= f.label :visualization_mode_open, 'Liberado' %>
-    </div>    
-  </div>
-  <div class='row'>
-    <div class='span12'>
-      <%= f.radio_button :visualization_mode, :partially_restricted %>
-      <%= f.label :visualization_mode_partially_restricted, 'Parcialmente Restrito' %>
-    </div>    
-  </div>
-  <div class='row'>
-    <div class='span12'>
-      <%= f.radio_button :visualization_mode, :restricted %>
-      <%= f.label :visualization_mode_restricted, 'Totalmente Restrito' %>
-    </div>    
-  </div>
-
-  <div class='row'>
-    <div class='offset8 span2'>
-      <%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn' } %>
-    </div>
-    <div class='span2'>
-      <%= f.submit 'Salvar Configurações', class: 'btn btn-primary' %>
-    </div>
-  </div>
-<% end %>

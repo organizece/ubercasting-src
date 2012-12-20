@@ -1,52 +1,65 @@
-<div class='row'>
-  <div class='span12'>
-    <h3>Páginas e Navegação</h3>
-  </div>
+<div id="website-page-navs-content" class="website-content-config">
+	
+	<h4>Páginas e Navegação:</h4>
+	<p>Selecione as páginas que irão aparecer em seu site. Cada uma delas será exibida na barra principal de navegação e também no rodape.</p>
+	
+	<div class="content-split"></div>
+	
+	<%= form_for @website do |f| %>
+		
+		<ul id="page-navs-opt" class="put-list-inline">
+			<li>
+				<%= f.label :home %>
+			    <%= f.check_box :home %>
+			</li>
+			<li>
+				<%= f.label :models %>
+			    <%= f.check_box :models %>
+			</li>
+			<li>
+				<%= f.label :castings %>
+			    <%= f.check_box :castings %>
+			</li>
+			<li>
+				<%= f.label :about %>
+			    <%= f.check_box :about %>
+			</li>
+			<li>
+				<%= f.label :contact_us %>
+			    <%= f.check_box :contact_us %>
+			</li>
+			<li>
+				<%= f.label :create_account %>
+			    <%= f.check_box :create_account %>
+			</li>
+			<li>
+				<%= f.label :my_site %>
+			    <%= f.check_box :my_site %>
+			</li>
+			<li>
+				<%= f.label :be_a_model %>
+			    <%= f.check_box :be_a_model %>
+			</li>
+		</ul>
+		
+		<div class="content-split"></div>
+		
+		<div id="page-nav-external-site" class="auto-size-block">
+			
+			<h4>Adicionar endereço de seu site/blog</h4>
+			
+			<%= f.label :external_site, "Adicione o endereço no campo abaixo:" %>
+		    <%= f.text_field :external_site, :class => "input-txt-light-5-columns" %>
+		
+		</div>
+		
+		<div class="content-split"></div>
+
+	  	<div class="website-content-btns">
+			<%= f.submit 'Salvar Configurações', class: 'input-btn-gold-liquid put-right' %>
+			<%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn-silver-light-fluid put-right' } %>
+		</div>
+	
+	<% end %>
+	
 </div>
-
-<%= form_for @website do |f| %>
-  <div class='row'>
-    <div class='span1'>
-      <%= f.label :home %>
-      <%= f.check_box :home %>
-    </div>
-    <div class='span1'>
-      <%= f.label :models %>
-      <%= f.check_box :models %>
-    </div>
-    <div class='span1'>
-      <%= f.label :castings %>
-      <%= f.check_box :castings %>
-    </div>
-    <div class='span1'>
-      <%= f.label :about %>
-      <%= f.check_box :about %>
-    </div>
-    <div class='span1'>
-      <%= f.label :contact_us %>
-      <%= f.check_box :contact_us %>
-    </div>
-    <div class='span2'>
-      <%= f.label :create_account %>
-      <%= f.check_box :create_account %>
-    </div>
-    <div class='span2'>
-      <%= f.label :my_site %>
-      <%= f.check_box :my_site %>
-    </div>
-    <div class='span2'>
-      <%= f.label :be_a_model %>
-      <%= f.check_box :be_a_model %>
-    </div>
-    
-  </div>
-
-  <div class='row'>
-    <div class='offset8 span2'>
-      <%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn' } %>
-    </div>
-    <div class='span2'>
-      <%= f.submit 'Salvar Configurações', class: 'btn btn-primary' %>
-    </div>
-  </div>
-<% end %>

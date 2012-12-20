@@ -2,7 +2,7 @@ Ubercasting::Application.routes.draw do
 
   devise_for :customers
 
-  devise_for :agencies, :controllers => { :sessions => "agencies/sessions" }
+  devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations" }, :path_prefix => 'my'
 
   match 'home' => 'main_pages#home', via: :get
   match 'who_we_are' => 'main_pages#who_we_are', via: :get
@@ -47,6 +47,7 @@ Ubercasting::Application.routes.draw do
   match "/:subdomain/home" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
   match "/:subdomain/about" => "subdomain_websites#about", via: :get, as: :subdomain_websites_about
   match "/:subdomain/contact_us" => "subdomain_websites#contact_us", via: :get, as: :subdomain_websites_contact_us
+  match "/:subdomain/be_model" => "subdomain_websites#be_model", via: :get, as: :subdomain_websites_be_model
 
   # Subdomain routes to models pages
   match "/:subdomain/models" => "subdomain_models#index", via: :get, as: :subdomain_models

@@ -14,8 +14,13 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap_aditions
+//= require jquery_resizecrop-103_min
+//= require jquery_scrollTo-min
+//= require jquery-resize-n-place
 //= require castings
+//= require composites
 //= require models
 //= require model_castings
 //= require main
+//= require subdomain-default
 //= require_self
