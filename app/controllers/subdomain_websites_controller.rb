@@ -15,6 +15,11 @@ class SubdomainWebsitesController < ApplicationController
     @website = Website.find_by_subdomain(params[:subdomain])
 
   end
+  
+  def be_model
+    @website = Website.find_by_subdomain(params[:subdomain])
+
+  end
 
 private
   def subdomain_layout

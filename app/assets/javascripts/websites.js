@@ -24,6 +24,8 @@ $(function() {
 		$('div#subdomain-form').hide();
 		$('div#website-config-form').show();
 		
+		// Nav Controllers
+		//Change between domain and page config
 		$('div#website-content-nav ul li a').click(function(event) {
 			event.preventDefault();
 			
@@ -45,6 +47,22 @@ $(function() {
 			};
 			
 		});
+		
+		//Check is has external website is checked and display input
+		if( $("input#website_my_site").is(':checked') ){
+			$('div#page-nav-external-site').slideDown('fast');
+		}else{
+			$('div#page-nav-external-site').slideUp('fast');
+		};
+		
+		$('input#website_my_site').click(function(event) {
+			if( $(this).is(':checked') ){
+				$('div#page-nav-external-site').slideDown('fast');
+			}else{
+				$('div#page-nav-external-site').slideUp('fast');
+			};
+		});
+		
 	}
 	
 	setupWebsiteConfigPage();

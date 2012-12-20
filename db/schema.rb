@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218040523) do
+ActiveRecord::Schema.define(:version => 20121219161941) do
 
   create_table "agencies", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -216,6 +216,7 @@ ActiveRecord::Schema.define(:version => 20121218040523) do
     t.datetime "created_at",                                                          :null => false
     t.datetime "updated_at",                                                          :null => false
     t.string   "logo_url"
+    t.string   "external_site"
   end
 
 end

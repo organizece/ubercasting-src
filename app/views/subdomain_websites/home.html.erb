@@ -1,1 +1,19 @@
-<%= params[:subdomain] %>
+<div id="home-content-container" class='auto-size-block put-center put-relative'>
+	
+	<input type='hidden' id='current_page' />  
+	<input type='hidden' id='show_per_page' />
+	
+	<div id="slide-photo-nav">
+		<a id="btn-left" href="javascript:return false;">&lt;</a>
+		<a id="btn-right" href="javascript:return false;">&gt;</a>
+	</div>
+	
+	<div id="home-slider" class="is-slide-show slide-show-3">
+		<% @website.agency.models.each do |model| %>
+			<div class="theme-home-model-box">
+				<%= avatar_tag model.avatar, :search %>
+			</div>
+		<% end %>
+	</div>
+	
+</div>
