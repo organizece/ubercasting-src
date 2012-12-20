@@ -61,7 +61,11 @@
 							<li><%= link_to '» Lista de Clientes', root_path, :class => "offline" %></li>
 						</ul>
 					</li>
-					<li class="hasdrop"><%= link_to 'Website', edit_website_path(current_agency.website), :class => "btn-website" %>
+                    <% if agency_signed_in? && current_agency.website %>
+                        <li class="hasdrop"><%= link_to 'Website', edit_website_path(current_agency.website), :class => "btn-website" %>
+                    <% else %>
+                        <li class="hasdrop"><%= link_to 'Website', root_path, :class => "btn-website" %>
+                    <% end %>
 						<ul class="dropdown">
 							<li><%= link_to '» Configurar Tema', root_path, :class => "offline" %></li>
 							<li><%= link_to '» Alterar Visualização', root_path, :class => "offline" %></li>

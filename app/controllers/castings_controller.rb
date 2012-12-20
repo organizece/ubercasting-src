@@ -13,8 +13,15 @@ class CastingsController < ApplicationController
   # GET /castings/1.json
   def show
     @casting = Casting.find(params[:id])
-    @casting_models = ModelCasting.where(casting_id: @casting.id).joins(:model).
-      order(show_sort_column).page(params[:page]).per(per_page)
+    @casting_models = ModelCasting.where(casting_id: @casting.id).joins(:model)
+
+    @casting_models_ids = []
+    @casting_models.each do |casting_model|
+      @casting_models_ids << casting_model.id
+    end
+    @casting_models_ids = @casting_models_ids.join(',')
+  
+    @casting_models = @casting_models.order(show_sort_column).page(params[:page]).per(per_page)
   end
 
   # GET /castings/new
@@ -81,27 +88,24 @@ class CastingsController < ApplicationController
     end
   end
 
-  def index_sort_column
-    column = "created_at asc"
-
-    if params[:order_column]
-      sort = params[:order_column].split(';') 
-      column = sort[0] + ' ' + sort[1] if Casting.column_names.include?(sort[0])
+  def destroy_selected
+    castings = params[:castings].split(',') if params[:castings]
+    if castings
+      castings.each do |casting_id|
+        model_casting = Casting.find(Integer(casting_id))
+        model_casting.destroy
+      end
+    else
+      flash[:error] = 'Selecione ao menos um casting.'
     end
-    
-    column
-  end
 
-  def show_sort_column
-    column = "model_castings.created_at asc"
-
-    if params[:order_column]
-      sort = params[:order_column].split(';') 
-      column = sort[0] + ' ' + sort[1] if Model.column_names.include?(sort[0])
-      column = sort[0] + ' ' + sort[1] if ModelCasting.column_names.include?(sort[0])
+    respond_to do |format|
+      if flash[:error]
+        format.js
+      else
+        format.js { flash[:notice] = 'Castings removidos com sucesso.' }
+      end
     end
-    
-    column
   end
 
   def open_add_models
@@ -149,6 +153,51 @@ class CastingsController < ApplicationController
         format.js { flash[:notice] = "Modelos adicionados ao casting #{casting.name} com sucesso." }
       end
     end
+  end
+
+  def remove_models
+    model_castings = params[:model_castings].split(',') if params[:model_castings]
+    if model_castings
+      model_castings.each do |model_casting_id|
+        model_casting = ModelCasting.find(Integer(model_casting_id))
+        model_casting.destroy
+      end
+    else
+      flash[:error] = 'Selecione ao menos um modelo.'
+    end
+
+    respond_to do |format|
+      if flash[:error]
+        format.js
+      else
+        format.js { flash[:notice] = 'Modelos removidos com sucesso.' }
+      end
+    end
+  end
+
+private
+
+  def index_sort_column
+    column = "created_at asc"
+
+    if params[:order_column]
+      sort = params[:order_column].split(';') 
+      column = sort[0] + ' ' + sort[1] if Casting.column_names.include?(sort[0])
+    end
+    
+    column
+  end
+
+  def show_sort_column
+    column = "model_castings.created_at asc"
+
+    if params[:order_column]
+      sort = params[:order_column].split(';') 
+      column = sort[0] + ' ' + sort[1] if Model.column_names.include?(sort[0])
+      column = sort[0] + ' ' + sort[1] if ModelCasting.column_names.include?(sort[0])
+    end
+    
+    column
   end
 
   def per_page

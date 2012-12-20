@@ -6,5 +6,5 @@ class ModelCasting < ActiveRecord::Base
 
   validates :casting_id, presence: true
   validates :model_id, presence: true
-  validates :score, numericality: true, inclusion: { in: 1..5 }, allow_nil: true
+  validates :score, numericality: true, inclusion: { in: 0..5 }, allow_nil: true
 end

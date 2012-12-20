@@ -17,8 +17,11 @@ Ubercasting::Application.routes.draw do
 
   get 'castings/open_add_models/'
   post 'castings/save_add_models/'
+  get 'castings/destroy_selected'
 
-  resources :castings
+  resources :castings do
+    match 'remove_models' => 'castings#remove_models', via: :get, as: :remove_models
+  end
 
   resources :model_castings, only: [:destroy] do
     match 'update_score/:score' => 'model_castings#update_score', via: :put, as: :update_score
@@ -40,6 +43,7 @@ Ubercasting::Application.routes.draw do
   match "customer_panel/" => "main_pages#who_we_are", as: :customer_root
 
   # Subdomain routes to static pages
+  match "/:subdomain" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
   match "/:subdomain/home" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
   match "/:subdomain/about" => "subdomain_websites#about", via: :get, as: :subdomain_websites_about
   match "/:subdomain/contact_us" => "subdomain_websites#contact_us", via: :get, as: :subdomain_websites_contact_us
