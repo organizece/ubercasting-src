@@ -42,6 +42,7 @@ Ubercasting::Application.routes.draw do
   match "/:subdomain/home" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
   match "/:subdomain/about" => "subdomain_websites#about", via: :get, as: :subdomain_websites_about
   match "/:subdomain/contact_us" => "subdomain_websites#contact_us", via: :get, as: :subdomain_websites_contact_us
+  match "/:subdomain/be_model" => "subdomain_websites#be_model", via: :get, as: :subdomain_websites_be_model
   match "/:subdomain/models" => "subdomain_models#index", via: :get, as: :subdomain_website_models
 
   root :to => "main_pages#home"

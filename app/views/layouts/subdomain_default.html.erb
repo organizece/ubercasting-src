@@ -10,116 +10,135 @@
   <%= stylesheet_link_tag    "subdomain", media: "all" %>
   <%= javascript_include_tag "subdomain" %>
   <%= csrf_meta_tags %>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
+
 <body>
 
-<div id="modals"></div>
-  
-<div id="container">
-  
-  <div id="nav-container">
-      
-        <div id="nav-wrapper">
-            
-            <div id="primary-links">
-                
-                <ul id="primary-links-list">
-                    <li>
-                      <h1 class="nav-logo">
-                        <%= link_to 'ÜBER', root_path  %>
-                      </h1>
-                    </li>
-                    <li>
-                      <%= link_to 'Home', subdomain_websites_home_path({subdomain: params[:subdomain]}), :class => "btn-home" %>
-                    </li>
-                    <li class="hasdrop">
-                      <%= link_to 'Modelos', subdomain_website_models_path, :class => "btn-models" %>
-                    </li>
-                    <li class="hasdrop">
-                      <%= link_to 'Castings', castings_path, :class => "btn-casting" %>
-                    </li>
-                    <li>
-                      <%= link_to 'Sobre', subdomain_websites_about_path({subdomain: params[:subdomain]}), :class => "btn-clients" %>
-                    </li>
-                    <li class="hasdrop">
-                      <%= link_to 'Contato', subdomain_websites_contact_us_path({subdomain: params[:subdomain]}), :class => "btn-website" %>
-                    </li>
-                </ul>
-            </div>
-            
-            <div id="secundary-links">
-                
-                <ul id="secundary-links-list">
-                  <% if customer_signed_in? %>
-                    <li><%= link_to 'Sair »', destroy_customer_session_path %></li>
-                  <% end %>
-                </ul>
-                
-            </div>
-            
-        </div>
+	<div id="container">
+			
+		<div id="header" class="auto-size-block vert-shade">
+		
+			<div id="header-wrapper" class="auto-size-block">
+				
+				<div id="nav-container" class="auto-size-block base-padding">
+			
+					<div id="main-nav" class="auto-size-block put-center ">
+						<ul class="auto-size-block put-list-inline">
+							<li>
+							<%= link_to 'Home', subdomain_websites_home_path({subdomain: params[:subdomain]}), :class => "active" %>
+							</li>
 
-  </div>
-  
-  <div id="nav-block-push">&nbsp;</div>
-  
-  <div id="alert-msgs">
-    <% flash.each do |name, msg| %>
-        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-          <a class="close" data-dismiss="alert">×</a>
-          <%= msg %>
-        </div>
-    <% end %>
-  </div>
-  
-  <%= yield %>
-  
-  <div id="footer-container">
-      
-        <div id="footer-wrapper">
-        
-            <div id="footer-left-column" class="footer-column">
-                <h5 id="footer-title-uber">Über</h5>
-                <ul class="footer-link-list">
-                    <li><%= link_to 'Modelos »', models_path %></li>
-                    <li><%= link_to 'Castings »', root_path %></li>
-                    <li><%= link_to 'Clientes »', root_path %></li>
-          <li><%= link_to 'Website »', root_path %></li>
-                </ul>
-            </div>
-            
-            <div id="footer-middle-column" class="footer-column">
-                <h5 id="footer-title-contato">Contato</h5>
-                <ul class="footer-link-list">
-                    <li><a href="#" title="Ajuda">Ajuda &raquo;</a></li>
-                    <li><a href="#" title="Facebook">Facebook &raquo;</a></li>
-                    <li><a href="#" title="Termos de Uso">Termos de Uso &raquo;</a></li>
-                    <li><a href="#" title="Política de Privacidade">Política de Privacidade &raquo;</a></li>
-                </ul>
-            </div>
-            
-            <div id="footer-right-column" class="footer-column no-margin">
-                <h5 id="footer-title-faleconosco">Fale Conosco, e nos diga como podemos ajudar:</h5>
-                <p>Envie uma mensagem para nós, e iremos responder o mais rápido possível.</p>
-                <ul class="footer-link-list">
-                    <li><a href="#" title="contato@ubercasting.com.br">contato@ubercasting.com.br</a></li>
-                    <li><a href="#" title="ajuda@ubercasting.com.br">ajuda@ubercasting.com.br</a></li>
-                    <li><a href="#" title="suporte@ubercasting.com.br">suporte@ubercasting.com.br</a></li>
-                </ul>
-            </div>
-            
-            <div class="content-split"></div>
-            
-            <p class="footer-signature">2012 &copy; Über Casting - Todos os Direitos Reseravados</p>
-            
-        </div>
-        
-    </div>
-  
-</div>
+							<% if @website.about %>
+							<li><%= link_to 'Sobre', subdomain_websites_about_path({subdomain: params[:subdomain]}) %></li>
+							<% end %>
 
+							<% if @website.models %>
+							<li><%= link_to 'Modelos', subdomain_website_models_path %></li>
+							<% end %>
 
+							<% if @website.castings %>
+							<li><%= link_to 'Castings', castings_path %></li>
+							<% end %>
+
+							<% if @website.contact_us %>
+							<li><%= link_to 'Contato', subdomain_websites_contact_us_path({subdomain: params[:subdomain]}) %></li>
+							<% end %>
+
+							<% if @website.create_account %>
+							<li><%= link_to 'Criar Conta', subdomain_websites_home_path({subdomain: params[:subdomain]}) %></li>
+							<% end %>
+
+							<% if @website.my_site %>
+							<li><%= link_to 'Meu Site', @website.external_site %></li>
+							<% end %>
+
+							<% if @website.be_a_model %>
+							<li class="no-border"><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
+							<% end %>
+						</ul>
+					</div>
+
+				</div>
+				
+				<div id="logo-container" class="auto-size-block width-50 put-center">
+					<%= image_tag @website.logo.url(:logo), :class => "base-padding" %>
+				</div>
+			
+			</div>
+			
+		</div>
+	
+		<div id="content-container" class="auto-size-block vert-shade base-padding">
+		
+			<div id="content-container-wrapper" class="auto-size-block width-70 put-center base-padding round-border">
+			
+				<div id="alert-msgs">
+					<% flash.each do |name, msg| %>
+					<div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+						<a class="close" data-dismiss="alert">×</a>
+						<%= msg %>
+					</div>
+					<% end %>
+				</div>
+
+				<%= yield %>
+			
+			</div>
+		
+		</div>
+	
+		<div id="footer" class="auto-size-block vert-shade">
+
+			<div id="footer-wrapper" class="auto-size-block width-70 put-center base-padding">
+			
+				<p><%= @website.footer %></p>
+
+				<% if @website.footer_navigation_itens %>
+				<div id="footer-nav">
+					<ul class="auto-size-block put-list-inline">
+						<li>
+						<%= link_to 'Home', subdomain_websites_home_path({subdomain: params[:subdomain]}) %>
+						</li>
+
+						<% if @website.about %>
+						<li><%= link_to 'Sobre', subdomain_websites_about_path({subdomain: params[:subdomain]}) %></li>
+						<% end %>
+
+						<% if @website.models %>
+						<li><%= link_to 'Modelos', subdomain_website_models_path %></li>
+						<% end %>
+
+						<% if @website.castings %>
+						<li><%= link_to 'Castings', castings_path %></li>
+						<% end %>
+
+						<% if @website.contact_us %>
+						<li><%= link_to 'Contato', subdomain_websites_contact_us_path({subdomain: params[:subdomain]}) %></li>
+						<% end %>
+
+						<% if @website.create_account %>
+						<li><%= link_to 'Criar Conta', subdomain_websites_home_path({subdomain: params[:subdomain]}) %></li>
+						<% end %>
+
+						<% if @website.my_site %>
+						<li><%= link_to 'Meu Site', @website.external_site %></li>
+						<% end %>
+
+						<% if @website.be_a_model %>
+						<li><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
+						<% end %>
+					</ul>
+				</div>
+				<% end %>
+			
+			</div>
+
+		</div>
+	
+	</div>
+	
 </body>
 </html>

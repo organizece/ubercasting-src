@@ -2268,6 +2268,9 @@ ul#page-navs-opt li{ margin-right: 10px; }
 ul#page-navs-opt li label,
 ul#page-navs-opt li input{ float: right; margin-right: 5px; }
 
+div#page-nav-external-site h4{ margin-bottom: 10px; }
+div#page-nav-external-site label{ font-size: 85%; color: #7C7C7C; }
+
 /*  THEME VISUALIZATOIN CONFIG  ************/
 
 div.website-view-block{ margin-bottom: 20px; }
