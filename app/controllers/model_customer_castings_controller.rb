@@ -1,5 +1,5 @@
-class SubdomainModelCastingsController < ApplicationController
-  before_filter :authenticate_customer!
+class ModelCustomerCastingsController < ApplicationController
+  before_filter :authenticate_agency!
 
   def destroy
     @casting_model = ModelCustomerCasting.find(params[:id])
@@ -12,7 +12,7 @@ class SubdomainModelCastingsController < ApplicationController
   end
 
   def update_score
-    @casting_model = ModelCustomerCasting.find(params[:id])
+    @casting_model = ModelCustomerCasting.find(params[:model_customer_casting_id])
     @casting_model.score = Integer(params[:score])
 
     @casting_model.save

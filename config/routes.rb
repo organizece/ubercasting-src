@@ -15,6 +15,7 @@ Ubercasting::Application.routes.draw do
     resources :composites, except: [:index, :destroy]
   end
 
+  # Routes to Casting pages
   get 'castings/open_add_models/'
   post 'castings/save_add_models/'
   get 'castings/destroy_selected'
@@ -25,6 +26,18 @@ Ubercasting::Application.routes.draw do
 
   resources :model_castings, only: [:destroy] do
     match 'update_score/:score' => 'model_castings#update_score', via: :put, as: :update_score
+  end
+
+  # Routes do Customer Casting Routes
+  post 'customer_castings/save_add_models/'
+  get 'customer_castings/destroy_selected'
+
+  resources :customer_castings, only: [:index, :show, :destroy] do
+    match 'remove_models' => 'customer_castings#remove_models', via: :get, as: :remove_models
+  end
+
+  resources :model_customer_castings, only: [:destroy] do
+    match 'update_score/:score' => 'model_customer_castings#update_score', via: :put, as: :update_score
   end
 
   resources :agencies, except: [:index]
