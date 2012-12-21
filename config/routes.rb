@@ -42,6 +42,9 @@ Ubercasting::Application.routes.draw do
 
   resources :agencies, except: [:index]
 
+  get 'agency_customers/destroy_selected'
+  resources :agency_customers
+
   resources :testimonials
 
   resources :websites, only: [:edit, :update]

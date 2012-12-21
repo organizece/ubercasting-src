@@ -55,10 +55,10 @@
 							<li><%= link_to '» Pedidos de Castings', customer_castings_path %></li>
 						</ul>
 					</li>
-					<li class="hasdrop"><%= link_to 'Clientes', root_path, :class => "btn-clients" %>
+					<li class="hasdrop"><%= link_to 'Clientes', agency_customers_path, :class => "btn-clients" %>
 						<ul class="dropdown">
-							<li><%= link_to '» Criar Novo Usuário', root_path, :class => "offline" %></li>
-							<li><%= link_to '» Lista de Clientes', root_path, :class => "offline" %></li>
+							<li><%= link_to '» Criar Novo Usuário', new_agency_customer_path %></li>
+							<li><%= link_to '» Lista de Clientes', agency_customers_path %></li>
 						</ul>
 					</li>
                     <% if agency_signed_in? && current_agency.website %>
@@ -83,12 +83,12 @@
             </div>
             
             <div id="secundary-links">
-                
-                <ul id="secundary-links-list">
-					<li><%= link_to 'Minha Conta', edit_agency_registration_path %></li>
-                    <li><%= link_to 'Sair »', destroy_agency_session_path %></li>
-                </ul>
-                
+                <% if agency_signed_in? %>
+                    <ul id="secundary-links-list">
+    					<li><%= link_to 'Minha Conta', edit_agency_registration_path %></li>
+                        <li><%= link_to 'Sair »', destroy_agency_session_path %></li>
+                    </ul>
+                <% end %>
             </div>
             
         </div>
