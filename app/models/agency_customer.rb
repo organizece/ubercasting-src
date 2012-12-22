@@ -3,6 +3,9 @@ class AgencyCustomer < ActiveRecord::Base
     :municipal_registration, :trade_name, :corporate_name, :phone, :notes, :street, 
     :neighborhood, :complement, :cep, :city, :state, :country
 
+  has_many :customer_castings, dependent: :destroy
+  has_many :customer_casting_messages, as: :sender
+  has_many :customer_casting_messages, as: :receiver
   belongs_to :agency
   belongs_to :customer
 

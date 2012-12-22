@@ -38,6 +38,8 @@ Ubercasting::Application.routes.draw do
 
   resources :customer_castings, only: [:index, :show, :destroy] do
     match 'remove_models' => 'customer_castings#remove_models', via: :get, as: :remove_models
+    match 'messages' => 'customer_castings#open_messages', via: :get, as: :messages
+    match 'messages' => 'customer_castings#save_messages', via: :post, as: :messages
   end
 
   resources :model_customer_castings, only: [:destroy] do
@@ -83,6 +85,8 @@ Ubercasting::Application.routes.draw do
   match "/:subdomain/castings/:id" => "subdomain_castings#show", via: :get, as: :subdomain_casting
   match "/:subdomain/castings/:id" => "subdomain_castings#destroy", via: :delete, as: :subdomain_casting
   match "/:subdomain/castings/:id/remove_models" => "subdomain_castings#remove_models", via: :get, as: :subdomain_casting_remove_models
+  match "/:subdomain/castings/:id/messages" => "subdomain_castings#open_messages", via: :get, as: :subdomain_casting_messages
+  match "/:subdomain/castings/:id/messages" => "subdomain_castings#save_messages", via: :post, as: :subdomain_casting_messages
 
   match "/:subdomain/model_castings/:id" => "subdomain_model_castings#destroy", via: :delete, as: :subdomain_model_casting
   match "/:subdomain/model_castings/:id/update_score/:score" => "subdomain_model_castings#update_score", via: :put, as: :subdomain_model_casting_update_score

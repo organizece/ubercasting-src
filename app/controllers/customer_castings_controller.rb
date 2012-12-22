@@ -98,6 +98,33 @@ class CustomerCastingsController < ApplicationController
     end
   end
 
+  def open_messages
+    @customer_casting = CustomerCasting.find(params[:customer_casting_id])
+    @agency = @customer_casting.agency
+    @customer = @customer_casting.agency_customer
+
+    @messages = @customer_casting.customer_casting_messages.order(messages_sort_column)
+
+    @message = CustomerCastingMessage.new
+  end
+
+  def save_messages
+    @customer_casting = CustomerCasting.find(params[:customer_casting_id])
+
+    @message = CustomerCastingMessage.new(params[:customer_casting_message])
+    @message.sender = @customer_casting.agency
+    @message.receiver = @customer_casting.agency_customer
+    @message.customer_casting = @customer_casting
+
+    respond_to do |format|
+      if @message.save
+        format.js { flash[:notice] = 'Mensagem enviada com sucesso.' }
+      else
+        format.js { flash[:notice] = 'Problema ao enviar mensagem.' }
+      end
+    end
+  end
+
 private
 
   def index_sort_column
@@ -121,6 +148,10 @@ private
     end
     
     column
+  end
+
+  def messages_sort_column
+    'created_at asc'
   end
 
   def per_page
