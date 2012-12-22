@@ -9,6 +9,8 @@ $(document).ready(function() {
 		cep = $("#model_cep").val();
 	}else if( $('div#edit-agency-content').length != 0 ){
 		cep = $("#agency_cep").val();
+	}else if( $('div#agency-customer-manager-content').length != 0 ){
+		cep = $("#agency_customer_cep").val();
 	};
 
 	if ($.trim(cep) != "") {
@@ -28,6 +30,11 @@ $(document).ready(function() {
 					$("#agency_neighborhood").val(json.neighborhood);
 					$("#agency_city").val(json.city);
 					$("#agency_state").val(json.state);
+				}else if( $('div#agency-customer-manager-content').length != 0 ){
+					$("#agency_customer_street").val(json.address);
+					$("#agency_customer_neighborhood").val(json.neighborhood);
+					$("#agency_customer_city").val(json.city);
+					$("#agency_customer_state").val(json.state);
 				};
 			} else {
 				alert("Cep não encontrado.");
