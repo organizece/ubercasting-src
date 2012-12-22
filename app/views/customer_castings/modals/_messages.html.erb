@@ -1,10 +1,10 @@
-<div id="modal-add-model" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="modal-add-model" class="modal hide fade modal-share-msgs" tabindex="-1" role="dialog" aria-hidden="true">
   
   <!-- ************** HEADER ************** -->
   
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 class="header-base-title-text-small auto-size-block put-left">Mensagens <span></span></h3>
+    <h3 class="header-base-title-text-small auto-size-block">Mensagens</h3>
   </div>
 
   <div class="content-split"></div>
@@ -15,7 +15,7 @@
     <div id="messages-list" class="request-list">
       <% for message in @messages %>
         <% if message.sender_type == Agency.model_name %>
-          <div class="sender-message">
+          <div class="sender-message put-left">
             <h3>
               <% if @agency.name %>
                 <%= @agency.name %>:
@@ -25,11 +25,13 @@
             </h3>
             <p><%= message.content %></p>
           </div>
+			<div class="content-split"></div>
         <% else %>
-          <div class="receiver-message">
+          <div class="receiver-message put-right">
             <h3><%= @customer.name %>:</h3>
             <p><%= message.content %></p>
           </div>
+			<div class="content-split"></div>
         <% end %>
       <% end %>
     </div>
@@ -38,7 +40,7 @@
   <!-- ************** HEADER ************** -->
 
   <div class="modal-header">
-    <h3 class="title-new-casting">Nova Mensagem</h3>
+    <h3 class="header-base-title-text-small auto-size-block">Nova Mensagem</h3>
   </div>
 
   <%= form_for @message, url: customer_casting_messages_path(@customer_casting), method: :post, remote: true do |f| %>
@@ -46,7 +48,7 @@
   <!-- ************** BODY ************** -->
 
   <div class="modal-body">
-    <ul id="new-message-list" class="auto-size-block put-list-inline">
+    <ul id="new-message-list" class="auto-size-block">
       <li><%= f.text_area :content %></li>
       <li><%= f.submit 'Enviar Mensagem', class: 'btn-silver-light-fluid' %></li>
     </ul>
