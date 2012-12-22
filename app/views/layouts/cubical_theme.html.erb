@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ÜBER - Casting Made Easy - <%= @website.subdomain %> - subdomain_default</title>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+
+  <%= stylesheet_link_tag    "cubical", media: "all" %>
+  <%= javascript_include_tag "subdomain" %>
+  <%= csrf_meta_tags %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+<div id="modals"></div>
+  
+	<div id="container">
+			
+		<!-- ********** HEADER ********** -->
+		
+		<div id="header" class="auto-size-block">
+			<div id="header-wrapper" class="auto-size-block">
+				<div id="nav-container" class="auto-size-block">
+					<div id="main-nav" class="auto-size-block">
+						<ul class="auto-size-block put-list-inline">
+							<li>
+							<%= link_to 'Home', subdomain_websites_home_path({subdomain: params[:subdomain]}), :class => "active" %>
+							</li>
+
+							<% if @website.about %>
+							<li><%= link_to 'Sobre', subdomain_websites_about_path({subdomain: params[:subdomain]}) %></li>
+							<% end %>
+
+							<% if @website.models %>
+							<li><%= link_to 'Modelos', subdomain_models_path(params[:subdomain]) %></li>
+							<% end %>
+
+							<% if @website.castings %>
+							<li><%= link_to 'Castings', subdomain_castings_path(params[:subdomain]) %></li>
+							<% end %>
+
+							<% if @website.contact_us %>
+							<li><%= link_to 'Contato', subdomain_websites_contact_us_path({subdomain: params[:subdomain]}) %></li>
+							<% end %>
+
+							<% if customer_signed_in? %>
+							<% else %>
+							<% if @website.create_account %>
+							<li><%= link_to 'Criar Conta', subdomain_websites_home_path({subdomain: params[:subdomain]}) %></li>
+							<% end %>
+							<% end %>
+
+							<% if @website.my_site %>
+							<li><%= link_to 'Meu Site', @website.external_site %></li>
+							<% end %>
+
+							<% if @website.be_a_model %>
+							<li><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
+							<% end %>
+							
+							<% if customer_signed_in? %>
+								<li class="no-border"><%= link_to 'Sair »', destroy_customer_session_path %></li>
+							<% else %>
+								<li class="no-border"><%= link_to 'Login', customer_session_path, :class => "btn-login" %></li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+				
+				<div id="logo-container" class="auto-size-block">
+					<% if  @website.logo.url(:logo) == "/logos/logo/missing.png" %>
+						<% if @website.logo_url != "" %>
+							<%= image_tag @website.logo_url, :class => "base-padding" %>
+						<% else %>
+							<p>Sua Logomarca Aqui</p>
+						<% end %>
+					<% else %>
+						<%= image_tag @website.logo.url(:logo), :class => "base-padding" %>
+					<% end %>
+				</div>
+			
+			</div>
+			
+		</div>
+		
+		<!-- ********** CONTENT CONTAINER ********** -->
+		
+		<div id="content-container" class="auto-size-block">
+			<div id="content-container-wrapper" class="auto-size-block">
+				<div id="alert-msgs">
+					<% flash.each do |name, msg| %>
+					<div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+						<a class="close" data-dismiss="alert">×</a>
+						<%= msg %>
+					</div>
+					<% end %>
+				</div>
+
+				<%= yield %>
+			
+			</div>
+		</div>
+	
+		
+		<!-- ********** FOOTER ********** -->
+		
+		<div id="footer" class="auto-size-block vert-shade">
+			<div id="footer-wrapper" class="auto-size-block width-70 put-center base-padding">
+				<p><%= @website.footer %></p>
+				<% if @website.footer_navigation_itens %>
+				<div id="footer-nav">
+					<ul class="auto-size-block put-list-inline">
+						<li>
+						<%= link_to 'Home', subdomain_websites_home_path({subdomain: params[:subdomain]}) %>
+						</li>
+
+						<% if @website.about %>
+						<li><%= link_to 'Sobre', subdomain_websites_about_path({subdomain: params[:subdomain]}) %></li>
+						<% end %>
+
+						<% if @website.models %>
+						<li><%= link_to 'Modelos', subdomain_models_path(params[:subdomain]) %></li>
+						<% end %>
+
+						<% if @website.castings %>
+						<li><%= link_to 'Castings', subdomain_castings_path(params[:subdomain]) %></li>
+						<% end %>
+
+						<% if @website.contact_us %>
+						<li><%= link_to 'Contato', subdomain_websites_contact_us_path({subdomain: params[:subdomain]}) %></li>
+						<% end %>
+
+						<% if @website.create_account %>
+						<li><%= link_to 'Criar Conta', subdomain_websites_home_path({subdomain: params[:subdomain]}) %></li>
+						<% end %>
+
+						<% if @website.my_site %>
+						<li><%= link_to 'Meu Site', @website.external_site %></li>
+						<% end %>
+
+						<% if @website.be_a_model %>
+						<li><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
+						<% end %>
+						
+						<% if customer_signed_in? %>
+							<li><%= link_to 'Sair »', destroy_customer_session_path %></li>
+						<% else %>
+							<li><%= link_to 'Login', customer_session_path, :class => "btn-login" %></li>
+						<% end %>
+					</ul>
+				</div>
+				<% end %>
+				<div id="powered-by">
+					<span>Powered by </span><%= image_tag "theme-cubical/logo-powered.png" %>
+				</div>
+			</div>
+
+		</div>
+	
+	</div>
+	
+</body>
+</html>
