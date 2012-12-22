@@ -11,5 +11,7 @@ class Customer < ActiveRecord::Base
   has_many :customer_castings, dependent: :destroy
   has_many :customer_casting_messages, as: :sender
   has_many :customer_casting_messages, as: :receiver
+  has_many :agency_customers, dependent: :destroy
+  has_many :agencies, through: :agency_customers
 
 end

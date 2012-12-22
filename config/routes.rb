@@ -42,6 +42,9 @@ Ubercasting::Application.routes.draw do
 
   resources :agencies, except: [:index]
 
+  get 'agency_customers/destroy_selected'
+  resources :agency_customers
+
   resources :testimonials
 
   resources :websites, only: [:edit, :update]
@@ -64,6 +67,7 @@ Ubercasting::Application.routes.draw do
 
   # Subdomain routes to models pages
   match "/:subdomain/models" => "subdomain_models#index", via: :get, as: :subdomain_models
+  match "/:subdomain/models/:id/composite" => "subdomain_models#composite", via: :get, as: :subdomain_model_composite
 
   # Subdomain routes to castings pages
   match '/:subdomain/castings/add_models/' => "subdomain_castings#open_add_models", via: :get, as: :subdomain_castings_add_models

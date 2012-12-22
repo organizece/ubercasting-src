@@ -1,0 +1,11 @@
+<%= form_tag customers_path, :method => 'get', :id => "customers_search" do %>
+	
+	<div id="customers_criteria" class="clear-margin-padding auto-size-block">
+		<%= render 'search_criteria' %>
+	</div>
+	
+	<div id="customers" class="full-column-width admin-inner-container">
+		<%= render 'search_result' %>
+	</div>
+	
+<% end %>
