@@ -58,17 +58,13 @@
 							<% end %>
 
 							<% if @website.be_a_model %>
-							<li class="no-border"><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
+							<li><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
 							<% end %>
-						</ul>
-					</div>
-
-					<div class="secundary-nav">
-						<ul>
+							
 							<% if customer_signed_in? %>
-								<li><%= link_to 'Sair »', destroy_customer_session_path %></li>
+								<li class="no-border"><%= link_to 'Sair »', destroy_customer_session_path %></li>
 							<% else %>
-								<li><%= link_to 'Login', customer_session_path, :class => "btn-login" %></li>
+								<li class="no-border"><%= link_to 'Login', customer_session_path, :class => "btn-login" %></li>
 							<% end %>
 						</ul>
 					</div>
@@ -141,6 +137,12 @@
 
 						<% if @website.be_a_model %>
 						<li><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
+						<% end %>
+						
+						<% if customer_signed_in? %>
+							<li><%= link_to 'Sair »', destroy_customer_session_path %></li>
+						<% else %>
+							<li><%= link_to 'Login', customer_session_path, :class => "btn-login" %></li>
 						<% end %>
 					</ul>
 				</div>

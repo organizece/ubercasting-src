@@ -17,6 +17,11 @@ class SubdomainModelsController < ApplicationController
     @models = @models.order(sort_column + " " + sort_direction).page(params[:page]).per(per_page)
   end
 
+  def show
+    @website = Website.find_by_subdomain(params[:subdomain])
+    @model = @website.agency.models.find(params[:id])
+  end
+  
   def composite
     @composite = Model.find(params[:id]).composite
 
