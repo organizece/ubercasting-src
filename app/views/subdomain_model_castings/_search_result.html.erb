@@ -19,7 +19,7 @@
 				
 				<ul>
 					<% if model.composite %>
-					<li class="model-box-view-composite"><%= link_to 'Visualizar Composite', model_composite_path(model, model.composite), remote: true %></li>
+					<li class="model-box-view-composite"><%= link_to 'Visualizar Composite', subdomain_model_composite_path(params[:subdomain], model), remote: true %></li>
 					<% end %>
 					<li><h4><%= link_to model.name, model_path(model) %></h4></li>
 					<li>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219161941) do
+ActiveRecord::Schema.define(:version => 20121221000037) do
 
   create_table "agencies", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -60,6 +60,28 @@ ActiveRecord::Schema.define(:version => 20121219161941) do
   add_index "agencies", ["confirmation_token"], :name => "index_agencies_on_confirmation_token", :unique => true
   add_index "agencies", ["email"], :name => "index_agencies_on_email", :unique => true
   add_index "agencies", ["reset_password_token"], :name => "index_agencies_on_reset_password_token", :unique => true
+
+  create_table "agency_customers", :force => true do |t|
+    t.string   "name"
+    t.string   "cnpj"
+    t.string   "state_registration"
+    t.string   "municipal_registration"
+    t.string   "trade_name"
+    t.string   "corporate_name"
+    t.string   "phone"
+    t.string   "street"
+    t.string   "neighborhood"
+    t.string   "complement"
+    t.string   "cep"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.text     "notes"
+    t.integer  "agency_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
 
   create_table "castings", :force => true do |t|
     t.string   "name"

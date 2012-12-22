@@ -1,0 +1,20 @@
+<div id="customer-list" class="request-list">
+	
+	<% for agency_customer in @agency_customers %>
+		
+		<div class="request-line">
+			<ul class="requst-info">
+				<li><%= check_box_tag agency_customer.id, agency_customer.id %></li>
+				<li><%= customer.name %></li>
+				<li><%= agency_customer.customer.email %></li>
+			</ul>
+			
+			<ul class="requst-action">
+				<li class="request-icon request-view"><%= link_to 'Visualizar', agency_customer_path(agency_customer), title: 'Visualizar' %></li>
+				<li class="request-icon request-del"><%= link_to 'Excluir', agency_customer_path(agency_customer), method: :delete, remote: true, title: 'Excluir' %></li>
+			</ul>
+		</div>
+		
+	<% end %>
+	
+</div>

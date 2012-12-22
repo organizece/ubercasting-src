@@ -1,0 +1,37 @@
+<div id="search-paginator" class="auto-size-block paginator">
+	
+	<ul>
+		<li class="put-left itens_per_page">
+			Itens por página:
+	    	<%= select_tag :itens_per_page, options_for_select(itens_per_page, params[:itens_per_page]), class: 'input-mini' %>
+		</li>
+		<li class="pagination">
+			<%= paginate @agency_customers %>
+		    <%= hidden_field_tag :page, params[:page] %>
+		</li>
+		<li class="put-right order_column">
+			Ordenar por:
+			<%= select_tag :order_column, options_for_select(agency_customer_order_columns, params[:order_column]), :include_blank => true, class: 'input-medium' %>
+		</li>
+	</ul>
+	
+</div>
+
+<div id="search-customer-actions" class="auto-size-block actions-tab">
+	
+	<ul>
+		<li>
+			<span>Buscar Cliente:</span>
+		</li>
+		<li>
+			<%= text_field_tag :name, params[:name], placeholder: 'Digite sua busca aqui...', :class => "input-txt-light" %>
+		</li>
+		<li>
+			<%= submit_tag "Buscar", :name => nil, class: 'action-btn' %>
+		</li>
+		<li>
+			<%= link_to "Excluir Selecionados", agency_customers_destroy_selected_path, class: "action-btn", id: :remove_selected %>
+		</li>
+	</ul>
+	
+</div>

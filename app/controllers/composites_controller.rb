@@ -1,4 +1,5 @@
 class CompositesController < ApplicationController
+  before_filter :authenticate_agency!
 
   # GET /composites
   # GET /composites.json
