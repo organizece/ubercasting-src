@@ -1,11 +1,9 @@
 <div id="agency-customer-manager" class="full-column-container put-center">
   
-  <div id="main-header" class="auto-size-block admin-panel-header">
-    
-    <span class="icon-title icon-title-cloud put-left">&nbsp;</span>
-    <h2 class="put-left clear-margin-padding base-title title-manage-customers">Gerenciar Clientes</h2>
-    
-  </div>
+	<div id="main-header" class="auto-size-block admin-panel-header">
+		<span class="icon-title icon-title-gear put-left">&nbsp;</span>
+		<h2 class="put-left clear-margin-padding font-title">Gerenciar <span class="font-title-bold">Clientes</span></h2>
+	</div>
   
   <div class="content-split"></div>
   
@@ -15,14 +13,14 @@
     
     <div id="content" class="full-column-width content-body">
       
-      <div id="subheader" class="auto-size-block admin-inner-container">
+      <div id="subheader" class="auto-size-block admin-inner-container put-relative">
         
         <span class="put-absolute admin-panel-header-icon admin-panel-header-icon-customer">&nbsp;</span>
         
-        <h3 class="header-base-title header-title-customer-list">Lista de Clientes</h3>
-        <p class="base-text">Navegue pelas listas de clientes já criados.</p>
+        <h3 class="header-base-title-text">Lista de <strong>Clientes</strong></h3>
+        <p class="base-text">Esta é a sua lista de clientes. Navegue pela lista para visualizar, editar ou exlcuir um cliente.</p>
 
-        <%= link_to 'Novo Cliente', new_agency_customer_path, class: 'btn-silver-light-fluid' %>
+        <%= link_to 'Novo Cliente', new_agency_customer_path, class: 'put-right anchor-btn-silver-light-normal put-absolute icon-user' %>
         
       </div>
       
