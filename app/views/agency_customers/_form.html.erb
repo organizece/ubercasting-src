@@ -1,0 +1,100 @@
+<%= simple_form_for @agency_customer do |f| %>
+  <div id="admin-agency-customer-insert">
+    
+    <div class="put-left form-block-4-columns field-isreq">
+      <%= f.input :name, required: true %>
+    </div>
+    
+    <div class="put-left form-block-4-columns field-isreq">
+      <%= f.input :email, required: true %>
+    </div>
+    
+    <div class="content-split"></div>
+    
+    <div class="put-left form-block-4-columns">
+      <%= f.input :cnpj %>
+    </div>
+    
+    <div class="put-left form-block-4-columns">
+      <%= f.input :state_registration %>
+    </div>
+    
+    <div class="content-split"></div>
+
+    <div class="put-left form-block-4-columns">
+      <%= f.input :municipal_registration %>
+    </div>
+    
+    <div class="put-left form-block-4-columns">
+      <%= f.input :trade_name %>
+    </div>
+    
+    <div class="content-split"></div>
+    
+    <div class="put-left form-block-4-columns">
+      <%= f.input :corporate_name %>
+    </div>
+    
+    <div class="put-left form-block-4-columns">
+      <%= f.input :phone %>
+    </div>
+    
+    <div class="content-split"></div>
+    
+    <div class="put-left form-block-4-columns">
+      <%= f.input :cep %>
+    </div>
+    
+    <div class="put-left form-block-4-columns-link">
+      <a href="#" id="find_cep" class="anchor-btn-silver-light-4-column">Buscar CEP</a>
+    </div>
+    
+    <div class="content-split"></div>
+    
+    <div class="put-left form-block-4-columns">
+      <%= f.input :street %>
+    </div>
+    
+    <div class="put-left form-block-4-columns">
+      <%= f.input :neighborhood %>
+    </div>
+
+    <div class="content-split"></div>
+
+    <div class="put-left form-block-2-columns">
+      <%= f.input :complement %>
+    </div>
+    
+    <div class="put-left form-block-4-columns">
+      <%= f.input :city %>
+    </div>
+
+    <div class="content-split"></div>
+
+    <div class="put-left form-block-4-columns">
+      <%= f.input :state, collection: states, input_html: { class: 'full-select' } %>
+    </div>
+    
+    <div class="put-left form-block-4-columns">
+      <%= f.input :country, priority: [ "Brazil" ], input_html: { class: 'full-select' } %>
+    </div>
+
+    <div class="content-split"></div>
+
+    <div class="put-left form-block-4-columns">
+      <%= f.input :notes %>
+    </div>
+
+    <div class="content-split"></div>
+
+    <div class="put-left form-block-4-columns">
+      <%= link_to 'Voltar', agency_customers_path, class: 'btn-silver-light-fluid'%>
+    </div>
+
+    <div class="put-left form-block-4-columns">
+      <%= f.submit 'Salvar e Enviar', class: 'input-btn-gold-light-4-column' %>
+    </div>
+    
+  </div>
+  
+<% end %>

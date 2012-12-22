@@ -1,6 +1,10 @@
 Ubercasting::Application.routes.draw do
 
-  devise_for :customers, :controllers => { :sessions => "agencies/sessions" }
+  as :customer do
+    match '/customer/confirmation' => 'customers/confirmations#update', :via => :put, :as => :update_customer_confirmation
+  end
+
+  devise_for :customers, :controllers => { :sessions => "customers/sessions", :confirmations => "customers/confirmations" }
 
   devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations" }, :path_prefix => 'my'
 
