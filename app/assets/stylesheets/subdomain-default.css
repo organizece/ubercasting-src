@@ -92,9 +92,16 @@ div#container{
 .base-padding{ padding: 10px; }
 .base-margin-padding{ margin: 10px; padding: 10px; }
 
+.padding-left{ padding-left: 15px; }
+
 .put-list-inline{ margin: 0; padding: 0; }
 .put-list-inline,
 .put-list-inline li{ list-style: none; display: inline-block; }
+
+.header-lists{
+	margin: 10px 5px;
+	padding-top: 10px;
+}
 
 .offline{ 
 	cursor: default; opacity: 0.3;
@@ -145,19 +152,36 @@ h3.header-base-title-text{
 	font-family:'Conv_Nexa',Sans-Serif;
 	font-size: 230%;
 	text-shadow: #FFF 0px 1px 1px;
+	margin: 10px 15px;
+	padding-top: 10px;
+	padding-bottom: 20px;
 	height:20px;
-	margin-bottom: 15px;
 	display: block;
 	font-weight: normal;
 }
 
+h3.header-base-title-text-small{
+	font-family:'Conv_Nexa',Sans-Serif;
+	font-size: 200%;
+	text-shadow: #FFF 0px 1px 1px;
+	margin: 10px 15px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	height:20px;
+	display: block;
+	font-weight: normal;
+}
+
+h3.header-base-title-text-small span{ font-weight: bold; }
+
 p.base-text{
 	font-family: Arial, "MS Trebuchet", sans-serif;
-	font-size: 12px;
+	font-size: 95%;
 	color:#646464;
 	width:auto;
 	height:auto;
 	display: block;
+	margin: 0px 15px;
 	padding-bottom: 12px;
 	line-height:16px;
 }
@@ -173,7 +197,6 @@ p.inner-header-base-text{
 	padding-bottom: 12px;
 	line-height:16px;
 }
-
 
 /*  INPUTS, BUTTON AND ANCHORS ELEMENTS  ****************************/
 
@@ -900,6 +923,90 @@ span.btn-silver-light-fluid,
 }
 
 
+
+/*  REQUEST LIST  ****************************/
+
+.request-list{
+	width: 100%;
+	height: auto;
+	display: block;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 10px 0px;
+}
+
+.modal .request-list{ width: 97%; }
+
+.request-list .request-line{
+	width: 100%;
+	height: 20px;
+	display: block;
+	background-color: #f3f3f3;
+	border-top: 1px solid #a1a1a1;
+	border-bottom: 2px solid #fff;
+	margin: 0px;
+	padding: 10px 0px;
+}
+
+.request-list .request-line .requst-action,
+.request-list .request-line .requst-info{
+	list-style: none;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
+}
+
+.request-list .request-line .requst-info{
+	float: left;
+}
+
+.request-list .request-line .requst-action{
+	float: right;
+	margin: 2px 20px 0px 0px;
+}
+
+.request-list .request-line .requst-action li,
+.request-list .request-line .requst-info li{
+	list-style: none;
+	width: auto;
+	height: auto;
+	display: block;
+	margin: 0px 0px 0px 15px;
+	padding: 0px;
+	float: left;
+	font-size: 95%;
+	color: #6e6e6e;
+}
+
+.request-list .request-line .requst-info li input{ margin: 0px; }
+
+.request-list .request-line .requst-action li.request-icon{ margin: 0px 20px; }
+
+.request-list .request-line .requst-action li.request-icon a{
+	height: 18px;
+	display: block;
+	text-indent: -10000px;
+	background: #f3f3f3 url(admin/bg-icon-request-action.jpg) left top no-repeat scroll;
+}
+
+.request-list .request-line .requst-action li.request-share a{
+	width: 23px;
+	background-position: top left;
+}
+.request-list .request-line .requst-action li.request-view a{
+	width: 28px;
+	background-position: -51px top;
+}
+.request-list .request-line .requst-action li.request-del a{
+	width: 14px;
+	background-position: -108px top;
+}
+
+
+
 /**************************************/
 /*  THEME BASIC ARCHITECTURE  *********/
 /**************************************/
@@ -1094,8 +1201,56 @@ div#model-primary-info div#model-profile-img{ width:200px; }
 #model-info-composite .model-show-inner-header a,
 #model-photo-gallery .model-show-inner-header a{ margin-right: 30px; }
 
+/**************************************/
+/*  MANAGE CASTING  *******************/
+/**************************************/
 
+h3.header-title-casting-list{
+	width:205px;
+	height:27px;
+	margin-top: 25px;
+	background:transparent url(admin/title-casting-list.png) left top no-repeat scroll;
+}
 
+h3.title-new-casting{
+	width:157px;
+	height:27px;
+	margin-top: 25px;
+	margin-left: 15px;
+	text-indent: -10000px;
+	background:#fff url(admin/title-new-casting.jpg) left top no-repeat scroll;
+}
+
+h3.title-add-to-casting{
+	width:329px;
+	height:27px;
+	margin-top: 25px;
+	margin-left: 15px;
+	text-indent: -10000px;
+	background:#fff url(admin/title-add-to-casting.jpg) left top no-repeat scroll;
+}
+
+ul#new-casting-list{
+	margin:0px 0px 0px 15px;
+}
+
+div#casting-models-info-content div#subheader{ padding-bottom: 15px; }
+
+div#modal-add-model div.modal-header{ overflow: hidden; }
+div#modal-add-model div.modal-footer-border{ border-bottom: 1px solid #DDD; }
+
+div#modal-add-model div#agency-casting-list,
+div#modal-add-model div#customer-casting-list{
+	max-height: 150px !important;
+	overflow-y: auto !important;
+}
+
+div#modal-add-model div#agency-casting-list{ display: block; }
+
+div#modal-add-model ul#agency-casting-footer{ display: block; }
+div#modal-add-model ul#agency-casting-footer li{ margin: 10px 5px; }
+
+div#modal-add-model a#display-agency-casting-list{ margin: 2em 1em 0px 0em; }
 
 
 
