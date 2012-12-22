@@ -5,7 +5,9 @@ class SubdomainCastingsController < ApplicationController
 
   def index
     @website = Website.find_by_subdomain(params[:subdomain])
-    @castings = CustomerCasting.search(params[:name], @website.agency.id, current_customer.id).
+    agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(@website.agency.id, current_customer.id)
+
+    @castings = CustomerCasting.search(params[:name], @website.agency.id, agency_customer.id).
       order(index_sort_column).page(params[:page]).per(per_page)
     @casting = CustomerCasting.new
   end
@@ -27,7 +29,8 @@ class SubdomainCastingsController < ApplicationController
   def create
     @casting = CustomerCasting.new(params[:customer_casting])
     @casting.agency = Website.find_by_subdomain(params[:subdomain]).agency
-    @casting.customer = current_customer
+    agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(@casting.agency.id, current_customer.id)
+    @casting.agency_customer = agency_customer
 
     respond_to do |format|
       if @casting.save
@@ -75,11 +78,15 @@ class SubdomainCastingsController < ApplicationController
 
   def open_add_models
     agency = Website.find_by_subdomain(params[:subdomain]).agency
-    @castings = CustomerCasting.where(agency_id: agency.id).where(customer_id: current_customer.id)
+    agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(agency.id, current_customer.id)
+
+    @castings = CustomerCasting.where(agency_id: agency.id).where(agency_customer_id: agency_customer.id)
   end
 
   def save_add_models
     agency = Website.find_by_subdomain(params[:subdomain]).agency
+    agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(agency.id, current_customer.id)
+
     models = params[:models].split(',') if params[:models]
 
     casting = nil
@@ -87,7 +94,7 @@ class SubdomainCastingsController < ApplicationController
       casting = CustomerCasting.new
       casting.name = params[:casting_name]
       casting.agency = agency
-      casting.customer = current_customer
+      casting.agency_customer = agency_customer
       if casting.valid?
         casting.save
       else
@@ -143,6 +150,33 @@ class SubdomainCastingsController < ApplicationController
     end
   end
 
+  def open_messages
+    @customer_casting = CustomerCasting.find(params[:id])
+    @agency = @customer_casting.agency
+    @customer = @customer_casting.agency_customer
+
+    @messages = @customer_casting.customer_casting_messages.order(messages_sort_column)
+
+    @message = CustomerCastingMessage.new
+  end
+
+  def save_messages
+    @customer_casting = CustomerCasting.find(params[:id])
+
+    @message = CustomerCastingMessage.new(params[:customer_casting_message])
+    @message.sender = @customer_casting.agency_customer
+    @message.receiver = @customer_casting.agency
+    @message.customer_casting = @customer_casting
+
+    respond_to do |format|
+      if @message.save
+        format.js { flash[:notice] = 'Mensagem enviada com sucesso.' }
+      else
+        format.js { flash[:notice] = 'Problema ao enviar mensagem.' }
+      end
+    end
+  end
+
 private
   def subdomain_layout
     if params[:subdomain] && !params[:subdomain].empty?
@@ -174,6 +208,10 @@ private
     end
     
     column
+  end
+
+  def messages_sort_column
+    'created_at asc'
   end
 
   def per_page

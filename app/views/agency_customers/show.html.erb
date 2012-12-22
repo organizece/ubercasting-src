@@ -1,0 +1,55 @@
+<div id="agency-customer-manager" class="full-column-container put-center">
+  
+  <div id="main-header" class="auto-size-block admin-panel-header">
+    
+    <span class="icon-title icon-title-cloud put-left">&nbsp;</span>
+    <h2 class="put-left clear-margin-padding base-title title-manage-customers">Gerenciar Clientes</h2>
+    
+  </div>
+  
+  <div class="content-split"></div>
+  
+  <div id="agency-customer-manager-content" class="auto-size-block clear-margin put-relative">
+    
+    <div class="admin-panel-full-top clear-margin-padding">&nbsp;</div>
+    
+    <div id="content" class="full-column-width content-body">
+      
+      <div id="subheader" class="auto-size-block admin-inner-container">
+        
+        <span class="put-absolute admin-panel-header-icon admin-panel-header-icon-customer">&nbsp;</span>
+        
+        <h3 class="header-base-title header-title-customer-list">Cliente: <%= @agency_customer.name %></h3>
+
+        <%= link_to 'Atualizar', edit_agency_customer_path(@agency_customer), class: 'btn-silver-light-fluid' %>
+        <%= link_to 'Excluir', agency_customer_path(@agency_customer), method: :delete, class: 'btn-silver-light-fluid' %>
+
+      </div>
+      
+      <div class="content-split"></div>
+      <ul>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:name) %></strong>:<%= @agency_customer.name %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:email) %></strong>:<%= @agency_customer.email %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:cnpj) %></strong>:<%= @agency_customer.cnpj %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:state_registration) %></strong>:<%= @agency_customer.state_registration %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:municipal_registration) %></strong>:<%= @agency_customer.municipal_registration %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:trade_name) %></strong>:<%= @agency_customer.trade_name %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:corporate_name) %></strong>:<%= @agency_customer.corporate_name %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:phone) %></strong>:<%= @agency_customer.phone %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:notes) %></strong>:<%= @agency_customer.notes %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:street) %></strong>:<%= @agency_customer.street %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:neighborhood) %></strong>:<%= @agency_customer.neighborhood %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:complement) %></strong>:<%= @agency_customer.complement %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:cep) %></strong>:<%= @agency_customer.cep %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:city) %></strong>:<%= @agency_customer.city %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:state) %></strong>:<%= @agency_customer.state %></li>
+        <li><strong><%= AgencyCustomer.human_attribute_name(:country) %></strong>:<%= @agency_customer.country %></li>
+      </ul>
+      
+    </div>
+    
+  </div>
+  
+</div>
+
+

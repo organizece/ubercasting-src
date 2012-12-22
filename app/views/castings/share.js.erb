@@ -1,0 +1,9 @@
+$("#modal-share-casting").modal('hide');
+$("#modals").empty();
+$("#alert-msgs").empty();
+<% if flash[:error] %>
+  $('#alert-msgs').prepend("<%= escape_javascript(render('utils/error_messages', errors: flash[:error])) %>");
+<% else %>
+  $('#alert-msgs').prepend("<%= escape_javascript(render('utils/success_messages')) %>");
+  <% flash.discard() %> //Need to discard flash messages due problem with them persisting to the next request
+<% end %>

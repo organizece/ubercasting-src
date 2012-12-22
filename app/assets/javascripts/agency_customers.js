@@ -16,7 +16,7 @@ $(function() {
     return false;
   });
   $("#agency_customers_criteria #remove_selected").live("click", function() {
-    var link = this.href + '?castings='
+    var link = this.href + '?agency_customers='
     $("input:checked").each(function(index, check){
       link += $(check).val() + ",";
     });
