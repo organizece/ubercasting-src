@@ -21,11 +21,6 @@ class ModelsController < ApplicationController
   def show
     @model = current_agency.models.find_by_id(params[:id])
 
-    respond_to do |format|
-      redirect_to models_path and return unless @model
-      format.html # show.html.erb
-      format.json { render json: @model }
-    end
   end
 
   # GET /models/new

@@ -1,0 +1,17 @@
+<div id="admin-model-search-body" class="auto-size-block clear-margin-padding">
+	
+	<%= form_tag subdomain_models_path({subdomain: params[:subdomain]}), :method => 'get', :id => "models_search" do %>
+	
+		<div id="search-criteria">
+			<%= render 'search_criteria' %>
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div id="models">
+			<%= render "search_result_#{@visualization_mode}" %>
+		</div>
+		
+	<% end %>
+	
+</div>

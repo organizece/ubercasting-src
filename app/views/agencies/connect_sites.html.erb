@@ -29,7 +29,7 @@
 					<p>E o método mais simples. Basta copiar e colar o endereço abaixo dentro de um link em seu site:</p>
 					<div class="connect-method-code">
 						<ul>
-							<li>http://<%= @agency.domain %>.ubercasting.com.br/gallery</li>
+							<li><span class="my-main-domain"></span><%= @website.subdomain %><span>/models</span></li>
 						</ul>
 					</div>
 					
@@ -41,7 +41,7 @@
 					<p>Método para a inserção de um botão default em seu site, igual ao modelo abaixo:</p>
 					
 					<div class="uber-btn-container">
-						<a href="http://<%= @agency.domain %>.ubercasting.com.br/gallery" class="uber-black-btn">
+						<a href="<%= @website.subdomain %>/models" class="uber-black-btn" target="_blank">
 							<span>Casting</span>
 						</a>
 					</div>
@@ -51,7 +51,7 @@
 						<ul>
 							<li>&lt;link rel="stylesheet" type="text/css" href="http://ubercasting.com.br/css/exports/uberblackbtn.css" /&gt;</li>
 							<li>&lt;div class="uber-btn-container"&gt;</li>
-							<li class="inner-line">&lt;a href="http://<%= @agency.domain %>.ubercasting.com.br/gallery" class="uber-black-btn"&gt;</li>	
+							<li class="inner-line">&lt;a href="<span class="my-main-domain"></span><%= @website.subdomain %><span>/models</span>" class="uber-black-btn"&gt;</li>	
 							<li class="inner-inner-line">&lt;span&gt;Casting&lt;/span&gt;</li>
 							<li class="inner-line">&lt;/a&gt;</li>
 							<li>&lt;/div&gt;</li>
@@ -66,7 +66,7 @@
 					<p>Método para a inserção de um botão amarelo em seu site, igual ao modelo abaixo:</p>
 					
 					<div class="uber-btn-container uber-btn-container-bgblack">
-						<a href="http://<%= @agency.domain %>.ubercasting.com.br/gallery" class="uber-gold-btn">
+						<a href="<%= @website.subdomain %>/models" class="uber-gold-btn" target="_blank">
 							<span>Casting</span>
 						</a>
 					</div>
@@ -76,7 +76,7 @@
 						<ul>
 							<li>&lt;link rel="stylesheet" type="text/css" href="http://ubercasting.com.br/css/exports/ubergoldbtn.css" /&gt;</li>
 							<li>&lt;div class="uber-btn-container"&gt;</li>
-							<li class="inner-line">&lt;a href="http://<%= @agency.domain %>.ubercasting.com.br/gallery" class="uber-gold-btn"&gt;</li>	
+							<li class="inner-line">&lt;a href="<span class="my-main-domain"></span><%= @website.subdomain %><span>/models</span>" class="uber-gold-btn"&gt;</li>	
 							<li class="inner-inner-line">&lt;span&gt;Casting&lt;/span&gt;</li>
 							<li class="inner-line">&lt;/a&gt;</li>
 							<li>&lt;/div&gt;</li>
@@ -93,7 +93,7 @@
 					<div class="connect-method-code">
 						<ul>
 							<li>&lt;script type="text/javascript"&gt;</li>
-							<li class="inner-line">window.location = "http://<%= @agency.domain %>.ubercasting.com.br";</li>
+							<li class="inner-line">window.location = "<span class="my-main-domain"></span><%= @website.subdomain %><span>/models</span>";</li>
 							<li>&lt;/script&gt;</li>
 						</ul>
 					</div>

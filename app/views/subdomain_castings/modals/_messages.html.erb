@@ -1,0 +1,59 @@
+<div id="modal-add-model" class="modal hide fade modal-share-msgs" tabindex="-1" role="dialog" aria-hidden="true">
+  
+  <!-- ************** HEADER ************** -->
+  
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="header-base-title-text-small auto-size-block put-left">Mensagens <span></span></h3>
+  </div>
+
+  <div class="content-split"></div>
+
+  <!-- ************** BODY ************** -->
+  
+  <div class="modal-body">
+    <div id="messages-list" class="request-list">
+      <% for message in @messages %>
+        <% if message.sender_type == AgencyCustomer.model_name %>
+          <div class="sender-message put-left">
+            <h3><%= @customer.name %>:</h3>
+            <p><%= message.content %></p>
+          </div>
+			<div class="content-split"></div>
+        <% else %>
+          <div class="receiver-message put-right">
+            <h3>
+              <% if @agency.name %>
+                <%= @agency.name %>:
+              <% else %>
+                Agência:
+              <% end %>
+            </h3>
+            <p><%= message.content %></p>
+          </div>
+			<div class="content-split"></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- ************** HEADER ************** -->
+
+  <div class="modal-header">
+    <h3 class="title-new-casting">Nova Mensagem</h3>
+  </div>
+
+  <%= form_for @message, url: subdomain_casting_messages_path(params[:subdomain], @customer_casting.id), method: :post, remote: true do |f| %>
+
+  <!-- ************** BODY ************** -->
+
+  <div class="modal-body">
+    <ul id="new-message-list" class="auto-size-block put-list-inline">
+      <li><%= f.text_area :content %></li>
+      <li><%= f.submit 'Enviar Mensagem', class: 'btn-silver-light-fluid' %></li>
+    </ul>
+  </div>
+
+  <% end %>
+
+</div>

@@ -1,0 +1,51 @@
+<div id="website-container" class="put-center full-column-container">
+  
+  <div class="auto-size-block admin-panel-header">
+    
+    <span class="icon-title icon-title-gear put-left">&nbsp;</span>
+    <h2 class="put-left clear-margin-padding font-title">Gerenciar Website</h2>
+    
+   </div>
+  
+  <div class="content-split"></div>
+  
+  <div id="website-content-container" class="auto-size-block clear-margin put-relative">
+    
+    <div class="admin-panel-full-top clear-margin-padding">&nbsp;</div>
+
+	<div id="content" class="full-column-width content-body">
+		
+		<div id="subheader" class="auto-size-block admin-inner-container">
+			
+			<h2 class="font-body-title">Opções de <span class="font-body-title-bold">Configuração</span></h2>
+			<p class="inner-header-base-text">Utiliza as opções abaixo para configurar e completar as informações de seu website, restringir visualização externa, setup de navegação principal, entre outros itens.</p>
+			
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div id="body" class="auto-size-block clear-margin">
+			
+			<div id="website-content-nav">
+				<ul>
+					<li class="website-nav-active"><a id="change-to-theme" href="#" title="Configurações de Tema">Configurações de Tema</a></li>
+					<li><a id="change-to-domain" href="#" title="Configuração de Domínio">Configuração de Domínio</a></li>
+				</ul>
+			</div>
+			
+			<div id="subdomain-form"><%= render 'subdomain_form' %></div>
+		    <div id="website-config-form">
+				<%= render 'theme_form' %>
+			    <%= render 'logo_form' %>
+			    <%= render 'pages_navs_form' %>
+			    <%= render 'visualization_form' %>
+			    <%= render 'footer_form' %>
+			</div>
+			
+		</div>
+		
+	</div>
+    
+  </div>
+  
+</div>

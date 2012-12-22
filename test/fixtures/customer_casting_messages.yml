@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sender_id: 1
+  sender_type: MyString
+  receiver_id: 1
+  receiver_type: MyString
+  content: MyText
+  read: false
+  customer_casting_id: 1
+
+two:
+  sender_id: 1
+  sender_type: MyString
+  receiver_id: 1
+  receiver_type: MyString
+  content: MyText
+  read: false
+  customer_casting_id: 1

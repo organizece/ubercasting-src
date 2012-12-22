@@ -1,8 +1,12 @@
 Ubercasting::Application.routes.draw do
 
-  resources :testimonials
+  as :customer do
+    match '/customer/confirmation' => 'customers/confirmations#update', :via => :put, :as => :update_customer_confirmation
+  end
 
-  devise_for :agencies, :controllers => { :sessions => "agencies/sessions" }
+  devise_for :customers, :controllers => { :sessions => "customers/sessions", :confirmations => "customers/confirmations" }
+
+  devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations" }, :path_prefix => 'my'
 
   match 'home' => 'main_pages#home', via: :get
   match 'who_we_are' => 'main_pages#who_we_are', via: :get
@@ -15,22 +19,80 @@ Ubercasting::Application.routes.draw do
     resources :composites, except: [:index, :destroy]
   end
 
+  # Routes to Casting pages
   get 'castings/open_add_models/'
   post 'castings/save_add_models/'
+  get 'castings/destroy_selected'
 
-  resources :castings
+  resources :castings do
+    match 'remove_models' => 'castings#remove_models', via: :get, as: :remove_models
+    match 'share' => 'castings#open_share', via: :get, as: :share
+    match 'share' => 'castings#share', via: :post, as: :share
+  end
 
   resources :model_castings, only: [:destroy] do
     match 'update_score/:score' => 'model_castings#update_score', via: :put, as: :update_score
   end
 
+  # Routes do Customer Casting Routes
+  post 'customer_castings/save_add_models/'
+  get 'customer_castings/destroy_selected'
+
+  resources :customer_castings, only: [:index, :show, :destroy] do
+    match 'remove_models' => 'customer_castings#remove_models', via: :get, as: :remove_models
+    match 'messages' => 'customer_castings#open_messages', via: :get, as: :messages
+    match 'messages' => 'customer_castings#save_messages', via: :post, as: :messages
+  end
+
+  resources :model_customer_castings, only: [:destroy] do
+    match 'update_score/:score' => 'model_customer_castings#update_score', via: :put, as: :update_score
+  end
+
   resources :agencies, except: [:index]
-  
+
+  get 'agency_customers/destroy_selected'
+  resources :agency_customers
+
+  resources :testimonials
+
+  resources :websites, only: [:edit, :update]
+  get 'websites/verify_subdomain'
+
   match 'connect_sites' => 'agencies#connect_sites', via: :get
 
   match "find_cep/:cep" => "utilities#find_cep", via: :get, as: :find_cep
 
   match "control_panel/" => "control_panel#show", as: :agency_root
+
+  match "customer_panel/" => "main_pages#who_we_are", as: :customer_root
+
+  # Subdomain routes to static pages
+  match "/:subdomain" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
+  match "/:subdomain/home" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
+  match "/:subdomain/about" => "subdomain_websites#about", via: :get, as: :subdomain_websites_about
+  match "/:subdomain/contact_us" => "subdomain_websites#contact_us", via: :get, as: :subdomain_websites_contact_us
+  match "/:subdomain/be_model" => "subdomain_websites#be_model", via: :get, as: :subdomain_websites_be_model
+
+  # Subdomain routes to models pages
+  match "/:subdomain/models" => "subdomain_models#index", via: :get, as: :subdomain_models
+  match "/:subdomain/models/:id" => "subdomain_models#show", via: :get, as: :subdomain_model
+  match "/:subdomain/models/:id/composite" => "subdomain_models#composite", via: :get, as: :subdomain_model_composite
+
+  # Subdomain routes to castings pages
+  match '/:subdomain/castings/add_models/' => "subdomain_castings#open_add_models", via: :get, as: :subdomain_castings_add_models
+  match '/:subdomain/castings/add_models/' => "subdomain_castings#save_add_models", via: :post, as: :subdomain_castings_add_models
+  match "/:subdomain/castings/destroy_selected" => "subdomain_castings#destroy_selected", via: :get, as: :subdomain_castings_destroy_selected
+  match "/:subdomain/castings" => "subdomain_castings#index", via: :get, as: :subdomain_castings
+  match "/:subdomain/castings" => "subdomain_castings#create", via: :post, as: :subdomain_castings
+  match "/:subdomain/castings/:id" => "subdomain_castings#show", via: :get, as: :subdomain_casting
+  match "/:subdomain/castings/:id" => "subdomain_castings#destroy", via: :delete, as: :subdomain_casting
+  match "/:subdomain/castings/:id/remove_models" => "subdomain_castings#remove_models", via: :get, as: :subdomain_casting_remove_models
+  match "/:subdomain/castings/:id/messages" => "subdomain_castings#open_messages", via: :get, as: :subdomain_casting_messages
+  match "/:subdomain/castings/:id/messages" => "subdomain_castings#save_messages", via: :post, as: :subdomain_casting_messages
+
+  match "/:subdomain/model_castings/:id" => "subdomain_model_castings#destroy", via: :delete, as: :subdomain_model_casting
+  match "/:subdomain/model_castings/:id/update_score/:score" => "subdomain_model_castings#update_score", via: :put, as: :subdomain_model_casting_update_score
+
 
   root :to => "main_pages#home"
 

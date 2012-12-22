@@ -1,0 +1,26 @@
+<div id="website-subdomain-content" class="website-content-config">
+	
+	<h4>Escolha seu Domínio:</h4>
+	<p>Este será o caminho pelo qual os clientes poderão acessar o seu Über-site e seus modelos cadastrados.</p>
+	
+	<div class="content-split"></div>
+	
+	<%= form_for @website do |f| %>
+	
+		<div id="website-subdomain-input">
+			<span>www.ubercasting.com.br/</span>
+			<%= f.text_field :subdomain, :class => "input-txt-light-4-column" %>
+		    <%= link_to 'Verificar', websites_verify_subdomain_path, remote: true, class: 'btn-silver-light-fluid', id: 'verify_subdomain' %>
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div class="website-content-btns">
+			<%= f.submit 'Salvar Configurações', class: 'input-btn-gold-liquid put-right' %>
+			<%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn-silver-light-fluid put-right' } %>
+		</div>
+	
+	<% end %>
+	
+	
+</div>

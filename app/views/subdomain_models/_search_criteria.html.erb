@@ -1,0 +1,74 @@
+<div id="search-criteria-main" class="auto-size-block admin-inner-container">
+	
+	<ul class="auto-size-block put-list-inline search-menu">
+		<li>
+			<%= Model.human_attribute_name(:gender) %>:<br />
+		    <%= select_tag :gender, options_for_select(genders, params[:gender]), :include_blank => true, class: 'input-medium' %>
+		</li>
+		<li>
+			<%= Model.human_attribute_name(:age) %>:<br />
+		    <%= select_tag :age_from, options_for_select(ages_from, params[:age_from]), :include_blank => true, class: 'input-mini' %>
+		    &nbsp;até&nbsp;
+		    <%= select_tag :age_to, options_for_select(ages_to, params[:age_to]), :include_blank => true, class: 'input-mini' %>
+		</li>
+		<li>
+			<%= Model.human_attribute_name(:biotype) %>:<br />
+		    <%= select_tag :biotype, options_for_select(biotypes, params[:biotype]), :include_blank => true, class: 'input-small' %>
+		</li>
+		<li>
+			<%= Model.human_attribute_name(:eyes_color) %>:<br />
+		    <%= select_tag :eyes_color, options_for_select(eyes_color, params[:eyes_color]), :include_blank => true, class: 'input-small' %>
+		</li>
+		<li>
+			<%= Model.human_attribute_name(:hair_color) %>:<br />
+		    <%= select_tag :hair_color, options_for_select(hair_color, params[:hair_color]), :include_blank => true, class: 'input-small' %>
+		</li>
+		<li class="search-menu-end">
+			<%= Model.human_attribute_name(:specialty) %>:<br />
+		    <%= select_tag :specialty, options_for_select(specialties, params[:specialty]), :include_blank => true, class: 'input-medium' %>
+		</li>
+	</ul>
+	
+</div>
+
+<div id="search-criteria-button" class="auto-size-block admin-inner-container">
+	<%= submit_tag "Buscar", :name => nil, class: 'input-btn-silver-light-4-column put-right' %>
+	<a id="search-criteria-adv-opts" href="#" onclick="javascript:return false;" class="put-right">Ativar Opções Avançadas »</a>
+</div>
+
+<div id="search-criteria-advanced" class="auto-size-block admin-inner-container">
+	
+	<ul class="auto-size-block put-list-inline search-menu">
+		<li>
+			<%= Model.human_attribute_name(:weight) %>:<br />
+		    <%= select_tag :weight_from, options_for_select(weights_from, params[:weight_from]), :include_blank => true, class: 'input-mini' %>
+		    &nbsp;até&nbsp;
+		    <%= select_tag :weight_to, options_for_select(weights_to, params[:weight_to]), :include_blank => true, class: 'input-mini' %>
+		</li>
+		<li>
+			<%= Model.human_attribute_name(:bust) %>:<br />
+		    <%= select_tag :bust_from, options_for_select(busts_from, params[:bust_from]), :include_blank => true, class: 'input-mini' %>
+		    &nbsp;até&nbsp;
+		    <%= select_tag :bust_to, options_for_select(busts_to, params[:bust_to]), :include_blank => true, class: 'input-mini' %>
+		</li>
+		<li>
+			<%= Model.human_attribute_name(:waist) %>:<br />
+		    <%= select_tag :waist_from, options_for_select(waists_from, params[:waist_from]), :include_blank => true, class: 'input-mini' %>
+		    &nbsp;até&nbsp;
+		    <%= select_tag :waist_to, options_for_select(waists_to, params[:waist_to]), :include_blank => true, class: 'input-mini' %>
+		</li>
+		<li>
+			<%= Model.human_attribute_name(:hip) %>:<br />
+		    <%= select_tag :hip_from, options_for_select(hips_from, params[:hip_from]), :include_blank => true, class: 'input-mini' %>
+		    &nbsp;até&nbsp;
+		    <%= select_tag :hip_to, options_for_select(hips_to, params[:hip_to]), :include_blank => true, class: 'input-mini' %>
+		</li>
+		<li class="search-menu-end">
+			<%= Model.human_attribute_name(:mannequin) %>:<br />
+		    <%= select_tag :mannequin_from, options_for_select(mannequins_from, params[:mannequin_from]), :include_blank => true, class: 'input-mini' %>
+		    &nbsp;até&nbsp;
+		    <%= select_tag :mannequin_to, options_for_select(mannequins_to, params[:mannequin_to]), :include_blank => true, class: 'input-mini' %>
+		</li>
+	</ul>
+	
+</div>

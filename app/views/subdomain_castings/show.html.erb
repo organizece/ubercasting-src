@@ -1,0 +1,29 @@
+<div id="casting-models-information" class="put-center">
+  
+	<!-- *********** CONTENT *********** -->
+	
+	<div id="casting-models-info-content" class="auto-size-block clear-margin put-relative">
+
+		<div id="content" class="full-column-width content-body">
+
+			<!-- *********** SUB HEADER *********** -->
+			
+			<div id="subheader" class="auto-size-block">
+				<h3 class="put-left header-base-title-text-small">Casting: <strong><%= @casting.name %></strong></h3>
+			
+				<ul class="put-right put-list-inline header-lists">
+					<li><%= link_to "Visualizar Castings", subdomain_castings_path(@website.subdomain), class: 'anchor-btn-silver-medium-base anchor-btn-silver-medium-return' %></li>
+				</ul>
+			</div>
+
+			<div class="content-split"></div>
+
+			<!-- *********** BODY *********** -->
+			
+			<div id="body" class="auto-size-block clear-margin">
+				<div id="search">
+					<%= render 'subdomain_model_castings/search' %>
+				</div>
+			</div>
+		</div>
+	</div>

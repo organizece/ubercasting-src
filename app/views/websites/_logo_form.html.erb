@@ -1,0 +1,64 @@
+<div id="website-logo-content" class="website-content-config">
+	
+	<h4>Upload de Logomarca:</h4>
+	<p>Recomendamos a utilização de imagens com o tamanho máximo de 600px por 150px na extensão .PNG (con fundo transparente). Se preferir, você pode subir imagens com as extensões: .JPG, .GIF, ou utilizar um link externo com o endereço da imagem desejada.</p>
+	
+	<div class="content-split"></div>
+	
+	<%= form_for @website do |f| %>
+		
+		<div id="logo-actions" class="auto-size-block">
+			
+			<h4>Fazer upload de arquivo</h4>
+			
+			<% if @website.logo %>
+		        
+				<div id='logo-update'>
+				
+				<% if @website.logo.url == "/logos/original/missing.png" %>
+					<%= image_tag "img-no-photo.jpg" %>
+				<% else %>
+					<%= image_tag @website.logo.url(:logo) if @website.logo %>
+				<% end %>
+				
+		          <a href="#" id="logo-update" class="btn-silver-light-fluid">Alterar</a>
+		
+		        </div>
+		        
+				<div id='logo-field' style='display:none;'>
+		          <%= f.label :logo, "Upload de logo" %>
+		          <%= f.file_field :logo %>
+		          <br/>ou<br/>
+		          <a href="#" id="logo-update-cancel" class="btn-silver-light-fluid">Cancelar</a>
+		        </div>
+		
+		      <% else %>
+		
+		        <%= f.label :logo %>
+		        <%= f.file_field :logo %>
+		
+		      <% end %>
+			
+		</div>
+		
+		<div class="or-horizontal-split">OU</div>
+		
+		<div id="logo-url" class="auto-size-block">
+			
+			<h4>Utilizar um endereço externo</h4>
+			
+			<%= f.label :logo_url %>
+		    <%= f.text_field :logo_url, :class => "input-txt-light-5-columns" %>
+		
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div class="website-content-btns">
+			<%= f.submit 'Salvar Configurações', class: 'input-btn-gold-liquid put-right' %>
+			<%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn-silver-light-fluid put-right' } %>
+		</div>
+		
+	<% end %>
+	
+</div>

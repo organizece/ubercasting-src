@@ -13,8 +13,15 @@ class CastingsController < ApplicationController
   # GET /castings/1.json
   def show
     @casting = Casting.find(params[:id])
-    @casting_models = ModelCasting.where(casting_id: @casting.id).joins(:model).
-      order(show_sort_column).page(params[:page]).per(per_page)
+    @casting_models = ModelCasting.where(casting_id: @casting.id).joins(:model)
+
+    @casting_models_ids = []
+    @casting_models.each do |casting_model|
+      @casting_models_ids << casting_model.id
+    end
+    @casting_models_ids = @casting_models_ids.join(',')
+  
+    @casting_models = @casting_models.order(show_sort_column).page(params[:page]).per(per_page)
   end
 
   # GET /castings/new
@@ -81,31 +88,29 @@ class CastingsController < ApplicationController
     end
   end
 
-  def index_sort_column
-    column = "created_at asc"
-
-    if params[:order_column]
-      sort = params[:order_column].split(';') 
-      column = sort[0] + ' ' + sort[1] if Casting.column_names.include?(sort[0])
+  def destroy_selected
+    castings = params[:castings].split(',') if params[:castings]
+    if castings
+      castings.each do |casting_id|
+        model_casting = Casting.find(Integer(casting_id))
+        model_casting.destroy
+      end
+    else
+      flash[:error] = 'Selecione ao menos um casting.'
     end
-    
-    column
-  end
 
-  def show_sort_column
-    column = "model_castings.created_at asc"
-
-    if params[:order_column]
-      sort = params[:order_column].split(';') 
-      column = sort[0] + ' ' + sort[1] if Model.column_names.include?(sort[0])
-      column = sort[0] + ' ' + sort[1] if ModelCasting.column_names.include?(sort[0])
+    respond_to do |format|
+      if flash[:error]
+        format.js
+      else
+        format.js { flash[:notice] = 'Castings removidos com sucesso.' }
+      end
     end
-    
-    column
   end
 
   def open_add_models
     @castings = Casting.where(agency_id: current_agency.id)
+    @customer_castings = CustomerCasting.where(agency_id: current_agency.id)
   end
 
   def save_add_models
@@ -149,6 +154,104 @@ class CastingsController < ApplicationController
         format.js { flash[:notice] = "Modelos adicionados ao casting #{casting.name} com sucesso." }
       end
     end
+  end
+
+  def remove_models
+    if params[:model_castings].blank?
+      flash[:error] = 'Selecione ao menos um modelo.'
+    else
+      model_castings = params[:model_castings].split(',')
+      model_castings.each do |model_casting_id|
+        model_casting = ModelCasting.find(Integer(model_casting_id))
+        model_casting.destroy
+      end
+    end
+
+    respond_to do |format|
+      if flash[:error]
+        format.js
+      else
+        format.js { flash[:notice] = 'Modelos removidos com sucesso.' }
+      end
+    end
+  end
+
+  def open_share
+    customers = AgencyCustomer.where(agency_id: current_agency.id)
+    @customers_names = Array.new
+    customers.each do |customer|
+      @customers_names.push(customer.name + ' - ' + customer.email)
+    end
+
+    @casting = Casting.find(params[:casting_id])
+  end
+
+  def share
+    casting = Casting.find(params[:casting_id])
+    agency_customer = AgencyCustomer.find_by_email(params[:customer])
+
+    if agency_customer
+      customer_casting = CustomerCasting.new
+      customer_casting.agency = current_agency
+      customer_casting.agency_customer = agency_customer
+      customer_casting.name = casting.name
+
+      if customer_casting.valid?
+        customer_casting.save
+      else
+        flash[:error] = customer_casting.errors
+      end
+
+      if !flash[:error] && customer_casting
+        casting.models.each do |model|
+          model_casting = ModelCustomerCasting.new
+          model_casting.customer_casting = customer_casting
+          model_casting.model = model
+
+          if model_casting.valid?
+            model_casting.save
+          else
+            flash[:error] += model_casting.errors
+          end
+        end
+        if !flash[:error]
+          CastingMailer.share_casting(customer_casting).deliver
+          flash[:notice] = 'Casting compartilhado com sucesso.'
+        end
+      end
+    else
+      flash[:error] = 'Casting invalido.'
+    end
+
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
+private
+
+  def index_sort_column
+    column = "created_at asc"
+
+    if params[:order_column]
+      sort = params[:order_column].split(';') 
+      column = sort[0] + ' ' + sort[1] if Casting.column_names.include?(sort[0])
+    end
+    
+    column
+  end
+
+  def show_sort_column
+    column = "model_castings.created_at asc"
+
+    if params[:order_column]
+      sort = params[:order_column].split(';') 
+      column = sort[0] + ' ' + sort[1] if Model.column_names.include?(sort[0])
+      column = sort[0] + ' ' + sort[1] if ModelCasting.column_names.include?(sort[0])
+    end
+    
+    column
   end
 
   def per_page

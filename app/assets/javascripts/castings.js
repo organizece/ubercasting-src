@@ -15,4 +15,22 @@ $(function() {
     $.get(this.action, $(this).serialize(), null, "script");
     return false;
   });
+  $("#casting_models_criteria #remove_selected").live("click", function() {
+    var link = this.href + '?model_castings='
+    $("input:checked").each(function(index, check){
+      link += $(check).val() + ",";
+    });
+    link = link.substring(0, link.length - 1) //Take out last ','
+    $.getScript(link);
+    return false;
+  });
+  $("#castings_criteria #remove_selected").live("click", function() {
+    var link = this.href + '?castings='
+    $("input:checked").each(function(index, check){
+      link += $(check).val() + ",";
+    });
+    link = link.substring(0, link.length - 1) //Take out last ','
+    $.getScript(link);
+    return false;
+  });
 });

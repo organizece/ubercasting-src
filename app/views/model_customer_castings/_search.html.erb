@@ -1,0 +1,13 @@
+<%= form_tag customer_casting_path(@casting), :method => 'get', :id => "casting_models_search" do %>
+	
+	<%= javascript_include_tag "composite-nav" %>
+	
+	<div id="casting_models_criteria" class="clear-margin-padding auto-size-block">
+		<%= render 'model_customer_castings/search_criteria' %>
+	</div>
+	
+	<div id="casting_models" class="full-column-width">
+		<%= render 'model_customer_castings/search_result' %>
+	</div>
+	
+<% end %>

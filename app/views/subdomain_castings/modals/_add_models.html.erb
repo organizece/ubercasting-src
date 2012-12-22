@@ -1,0 +1,67 @@
+<div id="modal-add-model" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  
+	<!-- ************** HEADER ************** -->
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 class="title-new-casting">Novo Casting</h3>
+	</div>
+
+	<%= form_tag subdomain_castings_add_models_path(params[:subdomain]), method: :post, remote: true do %>
+		
+	<%= hidden_field_tag :models, params[:models] %>
+	<%= hidden_field_tag :type, :create_and_add %>
+	
+	<!-- ************** BODY ************** -->
+
+	<div class="modal-body">
+		<ul id="new-casting-list" class="auto-size-block put-list-inline">
+			<li><%= text_field_tag :casting_name, nil, class: 'input-txt-light-6-columns' %></li>
+			<li><%= submit_tag 'Criar Novo Casting e Adicionar Modelo(s)', class: 'btn-silver-light-fluid' %></li>
+		</ul>
+	</div>
+		
+	<% end %>
+
+	<!-- ************** HEADER ************** -->
+  
+	<div class="modal-header">
+		<h3 class="header-base-title-text-small auto-size-block put-left">Adicionar Modelo <span>à Casting</span></h3>
+		<a href="#" id="display-agency-casting-list" class="auto-size-block put-right display-casting-list">Exibir Lista</a>
+	</div>
+	
+	<div class="content-split"></div>
+	
+	<%= form_tag subdomain_castings_add_models_path(params[:subdomain]), method: :post, remote: true do %>
+		
+	<%= hidden_field_tag :models, params[:models] %>
+	<%= hidden_field_tag :type, :add_only %>
+		
+	<!-- ************** BODY ************** -->
+
+	<div class="modal-body">
+		<div id="agency-casting-list" class="request-list">
+			<% for casting in @castings %>
+				<div class="request-line">
+					<ul class="requst-info">
+						<li><%= radio_button_tag :casting_id, casting.id %></li>
+						<li><%= casting.name %></li>
+					</ul>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	
+	<!-- ************** FOOTER ************** -->
+
+	<div class="modal-footer modal-footer-border">
+		<ul id="agency-casting-footer" class="auto-size-block put-list-inline put-right">
+			<li><%= submit_tag 'Adicionar', class: 'input-btn-gold-light-4-column' %></li>
+			<li><button class="btn-silver-light-fluid" data-dismiss="modal" aria-hidden="true">Cancelar</button></li>
+		</ul>
+	</div>
+	
+
+  <% end %>
+
+</div>
