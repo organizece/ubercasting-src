@@ -6,7 +6,11 @@
     </div>
     
     <div class="put-left form-block-4-columns field-isreq">
-      <%= f.input :email, required: true %>
+      <% if @agency_customer.new_record? %>
+        <%= f.input :email, required: true %>
+      <% else %>
+        <%= f.input :email, required: true, disabled: true %>
+      <% end %>
     </div>
     
     <div class="content-split"></div>
@@ -88,11 +92,15 @@
     <div class="content-split"></div>
 
     <div class="put-left form-block-4-columns">
-      <%= link_to 'Voltar', agency_customers_path, class: 'btn-silver-light-fluid'%>
+      <%= link_to 'Voltar', agency_customers_path, class: 'btn-silver-light-fluid' %>
     </div>
 
     <div class="put-left form-block-4-columns">
-      <%= f.submit 'Salvar e Enviar', class: 'input-btn-gold-light-4-column' %>
+      <% if @agency_customer.new_record? %>
+        <%= f.submit 'Salvar e Enviar', class: 'input-btn-gold-light-4-column' %>
+      <% else %>
+        <%= f.submit 'Salvar', class: 'input-btn-gold-light-4-column' %>
+      <% end %>
     </div>
     
   </div>
