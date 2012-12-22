@@ -176,6 +176,59 @@ class CastingsController < ApplicationController
     end
   end
 
+  def open_share
+    customers = AgencyCustomer.where(agency_id: current_agency.id)
+    @customers_names = Array.new
+    customers.each do |customer|
+      @customers_names.push(customer.name + ' - ' + customer.email)
+    end
+
+    @casting = Casting.find(params[:casting_id])
+  end
+
+  def share
+    casting = Casting.find(params[:casting_id])
+    agency_customer = AgencyCustomer.find_by_email(params[:customer])
+
+    if agency_customer
+      customer_casting = CustomerCasting.new
+      customer_casting.agency = current_agency
+      customer_casting.agency_customer = agency_customer
+      customer_casting.name = casting.name
+
+      if customer_casting.valid?
+        customer_casting.save
+      else
+        flash[:error] = customer_casting.errors
+      end
+
+      if !flash[:error] && customer_casting
+        casting.models.each do |model|
+          model_casting = ModelCustomerCasting.new
+          model_casting.customer_casting = customer_casting
+          model_casting.model = model
+
+          if model_casting.valid?
+            model_casting.save
+          else
+            flash[:error] += model_casting.errors
+          end
+        end
+        if !flash[:error]
+          CastingMailer.share_casting(customer_casting).deliver
+          flash[:notice] = 'Casting compartilhado com sucesso.'
+        end
+      end
+    else
+      flash[:error] = 'Casting invalido.'
+    end
+
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
 private
 
   def index_sort_column

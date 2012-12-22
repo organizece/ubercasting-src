@@ -26,6 +26,8 @@ Ubercasting::Application.routes.draw do
 
   resources :castings do
     match 'remove_models' => 'castings#remove_models', via: :get, as: :remove_models
+    match 'share' => 'castings#open_share', via: :get, as: :share
+    match 'share' => 'castings#share', via: :post, as: :share
   end
 
   resources :model_castings, only: [:destroy] do

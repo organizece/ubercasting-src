@@ -1,0 +1,22 @@
+<div id="modal-share-casting" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+
+  <!-- ************** HEADER ************** -->
+
+  <div class="modal-header">
+    <h3 class="title-new-casting">Compartilhar <span>Casting</span></h3>
+  </div>
+
+  <%= form_tag casting_share_path(@casting), method: :post, remote: true do |f| %>
+
+  <!-- ************** BODY ************** -->
+
+  <div class="modal-body">
+    <ul id="new-message-list" class="auto-size-block put-list-inline">
+      <input type="text" name="customer" data-provide="typeahead" data-items="4" data-source="<%= @customers_names %>" >
+      <li><%= submit_tag 'Compartilhar Casting', class: 'btn-silver-light-fluid' %></li>
+    </ul>
+  </div>
+
+  <% end %> 
+
+</div>
