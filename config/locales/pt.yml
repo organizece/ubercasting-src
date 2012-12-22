@@ -184,7 +184,9 @@ pt:
       casting: Casting
       casting_model: Casting/Modelo
       composite: Composite
+      customer: Cliente
       website: Website
+      agency_customer: Cliente
 
     attributes:
       agency:
@@ -286,6 +288,23 @@ pt:
         create_account: Criar Conta
         my_site: Meu Site/Blog
         be_a_model: Seja Modelo
+      agency_customer:
+        name: Nome
+        email: Email
+        cnpj: CNPJ
+        state_registration: Inscrição Estadual
+        municipal_registration: Inscrição Municipal
+        trade_name: Nome Fantasia
+        corporate_name: Razão Social
+        phone: Telefone
+        street: Rua
+        neighborhood: Bairro
+        complement: Complemento
+        cep: CEP
+        city: Cidade
+        state: Estado
+        country: País
+        notes: Anotações
 
     errors:
       template:

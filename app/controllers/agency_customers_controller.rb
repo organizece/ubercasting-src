@@ -6,6 +6,33 @@ class AgencyCustomersController < ApplicationController
       order(sort_column).page(params[:page]).per(per_page)
   end
 
+  def new
+    @agency_customer = AgencyCustomer.new
+  end
+
+  def create
+    @agency_customer = AgencyCustomer.new(params[:agency_customer])
+
+    @agency_customer.agency = current_agency
+    customer = Customer.find_by_email(@agency_customer.email)
+    if customer
+      @agency_customer.customer = customer
+    else
+      customer = Customer.new
+      customer.email = @agency_customer.email
+      customer.save!
+      @agency_customer.customer = customer
+    end
+
+    respond_to do |format|
+      if @agency_customer.save
+        format.html { redirect_to @casting, notice: 'Cliente criado com sucesso.' }
+      else
+        format.html { render action: "new" }
+      end
+    end
+  end
+
 private
 
   def sort_column
