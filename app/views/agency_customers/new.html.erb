@@ -19,19 +19,17 @@
         
         <span class="put-absolute admin-panel-header-icon admin-panel-header-icon-customer">&nbsp;</span>
         
-        <h3 class="header-base-title header-title-customer-list">Lista de Clientes</h3>
-        <p class="base-text">Navegue pelas listas de clientes já criados.</p>
+        <h3 class="header-base-title header-title-customer-list">Novo Cliente</h3>
+        <p class="base-text">Para inserir um novo cliente a base...</p>
 
-        <%= link_to 'Novo Cliente', new_agency_customer_path, class: 'btn-silver-light-fluid' %>
-        
       </div>
       
       <div class="content-split"></div>
       
       <div id="body" class="auto-size-block clear-margin">
         
-        <div id="search">
-          <%= render 'search' %>
+        <div id="form">
+          <%= render 'form' %>
         </div>
         
       </div>
@@ -41,3 +39,5 @@
   </div>
   
 </div>
+
+
