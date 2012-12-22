@@ -19,24 +19,20 @@
 	
 </div>
 
-<% if @visualization_mode == 'total_access' %>
-	<div id="search-casting-actions" class="auto-size-block actions-tab">
-		
-		<ul>
-			<li>
-				<span>Casting:</span>
-				<%= link_to "Adicionar Selecionados", subdomain_castings_add_models_path({subdomain: params[:subdomain]}), via: :get, id: :add_selected %>
-			</li>
-			<li>
-				<%= link_to "Adicionar Todos", subdomain_castings_add_models_path({subdomain: params[:subdomain], models: @models_ids}), remote: true, via: :get, id: :add_all_models %>
-			</li>
-			<li>
-				<%= link_to "Visualizar Castings", subdomain_castings_path %>
-			</li>
-		</ul>
-		
-	</div>
-<% end %>
+<div id="search-casting-actions" class="auto-size-block actions-tab">	
+	<ul>
+		<li>
+			<span>Casting:</span>
+			<%= link_to "Adicionar Selecionados", subdomain_castings_add_models_path({subdomain: params[:subdomain]}), via: :get, id: :add_selected %>
+		</li>
+		<li>
+			<%= link_to "Adicionar Todos", subdomain_castings_add_models_path({subdomain: params[:subdomain], models: @models_ids}), remote: true, via: :get, id: :add_all_models %>
+		</li>
+		<li>
+			<%= link_to "Visualizar Castings", subdomain_castings_path %>
+		</li>
+	</ul>
+</div>
 
 <div id="search-models-result" class="auto-size-block">
 	
@@ -64,7 +60,7 @@
 					<% else %>  
 					<li class="model-box-view-composite"><%= link_to 'Criar Composite', new_model_composite_path(model) %></li>
 					<% end %>
-					<li><h4><%= model.name %></h4></li>
+					<li><h4><%= link_to model.name, subdomain_model_path(@website.subdomain, model.id) %></h4></li>
 					<li class="model-box-add-composite"><%= link_to 'Adicionar à Casting', subdomain_castings_add_models_path({subdomain: params[:subdomain], models: model.id}), remote: true, via: :get %></li>
 				</ul>
 				

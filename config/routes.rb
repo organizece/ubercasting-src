@@ -71,6 +71,7 @@ Ubercasting::Application.routes.draw do
 
   # Subdomain routes to models pages
   match "/:subdomain/models" => "subdomain_models#index", via: :get, as: :subdomain_models
+  match "/:subdomain/models/:id" => "subdomain_models#show", via: :get, as: :subdomain_model
   match "/:subdomain/models/:id/composite" => "subdomain_models#composite", via: :get, as: :subdomain_model_composite
 
   # Subdomain routes to castings pages

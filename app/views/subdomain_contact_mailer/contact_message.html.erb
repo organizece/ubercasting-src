@@ -5,9 +5,13 @@
 	</div>
 	
 	<div id="mailer-content-container" style="width: 100%; height: auto; display: block; background-color: #ECECEC; color: #000; margin: 5px; padding: 3px;">
-		<p>Bem Vindo(a) <%= @resource.email %>!</p>
-		<p>Você pode confirmar o seu cadastro utilizando o link abaixo:</p>
-		<p><%= link_to 'Confirmar minha conta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+		<p>Você recebeu uma nova mensagem.</p>
+		<p>Detalhes da mensagem:</p>
+		<ul>
+			<li>De: <%= @contact_name %></li>
+			<li>E-mail: <%= @contact_mail %></li>
+			<li>Mensagem: <%= @contact_msg %></li>
+		</ul>	
 	</div>
 	
 	<hr />
