@@ -151,12 +151,7 @@ $(document).ready(function(){
 		if( hasGallery == 1 ){
 			
 			for( p in modelGalleryImg ){
-				$('div#model-photo-gallery ul#model-gallery li img:eq('+p+')').css("width","auto");
-				$('div#model-photo-gallery ul#model-gallery li img:eq('+p+')').css("height","auto");
-				$('div#model-photo-gallery ul#model-gallery li img:eq('+p+')').resizecrop({
-					width:140,
-					height:140
-				});
+				//$('div#model-photo-gallery ul#model-gallery li img:eq('+p+')').resizeToParent({parent: 'li'});
 			}
 			
 		}
@@ -500,6 +495,15 @@ $(document).ready(function(){
 		$("#agency_fax").mask("(99)9999-9999");
 	}
 	
+	function getMainPath() {
+		var fullURL = window.location.href;
+		var mainURL = fullURL.substring(0, fullURL.lastIndexOf("/"));
+		
+		if ( $('span.my-main-domain').length > 0 ) {
+			$('span.my-main-domain').append(mainURL+"/");
+		};
+	}
+	
 	btnFolderHover();
 	dropdownMenuNav();
 	searchAdvancedOpts();
@@ -509,6 +513,7 @@ $(document).ready(function(){
 	modelFormValidation();
 	checkModelAgeBox();
 	registerFlow();
+	getMainPath();
 
 	//loginPanelSetup();
 	

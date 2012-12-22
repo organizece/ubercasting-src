@@ -16,9 +16,27 @@ class SubdomainWebsitesController < ApplicationController
 
   end
   
+  def send_contact_us
+    @website = Website.find_by_subdomain(params[:subdomain])
+    
+    contact_msg = SubdomainContactMailer.contact_message(params[:contact_name], params[:contact_mail], params[:contact_msg], params[:contact_email_to])
+    contact_msg.deliver
+    
+    redirect_to subdomain_websites_contact_us_path, :notice => "E-mail enviado com sucesso!"
+  end
+  
   def be_model
     @website = Website.find_by_subdomain(params[:subdomain])
 
+  end
+  
+  def send_be_model
+    @website = Website.find_by_subdomain(params[:subdomain])
+    
+    contact_msg = SubdomainContactMailer.contact_message(params[:contact_name], params[:contact_mail], params[:contact_msg], params[:contact_email_to])
+    contact_msg.deliver
+    
+    redirect_to subdomain_websites_be_model_path, :notice => "Pedido enviado com sucesso!"
   end
 
 private

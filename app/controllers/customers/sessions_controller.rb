@@ -1,3 +1,3 @@
 class Customers::SessionsController < Devise::SessionsController
-  layout "main_page"
+  layout "customer_login"
 end

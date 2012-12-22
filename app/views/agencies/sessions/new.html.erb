@@ -1,17 +1,36 @@
-<h2>Sign in</h2>
+<%= stylesheet_link_tag    "internal" %>
 
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-  </div>
+<div id="main-content-container">
+	
+	<div id="content-wrapper">
+		
+		<div id="header" class="put-center">
+			<h2 id="login-panel-title">Painel de <span>Login</span></h2>
+		</div>
+		
+		<div id="body">
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
-  </div>
-<% end %>
+			<div class="login-panel">
 
-<%= render "devise/shared/links" %>
+				<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), class: 'form-horizontal') do |f| %>
 
-Agencia
+					<%= f.input :email, :required => false, :autofocus => true %>
+					<%= f.input :password, :required => false %>
+					<%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+
+					<%= f.submit "Login", :class => "input-btn-silver-light-4-column" %>
+
+				<% end %>
+
+				<div class="support-links">
+					<%= render "agencies/shared/links" %>
+				</div>
+			</div>
+
+			<div class="content-split"></div>
+
+		</div>
+		
+	</div>
+	
+</div>
