@@ -1,0 +1,127 @@
+$("#modals").empty();
+$("#modals").html("<%= escape_javascript(render('subdomain_models/modals/composite')) %>");
+$("#modal-casting-view").modal('show');
+$("#modal-casting-view").on('shown', function () {
+    
+  //Removes Focus From Modal
+  $("#modal-casting-view").blur();
+  
+  //Adjusts Composite Main Image
+  $('#modal-casting-view div#composite-cover img').fadeIn("fast");
+  $('#modal-casting-view div#composite-cover img').resizecrop({
+        width:400,
+        height:560,
+        vertical:"top"
+  });
+  
+  //Adjusts Composite Secondary Imgs
+  $('#modal-casting-view div.composite-thumbs img').fadeIn("fast");
+  $('#modal-casting-view div.composite-thumbs img').resizecrop({
+          width:190,
+          height:220,
+          vertical:"top"
+  });
+  
+  //Hides modal when "add casting" button is pressed
+  $('#modal-casting-view div.composite-template-select a#modal-add-casting').click(function(){
+    $("#modal-casting-view").modal('hide');
+  });
+  
+  //Composite Navigation Handler
+  function compositeNavHandler(){
+    $('#modal-casting-view div.modal-nav-bar a').click(function(){
+
+      var myID = $(this).attr("id");
+      var modelID = $("div.composite-open").index();
+      var allModelsCount = $("div.model-box").size();
+
+      if( myID.indexOf("right") != -1 ){
+
+        if( modelID < (allModelsCount - 1) ){
+          modelID++;
+        }else{
+          modelID = 0;
+        }
+
+      }else{
+
+        if( modelID > 0 ){
+          modelID--;
+        }else{
+          modelID = (allModelsCount - 1);
+        }
+
+      };
+
+      $("#modal-casting-view").modal('hide');
+      $('div.model-box:eq('+modelID+')').addClass('composite-open');
+      $("div.model-box:eq("+modelID+") li.model-box-view-composite a").trigger('click');
+
+    });
+  }
+  
+  //Copy Score From Modelo Box
+  function copyScore(){
+    
+    var castingContainer = $("div#casting-models-result").length;
+    
+    if( castingContainer > 0 ){
+      
+      $("div.composite-coverimg div.composite-template-select ul.btn-silver-list").remove();
+      
+      var currentScore = $("div.composite-open div.model-box-links ul li:eq(2) div").html();
+      $("div.composite-coverimg div.composite-template-select").html(currentScore);
+      $("div.composite-coverimg div.composite-template-select").fadeIn(400, starsNav);
+      
+    }else{
+      $("div.composite-coverimg div.composite-template-select").fadeIn(400);
+    };
+    
+  }
+  
+  //Apply Score Navigation to Copied Stars
+  function starsNav(){
+    
+    $("div.composite-coverimg div.composite-template-select ul li").click(function(){
+      var voteId = $(this).index();
+      $("div.composite-coverimg div.composite-template-select ul li a").removeClass("star-on");
+      for (var i = 0; i < (voteId+1); i++) {
+        $("div.composite-coverimg div.composite-template-select ul li:eq("+i+") a").addClass("star-on");
+      };
+    });
+    
+  }
+  
+  compositeNavHandler();
+  copyScore();
+
+});
+
+$("#modal-casting-view").on('hide', function () {
+  
+  function clearCompositeOpen(){
+    var modelBoxCount = $('div.model-box').size();
+    for (var i = 0; i < modelBoxCount; i++) {
+      $('div.model-box:eq('+i+')').removeClass('composite-open');
+    };
+  }
+  
+  clearCompositeOpen();
+  
+  //Deprecated Method
+  function updateScore(){
+    
+    var castingContainer = $("div#casting-models-result").length;
+    
+    if( castingContainer > 0 ){
+      
+      var currentID = $("div.composite-open").index();
+      var currentScore = $("div.composite-coverimg div.composite-template-select").html();
+      $("div#casting-models-result div.model-box:eq("+currentID+") div.model-box-links ul li:eq(2) div").remove();
+      $("div#casting-models-result div.model-box:eq("+currentID+") div.model-box-links ul li:eq(2)").html(currentScore);
+      
+    };
+    
+  }
+  
+});

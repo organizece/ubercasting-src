@@ -17,6 +17,14 @@ class SubdomainModelsController < ApplicationController
     @models = @models.order(sort_column + " " + sort_direction).page(params[:page]).per(per_page)
   end
 
+  def composite
+    @composite = Model.find(params[:id]).composite
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 private
   def subdomain_layout
     if params[:subdomain] && !params[:subdomain].empty?
