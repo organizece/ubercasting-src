@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6{ margin-top:0px; margin-bottom:0px; }
 }
 
 body{
-	background: #f4f4f4 url(admin/bg-container.jpg) left top repeat scroll;
+	background:url(theme-cubical/bg-body.png) repeat !important;
 	padding-top: 0px !important;
 }
 
@@ -1011,58 +1011,107 @@ span.btn-silver-light-fluid,
 /*  THEME BASIC ARCHITECTURE  *********/
 /**************************************/
 
+/*  HEADER  *********/
 div#header{
-	background:#fff;
 	margin-bottom: 7px;
 }
 
-div#logo-container img{
-	margin: 0 auto;
-	display: block;
+div#header-wrapper{
+	width: 950px;
+	border-bottom: 1px solid #8b8b8b;
+	margin: 50px auto;
 }
 
+/*  NAV  *********/
 div#nav-container{
-	margin: 5px auto;
-	border-bottom: 1px dotted #ccc;
+	width: 650px;
+	height: auto;
+	overflow: hidden;
+	display: block;
+	float: left;
+	padding-top: 30px;
 }
 
 div#nav-container ul li{
-	margin-right: 7px;
-	padding-right: 10px;
-	border-right: 1px solid #ddd;
+	margin-right:15px;
 }
 
-div#nav-container ul li.no-border{ border: none; }
-
 div#nav-container ul li a{
+	font: normal 12px Arial, Helvetica, sans-serif;
+	color:#1c1c1c;
+	text-transform:uppercase;
+	text-decoration:none;
+	padding-bottom:7px;
 	display: block;
-	padding: 4px 10px;
 }
 
 div#nav-container ul li a:hover,
 div#nav-container ul li a.active{
-	background-color: #08C;
-	border-radius: 4px;
-	color: #fff;
+	border-bottom:3px solid #8b8b8b;
 }
 
-div#content-container,
-div#footer{
-	background:#fff url(admin/bg-main-panel.jpg) left bottom repeat-x scroll;
-	margin-bottom: 7px;
+/*  LOGO  *********/
+div#logo-container{
+	float:right;
+	width: 110px;
+	height: auto;
+	overflow: hidden;
+	display: block;
+	padding-right: 20px;
 }
 
-div#footer-nav ul li{
-	font-size: 85%;
-	margin-right: 10px;
+/*  CONTENT  *********/
+div#content-container{
+	width: 100%;
+	background-color: #fff;
+	margin: 0 !important;
+	padding: 0 !important;
 }
+
+div#content-container-wrapper{
+	width: 960px;
+	display: block;
+	margin: 0 auto !important;
+}
+
+/*  FOOTER  *********/
+div#footer-wrapper{
+	width: 950px;
+	border-top: 1px solid #8b8b8b;
+	margin: 10px auto;
+}
+
+div#footer-wrapper ul li a{
+	font: normal 12px Arial, Helvetica, sans-serif;
+	color:#1c1c1c;
+	float:left;
+	padding:0 5px;
+	padding-right: 10px;
+	margin-right:5px;
+	margin-top:10px;
+	border-right: 1px solid #1c1c1c;
+	text-decoration:none;
+}
+
+div#footer-wrapper ul li a:hover{ text-decoration: underline; }
+
+div#footer-wrapper ul li:last-child a{ border-right: none; }
+
+div#footer-wrapper div#powered-by{
+	width: auto;
+	height: auto;
+	display: block;
+	margin-top: 10px;
+}
+
+div#footer-wrapper div#powered-by span{ font-size: 80%; }
 
 /**************************************/
 /*  HOME PAGE  ************************/
 /**************************************/
 
 div#home-content-container{
-	width: 92%;
+	width: 100%;
 }
 
 div.theme-home-model-box{
@@ -1073,10 +1122,6 @@ div.theme-home-model-box{
 	overflow: hidden;
 	position: relative;
 	margin: 0 1% 1% 1%;
-	border: 1px solid #333;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
 }
 
 div.theme-home-model-box img{
@@ -1126,6 +1171,25 @@ div#slide-photo-nav a:hover{
 
 div#slide-photo-nav a#btn-left{ float: left; }
 div#slide-photo-nav a#btn-right{ float: right; }
+
+/**************************************/
+/*  ABOUT PAGE  ************************/
+/**************************************/
+
+div#about-content-container div#about-content-info{
+	display: block;
+	width: 50%;	
+	height: auto;
+	overflow: hidden;
+	text-align: justify;
+}
+
+div#about-content-container div#about-content-picture{
+	display: block;
+	height: auto;
+	overflow: hidden;
+}
+
 
 /**************************************/
 /*  MODELS PAGE  **********************/

@@ -9,7 +9,7 @@
     <div class="composite-template-select auto-size-block">
       <ul class="btn-silver-list">
         <li><a href="javascript:return false;" class="offline">Salvar em PDF</a></li>
-        <li><%= link_to "Mais Informações", root_path %></li>
+        <li><%= link_to "Mais Informações", subdomain_model_path(@composite.model.agency.website.subdomain, @composite.model.id) %></li>
         <li><%= link_to 'Adicionar à Casting', subdomain_castings_add_models_path(params[:subdomain], {models: @composite.model.id}), remote: true, via: :get, :id=>"modal-add-casting" %></li>
       </ul>
       
@@ -92,7 +92,17 @@
     
     <div class="composite-brands">
       <span id="BrandAgendy" class="auto-size-block put-left">
-        Logo Agência &copy;
+        	<% if @composite.model.agency.website.logo.url == "/logos/original/missing.png" %>
+			
+				<% if @composite.model.agency.website.logo_url != "" %>
+					<%= image_tag @composite.model.agency.website.logo_url, {:style => "width:100px; height: auto;"} %>
+				<% else %>
+					Logomarca Aqui!
+				<% end %>
+				
+			<% else %>
+				<%= image_tag @composite.model.agency.website.logo.url(:logo), {:style => "width:100px; height: auto;"} %>
+			<% end %>
       </span>
       <span id="UberPowered" class="auto-size-block put-right">
         <%= image_tag "admin/uber-powered-by.png" %>

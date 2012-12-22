@@ -13,17 +13,15 @@
       <% end %>
     </div>
     
-    <div class="content-split"></div>
-    
     <div class="put-left form-block-4-columns">
       <%= f.input :cnpj %>
     </div>
+
+	<div class="content-split"></div>
     
     <div class="put-left form-block-4-columns">
       <%= f.input :state_registration %>
     </div>
-    
-    <div class="content-split"></div>
 
     <div class="put-left form-block-4-columns">
       <%= f.input :municipal_registration %>
@@ -43,17 +41,17 @@
       <%= f.input :phone %>
     </div>
     
-    <div class="content-split"></div>
-    
+	<div class="content-split"></div>
+
     <div class="put-left form-block-4-columns">
       <%= f.input :cep %>
     </div>
-    
+
     <div class="put-left form-block-4-columns-link">
       <a href="#" id="find_cep" class="anchor-btn-silver-light-4-column">Buscar CEP</a>
     </div>
-    
-    <div class="content-split"></div>
+
+	<div class="content-split"></div>
     
     <div class="put-left form-block-4-columns">
       <%= f.input :street %>
@@ -63,13 +61,11 @@
       <%= f.input :neighborhood %>
     </div>
 
-    <div class="content-split"></div>
-
     <div class="put-left form-block-2-columns">
       <%= f.input :complement %>
     </div>
     
-    <div class="put-left form-block-4-columns">
+    <div class="put-left form-block-2-columns">
       <%= f.input :city %>
     </div>
 
@@ -85,21 +81,19 @@
 
     <div class="content-split"></div>
 
-    <div class="put-left form-block-4-columns">
+    <div class="put-left auto-size-block padding-left">
       <%= f.input :notes %>
     </div>
 
     <div class="content-split"></div>
 
-    <div class="put-left form-block-4-columns">
-      <%= link_to 'Voltar', agency_customers_path, class: 'btn-silver-light-fluid' %>
-    </div>
+    <div class="auto-size-block bottom-ctrl-bar">
+    	<%= link_to 'Voltar', agency_customers_path, class: 'put-left  anchor-btn-silver-light-4-column'%>
 
-    <div class="put-left form-block-4-columns">
       <% if @agency_customer.new_record? %>
-        <%= f.submit 'Salvar e Enviar', class: 'input-btn-gold-light-4-column' %>
+        <%= f.submit 'Salvar e Enviar', class: 'put-right input-btn-gold-light-4-column' %>
       <% else %>
-        <%= f.submit 'Salvar', class: 'input-btn-gold-light-4-column' %>
+        <%= f.submit 'Salvar', class: 'put-right input-btn-gold-light-4-column' %>
       <% end %>
     </div>
     

@@ -12,11 +12,11 @@
 		<ul>
 			<li class="theme-active">
 				<%= f.radio_button :theme, :subdomain_default %>
-			    <%= f.label :theme_subdomain_default, 'Padrão' %>
+			    <%= f.label :theme_subdomain_default, 'Tema Default' %>
 			</li>
 			<li>
-				<input type="radio" name="website[theme]" value="Cubic Theme" id="cubic_theme">
-			    <%= f.label :theme_subdomain_default, 'Cubic Theme' %>
+				<%= f.radio_button :theme, :cubical_theme %>
+			    <%= f.label :theme_cubical_theme, 'Cubical Theme' %>
 			</li>
 		</ul>
 	</div>
@@ -27,7 +27,7 @@
 		</div>
 	</div>
 	
-	<div id="website-theme-config">
+	<div id="website-theme-config" class="offline">
 		
 		<div id="theme-config-header">
 			<ul>

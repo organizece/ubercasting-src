@@ -5,5 +5,31 @@ $("#modal-add-model").on('shown', function () {
   
 	//Removes Focus From Modal
 	$("#modal-add-model").blur();
+	
+	//Display Casting List Controller
+	$("#modals a.display-casting-list").click(function(event){
+		event.preventDefault();
+		
+		var myAction = $(this).attr("id");
+		var agencyCastingListContent = $("div.modal-body div#agency-casting-list");
+		
+		
+		// Verify if list agency list is empty
+		
+		if( $("div.modal-body div#agency-casting-list div.request-line").length == 0 ){ 
+			if( $("div.modal-body div#agency-casting-list p.casting-empty-list").length == 0 ){
+				agencyCastingListContent.append("<p class='casting-empty-list alert'>Esta lista está vazia.</p>");
+			};
+		};
+		
+		
+		// Display content according to link ID
+		
+		if ( myAction == "display-agency-casting-list" ){
+			$("div.modal-body div#agency-casting-list").slideToggle("fast");
+			$("div.modal-footer ul#agency-casting-footer").fadeToggle("fast");
+		}
+		
+	});
 
 });

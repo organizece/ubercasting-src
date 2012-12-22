@@ -68,6 +68,12 @@ div#container{
 .clear-list,
 .clear-list li{ list-style: none; }
 
+.base-margin{ margin: 10px; }
+.base-padding{ padding: 10px; }
+.base-margin-padding{ margin: 10px; padding: 10px; }
+
+.padding-left{ padding-left: 15px; }
+
 .put-list-inline,
 .put-list-inline li{ list-style: none; display: inline-block; margin: 10px 5px; }
 
@@ -211,7 +217,7 @@ h3.header-base-title-text-small span{ font-weight: bold; }
 
 p.base-text{
 	font-family: Arial, "MS Trebuchet", sans-serif;
-	font-size: 12px;
+	font-size: 95%;
 	color:#646464;
 	width:auto;
 	height:auto;
@@ -2334,6 +2340,17 @@ div.video-explain p{
 div#website-footer-content div#footer-config label,
 div#website-footer-content div#footer-config input{ float: left; margin-right: 10px; }
 div#website-footer-content textarea#website_footer{ width: 96%; height: 110px; }
+
+
+
+/**************************************/
+/*  CLIENTS MANAGEMENT  ***************/
+/**************************************/
+
+div#agency-customer-manager-content div#subheader a.put-absolute{ top: 1.5em; right: 2.5em; }
+div#agency-customer-manager-content div#subheader a.anchor-btn-silver-light-normal{ height: 28px; padding-top: 10px; }
+div#admin-agency-customer-insert textarea#agency_customer_notes{ width: 65em; height: 120px; }
+
 
 
 /**************************************/
