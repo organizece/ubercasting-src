@@ -1,0 +1,237 @@
+<div id="subdomain-model-information" class="full-column-container put-center">
+	
+	<div id="main-header" class="auto-size-block admin-panel-header">
+		
+		<h2 class="clear-margin-padding font-title">Visualizar Modelo: <span><%= @model.name %></span></h2>
+		
+	</div>
+	
+	<div class="content-split"></div>
+	
+	<div id="model-info-content" class="auto-size-block clear-margin put-relative">
+		
+		<div id="content" class="full-column-width content-body">
+			
+			<div id="body" class="auto-size-block clear-margin">
+				
+				<div id="model-primary-info" class="auto-size-block full-column-width admin-inner-container body-content-padding">
+					
+					<div id="model-profile-img" class="auto-size-block put-left">
+						<%= avatar_tag @model.avatar %>
+					</div>
+					
+					<div id="model-primary-info-content" class="put-left-margin">
+						<ul class="auto-size-block put-left">
+							<li class="first">
+								<strong><%= Model.human_attribute_name(:name) %></strong>:
+							    <%= @model.name %>
+							</li>
+							<li>
+								<strong><%= Model.human_attribute_name(:birthday) %>:</strong>
+							    <%= l @model.birthday %>
+							</li>
+							<li>
+								<strong><%= Model.human_attribute_name(:gender) %>:</strong>
+							    <%= t @model.gender, scope: :genders %>
+							</li>
+							<li>
+								<strong><%= Model.human_attribute_name(:biotype) %>:</strong>
+							    <%= t @model.biotype, scope: :biotypes %>
+							</li>
+							<li>
+								<strong><%= Model.human_attribute_name(:height) %>:</strong>
+							    <%= @model.height %>
+							</li>
+							<li>
+								<strong><%= Model.human_attribute_name(:eyes_color) %>:</strong>
+							    <%= @model.eyes_color %>
+							</li>
+						</ul>
+						
+						<ul class="auto-size-block put-left-margin">
+							<li class="first">
+								<strong><%= Model.human_attribute_name(:hair_color) %>:</strong>
+							    <%= @model.hair_color %>
+							</li>
+							<li>
+								<strong><%= Model.human_attribute_name(:bust) %>:</strong>
+							    <%= @model.bust %>
+							</li>
+							<li>
+								<strong><%= Model.human_attribute_name(:waist) %>:</strong>
+							    <%= @model.waist %>
+							</li>
+							<li>
+								<strong><%= Model.human_attribute_name(:hip) %>:</strong>
+							    <%= @model.hip %>
+							</li>
+							<li>
+								<strong><%= Model.human_attribute_name(:shoes_size) %>:</strong>
+							    <%= @model.shoes_size %>
+							</li>
+							<li>
+								<strong><%= Model.human_attribute_name(:mannequin) %>:</strong>
+							    <%= @model.mannequin %>
+							</li>
+						</ul>
+					</div>
+					
+				</div>
+				
+				<div class="content-split"></div>
+				
+				<% if @model.composite %>
+					
+					<div id="model-info-composite" class="auto-size-block admin-inner-container">
+					
+						<div class="model-show-inner-header">
+
+							<h3 class="put-left">Composite</h3>
+
+						</div>
+						
+						<div id="composite-template" class="auto-size-block composite-panel composite-type-01 ui-widget ui-helper-clearfix">
+
+							<div class="composite-coverimg put-left auto-size-block">
+
+								<div id="composite-cover" class="is-droppable auto-size-block put-relative">
+									<%= photo_tag(@model.composite.main_photo_id, :main_composite) %>
+								</div>
+
+								<div class="composite-template-select auto-size-block"></div>
+
+							</div>
+
+							<div class="composite-info put-right auto-size-block">
+
+								<div class="composite-header auto-size-block">
+									<h3><%= @model.name %></h3>
+									<ul class="pt-br put-list-inline">
+										<li>
+											<strong>Alt</strong>:
+										    <%= @model.height %>
+										</li>
+										<li>
+											<strong>Peso</strong>:
+										    <%= @model.weight %>
+										</li>
+										<li>
+											<strong>Manequim</strong>:
+										    <%= @model.mannequin %>
+										</li>
+										<li>
+											<strong>Olhos</strong>:
+										    <%= @model.eyes_color %>
+										</li>
+										<li>
+											<strong>Cabelo</strong>:
+										    <%= @model.hair_color %>
+										</li>
+									</ul>
+
+									<div class="content-split"></div>
+
+									<ul class="en-us put-list-inline">
+										<li>
+											<strong>Height</strong>:
+										    <%= @model.height %>
+										</li>
+										<li>
+											<strong>Weight</strong>:
+										    <%= @model.weight %>
+										</li>
+										<li>
+											<strong>Mannequin</strong>:
+										    <%= @model.mannequin %>
+										</li>
+										<li>
+											<strong>Eyes</strong>:
+										    <%= @model.eyes_color %>
+										</li>
+										<li>
+											<strong>Hair</strong>:
+										    <%= @model.hair_color %>
+										</li>
+									</ul>
+								</div>
+
+								<div class="composite-thumbs auto-size-block">
+
+									<div id="composite-01" class="is-droppable">
+										<%= photo_tag(@model.composite.first_sub_photo_id, :sub_composite) %>
+									</div>
+							        <div id="composite-02" class="is-droppable">
+										<%= photo_tag(@model.composite.second_sub_photo_id, :sub_composite) %>
+									</div>
+
+									<div class="content-split"></div>
+
+							        <div id="composite-03" class="is-droppable">
+										<%= photo_tag(@model.composite.third_sub_photo_id, :sub_composite) %>
+									</div>
+							        <div id="composite-04" class="is-droppable">
+										<%= photo_tag(@model.composite.fourth_sub_photo_id, :sub_composite) %>
+									</div>
+
+								</div>
+
+								<div class="composite-brands">
+									<span id="BrandAgendy" class="auto-size-block put-left">
+										Logo Agência &copy;
+									</span>
+									<span id="UberPowered" class="auto-size-block put-right">
+										<%= image_tag "admin/uber-powered-by.png" %>
+									</span>
+								</div>
+
+							</div>
+							
+						</div>
+					
+					</div>
+					
+					<div class="content-split"></div>
+					
+				<% end %>
+				
+				<div id="model-photo-gallery" class="auto-size-block">
+					
+					<div class="model-show-inner-header">
+					
+						<h3 class="put-left">Galeria de Fotos</h3>
+					
+					</div>
+					
+					<div class="content-split"></div>
+					
+					<ul id="model-gallery" class="gallery ui-helper-reset ui-helper-clearfix">
+
+				      <% for photo in @model.photos.each %>
+
+						<li class="is-draggable ui-widget-content ui-corner-tr">
+
+				          <%= image_tag photo.image.url(:search), alt: photo.image_file_name, id: photo.id %>
+
+				        </li>
+
+				      <% end %>
+
+				    </ul>
+					
+				</div>
+				
+				<div class="content-split"></div>
+				
+				<div class="auto-size-block bottom-ctrl-bar">
+					
+					<%= link_to 'Voltar', subdomain_models_path(@website.subdomain), :class => "put-left anchor-btn-silver-light-4-column" %>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</div>

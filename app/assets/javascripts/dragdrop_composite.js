@@ -27,6 +27,8 @@ $(function() {
 		    var imgW = $("img",this).width();
 		    var imgH = $("img",this).height();
 			
+			//$("img",this).resizeToParent();
+			
 			$("img",this).resizecrop({
 			      width:holderWidth,
 			      height:holderHeight,

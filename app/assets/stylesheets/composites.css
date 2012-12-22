@@ -78,12 +78,14 @@ form{ margin: 0px !important; }
 	padding: 0px !important;
 	background:none;
 	cursor: move;
+	position: relative;
+	overflow: hidden;
 	box-shadow: 0px 1px 1px 0px #898989;
 	-moz-box-shadow: 0px 1px 1px 0px #898989;
 	-webkit-box-shadow: 0px 1px 1px 0px #898989;
 }
 
-#model-gallery li.is-draggable img{ width: 140px; height: 140px; margin: 0px; }
+#model-gallery li.is-draggable img{ margin: 0px; width: 140px; height: 140px; }
 
 .composite-type-02{ background-color: #fff; border: 1px solid #CCC; }
 .composite-type-02 a,

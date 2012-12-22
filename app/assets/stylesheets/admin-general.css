@@ -195,6 +195,20 @@ h3.header-base-title-text{
 	font-weight: normal;
 }
 
+h3.header-base-title-text-small{
+	font-family:'Conv_Nexa',Sans-Serif;
+	font-size: 200%;
+	text-shadow: #FFF 0px 1px 1px;
+	margin: 10px 15px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	height:20px;
+	display: block;
+	font-weight: normal;
+}
+
+h3.header-base-title-text-small span{ font-weight: bold; }
+
 p.base-text{
 	font-family: Arial, "MS Trebuchet", sans-serif;
 	font-size: 12px;
@@ -1816,7 +1830,23 @@ ul#new-casting-list{
 
 div#casting-models-info-content div#subheader{ padding-bottom: 15px; }
 
+div#modal-add-model div.modal-header{ overflow: hidden; }
+div#modal-add-model div.modal-footer-border{ border-bottom: 1px solid #DDD; }
 
+div#modal-add-model div#agency-casting-list,
+div#modal-add-model div#customer-casting-list{
+	max-height: 150px !important;
+	overflow-y: auto !important;
+}
+
+div#modal-add-model div#agency-casting-list,
+div#modal-add-model div#customer-casting-list{ display: none; }
+
+div#modal-add-model ul#agency-casting-footer,
+div#modal-add-model ul#customer-casting-footer{ display: none; }
+
+div#modal-add-model a#display-agency-casting-list,
+div#modal-add-model a#display-customer-casting-list{ margin: 2em 1em 0px 0em; }
 
 /**************************************/
 /*  CONNECT WEB SITES  ****************/

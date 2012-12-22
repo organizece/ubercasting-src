@@ -1,6 +1,6 @@
 Ubercasting::Application.routes.draw do
 
-  devise_for :customers, :controllers => { :sessions => "agencies/sessions" }
+  devise_for :customers, :controllers => { :sessions => "customers/sessions" }
 
   devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations" }, :path_prefix => 'my'
 
@@ -67,6 +67,7 @@ Ubercasting::Application.routes.draw do
 
   # Subdomain routes to models pages
   match "/:subdomain/models" => "subdomain_models#index", via: :get, as: :subdomain_models
+  match "/:subdomain/models/:id" => "subdomain_models#show", via: :get, as: :subdomain_model
   match "/:subdomain/models/:id/composite" => "subdomain_models#composite", via: :get, as: :subdomain_model_composite
 
   # Subdomain routes to castings pages
