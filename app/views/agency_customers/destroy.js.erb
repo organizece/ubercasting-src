@@ -1,0 +1,5 @@
+$("#alert-msgs").empty();
+<% if flash[:notice] %>
+  $('#alert-msgs').prepend("<%= escape_javascript(render('utils/success_messages')) %>");
+<% end %>
+$("#agency_customers_search").submit();
