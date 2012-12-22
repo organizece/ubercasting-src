@@ -1854,6 +1854,23 @@ div#modal-add-model ul#customer-casting-footer{ display: none; }
 div#modal-add-model a#display-agency-casting-list,
 div#modal-add-model a#display-customer-casting-list{ margin: 2em 1em 0px 0em; }
 
+div#modal-share-casting{ height: 200px; }
+
+div#modal-share-casting div.modal-body ul#new-message-list{ padding-left: 20px; width: 850px; }
+div#modal-share-casting div.modal-body ul#new-message-list input{ width: 650px; }
+
+div.modal-share-msgs div#messages-list{ 
+	max-height: 200px; 
+	display: block; 
+	overflow-y: auto; 
+	border-bottom: 1px solid #999; 
+	padding-bottom: 10px; 
+	padding-right: 20px;
+}
+div.modal-share-msgs div#messages-list div.sender-message,
+div.modal-share-msgs div#messages-list div.receiver-message{ border-bottom: 1px dotted #a1a1a1; }
+div.modal-share-msgs ul#new-message-list textarea{ width: 800px; height:120px; display: block; }
+
 /**************************************/
 /*  CONNECT WEB SITES  ****************/
 /**************************************/

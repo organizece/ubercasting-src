@@ -3,7 +3,8 @@
   <!-- ************** HEADER ************** -->
 
   <div class="modal-header">
-    <h3 class="title-new-casting">Compartilhar <span>Casting</span></h3>
+    <h2 class="font-body-title">Compartilhar <span class="font-body-title-bold">Casting</span></h2>
+	<p>Digite o e-mail do cliente o qual você deseja compartilhar seu casting.</p>
   </div>
 
   <%= form_tag casting_share_path(@casting), method: :post, remote: true do |f| %>
@@ -12,7 +13,7 @@
 
   <div class="modal-body">
     <ul id="new-message-list" class="auto-size-block put-list-inline">
-      <input type="text" name="customer" data-provide="typeahead" data-items="4" data-source="<%= @customers_names %>" >
+      <li><input type="text" name="customer" data-provide="typeahead" data-items="4" data-source="<%= @customers_names %>" ></li>
       <li><%= submit_tag 'Compartilhar Casting', class: 'btn-silver-light-fluid' %></li>
     </ul>
   </div>

@@ -1252,6 +1252,16 @@ div#modal-add-model ul#agency-casting-footer li{ margin: 10px 5px; }
 
 div#modal-add-model a#display-agency-casting-list{ margin: 2em 1em 0px 0em; }
 
-
+div.modal-share-msgs div#messages-list{ 
+	max-height: 200px; 
+	display: block; 
+	overflow-y: auto; 
+	border-bottom: 1px solid #999; 
+	padding-bottom: 10px; 
+	padding-right: 20px;
+}
+div.modal-share-msgs div#messages-list div.sender-message,
+div.modal-share-msgs div#messages-list div.receiver-message{ border-bottom: 1px dotted #a1a1a1; }
+div.modal-share-msgs ul#new-message-list textarea{ width: 800px; height:120px; display: block; }
 
 

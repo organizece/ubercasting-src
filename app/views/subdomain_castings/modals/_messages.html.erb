@@ -1,4 +1,4 @@
-<div id="modal-add-model" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="modal-add-model" class="modal hide fade modal-share-msgs" tabindex="-1" role="dialog" aria-hidden="true">
   
   <!-- ************** HEADER ************** -->
   
@@ -15,12 +15,13 @@
     <div id="messages-list" class="request-list">
       <% for message in @messages %>
         <% if message.sender_type == AgencyCustomer.model_name %>
-          <div class="sender-message">
+          <div class="sender-message put-left">
             <h3><%= @customer.name %>:</h3>
             <p><%= message.content %></p>
           </div>
+			<div class="content-split"></div>
         <% else %>
-          <div class="receiver-message">
+          <div class="receiver-message put-right">
             <h3>
               <% if @agency.name %>
                 <%= @agency.name %>:
@@ -30,6 +31,7 @@
             </h3>
             <p><%= message.content %></p>
           </div>
+			<div class="content-split"></div>
         <% end %>
       <% end %>
     </div>
