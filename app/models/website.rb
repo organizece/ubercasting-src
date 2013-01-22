@@ -12,6 +12,6 @@ class Website < ActiveRecord::Base
 
   belongs_to :agency
 
-  validates :subdomain, uniqueness: true
+  validates :subdomain, uniqueness: true, allow_nil: true
   
 end

@@ -5,9 +5,10 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
     build_resource
 
         if resource.save
-          
-          @agency = resource
-          @agency.website = Website.new
+
+          website = Website.new
+          website.agency = resource
+          website.save!
           
           if resource.active_for_authentication?
             set_flash_message :notice, :signed_up if is_navigational_format?
