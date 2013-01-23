@@ -93,16 +93,10 @@
     <div class="composite-brands">
       <span id="BrandAgendy" class="auto-size-block put-left">
         	<% if @composite.model.agency.website.logo.url == "/logos/original/missing.png" %>
-			
-				<% if @composite.model.agency.website.logo_url != "" %>
-					<%= image_tag @composite.model.agency.website.logo_url, {:style => "width:100px; height: auto;"} %>
-				<% else %>
-					Logomarca Aqui!
-				<% end %>
-				
-			<% else %>
-				<%= image_tag @composite.model.agency.website.logo.url(:logo), {:style => "width:100px; height: auto;"} %>
-			<% end %>
+					  Logomarca Aqui!				
+			    <% else %>
+				    <%= image_tag @composite.model.agency.website.logo.url(:logo), {:style => "width:100px; height: auto;"} %>
+			    <% end %>
       </span>
       <span id="UberPowered" class="auto-size-block put-right">
         <%= image_tag "admin/uber-powered-by.png" %>

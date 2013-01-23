@@ -74,11 +74,7 @@
 				
 				<div id="logo-container" class="auto-size-block">
 					<% if  @website.logo.url(:logo) == "/logos/logo/missing.png" %>
-						<% if @website.logo_url != "" %>
-							<%= image_tag @website.logo_url, :class => "base-padding" %>
-						<% else %>
-							<p>Sua Logomarca Aqui</p>
-						<% end %>
+						<p>Sua Logomarca Aqui</p>
 					<% else %>
 						<%= image_tag @website.logo.url(:logo), :class => "base-padding" %>
 					<% end %>
