@@ -64,7 +64,7 @@ Ubercasting::Application.routes.draw do
 
   match "control_panel/" => "control_panel#show", as: :agency_root
 
-  match "customer_panel/" => "main_pages#who_we_are", as: :customer_root
+  match "customer_panel/" => "main_pages#home", as: :customer_root
 
   # Subdomain routes to static pages
   match "/:subdomain" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
