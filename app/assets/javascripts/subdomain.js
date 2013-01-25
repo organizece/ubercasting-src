@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap_aditions
-//= require jquery_resizecrop-103_min
 //= require jquery_scrollTo-min
 //= require jquery-resize-n-place
 //= require castings

@@ -19,6 +19,23 @@ class WebsitesController < ApplicationController
       end
     end
   end
+  
+  def guide
+    @website = Website.find(params[:id])
+    redirect_to agency_root_path if @website.agency != current_agency
+  end
+  
+  def guide_update
+    @website = Website.find(params[:id])
+    
+    respond_to do |format|
+      if @website.update_attributes(params[:website])
+        format.js
+      else
+        format.js
+      end
+    end
+  end
 
   def verify_subdomain
     website = Website.find_by_subdomain(params[:subdomain])

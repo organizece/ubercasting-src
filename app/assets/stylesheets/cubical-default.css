@@ -567,6 +567,7 @@ span.btn-silver-light-fluid,
 	height:256px;
 	display: block;
 	position: relative;
+	overflow: hidden;
 }
 
 .model-box .model-box-img img,
@@ -578,8 +579,10 @@ span.btn-silver-light-fluid,
 
 .model-box .model-box-img img{ 
 	z-index:999; 
-	width:100%; 
-	height:100%;
+	width: auto; 
+	height: auto;
+	max-width: none;
+	position: relative;
 }
 
 .model-box .model-box-img .model-box-checkbox{ 
@@ -992,17 +995,22 @@ span.btn-silver-light-fluid,
 	background: #f3f3f3 url(admin/bg-icon-request-action.jpg) left top no-repeat scroll;
 }
 
+.request-list .request-line .requst-action li.request-add a{
+	width: 23px;
+	background-position: left top;
+}
+
 .request-list .request-line .requst-action li.request-share a{
 	width: 23px;
-	background-position: top left;
+	background-position: -48px top;
 }
 .request-list .request-line .requst-action li.request-view a{
 	width: 28px;
-	background-position: -51px top;
+	background-position: -99px top;
 }
 .request-list .request-line .requst-action li.request-del a{
 	width: 14px;
-	background-position: -108px top;
+	background-position: -156px top;
 }
 
 
@@ -1024,7 +1032,7 @@ div#header-wrapper{
 
 /*  NAV  *********/
 div#nav-container{
-	width: 650px;
+	width: 750px;
 	height: auto;
 	overflow: hidden;
 	display: block;
@@ -1112,7 +1120,25 @@ div#footer-wrapper div#powered-by span{ font-size: 80%; }
 
 div#home-content-container{
 	width: 100%;
+	height: auto;
+	max-height: 900px;
+	position: relative;
+	overflow: hidden;
 }
+
+div#home-slider{ width: auto; height: auto; overflow: hidden; }
+
+div#slide-loader{ 
+	width: 100%; 
+	height: 100%; 
+	display: block; 
+	margin: 0 auto; 
+	background-color: #fff; 
+	position: absolute;
+	z-index:999;
+}
+
+div#slide-loader img{ width: 16px; height: 16px; display: block; margin: 50px auto; }
 
 div.theme-home-model-box{
 	width: 300px;
@@ -1125,6 +1151,8 @@ div.theme-home-model-box{
 }
 
 div.theme-home-model-box img{
+	width: auto;
+	max-width: none;
 	display: block;
 	position: relative;
 	border-radius: 5px;
@@ -1325,7 +1353,21 @@ div.modal-share-msgs div#messages-list{
 	padding-right: 20px;
 }
 div.modal-share-msgs div#messages-list div.sender-message,
-div.modal-share-msgs div#messages-list div.receiver-message{ border-bottom: 1px dotted #a1a1a1; }
-div.modal-share-msgs ul#new-message-list textarea{ width: 800px; height:120px; display: block; }
+div.modal-share-msgs div#messages-list div.receiver-message{ border-radius:22px; padding:15px; box-shadow: 2px 2px 5px #888; max-width:49%; margin-top:20px;}
+div.modal-share-msgs div#messages-list div.sender-message{background: #fff200;}
+div.modal-share-msgs div#messages-list div.receiver-message{background: #eee;}
+div.modal-share-msgs ul#new-message-list li{display: block;}
+div.modal-share-msgs ul#new-message-list textarea{ width: 880px; height:75px; display: block; margin-left:20px;}
+div.modal-share-msgs ul#new-message-list .margin-btn-right{margin-right:10px;}
+div.modal-share-msgs .chat-title-new-message{border:0; margin:0; height:15px; padding-top:0;}
+
+ul.requst-action li.chat-icon a{
+	background:url(admin/bg-icon-chat.png) no-repeat;
+	width:26px;
+	height:22px;
+	display:block;
+	text-indent:-10000px;	
+	margin:0 20px;
+}
 
 

@@ -36,7 +36,7 @@
             <div id="secundary-links">
                 
                 <ul id="secundary-links-list">
-                    <li class="login-container"><%= link_to 'Login', agency_root_path, :class => "btn-login" %></li>
+                    <li class="login-container"><%= link_to 'Login', agency_session_path, :class => "btn-login" %></li>
                 </ul>
                 
             </div>
@@ -73,6 +73,15 @@
    	</div>
     
     <div id="nav-block-push">&nbsp;</div>
+
+	<div id="alert-msgs">
+		<% flash.each do |name, msg| %>
+		    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+		    	<a class="close" data-dismiss="alert">×</a>
+		    	<%= msg %>
+		    </div>
+		<% end %>
+	</div>
 
 	<%= yield %>
 	

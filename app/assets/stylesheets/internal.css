@@ -206,6 +206,20 @@ span.btn-silver-light-fluid,
 }
 .field-error-msg p{ font-size: 11px !important; font-weight: bold; color: #b46464 !important; }
 
+/*  ALERTS  ****************************/
+.alert{
+	width: 640px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -200px 0px 0px -320px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	box-shadow:0px 5px 15px 0px #000;
+	-moz-box-shadow:0px 5px 15px 0px #000;
+	-webkit-box-shadow:0px 5px 15px 0px #000;
+}
+
 /**************************************/
 /*  GENERAL ITEMS  ********************/
 /**************************************/
@@ -408,7 +422,7 @@ div#body div#ajudar-content h2{
 	color: #fff22d;
 	line-height: 1.2em;
 	height:57px;
-	margin: 35px 0 20px 0;	
+	margin: 35px 0 0px 0;	
 }
 
 div#body div#ajudar-content span.ajudar-email{
@@ -444,10 +458,10 @@ div#body div#ajudar-content .btn-enviar-email{
 /*  LOGIN PANEL  **********************/
 /**************************************/
 
-h2#login-panel-title{ width: 34%; margin: 0 auto; }
+h2#login-panel-title{ width: 335px; margin: 0 auto; }
 
 div.login-panel{
-	width: 31%;
+	width: 300px;
 	height: auto;
 	display: block;
 	overflow: hidden;
@@ -488,7 +502,7 @@ div.login-panel a.support-links{ color: #fff; text-shadow: #000 0px 2px 1px; }
 /**************************************/
 
 div#plan-period{
-	width: 45%;
+	width: 445px;
 	height: 43px;
 	display: block;
 	margin: 20px auto;
@@ -503,7 +517,7 @@ div#plan-period ul,
 div#plan-period ul li{ list-style: none; }
 
 div#plan-period ul{
-	width: 97%;
+	width: 435px;
 	height: 35px;
 	display: block;
 	margin: 4px auto;
@@ -554,14 +568,14 @@ div#plan-period ul li a.period-active{
 
 div#plan-type{ 
 	position: relative;
-	width: 90%;
+	width: 100%;
 	height: 445px;
 	overflow: hidden;
 	margin: 10px auto;
 }
 
 div#plan-type div{
-	width: 34%;
+	width: 35%;
 	height: auto;
 	border-radius: 6px;
 	-moz-border-radius: 6px;
@@ -580,7 +594,7 @@ div#plan-type div{
 div#plan-type div:hover{ background-color: #cac9c9; }
 
 div#plan-type div#type-01{ left: 0; margin-top: 20px; }
-div#plan-type div#type-02{ left: 50%; z-index: 50; margin-left: -160px; background-color: #cac9c9; }
+div#plan-type div#type-02{ left: 32.5%; z-index: 50; background-color: #cac9c9; }
 div#plan-type div#type-03{ right: 0; margin-top: 20px; }
 
 div#plan-type div h3{
@@ -609,6 +623,8 @@ div#plan-type div ul{
 	width: auto; 
 	padding-left: 15px;
 }
+
+div#plan-type div#type-03 ul{ padding-left: 35px; }
 
 div#plan-type div ul li{ 
 	width: auto; 
@@ -652,7 +668,7 @@ div#plan-type div p span{ font-size: 70%; }
 
 div#plan-type div#type-02 p{ margin-top: 30%; }
 
-div#plan-type a.anchor-btn-gold-liquid{ margin: 35px auto; }
+div#plan-type a.anchor-btn-gold-liquid{ margin: 27px auto; }
 
 /**************************************/
 /*  REGISTRATION  *********************/

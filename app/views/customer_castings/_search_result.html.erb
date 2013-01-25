@@ -11,7 +11,8 @@
 			</ul>
 			
 			<ul class="requst-action">
-				<li><%= link_to 'Mensagens', customer_casting_messages_path(casting), title: 'Mensagens', remote: true %></li>
+				<li class="chat-icon"><%= link_to 'Mensagens', customer_casting_messages_path(casting), title: 'Mensagens', remote: true %></li>
+				<li class="request-icon request-add"><%= link_to 'Adicionar Modelos', models_path, title: 'Adicionar Modelos' %></li>
 				<li class="request-icon request-view"><%= link_to 'Visualizar', customer_casting_path(casting), title: 'Visualizar' %></li>
 				<li class="request-icon request-del"><%= link_to 'Excluir', customer_casting_path(casting), method: :delete, remote: true, title: 'Excluir' %></li>
 			</ul>
