@@ -7,6 +7,47 @@
 
 /*  GENERAL  ***********/
 
+@font-face{
+	font-family: 'Conv_Nexa';
+	src: url('fonts/Nexa_Light.eot');
+	src: url('fonts/Nexa_Light.ttf') format('truetype'), url('fonts/Nexa_Light.svg') format('svg'), url('fonts/Nexa_Light.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face{
+	font-family: 'Conv_Nexa';
+	src: url('fonts/Nexa_Bold.eot');
+	src: url('fonts/Nexa_Bold.ttf') format('truetype'), url('fonts/Nexa_Bold.svg') format('svg'), url('fonts/Nexa_Bold.otf') format('opentype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+.demo{
+	font-family:'Conv_Nexa',Sans-Serif;
+	width:800px;
+	margin:10px auto;
+	text-align:left;
+	border:1px solid #666;
+	padding:10px;
+}
+
+/*  ALERTS  ****************************/
+.alert{
+	width: 640px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -200px 0px 0px -320px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	box-shadow:0px 5px 15px 0px #000;
+	-moz-box-shadow:0px 5px 15px 0px #000;
+	-webkit-box-shadow:0px 5px 15px 0px #000;
+	z-index:999;
+}
+
+/*  LAYOUT  ****************************/
 div#main-content-container{
 	width:100%;
 	height:434px;
@@ -102,12 +143,14 @@ div#main-content-wrapper div#right-column h3{
 div#main-content-wrapper ul#content-list{
 	width:auto;
 	height:auto;
-	font-size:14px;
+	font-size:110%;
+	font-family:'Conv_Nexa',Sans-Serif;
 	color:#FFF;
 	font-weight:normal;
+	margin-top: 35px;
 }
 
-div#main-content-wrapper ul#content-list li{ margin-bottom: 2px; }
+div#main-content-wrapper ul#content-list li{ margin:15px 0px; }
 
 div#main-content-wrapper div#right-column a.btn-gold-experimentar{
 	width:443px;
@@ -175,10 +218,11 @@ div#bottom-content-wrapper div.bottom-column div.img-container{
 div#bottom-content-wrapper div.bottom-column div#folder01{ background:transparent url(home/bottom-folder-01.png) center top no-repeat scroll; }
 div#bottom-content-wrapper div.bottom-column div#folder02{ background:transparent url(home/bottom-folder-02.png) center top no-repeat scroll; }
 div#bottom-content-wrapper div.bottom-column div#folder03{ background:transparent url(home/bottom-folder-03.png) center top no-repeat scroll; }
+div#bottom-content-wrapper div.bottom-column div#folder04{ background:transparent url(home/bottom-folder-04.png) center top no-repeat scroll; }
 div#bottom-content-wrapper div.bottom-column div.folder-hover{ background-position: center bottom !important; }
 
 div#bottom-content-wrapper div.bottom-column p{ 
-	width:270px;
+	width:265px;
 	height:auto;
 	text-align:center;
 	display:block;

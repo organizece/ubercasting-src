@@ -1,7 +1,7 @@
 <div id="website-view-content" class="website-content-config">
 	
 	<h4>Modo de Visualização:</h4>
-	<p>Selecione qual o tipo de visualização de seu site. Note que cada uma delas pode afetar o desempenho do site com os clientes.</p>
+	<p>Selecione qual o tipo de visualização de seu site. Note que cada uma apresenta diferentes formas de utilização.</p>
 	
 	<div class="content-split"></div>
 	
@@ -11,7 +11,7 @@
 			<%= f.radio_button :visualization_mode, :open %>
 			<%= f.label :visualization_mode_open, 'Liberado' %>
 			<div class="content-split"></div>
-			<p>Nesse tipo de visualização, qualquer visitante, cadastrado ou não, pode fazer buscas e visualizar informações de seus modelos cadastrados.</p>
+			<p>Nessa opção, qualquer cliente, cadastrado ou não, poderá realizar buscas e visualizar informações de seus modelos cadastrados.</p>
 		</div>
 		
 		<div class="content-split"></div>
@@ -20,7 +20,8 @@
 			<%= f.radio_button :visualization_mode, :partially_restricted %>
 			<%= f.label :visualization_mode_partially_restricted, 'Parcialmente Restrito' %>
 			<div class="content-split"></div>
-			<p>Nessa visualização, visitantes podem fazer buscas e visualizar os modelos, porém não tem acesso a seus nomes e nem as informações cadastradas sobre ele. Note que a página "Criar Conta" deve estar ligada para que essa mudança tenha efeito.</p>
+			<p>Nessa opção, os clientes poderão fazer buscas e visualizar os modelos, porém não terão acesso aos dados completos  cadastrados.</p>
+			<p class="tip">* Note que a página "Criar Conta" deve estar ligada para que essa mudança tenha efeito, desta forma os seus clientes solicitarão acesso ao seu sistema.</p>
 		</div>
 		
 		<div class="content-split"></div>
@@ -29,7 +30,8 @@
 			<%= f.radio_button :visualization_mode, :restricted %>
 			<%= f.label :visualization_mode_restricted, 'Totalmente Restrito' %>
 			<div class="content-split"></div>
-			<p>Nessa visualização, visitantes podem fazer buscas e visualizar os modelos, porém não tem acesso a seus nomes e nem as informações cadastradas sobre ele. Note que a página "Criar Conta" deve estar ligada para que essa mudança tenha efeito.</p>
+			<p>Nessa opção, os clientes não poderão realizar buscas e visualizar os modelos sem a sua autorização. </p>
+			<p class="tip">* Note que a página "Criar Conta" deve estar ligada para que essa mudança tenha efeito, desta forma os seus clientes solicitarão acesso ao seu sistema.</p>
 		</div>
 		
 		<div class="content-split"></div>

@@ -1,0 +1,341 @@
+<div id="website-guide-container" class="put-center full-column-container">
+  
+	<!-- EXTERNAL HEADER -->
+	<div class="auto-size-block admin-panel-header">
+		<span class="icon-title icon-title-pencil put-left">&nbsp;</span>
+		<h2 class="put-left clear-margin-padding font-title">Passo-a-<strong>Passo</strong></h2>
+	</div>
+  
+	<div class="content-split"></div>
+
+	<!-- CONTENT CONTAINER -->
+	<div id="guide-content-container" class="auto-size-block clear-margin put-relative">
+
+		<div class="admin-panel-full-top clear-margin-padding">&nbsp;</div>
+
+		<!-- INTERNAL CONTENT -->
+		<div id="content" class="full-column-width content-body">
+
+			<!-- STEP LINE GUIDE -->
+			<div class="step-by-step step-active-01">
+				<div class="steps-line">&nbsp;</div>
+				<ul>
+					<li class="step-by-step-01">Step 01</li>
+					<li class="step-by-step-02">Step 02</li>
+					<li class="step-by-step-03">Step 03</li>
+					<li class="step-by-step-04">Step 04</li>
+					<li class="step-by-step-05">Step 05</li>
+				</ul>
+			</div>
+
+			<!-- INTERNAL HEADER -->
+			<div id="subheader01" class="auto-size-block admin-inner-container subheader" style="display:block">
+				<h2 class="font-body-title">Personalização do <strong>Sistema</strong></h2>
+				<p class="inner-header-base-text">Na etapa abaixo, você poderá entrar com o domínio (?) de sua agência e também fazer o upload de um arquivo de imagem contendo a sua logomarca, ou qualquer outra imagem que repsente a sua agência.</p>
+			</div>
+			
+			<div id="subheader02" class="auto-size-block admin-inner-container subheader" style="display:none">
+				<h2 class="font-body-title">Escolha do <strong>Tema</strong></h2>
+				<p class="inner-header-base-text">Com as opções abaixo você poderá escolher um tema para o seu ÜBER Site, selecionando o estilo que melhor combina com a sua agência.</p>
+			</div>
+			
+			<div id="subheader03" class="auto-size-block admin-inner-container subheader" style="display:none">
+				<h2 class="font-body-title">Configuração de <strong>Busca</strong></h2>
+				<p class="inner-header-base-text">Selecione qual o tipo de visualização do seu site. Note que cada uma delas pode afetar o desepenho de seu ÜBER Site para com os seus clientes.</p>
+			</div>
+			
+			<div id="subheader04" class="auto-size-block admin-inner-container subheader" style="display:none">
+				<h2 class="font-body-title">Inserção de <strong>Modelos</strong></h2>
+				<p class="inner-header-base-text">Navegue pelas esferas abaixo para entender melhor como funcionam as etapas de inserção de um novo modelo no sistema.</p>
+			</div>
+			
+			<div id="subheader05" class="auto-size-block admin-inner-container subheader" style="display:none">
+				<h2 class="font-body-title">Gerencie seu <strong>Casting</strong></h2>
+				<p class="inner-header-base-text">A busca por modelos conta com uma série de filtros que ajudam a tornar o resultado mais preciso e completo. Veja alguns exemplos abaixo de como realizar uma busca, criar castings e muito mais!</p>
+			</div>
+			
+			<div id="subheader06" class="auto-size-block admin-inner-container subheader" style="display:none">
+				<h2 class="font-body-title">Resumo das <strong>Funcionalidades</strong></h2>
+				<p class="inner-header-base-text">Parabéns! Você chegou ao fim do passo-a-passo inicial e está pronto para navegar pelo sistema. Veja abaixo um resumo de tudo o que vimos até agora e quais os próximos passos.</p>
+			</div>
+
+			<div class="content-split"></div>
+
+			<!-- INTERNAL BODY -->
+			<div id="body" class="auto-size-block clear-margin">
+				
+				<%= form_for @website, :remote => true, :url => website_guide_update_path, :method => "get" do |f| %>
+					
+					<!-- GUIDE STEP 01 -->
+					<div id="guide-step-01" class="auto-size-block guide-steps">
+						
+						<!-- GUIDE STEP 01 - DOMAIN -->
+						<div id="guide-domain" class="auto-size-block put-left">
+							<h4 class="guide-title">Escolha seu Domínio:</h4>
+							<p>Este será o caminho pelo qual os clientes poderão acessar o seu Über-site e seus modelos cadastrados.</p>
+
+							<div class="content-split"></div>
+
+							<div id="website-subdomain-input">
+								<span>www.ubercasting.com.br/</span>
+								<div class="content-split"></div>
+								<%= f.text_field :subdomain, :class => "input-txt-light-4-column put-left" %>
+							    <%= link_to 'Verificar', websites_verify_subdomain_path, remote: true, class: 'btn-silver-light-fluid put-left', id: 'verify_subdomain' %>
+							</div>
+
+						</div>
+						
+					</div>
+				
+					<!-- GUIDE STEP 02 -->
+					<div id="guide-step-02" class="auto-size-block guide-steps" style="display:none">
+						<h4 class="guide-title">Escolha de Tema:</h4>
+						<div class="content-split"></div>
+						
+						<div id="website-theme-input">
+							<ul>
+								<li class="theme-active">
+									<%= f.radio_button :theme, :subdomain_default %>
+								    <%= f.label :theme_subdomain_default, 'Tema Default' %>
+								</li>
+								<li>
+									<%= f.radio_button :theme, :cubical_theme %>
+								    <%= f.label :theme_cubical_theme, 'Cubical Theme' %>
+								</li>
+							</ul>
+						</div>
+
+						<div id="website-theme-preview">
+							<div id="website-theme-preview-thumb">
+								<%= image_tag "thumbs/01.jpg" %>
+							</div>
+						</div>
+					</div>
+					
+					<!-- GUIDE STEP 03 -->
+					<div id="guide-step-03" class="auto-size-block guide-steps" style="display:none">
+						<h4 class="guide-title">Modo de Visualização:</h4>
+						<p>Selecione qual o tipo de visualização de seu site. Note que cada uma delas pode afetar o desempenho do site com os clientes.</p>
+
+						<div class="content-split"></div>
+						
+						<div id="view-clear" class="auto-size-block website-view-block">
+							<%= f.radio_button :visualization_mode, :open %>
+							<%= f.label :visualization_mode_open, 'Liberado' %>
+							<div class="content-split"></div>
+							<p>Nesse tipo de visualização, qualquer visitante, cadastrado ou não, pode fazer buscas e visualizar informações de seus modelos cadastrados.</p>
+						</div>
+
+						<div class="content-split"></div>
+
+						<div id="view-partial-restrict" class="auto-size-block website-view-block">
+							<%= f.radio_button :visualization_mode, :partially_restricted %>
+							<%= f.label :visualization_mode_partially_restricted, 'Parcialmente Restrito' %>
+							<div class="content-split"></div>
+							<p>Nessa visualização, visitantes podem fazer buscas e visualizar os modelos, porém não tem acesso a seus nomes e nem as informações cadastradas sobre ele. Note que a página "Criar Conta" deve estar ligada para que essa mudança tenha efeito.</p>
+						</div>
+
+						<div class="content-split"></div>
+
+						<div id="view-total-restrict" class="auto-size-block website-view-block">
+							<%= f.radio_button :visualization_mode, :restricted %>
+							<%= f.label :visualization_mode_restricted, 'Totalmente Restrito' %>
+							<div class="content-split"></div>
+							<p>Nessa visualização, visitantes podem fazer buscas e visualizar os modelos, porém não tem acesso a seus nomes e nem as informações cadastradas sobre ele. Note que a página "Criar Conta" deve estar ligada para que essa mudança tenha efeito.</p>
+						</div>
+
+						<div class="content-split"></div>
+
+						<div class="alert-box video-explain">
+							<p>Confuso? <a href="#">Assista nosso vídeo</a> e entenda como este mecanismo funciona na prática.</p>
+						</div>
+					</div>
+					
+					<!-- GUIDE STEP 04 -->
+					<div id="guide-step-04" class="auto-size-block guide-steps" style="display:none">
+						
+						<div id="circle-step-01" class="auto-size-block circle-step">
+							<%= image_tag "admin/img-guide-step-01.png", :class => "auto-size-block put-left" %>
+							
+							<div class="auto-size-block put-left circle-step-content">
+								<h2 class="font-body-title">1. Informações <strong>Básicas</strong></h2>
+								<p>Os campos desta primeira etapa, em sua maioria, são de preenchimento obrigatório, pois são informações essênciais para o cadastro do modelos, como nome, data de nascimento, e outros.</p>
+							</div>
+						</div>
+						
+						<div id="circle-step-02" class="auto-size-block circle-step">
+							
+							<%= image_tag "admin/img-guide-step-02.png", :class => "auto-size-block put-right" %>
+							
+							<div class="auto-size-block put-right circle-step-content">
+								<h2 class="font-body-title">2. Atributos e <strong>Especialidades</strong></h2>
+								<p>Na segunda etapa do cadastro, é necessário informar atributos físicos do modelo, como alturae peso. Os campos não são obrigatórios, mas podem influenciar o resultado das buscas.</p>
+							</div>
+							
+						</div>
+						
+						<div id="circle-step-03" class="auto-size-block circle-step">
+							<%= image_tag "admin/img-guide-step-03.png", :class => "auto-size-block put-left" %>
+							
+							<div class="auto-size-block put-left circle-step-content">
+								<h2 class="font-body-title">3. Dados <strong>Gerais</strong></h2>
+								<p>Os campos presentes neste terceiro passo são informações extras, que podem facilitar na gestão de seus modelos. Os campos não são obrigatórios.</p>
+							</div>
+							
+						</div>
+						
+						<div id="circle-step-04" class="auto-size-block circle-step">
+							
+							<%= image_tag "admin/img-guide-step-04.png", :class => "auto-size-block put-right" %>
+							
+							<div class="auto-size-block put-right circle-step-content">
+								<h2 class="font-body-title">4. Upload de <strong>Imagens</strong></h2>
+								<p>Hora de criar a galeria de seu modelo. Faça o upload das imagens da galeria do modelo que está sendo cadastrado. Escolha as melhores, elas serão importantes para fechar o ciclo de cadastro.</p>
+							</div>
+							
+						</div>
+						
+						<div id="circle-step-05" class="auto-size-block circle-step">
+							<%= image_tag "admin/img-guide-step-05.png", :class => "auto-size-block put-left" %>
+							
+							<div class="auto-size-block put-left circle-step-content">
+								<h2 class="font-body-title">5. Seleção de <strong>Composite</strong></h2>
+								<p>Por fim, com as fotos do modelo que você acabou de inserir no sistema, monte seu composite personalizado e escolha uma das fotos para ser aplicada como foto de perfil.</p>
+							</div>
+							
+						</div>
+						
+						<div id="circle-step-button" class="auto-size-block circle-step">
+							<%= link_to "Adicionar um Modelo", new_model_path, :class => "anchor-btn-silver-light-4-column put-right", :target => "_blank" %>
+						</div>
+					
+					</div>
+					
+					<!-- GUIDE STEP 05 -->
+					<div id="guide-step-05" class="auto-size-block guide-steps" style="display:none">
+						
+						<div id="circle-step-05-01" class="auto-size-block circle-step">
+							<%= image_tag "admin/img-guide-search.png", :class => "auto-size-block put-left" %>
+							
+							<div class="auto-size-block put-left circle-step-content">
+								<h2 class="font-body-title">1. Busque <strong>Modelos</strong></h2>
+								<p>A busca de modelos é possui filtros específicos que tornam a sua busca mais completa e precisa. Configure suas buscas utilizando filtros como:<br />
+									Sexo - Idade - Manequim - Cor dos Olhos - Cor do Cabelo, e opções avançadas.</p>
+							</div>
+							
+						</div>
+						
+						<div id="circle-step-05-02" class="auto-size-block circle-step">
+							
+							<%= image_tag "admin/img-guide-group.png", :class => "auto-size-block put-right" %>
+							
+							<div class="auto-size-block put-right circle-step-content">
+								<h2 class="font-body-title">2. Monte <strong>Castings</strong></h2>
+								<p>A partir do resultado das buscas, você poder selecionar os modelos desejados (ou todos eles) e adicioná-los a um novo casting ou a um casting já existente.</p>
+							</div>
+							
+						</div>
+						
+						<div id="circle-step-05-03" class="auto-size-block circle-step">
+							<%= image_tag "admin/img-guide-cloud.png", :class => "auto-size-block put-left" %>
+							
+							<div class="auto-size-block put-left circle-step-content">
+								<h2 class="font-body-title">3. Compartilhe o <strong>Resultado</strong></h2>
+								<p>Além de criar e armazenar CASTINGS, você também pode compartilhá-los facilmente com a sua base de clientes, tudo através de uma interface amigável e fácil de usar.</p>
+							</div>
+							
+						</div>
+						
+						
+					</div>
+					
+					<!-- GUIDE STEP 06 - RESUMO -->
+					<div id="guide-step-06" class="auto-size-block guide-steps" style="display:none">
+						
+						<div class="summary-block">
+							<h4 class="guide-title">1. Personalização</h4>
+							<p>Inserção do nome da agência que também será aplicada para o nome de domínio de seu ÜBER site.</p>
+
+							<div class="website-content-btns">
+								<%= link_to "Configurar Novamente", "#", :class => "btn-silver-light-fluid put-right return-to-step", :id => "back-step-0" %>
+							</div>
+						</div>
+						
+						<div class="summary-block">
+							<h4 class="guide-title">2. Escolha do Tema</h4>
+							<p>Escolha e configure o tema de seu ÜBER Site, selecionando o estilo que melhor combina com a sua agência, ou personalizando os todos os itens do seu jeito.</p>
+
+							<div class="website-content-btns">
+								<%= link_to "Configurar Novamente", "#", :class => "btn-silver-light-fluid put-right return-to-step", :id => "back-step-1" %>
+							</div>
+						</div>
+						
+						<div class="summary-block">
+							<h4 class="guide-title">3. Configuração de Busca</h4>
+							<p>Selecione qual o tipo de visualização de seu site. Note que cada uma delas pode afetar o desempenho de seu ÜBER site com os clientes.</p>
+
+							<div class="website-content-btns">
+								<%= link_to "Configurar Novamente", "#", :class => "btn-silver-light-fluid put-right return-to-step", :id => "back-step-2" %>
+							</div>
+						</div>
+						
+						<div class="summary-block">
+							<h4 class="guide-title">4. Inserção de Modelos</h4>
+							<p>Explicação do processo de inserção dos modelos dentro do sistema. Review de todos os passos necessários para cadastrar um novo modelo.</p>
+
+							<div class="website-content-btns">
+								<%= link_to "Visualizar Fluxo", "#", :class => "btn-silver-light-fluid put-right return-to-step", :id => "back-step-3" %>
+							</div>
+						</div>
+						
+						<div class="summary-block">
+							<h4 class="guide-title">5. Busca de Modelos</h4>
+							<p>A busca por modelos conta com uma série de filtros que ajudam a tornar o resultado mais preciso e completo. Visualização de fluxo de busca, criação de CASTINGS e seu compartilhamento.</p>
+
+							<div class="website-content-btns">
+								<%= link_to "Visualizar Fluxo", "#", :class => "btn-silver-light-fluid put-right return-to-step", :id => "back-step-4" %>
+							</div>
+						</div>
+						
+						<div class="summary-block">
+							<h4 class="guide-title">Ajuda e Suporte</h4>
+							<p>Caso você tenha dúvidas ou precise de suporte na utilização das ferramentas de nossos sistema, fique a vontade para entrar em contato conosco através dos e-mails:</p>
+
+							<ul>
+								<li><a href="mailto:contato@ubercasting.com?subject=[UBER] - Contato">contato@ubercasting.com</a></li>
+								<li><a href="mailto:ajuda@ubercasting.com?subject=[UBER] - Ajuda">ajuda@ubercasting.com</a></li>
+								<li><a href="mailto:suporte@ubercasting.com?subject=[UBER] - Suporte">suporte@ubercasting.com</a></li>
+							</ul>
+							
+						</div>
+						
+						<div class="summary-block">
+							<h4 class="guide-title">Próximos Passos</h4>
+							<p>Comece a utilizar o sistema agora mesmo utilizando os links abaixo:</p>
+							
+							<div class="content-split"></div>
+
+							<%= link_to "Ir Para o Painel de Controle", agency_root_path, :class => "btn-silver-light-fluid put-left" %>
+							<%= content_tag :a, 'Ver ÜBER Site', { href: "/#{@website.subdomain}/home", class: 'anchor-btn-gold-liquid put-left', target: "_blank" } %>
+							
+						</div>
+						
+					</div>
+					
+					<!-- INTERNAL BUTTON BAR -->
+					<div class="auto-size-block bottom-ctrl-bar">
+						<a id="guide-btn-back" href="#" class="put-left anchor-btn-silver-light-4-column">Voltar</a>
+						<a id="guide-btn-go" class="put-right anchor-btn-gold-light-4-column" href="#">Continuar</a>
+						<%= f.submit 'Finalizar', class: 'input-btn-gold-light-4-column put-right', :id => "guide-btn-save" %>
+						<span class="gif-loader put-right"><%= image_tag "admin/ajax-loader.gif" %></span>
+					</div>
+				
+				<% end %>
+				
+			</div>
+
+		</div>
+
+	</div>
+  
+</div>

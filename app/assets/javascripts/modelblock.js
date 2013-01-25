@@ -11,6 +11,20 @@ $(document).ready(function(){
 		});
 	}
 	
+	function searchSetupModelAvatar(){
+		var hasModelResult = $('div#search-models-result').length;
+		var hasCastingResult = $('div#casting-models-result').length;
+		
+		if ( hasModelResult > 0 ) {
+			$('#search-models-result .model-box .model-box-img img').resizeToParent();
+		};
+		
+		if ( hasCastingResult > 0 ) {
+			$('#casting-models-result .model-box .model-box-img img').resizeToParent();
+		};
+	}
+	
 	modelBlockMoreLinks();
+	searchSetupModelAvatar();
 	
 });

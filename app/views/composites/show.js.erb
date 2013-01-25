@@ -8,19 +8,11 @@ $("#modal-casting-view").on('shown', function () {
 	
 	//Adjusts Composite Main Image
 	$('#modal-casting-view div#composite-cover img').fadeIn("fast");
-	$('#modal-casting-view div#composite-cover img').resizecrop({
-	      width:400,
-	      height:560,
-	      vertical:"top"
-	});
+	$('#modal-casting-view div#composite-cover img').resizeToParent();
 	
 	//Adjusts Composite Secondary Imgs
 	$('#modal-casting-view div.composite-thumbs img').fadeIn("fast");
-	$('#modal-casting-view div.composite-thumbs img').resizecrop({
-		      width:190,
-		      height:220,
-		      vertical:"top"
-	});
+	$('#modal-casting-view div.composite-thumbs img').resizeToParent();
 	
 	//Hides modal when "add casting" button is pressed
 	$('#modal-casting-view div.composite-template-select a#modal-add-casting').click(function(){
