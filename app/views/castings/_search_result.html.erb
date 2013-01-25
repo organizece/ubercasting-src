@@ -9,6 +9,7 @@
 			</ul>
 			
 			<ul class="requst-action">
+				<li class="request-icon request-add"><%= link_to 'Adicionar Modelos', models_path, title: 'Adicionar Modelos' %></li>
 				<li class="request-icon request-share"><%= link_to 'Compartilhar', casting_share_path(casting), title: 'Compartilhar', remote: true %></li>
 				<li class="request-icon request-view"><%= link_to 'Visualizar', casting_path(casting), title: 'Visualizar' %></li>
 				<li class="request-icon request-del"><%= link_to 'Excluir', casting_path(casting), method: :delete, remote: true, title: 'Excluir', :confirm => "Tem certeza que deseja excluir este modelo?" %></li>

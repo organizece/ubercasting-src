@@ -30,7 +30,10 @@ form{ margin: 0px !important; }
 	font-size: 10px;
 	color: #ccc;
 	border: none;
+	position: relative;
 }
+
+.composite-coverimg #composite-cover img{ margin: 0px; position: relative; width: auto; max-width: none; }
 
 .composite-coverimg .composite-template-select{ margin: 12px 0px 0px 12px; }
 .composite-coverimg .composite-template-select label{ font-size: 16px; font-weight: normal; color: #fff; padding-top: 5px; }
@@ -50,7 +53,13 @@ form{ margin: 0px !important; }
 	border: none!important;
 	background-color: #fff;
 	float: left;
+	font-size: 80%;
+	color:#999;
+	position: relative;
+	overflow: hidden;
 }
+
+.composite-thumbs .is-droppable img{ margin: 0px; position: relative; width: auto; max-width: none; }
 
 .composite-brands{ width: auto; height: auto; overflow: hidden; margin-top: 30px; }
 .composite-brands span{ font-size: 18px; padding: 5px 0px; }
@@ -85,7 +94,7 @@ form{ margin: 0px !important; }
 	-webkit-box-shadow: 0px 1px 1px 0px #898989;
 }
 
-#model-gallery li.is-draggable img{ margin: 0px; width: 140px; height: 140px; }
+#model-gallery li.is-draggable img{ margin: 0px; position: relative; width: auto; max-width: none; }
 
 .composite-type-02{ background-color: #fff; border: 1px solid #CCC; }
 .composite-type-02 a,

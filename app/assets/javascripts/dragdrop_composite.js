@@ -2,7 +2,7 @@ $(function() {
 
   // there's the gallery and the trash
   var $gallery = $( "#model-gallery" ),
-    $composite = $( "#composite-template" );
+      $composite = $( "#composite-template" );
     
   // let the gallery items be draggable
   $( "li", $gallery ).draggable({
@@ -21,19 +21,7 @@ $(function() {
 		    $(this).text(" ");
 		    $('<img src="'+imgSrc+'" alt="Model Photo" style="display:none;">').appendTo($(this));
 
-		    var holderWidth = $(this).width();
-		    var holderHeight = $(this).height();
-
-		    var imgW = $("img",this).width();
-		    var imgH = $("img",this).height();
-			
-			//$("img",this).resizeToParent();
-			
-			$("img",this).resizecrop({
-			      width:holderWidth,
-			      height:holderHeight,
-			      vertical:"top"
-			    });
+		    $("img",this).resizeToParent();
 
 		    $("img",this).fadeIn("fast");
 
@@ -59,7 +47,6 @@ $(function() {
 
 	
 	// IF HIDDEN INPUTS HAVE VALUES, PLACE IMGS INSIDE COMPOSITE
-	
 	function checkAndPlaceImgs(){
 		
 		var inputTotal = $('div#composite-template input').size();
@@ -74,7 +61,6 @@ $(function() {
 		
 		
 		/* COLLECTS AND STORES ALL INPUT HIDDEN VALUES */
-		
 		for (var i = 0; i < inputTotal; i++) {
 			inputValue[i] = $('div#composite-template input:eq('+i+')').val();
 		};
@@ -82,14 +68,12 @@ $(function() {
 		if( inputValue[0] != "" ){
 			
 			/* COLLECTS AND STORES ALL COMPOSITE CONTAINER DIVs */
-
 			for (var p = 0; p < inputTotal; p++) {
 				divContainer[p] = $('div#composite-template div.is-droppable:eq('+p+')');
 			};
 
 
 			/* FOR EACH IMG ON THE COMPOSITE, CHECK THE IMG GALLERY ARRAY SEARCHING FOR THE CORRESPONDENT IMG */
-
 			for (var m = 0; m < imgSrc.length; m++) {
 
 				for (var j = 0; j < allImgsCount; j++) {
@@ -107,19 +91,11 @@ $(function() {
 			};
 
 			/* PLACE THE IMAGES INSIDE THE COMPOSITE */
-
 			for (var d = 0; d < inputTotal; d++) {
 				divContainer[d].text("");
 				divContainer[d].append('<img src="'+imgSrc[d]+'" alt="Model Photo" height="10">');
 
-				var myImgW = $("img",divContainer[d]).width();
-				var myImgH = $("img",divContainer[d]).height();
-
-				$("img",divContainer[d]).resizecrop({
-				      width:divContainer[d].width(),
-				      height:divContainer[d].height(),
-				      vertical:"top"
-				    });
+				$("img",divContainer[d]).resizeToParent();
 			};
 			
 		}
@@ -127,7 +103,6 @@ $(function() {
 	}
 
 	// CHANGE COMPOSITE TEMPLATE
-	
 	function setupCompositeTemplate(){
 		$('select#template-composite').change(function(event) {
 			
@@ -152,7 +127,16 @@ $(function() {
 		});
 	}
 	
+	//COMPOSITE IMAGE GALLERY
+	function setupCompositeImgGallery(){
+		var hasGallery = $('div#container-composite ul#model-gallery').length;
+		if ( hasGallery > 0 ){
+			$('div#container-composite ul#model-gallery li.is-draggable img').resizeToParent({parent: 'li.is-draggable'});
+		};
+	}
+	
 	checkAndPlaceImgs();
 	setupCompositeTemplate();
+	setupCompositeImgGallery();
   
 });

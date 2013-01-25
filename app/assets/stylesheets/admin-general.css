@@ -178,6 +178,7 @@ h2.font-body-title{
 	text-shadow: #FFF 0px 1px 1px;
 	display: block;
 	font-weight: normal;
+	margin-left: 17px;
 }
 
 h2 span.font-body-title-bold{ font-weight: bold; }
@@ -592,6 +593,23 @@ span.btn-silver-light-fluid,
 	-webkit-box-shadow: 0px 1px 1px 0px #bab78a;
 }
 
+.anchor-btn-gold-liquid{
+	width:auto;
+	height:28px;
+	padding: 7px 10px 0px 10px; 
+	display: block;
+	border: 1px solid #807a21;
+	background:#fff url(admin/btn-bg-gold-liquid.jpg) left bottom repeat-x scroll !important;
+	color: #000;
+	font-size: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: #fff 0px 2px 1px;
+	box-shadow: 0px 1px 1px 0px #bab78a;
+	-moz-box-shadow: 0px 1px 1px 0px #bab78a;
+	-webkit-box-shadow: 0px 1px 1px 0px #bab78a;
+}
+
 /* Button Icons */
 .btn-icon-delete{
 	width: 14px;
@@ -656,7 +674,8 @@ span.btn-silver-light-fluid,
 
 
 /* TIPS */
-span.tip{ font-size: 80%; margin: -15px 0px 0px 5px; display: block; }
+span.tip,
+p.tip{ font-size: 80% !important; margin: -15px 0px 0px 5px; display: block; }
 
 
 /*  SPAN ICONS ELEMENTS  ****************************/
@@ -683,6 +702,11 @@ span.icon-title-cloud{
 	background-position: -53px top;
 }
 
+span.icon-title-pencil{
+	width:29px;
+	background-position: -81px top;
+}
+
 
 /*  MODEL BLOCKS  ****************************/
 
@@ -699,6 +723,7 @@ span.icon-title-cloud{
 	height:256px;
 	display: block;
 	position: relative;
+	overflow: hidden;
 }
 
 .model-box .model-box-img img,
@@ -710,8 +735,10 @@ span.icon-title-cloud{
 
 .model-box .model-box-img img{ 
 	z-index:999; 
-	width:100%; 
-	height:100%;
+	width: auto; 
+	height: auto;
+	max-width: none;
+	position: relative;
 }
 
 .model-box .model-box-img .model-box-checkbox{ 
@@ -1262,19 +1289,74 @@ span.icon-title-cloud{
 	background: #f3f3f3 url(admin/bg-icon-request-action.jpg) left top no-repeat scroll;
 }
 
-.request-list .request-line .requst-action li.request-share a{
+.request-list .request-line .requst-action li.request-add a{
 	width: 23px;
 	background-position: top left;
 }
+.request-list .request-line .requst-action li.request-share a{
+	width: 23px;
+	background-position: -48px top;
+}
 .request-list .request-line .requst-action li.request-view a{
 	width: 28px;
-	background-position: -51px top;
+	background-position: -99px top;
 }
 .request-list .request-line .requst-action li.request-del a{
 	width: 14px;
-	background-position: -108px top;
+	background-position: -156px top;
 }
 
+/*  SIMPLE MODAL WINDOW  ****************************/
+
+div#simple-modal-msgs{
+	width: 800px;
+	height: auto;
+	display: none;
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -200px 0px 0px -400px;
+	background-color: #fff;
+	border: 1px solid #999;
+	padding-bottom: 20px;
+	
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	
+	box-shadow:0px 2px 10px 1px #888;
+	-moz-box-shadow:0px 2px 10px 1px #888;
+	-webkit-box-shadow:0px 3px 10px 1px #888;
+	
+	z-index:999;
+}
+
+div#simple-modal-msgs a#simple-modal-msg-close{
+	margin-left: 17px;
+	margin-bottom: 10px;
+	color: #888;
+	text-decoration: none;
+	font-size: 80%;
+}
+div#simple-modal-msgs a#simple-modal-msg-close:hover{ text-decoration: underline; }
+
+div#simple-modal-msgs p#simple-modal-msg-content{ margin-left: 17px; width: 760px; }
+
+/*  ALERTS  ****************************/
+.alert{
+	width: 640px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -100px 0px 0px -320px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	box-shadow:0px 5px 15px 0px #A0A0A0;
+	-moz-box-shadow:0px 5px 15px 0px #A0A0A0;
+	-webkit-box-shadow:0px 5px 15px 0px #A0A0A0;
+	z-index:1001;
+}
 
 /**************************************/
 /*  NAVIGATION BAR  *******************/
@@ -1868,8 +1950,24 @@ div.modal-share-msgs div#messages-list{
 	padding-right: 20px;
 }
 div.modal-share-msgs div#messages-list div.sender-message,
-div.modal-share-msgs div#messages-list div.receiver-message{ border-bottom: 1px dotted #a1a1a1; }
-div.modal-share-msgs ul#new-message-list textarea{ width: 800px; height:120px; display: block; }
+div.modal-share-msgs div#messages-list div.receiver-message{ border-radius:22px; padding:15px; box-shadow: 2px 2px 5px #888; max-width:49%; margin-top:20px;}
+div.modal-share-msgs div#messages-list div.sender-message{background: #fff200;}
+div.modal-share-msgs div#messages-list div.receiver-message{background: #eee;}
+div.modal-share-msgs ul#new-message-list li{display: block;}
+div.modal-share-msgs ul#new-message-list textarea{ width: 880px; height:75px; display: block; }
+div.modal-share-msgs ul#new-message-list .margin-btn-right{margin-right:10px;}
+div.modal-share-msgs .chat-title-new-message{border:0; margin:0; height:15px; padding-top:0;}
+
+ul.requst-action li.chat-icon a{
+	background:url(admin/bg-icon-chat.png) no-repeat;
+	width:26px;
+	height:22px;
+	display:block;
+	text-indent:-10000px;	
+	margin:0 20px;
+}
+
+div#casting-manager-content div#casting-form{ border-bottom: 1px solid #a1a1a1; }
 
 /**************************************/
 /*  CONNECT WEB SITES  ****************/
@@ -2324,7 +2422,7 @@ ul#page-navs-opt li input{ float: right; margin-right: 5px; }
 div#page-nav-external-site h4{ margin-bottom: 10px; }
 div#page-nav-external-site label{ font-size: 85%; color: #7C7C7C; }
 
-/*  THEME VISUALIZATOIN CONFIG  ************/
+/*  THEME VISUALIZATION CONFIG  ************/
 
 div.website-view-block{ margin-bottom: 20px; }
 
@@ -2358,8 +2456,6 @@ div#website-footer-content div#footer-config label,
 div#website-footer-content div#footer-config input{ float: left; margin-right: 10px; }
 div#website-footer-content textarea#website_footer{ width: 96%; height: 110px; }
 
-
-
 /**************************************/
 /*  CLIENTS MANAGEMENT  ***************/
 /**************************************/
@@ -2368,7 +2464,88 @@ div#agency-customer-manager-content div#subheader a.put-absolute{ top: 1.5em; ri
 div#agency-customer-manager-content div#subheader a.anchor-btn-silver-light-normal{ height: 28px; padding-top: 10px; }
 div#admin-agency-customer-insert textarea#agency_customer_notes{ width: 65em; height: 120px; }
 
+div#customer-primary-info{ padding: 15px 0 0 14px; background:none;}
+div#customer-primary-info div#customer-profile-img{ width:200px; height:150px; }
+div#customer-primary-info ul li{
+	padding-left: 10px;
+	margin: 10px 0px;
+}
+#customer-primary-info ul li.first{ margin: 0; }
+.progress-success.progress-striped .bar, .progress-striped .bar-success{background-color:#fff200;}
 
+/**************************************/
+/*  STEP BY STEP WEBSITE GUIDE   ******/
+/**************************************/
+
+div#guide-content-container div.subheader h2{ margin-top: 25px; }
+
+div#guide-content-container h4.guide-title{ font-weight: normal !important; font-size: 200%; margin-bottom: 10px; color: #595959; }
+div#guide-content-container h4{ font-weight: normal !important; font-size: 154%; margin-bottom: 10px; }
+
+div#guide-content-container div.guide-steps{ padding: 15px; }
+div#guide-content-container div.guide-steps input.input-txt-light-4-column{ width: 50%; }
+
+div#guide-content-container div#guide-step-01 a.btn-silver-light-fluid,
+div#guide-content-container div#guide-step-01 a#logo-update{ width: 60px !important; margin-left: 20px; }
+
+div#guide-content-container div#guide-step-01 div#guide-domain,
+div#guide-content-container div#guide-step-01 div#guide-logo{ 
+	width: 900px;
+	margin-right: 10px;
+	font-size: 85%;
+	font-weight: normal;
+	color: #595959;
+}
+div#guide-content-container div#guide-step-01 div#guide-logo{ border-left:1px solid #999; padding-left: 20px; }
+
+div#guide-content-container div#guide-step-01 div#guide-logo div#logo-actions{ width: 350px; }
+div#guide-content-container div#guide-step-01 div#guide-logo div#logo-actions div#logo-update img{ width:100px; }
+div#guide-content-container div#guide-step-01 div#guide-logo div#logo-actions a#logo-update{ margin-left: 15px; }
+
+div#guide-content-container div#guide-step-04,
+div#guide-content-container div#guide-step-05{
+	margin: 0;
+	padding: 17px 0px 0px 0px;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	min-height:878px;
+	background: #FFF url(admin/bg-guide-step-04.jpg) left top no-repeat scroll;
+}
+
+div#guide-content-container div#guide-step-05{ 
+	margin: 20px 0 0 0;
+	min-height: 382px;
+	background: #FFF url(admin/bg-guide-step-05.jpg) left 95px no-repeat scroll;
+}
+
+div#guide-content-container div.circle-step{ width: 95%; margin: 0 auto; margin-bottom: 30px; }
+div#guide-content-container div.circle-step-content{ width: 640px; margin: 25px 0px 0px 10px; }
+div#guide-content-container div.circle-step-content p{ font-size: 90%; color: #4c4c4c; margin-left: 17px; }
+
+div#guide-content-container div#guide-step-04 div#circle-step-02,
+div#guide-content-container div#guide-step-04 div#circle-step-04{ text-align: right; }
+div#guide-content-container div#guide-step-04 div#circle-step-04,
+div#guide-content-container div#guide-step-04 div#circle-step-05{ margin-top: 40px; }
+
+div#guide-content-container div#guide-step-04 div#circle-step-02 div.circle-step-content,
+div#guide-content-container div#guide-step-04 div#circle-step-04 div.circle-step-content{ margin-right: 20px; }
+
+div#guide-content-container div#guide-step-05 div#circle-step-05-02{ margin-top: 70px; text-align: right; }
+div#guide-content-container div#guide-step-05 div#circle-step-05-03{ margin-top: 70px; }
+
+div.website-content-btns{
+	width: 97%;
+	height: 54px;
+	display: block;
+	overflow: hidden;
+	margin-top: 20px;
+	background-color: #f4f4f4;
+	border-bottom: 1px solid #a1a1a1;
+	padding: 18px 20px 0px 0px;
+}
+
+.summary-block{ margin: 25px 0px; }
 
 /**************************************/
 /*  FOOTER  ***************************/

@@ -286,7 +286,11 @@
 
 								<div class="composite-brands">
 									<span id="BrandAgendy" class="auto-size-block put-left">
-										Logo Agência &copy;
+										<% if @model.agency.website.logo.url == "/logos/original/missing.png" %>
+											Sua logomarca ficará aqui.
+										<% else %>
+											<%= image_tag @model.agency.website.logo.url(:logo), {:style => "width:100px; height: auto;"} %>
+										<% end %>
 									</span>
 									<span id="UberPowered" class="auto-size-block put-right">
 										<%= image_tag "admin/uber-powered-by.png" %>
@@ -318,15 +322,9 @@
 					<ul id="model-gallery" class="gallery ui-helper-reset ui-helper-clearfix">
 
 				      <% for photo in @model.photos.each %>
-
 						<li class="is-draggable ui-widget-content ui-corner-tr">
-
-				          <!--<h5><%= photo.image_file_name %></h5>-->
 				          <%= image_tag photo.image.url(:sub_composite), alt: photo.image_file_name, id: photo.id %>
-				          <!--<p>Clique e arraste-me para a posição do composite desejada.</p>-->
-
 				        </li>
-
 				      <% end %>
 
 				    </ul>

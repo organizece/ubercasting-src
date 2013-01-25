@@ -20,13 +20,19 @@
 				<span class="put-absolute admin-panel-header-icon admin-panel-header-icon-request">&nbsp;</span>
 				
 				<h3 class="put-left title-requests-sum">Resumo de Pedidos</h3>
-				<a href="#" class="put-left request-tip" onclick="javascript:return false;">O que é isso?</a>
+				<a href="#" class="put-left request-tip">
+					O que é isso?
+					<span class="title">Resumo de</span>
+					<span class="bold">Pedidos</span>
+					<span class="content">O painel de resumo de pedidos está aqui para lhe alertar caso exista uma atualização no número de pedidos de Casting, mensagens e em sua quantidade de clientes. Também para fornecer um acesso mais rápido ao controle de cada um deles.</span>
+				</a>
 				
 				<div class="content-split"></div>
 			    
-				<%= link_to 'Pedidos de Casting', new_model_path, :class => "request-link" %>
-			  <%= link_to 'Novos Clientes', models_path, :class => "request-link" %>
-			  <%= link_to 'Novas Mensagens', models_path, :class => "request-link" %>
+				<%= link_to 'Pedidos de Casting: '+@castings.count.to_s, customer_castings_path, :class => "request-link" %>
+			  	<%= link_to 'Meus Clientes: '+@agency_customers.count.to_s, agency_customers_path, :class => "request-link" %>
+			  	<%= link_to 'Novas Mensagens: '+@castings.count.to_s, customer_castings_path, :class => "request-link" %>
+
 			</div>
 			
 		</div>

@@ -58,6 +58,19 @@ $(document).ready(function(){
 		});
 	}
 	
+	function searchSetupModelAvatar(){
+		var hasModelResult = $('div#search-models-result').length;
+		var hasCastingResult = $('div#casting-models-result').length;
+		
+		if ( hasModelResult > 0 ) {
+			$('#search-models-result .model-box .model-box-img img').resizeToParent();
+		};
+		
+		if ( hasCastingResult > 0 ) {
+			$('#casting-models-result .model-box .model-box-img img').resizeToParent();
+		};
+	}
+	
 	function mapModelAge(){
 		var objDate = new Date();
 		var objYear = objDate.getFullYear();
@@ -130,30 +143,15 @@ $(document).ready(function(){
 		var hasComposite = $('div#model-info-composite').size();
 		
 		if( hasComposite == 1 ){
-			
-			$('#model-info-composite div#composite-cover img').resizecrop({
-				width:400,
-			    height:560,
-			    vertical:"top"
-			});
-			
-			$('#model-info-composite div.composite-thumbs img').resizecrop({
-				width:190,
-				height:220,
-				vertical:"top"
-			});
-			
+			$('#model-info-composite div#composite-cover img').resizeToParent();
+			$('#model-info-composite div.composite-thumbs img').resizeToParent();
 		};
 		
 		var hasGallery = $('div#model-photo-gallery ul#model-gallery').size();
 		var modelGalleryImg = $('div#model-photo-gallery ul#model-gallery li img');
 		
-		if( hasGallery == 1 ){
-			
-			for( p in modelGalleryImg ){
-				//$('div#model-photo-gallery ul#model-gallery li img:eq('+p+')').resizeToParent({parent: 'li'});
-			}
-			
+		if( hasGallery == 1 ){			
+			$('div#model-photo-gallery ul#model-gallery li img').resizeToParent({parent: 'li'});
 		}
 		
 	}
@@ -509,12 +507,28 @@ $(document).ready(function(){
 		
 		if( themeContainer.length > 0 ){
 			
+			//APPLY ACTIVE TO CHECKED RADIO
+			$("div#website-theme-input ul li").removeClass('theme-active');
+			var activeLiId = $("div#website-theme-input ul li input:checked").parent("li").index();
+			$('div#website-theme-input ul li:eq('+activeLiId+')').addClass('theme-active');
+			$('div#website-theme-preview-thumb img').hide();
+			switch(activeLiId){
+				case 0:
+					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/01.jpg');
+				break;
+				case 1:
+					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/02.jpg');
+				break;
+			}
+			$('div#website-theme-preview-thumb img').fadeIn(400);
+			
 			$('div#website-theme-input ul li input').click(function(event) {
 				var myID = $(this).attr("id");
 				var myThumb = myID.substring(14,myID.length);
 				
 				$("div#website-theme-input ul li").removeClass('theme-active');
 				
+				$('div#website-theme-preview-thumb img').hide();
 				switch(myThumb){
 					case "subdomain_default":
 						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/01.jpg');
@@ -525,14 +539,237 @@ $(document).ready(function(){
 						$(this).parent("li").addClass('theme-active');
 					break;
 				}
+				$('div#website-theme-preview-thumb img').fadeIn(400);
 			});
 			
+		};
+	}
+	
+	function setupSimpleModal(){
+		$('div#simple-modal-msgs').hide();
+		
+		$('a.request-tip span').hide();
+		
+		$('a.request-tip').click(function(event) {
+			event.preventDefault();
+			$('div#simple-modal-msgs').fadeIn("fast");
+			
+			var myTitle = $("span.title", this).text();
+			var myBold = $("span.bold", this).text();
+			var myContent = $("span.content", this).text();
+			
+			$('div#simple-modal-msgs h3#simple-modal-msg-title').html(myTitle+" <strong>"+myBold+"</strong>");
+			$('div#simple-modal-msgs p#simple-modal-msg-content').text(myContent);
+			
+		});
+		
+		$('div#simple-modal-msgs a#simple-modal-msg-close').click(function(event) {
+			event.preventDefault();
+			$('div#simple-modal-msgs').fadeOut("fast");
+		});
+	}
+	
+	function setupWebsiteGuide() {
+		var guideContainer = $('div#guide-content-container').length;
+		
+		if ( guideContainer > 0 ){
+			
+			//SETUP VARS
+			var currentStep = 0;
+			var totalSteps = $('div.guide-steps').length;
+			
+			//SETUP BUTTONS
+			$('a#guide-btn-go').show();
+			$('a#guide-btn-back').hide();
+			$('input#guide-btn-save').hide();
+			$('span.gif-loader').hide();
+			
+			//BUTTON CLICK
+			$('a#guide-btn-go').click(function(event) {
+				//event.preventDefault();
+				
+				//STEP CTRLER
+				if ( currentStep < ( totalSteps -1 ) ){
+					currentStep++;
+				};
+				
+				//STEP GUIDELINE CTRLER
+				switch( currentStep ){
+					case 1:
+						$('div.step-by-step').removeClass('step-active-01');
+						$('div.step-by-step').addClass('step-active-02');
+					break;
+					case 2:
+						$('div.step-by-step').removeClass('step-active-02');
+						$('div.step-by-step').addClass('step-active-03');
+					break;
+					case 3:
+						$('div.step-by-step').removeClass('step-active-03');
+						$('div.step-by-step').addClass('step-active-04');
+					break;
+					case 4:
+						$('div.step-by-step').removeClass('step-active-04');
+						$('div.step-by-step').addClass('step-active-05');
+					break;
+					case 5:
+						$('div.step-by-step').fadeOut('slow');
+					break;
+				}
+				
+				//STEP CONTAINER
+				$('div.guide-steps:eq('+(currentStep-1)+')').fadeOut('fast', function() {
+					$('div.guide-steps:eq('+currentStep+')').fadeIn('slow');
+				});
+				
+				//STEP SUBHEADER
+				$('div.subheader:eq('+(currentStep-1)+')').slideUp('fast', function() {
+					$('div.subheader:eq('+currentStep+')').slideDown('fast');
+				});
+				
+				
+				//CHECK FOR DATA SAVE
+				if ( currentStep > 0 ){ 
+					$('a#guide-btn-back').fadeIn('slow');
+				}else{ 
+					$('a#guide-btn-back').fadeOut('fast');
+				};
+				
+				if ( currentStep == ( totalSteps - 2 ) && $('input#guide-btn-save').css("display") != "block" ){
+					$('a#guide-btn-go').fadeOut('fast', function() {
+						$('input#guide-btn-save').fadeIn('slow');
+					});
+				};
+				
+			});
+			
+			$('a#guide-btn-back').click(function(event) {
+				//event.preventDefault();
+				
+				//STEP CTRLER
+				if ( currentStep > 0 ){
+					currentStep--;
+				};
+				
+				//STEP GUIDELINE CTRLER
+				switch( currentStep ){
+					case 0:
+						$('div.step-by-step').removeClass('step-active-02');
+						$('div.step-by-step').addClass('step-active-01');
+					break;
+					case 1:
+						$('div.step-by-step').removeClass('step-active-03');
+						$('div.step-by-step').addClass('step-active-02');
+					break;
+					case 2:
+						$('div.step-by-step').removeClass('step-active-04');
+						$('div.step-by-step').addClass('step-active-03');
+					break;
+					case 3:
+						$('div.step-by-step').removeClass('step-active-05');
+						$('div.step-by-step').addClass('step-active-04');
+					break;
+					case 4:
+						$('div.step-by-step').fadeIn('slow');
+						$('div.step-by-step').addClass('step-active-05');
+					break;
+				}
+				
+				//STEP CONTAINER
+				$('div.guide-steps:eq('+(currentStep+1)+')').fadeOut('fast', function() {
+					$('div.guide-steps:eq('+currentStep+')').fadeIn('slow');
+				});
+				
+				//STEP SUBHEADER
+				$('div.subheader:eq('+(currentStep+1)+')').slideUp('fast', function() {
+					$('div.subheader:eq('+currentStep+')').slideDown('fast');
+				});
+				
+				//CHECK FOR DATA SAVE
+				if ( currentStep > 0 ){ 
+					$('a#guide-btn-back').fadeIn('slow');
+				}else{ 
+					$('a#guide-btn-back').fadeOut('fast');
+				};
+				
+				if ( currentStep == ( totalSteps -1 ) && $('input#guide-btn-save').css("display") != "block" ){
+					$('a#guide-btn-go').fadeOut('fast', function() {
+						$('input#guide-btn-save').fadeIn('slow');
+					});
+				}else{
+					$('input#guide-btn-save').fadeOut('fast', function(){
+						$('a#guide-btn-go').fadeIn('slow');
+					});
+				};
+				
+			});
+			
+			$('input#guide-btn-save').click(function(event) {
+				$(window).scrollTo(0);
+				$('span.gif-loader').show();
+				$(this).hide();
+			});
+			
+			//RETURN TO STEP
+			$('a.return-to-step').click(function(event) {
+				currentStep = $(this).attr('id').substring(10, 11);
+				
+				//STEP GUIDELINE CTRLER
+				$('div.step-by-step').fadeIn('slow');
+				$('div.step-by-step').removeClass('step-active-05');
+				switch( currentStep ){
+					case 0:
+						$('div.step-by-step').addClass('step-active-01');
+					break;
+					case 1:
+						$('div.step-by-step').addClass('step-active-02');
+					break;
+					case 2:
+						$('div.step-by-step').addClass('step-active-03');
+					break;
+					case 3:
+						$('div.step-by-step').addClass('step-active-04');
+					break;
+					case 4:
+						$('div.step-by-step').addClass('step-active-05');
+					break;
+				}
+				
+				//STEP SUBHEADER
+				$('div.subheader:eq(5)').slideUp('fast', function() {
+					$('div.subheader:eq('+currentStep+')').slideDown('fast');
+				});
+				
+				//STEP SCENE
+				$('div.guide-steps:eq(5)').fadeOut('fast', function() {
+					$('div.guide-steps:eq('+currentStep+')').fadeIn('slow');
+				});
+				
+				//STEP BTN BAR
+				$('a#guide-btn-go').show();
+				$('input#guide-btn-save').hide();
+				$('span.gif-loader').hide();
+				
+				if ( currentStep > 0 ){ 
+					$('a#guide-btn-back').show(); 
+				}else{ 
+					$('a#guide-btn-back').hide();
+				};
+				
+				if ( currentStep == ( totalSteps - 2 ) && $('input#guide-btn-save').css("display") != "block" ){
+					$('a#guide-btn-go').fadeOut('fast', function() {
+						$('input#guide-btn-save').fadeIn('slow');
+					});
+				};
+				
+				$('div.bottom-ctrl-bar').fadeIn("fast");
+			});
 		};
 	}
 	
 	btnFolderHover();
 	dropdownMenuNav();
 	searchAdvancedOpts();
+	searchSetupModelAvatar();
 	mapModelAge();
 	mapModelMeasures();
 	modelShowSecondInfo();
@@ -541,6 +778,8 @@ $(document).ready(function(){
 	registerFlow();
 	getMainPath();
 	websiteUpdateThemePreview();
+	setupSimpleModal();
+	setupWebsiteGuide();
 
 	//loginPanelSetup();
 	
