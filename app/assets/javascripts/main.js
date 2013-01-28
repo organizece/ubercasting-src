@@ -577,6 +577,7 @@ $(document).ready(function(){
 			//SETUP VARS
 			var currentStep = 0;
 			var totalSteps = $('div.guide-steps').length;
+			var gotEnd = false;
 			
 			//SETUP BUTTONS
 			$('a#guide-btn-go').show();
@@ -587,7 +588,6 @@ $(document).ready(function(){
 			//BUTTON CLICK
 			$('a#guide-btn-go').click(function(event) {
 				//event.preventDefault();
-				
 				//STEP CTRLER
 				if ( currentStep < ( totalSteps -1 ) ){
 					currentStep++;
@@ -704,6 +704,17 @@ $(document).ready(function(){
 			});
 			
 			$('input#guide-btn-save').click(function(event) {
+				if ( !gotEnd ){
+					gotEnd = true;
+				}else{
+					$('div.subheader:eq('+(currentStep)+')').slideUp('fast');
+					$('div.guide-steps:eq('+(currentStep)+')').fadeOut('fast');
+					currentStep = 4;
+				};
+				
+				var agencyDomain = $('div#guide-step-01 div#guide-domain div#website-subdomain-input input').val();
+				$('a#guide-view-site').attr('href', '/'+agencyDomain+'/home/');
+				
 				$('span.gif-loader').show();
 				$(this).hide();
 			});
@@ -745,8 +756,8 @@ $(document).ready(function(){
 				
 				//STEP BTN BAR
 				$('a#guide-btn-go').show();
-				$('input#guide-btn-save').hide();
 				$('span.gif-loader').hide();
+				$('input#guide-btn-save').show();
 				
 				if ( currentStep > 0 ){ 
 					$('a#guide-btn-back').show(); 
@@ -762,6 +773,47 @@ $(document).ready(function(){
 				
 				$('div.bottom-ctrl-bar').fadeIn("fast");
 			});
+		
+			//SETUP THEME CTRLERS
+			//APPLY ACTIVE TO CHECKED RADIO
+			$("div#website-theme-input ul li").removeClass('theme-active');
+			var activeLiId = $("div#website-theme-input ul li input:checked").parent("li").index();
+			$('div#website-theme-input ul li:eq('+activeLiId+')').addClass('theme-active');
+			
+			$('div#website-theme-preview-thumb img').hide();
+			
+			switch(activeLiId){
+				case 0:
+					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/01.jpg');
+				break;
+				case 1:
+					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/02.jpg');
+				break;
+			}
+			
+			$('div#website-theme-preview-thumb img').fadeIn(400);
+			
+			//INPUT CLICK
+			$('div#website-theme-input ul li input').click(function(event) {
+				var myID = $(this).attr("id");
+				var myThumb = myID.substring(14,myID.length);
+				
+				$("div#website-theme-input ul li").removeClass('theme-active');
+				
+				$('div#website-theme-preview-thumb img').hide();
+				switch(myThumb){
+					case "subdomain_default":
+						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/01.jpg');
+						$(this).parent("li").addClass('theme-active');
+					break;
+					case "cubical_theme":
+						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/02.jpg');
+						$(this).parent("li").addClass('theme-active');
+					break;
+				}
+				$('div#website-theme-preview-thumb img').fadeIn(400);
+			});
+			
 		};
 	}
 	

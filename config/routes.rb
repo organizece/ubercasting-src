@@ -58,6 +58,7 @@ Ubercasting::Application.routes.draw do
   resources :websites, only: [:edit, :update]
   get 'websites/verify_subdomain'
   match "/websites/:id/guide" => "websites#guide", via: :get, as: :website_guide
+  match "/websites/:id/guide_intro" => "websites#guide_intro", via: :get, as: :website_guide_intro
   match "/websites/guide_update/:id" => "websites#guide_update", via: :get, as: :website_guide_update
 
   match 'connect_sites' => 'agencies#connect_sites', via: :get

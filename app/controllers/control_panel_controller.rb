@@ -7,7 +7,7 @@ class ControlPanelController < ApplicationController
     @agency_customers = AgencyCustomer.all
     
     if !@agency.website.subdomain
-      redirect_to website_guide_path(@agency.website)
+      redirect_to website_guide_intro_path(@agency.website)
     end
     
   end
