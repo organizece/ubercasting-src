@@ -25,6 +25,11 @@ class WebsitesController < ApplicationController
     redirect_to agency_root_path if @website.agency != current_agency
   end
   
+  def guide_intro
+    @website = Website.find(params[:id])
+    redirect_to agency_root_path if @website.agency != current_agency
+  end
+  
   def guide_update
     @website = Website.find(params[:id])
     

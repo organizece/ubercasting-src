@@ -1,0 +1,2 @@
+// JavaScript Document
+$(document).ready(function(){function e(){$("div#models a.model-box-open-link").click(function(e){var t=$(this).parents("div.model-box").index();$("div.model-box:eq("+t+") div.model-box-links li.closed").slideToggle(400)})}function t(){var e=$("div#search-models-result").length,t=$("div#casting-models-result").length;e>0&&$("#search-models-result .model-box .model-box-img img").resizeToParent(),t>0&&$("#casting-models-result .model-box .model-box-img img").resizeToParent()}e(),t()});
