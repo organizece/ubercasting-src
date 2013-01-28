@@ -996,6 +996,9 @@ span.btn-silver-light-fluid,
 }
 
 .request-list .request-line .requst-action li.request-add a{
+	width: 23px;
+	background-position: left top;
+}
 .request-list .request-line .requst-action li.request-share a{
 	width: 23px;
 	background-position: -48px top;

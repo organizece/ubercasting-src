@@ -2477,6 +2477,30 @@ div#customer-primary-info ul li{
 /*  STEP BY STEP WEBSITE GUIDE   ******/
 /**************************************/
 
+/*  GUIDE INTRO   ******/
+div#website-guide-intro-container div#guide-intro-header{ width: 99%; }
+div#website-guide-intro-container div#guide-intro-header h2{
+	width: 880px;
+	height: 121px;
+	margin: 0 auto;
+	text-indent: -1000px;
+	margin-bottom: 23px;
+	background: transparent url(admin/title-guide-intro.png) left top no-repeat scroll;
+}
+
+div#guide-intro-content-container div#body{ padding: 15px; }
+div#guide-intro-content-container div#body p{ text-align: justify; }
+div#guide-intro-content-container div#body h3{ width: 900px; text-align: center; }
+div#guide-intro-content-container div#body a#btn-guide-intro-start{
+	width: 443px;
+	height: 66px;
+	display: block;
+	margin: 5px auto;
+	background: #FFF url(admin/btn-big-gold-guide-intro-start.jpg) left top no-repeat scroll;
+	text-indent: -10000px;
+}
+
+/*  GUIDE STEPS   ******/
 div#guide-content-container div.subheader h2{ margin-top: 25px; }
 
 div#guide-content-container h4.guide-title{ font-weight: normal !important; font-size: 200%; margin-bottom: 10px; color: #595959; }
@@ -2484,6 +2508,8 @@ div#guide-content-container h4{ font-weight: normal !important; font-size: 154%;
 
 div#guide-content-container div.guide-steps{ padding: 15px; }
 div#guide-content-container div.guide-steps input.input-txt-light-4-column{ width: 50%; }
+
+div#guide-content-container input#guide-btn-save{ margin: 0px 20px 0px 0px; }
 
 div#guide-content-container div#guide-step-01 a.btn-silver-light-fluid,
 div#guide-content-container div#guide-step-01 a#logo-update{ width: 60px !important; margin-left: 20px; }

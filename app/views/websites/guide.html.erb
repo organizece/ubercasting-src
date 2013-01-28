@@ -66,7 +66,7 @@
 				
 				<%= form_for @website, :remote => true, :url => website_guide_update_path, :method => "get" do |f| %>
 					
-					<!-- GUIDE STEP 01 -->
+					<!-- GUIDE STEP 01 - DOMAIN -->
 					<div id="guide-step-01" class="auto-size-block guide-steps">
 						
 						<!-- GUIDE STEP 01 - DOMAIN -->
@@ -87,7 +87,7 @@
 						
 					</div>
 				
-					<!-- GUIDE STEP 02 -->
+					<!-- GUIDE STEP 02 - THEME -->
 					<div id="guide-step-02" class="auto-size-block guide-steps" style="display:none">
 						<h4 class="guide-title">Escolha de Tema:</h4>
 						<div class="content-split"></div>
@@ -112,7 +112,7 @@
 						</div>
 					</div>
 					
-					<!-- GUIDE STEP 03 -->
+					<!-- GUIDE STEP 03 - VISUALIZATION -->
 					<div id="guide-step-03" class="auto-size-block guide-steps" style="display:none">
 						<h4 class="guide-title">Modo de Visualização:</h4>
 						<p>Selecione qual o tipo de visualização de seu site. Note que cada uma delas pode afetar o desempenho do site com os clientes.</p>
@@ -151,7 +151,7 @@
 						</div>
 					</div>
 					
-					<!-- GUIDE STEP 04 -->
+					<!-- GUIDE STEP 04 - INSERT MODEL -->
 					<div id="guide-step-04" class="auto-size-block guide-steps" style="display:none">
 						
 						<div id="circle-step-01" class="auto-size-block circle-step">
@@ -211,7 +211,7 @@
 					
 					</div>
 					
-					<!-- GUIDE STEP 05 -->
+					<!-- GUIDE STEP 05 - SEARCH & CASTING -->
 					<div id="guide-step-05" class="auto-size-block guide-steps" style="display:none">
 						
 						<div id="circle-step-05-01" class="auto-size-block circle-step">
@@ -249,7 +249,7 @@
 						
 					</div>
 					
-					<!-- GUIDE STEP 06 - RESUMO -->
+					<!-- GUIDE STEP 06 - SUMMARY -->
 					<div id="guide-step-06" class="auto-size-block guide-steps" style="display:none">
 						
 						<div class="summary-block">
@@ -316,7 +316,7 @@
 							<div class="content-split"></div>
 
 							<%= link_to "Ir Para o Painel de Controle", agency_root_path, :class => "btn-silver-light-fluid put-left" %>
-							<%= content_tag :a, 'Ver ÜBER Site', { href: "/#{@website.subdomain}/home", class: 'anchor-btn-gold-liquid put-left', target: "_blank" } %>
+				<%= content_tag :a, 'Ver ÜBER Site', { href: "/#{@website.subdomain}/home", class: 'anchor-btn-gold-liquid put-left', target: "_blank", id: "guide-view-site" } %>
 							
 						</div>
 						
