@@ -14,7 +14,6 @@ gem 'aws-sdk'
 gem 'kaminari'
 gem 'simple_form'
 gem 'country_select'
-gem "jquery-scrollto-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.

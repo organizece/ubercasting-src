@@ -704,7 +704,6 @@ $(document).ready(function(){
 			});
 			
 			$('input#guide-btn-save').click(function(event) {
-				$(window).scrollTo(0);
 				$('span.gif-loader').show();
 				$(this).hide();
 			});
