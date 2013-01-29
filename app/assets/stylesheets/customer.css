@@ -120,6 +120,26 @@ div.form-actions input{
 	background:#fff url(admin/btn-bg-gray-fluid.jpg) left bottom repeat-x scroll !important;
 }
 
+div.form-inputs div.customer-login-input-field{
+	width: 365px;
+	margin: 15px 0px;
+	padding: 5px 0px;
+}
+
+div.form-inputs div.customer-login-input-field input{
+	width:360px;
+	height:38px;
+	display: block;
+	border: 1px solid #000 !important;
+	padding-left: 5px;
+	font-size: 100%;
+	background:#fff url(internal/bg-form-dark-full.jpg) left top repeat-x scroll !important;
+}
+
+.gold-sign{
+	color: #FFF600 !important;
+}
+
 div#agency-logo{
 	width: auto;
 	height: auto;

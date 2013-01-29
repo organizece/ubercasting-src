@@ -1,3 +1,10 @@
 $("#modals").empty();
 $("#modals").html("<%= escape_javascript(render('castings/modals/share')) %>");
 $("#modal-share-casting").modal('show');
+$("#modal-share-casting").on('shown', function () {
+	$("#modal-share-casting li.loader-gif").hide();
+	$("#modal-share-casting input#btn-send-share-casting").click(function(){
+		$(this).hide();
+		$("#modal-share-casting li.loader-gif").show();
+	});
+});
