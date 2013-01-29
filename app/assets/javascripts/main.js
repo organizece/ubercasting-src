@@ -419,8 +419,8 @@ $(document).ready(function(){
 				});
 				
 			}else{
-				
 				$('div.form-register-field input.input-btn-gold-light-4-column').click(function(event) {
+					
 					var myFormRegister = $(this).parents("div.form-register");
 					var formValid = registerFormValidation(myFormRegister);
 					
@@ -441,46 +441,119 @@ $(document).ready(function(){
 	function registerFormValidation(form){
 		
 		var defaultErrorMsg = '<div class="field-error-msg"><p>* Este campo é orbigatório.</p></div>';
+		var passShortErrorMsg = '<div class="field-error-msg"><p>* Senha deve ter mais de 6 caracteres.</p></div>';
+		var passEqualErrorMsg = '<div class="field-error-msg"><p>* Senhas devem ser iguais.</p></div>';
+		var mailEqualErrorMsg = '<div class="field-error-msg"><p>* E-mail inválido.</p></div>';
+		
 		var totalLoop = form.find("input.required").length;
 		var formInputs = new Array();
-		var formInputContainer = "";
-		var formInputItem = "";
+		var formInputContainer = new Array();
+		
+		var formPass = "";
+		var formPassConfirm = "";
+		var formMail = "";
+		
+		var hasEmptyFields = true;
+		var hasShortPass = true;
+		var hasEqualPass = true;
+		var hasWrongMail = true;
 		var valid = false;
 		
+		//STORE INPUTS
 		for (var i = 0; i < totalLoop; i++) {
-			formInputs.push( form.find("input.required:eq("+i+")") );
-			formInputItem = formInputs[ formInputs.length - 1 ];
-			formInputContainer = formInputItem.parents("div.form-register-field");
-			
-			if ( formInputItem.val() == "" || formInputItem.val() == "undefined" || formInputItem.val() == undefined ){
-				if( formInputContainer.find("div.field-error-msg").length == 0 ){
-					formInputContainer.append(defaultErrorMsg);
-				}
-			}else{
-				if( formInputContainer.find("div.field-error-msg").length != 0 ){
-					formInputContainer.find("div.field-error-msg").remove();
-				};
-			}
-			
+			formInputs[i] = form.find("input.required:eq("+i+")");
+			formInputContainer[i] = formInputs[i].parents('div.form-register-field');
 		};
 		
-		for (var p = 0; p < formInputs.length; p++) {
-			if ( formInputs[p].val() == "" || formInputs[p].val() == "undefined" || formInputs[p].val() == undefined ){
+		//CHECK EMPTY FIELDS
+		for (var p = 0; p < totalLoop; p++) {
+			if ( $.trim(formInputs[p].val()).length == 0 ) {
+				if ( formInputContainer[p].attr('class').indexOf("got-error") == -1 ) {
+					formInputContainer[p].addClass('got-error');
+					formInputContainer[p].append(defaultErrorMsg);
+				};
+			}else{
+				if ( formInputContainer[p].attr('class').indexOf("got-error") != -1 ) {
+					formInputContainer[p].removeClass('got-error');
+					formInputContainer[p].find('div.field-error-msg').remove();
+				};
+			};
+		};
+		
+		//CHECK SMALL PASSWORD
+		for (var j = 0; j < totalLoop; j++) {
+			if ( formInputs[j].attr('id').indexOf("agency_password") != -1 ) {
+				formPass = formInputs[j];
+				if ( formPass.val().length < 6 ) {
+					if ( formInputContainer[j].attr('class').indexOf("got-error") == -1 ) {
+						formInputContainer[j].addClass('got-error');
+						formInputContainer[j].append(passShortErrorMsg);
+					};
+				}else{
+					if ( formInputContainer[j].attr('class').indexOf("got-error") != -1 ) {
+						formInputContainer[j].removeClass('got-error');
+						formInputContainer[j].find('div.field-error-msg').remove();
+					};
+				};
+			};
+		};
+		
+		//CHECK EQUAL PASSWORD
+		for (var g = 0; g < totalLoop; g++) {
+			if ( formInputs[g].attr('id').indexOf("agency_password") != -1 && formInputs[g].attr('id') != formPass.attr('id') ) {
+				formPassConfirm = formInputs[g];
+				if ( formPassConfirm.val() != formPass.val() ) {
+					if ( formInputContainer[g].attr('class').indexOf("got-error") == -1 ) {
+						formInputContainer[g].addClass('got-error');
+						formInputContainer[g].append(passEqualErrorMsg);
+					};
+				}else{
+					if ( formInputContainer[g].attr('class').indexOf("got-error") != -1 ) {
+						formInputContainer[g].removeClass('got-error');
+						formInputContainer[g].find('div.field-error-msg').remove();
+					};
+				};
+			};
+		};
+		
+		//CHECK E-MAIL VALIDATION
+		for (var a = 0; a < totalLoop; a++) {
+			if ( formInputs[a].attr('id').indexOf("agency_email") != -1 ) {
+				formMail = formInputs[a];
+				hasWrongMail = validateEmail(formMail.val());
+				if ( !hasWrongMail ) {
+					if ( formInputContainer[a].attr('class').indexOf("got-error") == -1 ) {
+						formInputContainer[a].addClass('got-error');
+						formInputContainer[a].append(mailEqualErrorMsg);
+					};
+				}else{
+					if ( formInputContainer[a].attr('class').indexOf("got-error") != -1 ) {
+						formInputContainer[a].removeClass('got-error');
+						formInputContainer[a].find('div.field-error-msg').remove();
+					};
+				};
+			};
+		};
+		
+		//CHECK ALL ERRORS
+		for (var b = 0; b < totalLoop; b++) {
+			if ( formInputContainer[b].attr('class').indexOf("got-error") != -1 ) {
 				valid = false;
 				break;
-			}
+			};
 			
-			if( p == ( formInputs.length - 1 ) ){
+			if ( b < (totalLoop-1) && ( formInputContainer[b].attr('class').indexOf("got-error") == -1 ) ) {
 				valid = true;
 			};
 		};
 		
-		if ( !valid ){
-			return false;
-		}else{
-			return true;
-		};
+		if ( valid ) { return true; }else{ return false; };
 		
+	}
+	
+	function validateEmail(email) { 
+	    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	    return re.test(email);
 	}
 	
 	function setupAgencyUpdate(){

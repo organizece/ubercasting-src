@@ -15,6 +15,7 @@
 			
 			<div class="admin-panel-full-top clear-margin-padding">&nbsp;</div>
 			
+			<!-- REQUESTS PANEL -->
 			<div id="admin-panel-requests-content" class="admin-container-header">
 				
 				<span class="put-absolute admin-panel-header-icon admin-panel-header-icon-request">&nbsp;</span>
@@ -29,9 +30,9 @@
 				
 				<div class="content-split"></div>
 			    
-				<%= link_to 'Pedidos de Casting: '+@castings.count.to_s, customer_castings_path, :class => "request-link" %>
-			  	<%= link_to 'Meus Clientes: '+@agency_customers.count.to_s, agency_customers_path, :class => "request-link" %>
-			  	<%= link_to 'Novas Mensagens: '+@castings.count.to_s, customer_castings_path, :class => "request-link" %>
+				<%= link_to 'Pedidos de Casting: '+@agency.customer_castings.count.to_s, customer_castings_path, :class => "request-link" %>
+			  	<%= link_to 'Meus Clientes: '+@agency.agency_customers.count.to_s, agency_customers_path, :class => "request-link" %>
+			  	<%= link_to 'Novas Mensagens: '+@agency.customer_castings.count.to_s, customer_castings_path, :class => "request-link" %>
 
 			</div>
 			
@@ -39,6 +40,7 @@
 		
 		<div class="content-split"></div>
 		
+		<!-- ADMIN PANEL: MODEL & CASTING -->
 		<div id="admin-panel-model-casting">
 			
 			<div id="admin-panel-model" class="put-relative auto-size-block put-left admin-container admin-panel-block">
@@ -85,6 +87,7 @@
 		
 		<div class="content-split"></div>
 		
+		<!-- ADMIN PANEL: SITE & CUSTOMERS -->
 		<div id="admin-panel-site-clients">
 			
 			<div id="admin-panel-site" class="put-relative auto-size-block put-left admin-container admin-panel-block">
@@ -120,8 +123,8 @@
 				
 				<div>
 					<ul class="put-list-inline">
-						<li><%= link_to 'Criar Novo Usuário', new_model_path, :class => "anchor-btn-silver-light-normal" %></li>
-						<li><%= link_to 'Lista de Clientes', models_path, :class => "anchor-btn-silver-light-normal" %></li>
+						<li><%= link_to 'Criar Novo Usuário', new_agency_customer_path, :class => "anchor-btn-silver-light-normal" %></li>
+						<li><%= link_to 'Lista de Clientes', agency_customers_path, :class => "anchor-btn-silver-light-normal" %></li>
 					</ul>
 				</div>
 				
