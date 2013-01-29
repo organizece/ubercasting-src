@@ -2464,6 +2464,17 @@ div#agency-customer-manager-content div#subheader a.put-absolute{ top: 1.5em; ri
 div#agency-customer-manager-content div#subheader a.anchor-btn-silver-light-normal{ height: 28px; padding-top: 10px; }
 div#admin-agency-customer-insert textarea#agency_customer_notes{ width: 65em; height: 120px; }
 
+div#agency-customer-manager-content ul#customer-info-list li{
+	padding: 12px 10px;
+	border-bottom: 1px solid #C8C8C8;
+	border-bottom: 1px solid #a1a1a1;
+	width: 850px;
+}
+
+div#agency-customer-manager-content ul#customer-info-list li.line-bg{
+	background-color: #F0F0F0;
+}
+
 div#customer-primary-info{ padding: 15px 0 0 14px; background:none;}
 div#customer-primary-info div#customer-profile-img{ width:200px; height:150px; }
 div#customer-primary-info ul li{
