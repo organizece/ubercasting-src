@@ -747,8 +747,8 @@ span.btn-silver-light-fluid,
 
 .modal{
 	position: absolute;
-	width: 930px;
-	height: 650px;
+	width: 935px;
+	height: 660px;
 	overflow: hidden;
 	margin: -300px 0 0 -475px;
 	box-shadow:0px 5px 5px 5px #000;
@@ -757,14 +757,20 @@ span.btn-silver-light-fluid,
 }
 
 .modal-body{
-	overflow-y: hidden;
-	height: 650px;
-	max-height: 650px;
+	overflow: hidden;
+	width: 935px;
+	height: 660px;
+	max-height: 660px;
 	padding: 0;
 	margin: 0;
 }
 
-.modal-body #composite-template{ margin: 0px; padding-top: 28px; }
+.modal-body #composite-template{ 
+	margin: 0px; 
+	padding-top: 28px; 
+	height: 660px;
+	width: 925px;
+}
 
 .modal-body #composite-template div.is-droppable img{ display:none; }
 
@@ -798,6 +804,15 @@ span.btn-silver-light-fluid,
 .modal-body #composite-template div.composite-template-select{ margin: 12px 0px 0px 9px; display:none; }
 
 .modal-body #composite-template div.composite-template-select ul li a{ margin: 0px 2px 0px 0px; padding: 8px 19px 0px 19px; }
+
+.composite-type-01 img.powered01{ display: block; }
+.composite-type-01 img.powered02{ display: none; }
+
+.composite-type-02 img.powered01{ display: none; }
+.composite-type-02 img.powered02{ display: block; }
+
+.composite-type-03 img.powered01{ display: block; }
+.composite-type-03 img.powered02{ display: none; }
 
 /* COMPOSITE MODAL NAV BAR */
 .modal-nav-bar{ width: auto; height: auto; }
@@ -1044,11 +1059,12 @@ div#nav-container ul li.no-border{ border: none; }
 div#nav-container ul li a{
 	display: block;
 	padding: 4px 10px;
+	color: #000;
 }
 
 div#nav-container ul li a:hover,
 div#nav-container ul li a.active{
-	background-color: #08C;
+	background-color: #B4B4B4;
 	border-radius: 4px;
 	color: #fff;
 }
@@ -1091,8 +1107,8 @@ div#slide-loader{
 div#slide-loader img{ width: 16px; height: 16px; display: block; margin: 50px auto; }
 
 div.theme-home-model-box{
-	width: 300px;
-	height: 300px;
+	width: 220px;
+	height: 220px;
 	display: block;
 	float: left;
 	overflow: hidden;
@@ -1153,6 +1169,30 @@ div#slide-photo-nav a:hover{
 
 div#slide-photo-nav a#btn-left{ float: left; }
 div#slide-photo-nav a#btn-right{ float: right; }
+
+/**************************************/
+/*  CASTING FOREIGN  ******************/
+/**************************************/
+
+.casting-block{
+	height: auto;
+	margin-top: 20px;
+}
+
+.website-content-btns{
+	width: 99%;
+	height: 54px;
+	display: block;
+	overflow: hidden;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #f4f4f4;
+	border-bottom: 1px solid #a1a1a1;
+	padding: 18px 40px 0px 0px;
+}
+
+.website-content-btns a{ width: 160px !important; margin-left: 20px; }
+
 
 /**************************************/
 /*  MODELS PAGE  **********************/

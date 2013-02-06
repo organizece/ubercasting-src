@@ -115,12 +115,15 @@ $(function() {
 			switch ( templateType ){
 				case "template01":
 					$('div#composite-template').addClass('composite-type-01');
+					$('input#composite_composite_style').val('composite-type-01');
 				break;
 				case "template02":
 					$('div#composite-template').addClass('composite-type-02');
+					$('input#composite_composite_style').val('composite-type-02');
 				break;
 				case "template03":
 					$('div#composite-template').addClass('composite-type-03');
+					$('input#composite_composite_style').val('composite-type-03');
 				break;
 			}
 			

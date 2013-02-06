@@ -55,8 +55,8 @@
 			</div>
 			
 			<div id="subheader06" class="auto-size-block admin-inner-container subheader" style="display:none">
-				<h2 class="font-body-title">Resumo das <strong>Funcionalidades</strong></h2>
-				<p class="inner-header-base-text">Parabéns! Você chegou ao fim do passo-a-passo inicial e está pronto para navegar pelo sistema. Veja abaixo um resumo de tudo o que vimos até agora e quais os próximos passos.</p>
+				<h2 class="font-body-title">Fim do <strong>Passo-a-Passo</strong></h2>
+				<p class="inner-header-base-text">Parabéns! Você chegou ao fim do passo-a-passo inicial e está pronto para navegar pelo sistema. Veja abaixo quais os próximos passos que você pode tomar a partir de agora.</p>
 			</div>
 
 			<div class="content-split"></div>
@@ -204,10 +204,6 @@
 							</div>
 							
 						</div>
-						
-						<div id="circle-step-button" class="auto-size-block circle-step">
-							<%= link_to "Adicionar um Modelo", new_model_path, :class => "anchor-btn-silver-light-4-column put-right", :target => "_blank" %>
-						</div>
 					
 					</div>
 					
@@ -253,49 +249,29 @@
 					<div id="guide-step-06" class="auto-size-block guide-steps" style="display:none">
 						
 						<div class="summary-block">
-							<h4 class="guide-title">1. Personalização</h4>
-							<p>Inserção do nome da agência que também será aplicada para o nome de domínio de seu ÜBER site.</p>
+							<h4 class="guide-title">1. ÜBER Site - Configurações Avançadas</h4>
+							<p>Aqui você terá acesso a todas as configurações de seu ÜBER Site, como fazer o upload de sua logomarca, definir quais páginas farão parte do menu, entre outros itens.</p>
 
 							<div class="website-content-btns">
-								<%= link_to "Configurar Novamente", "#", :class => "btn-silver-light-fluid put-right return-to-step", :id => "back-step-0" %>
+								<%= link_to "Configurações Avançadas", edit_website_path(@website), :class => "anchor-btn-silver-light-4-column put-right" %>
 							</div>
 						</div>
 						
 						<div class="summary-block">
-							<h4 class="guide-title">2. Escolha do Tema</h4>
-							<p>Escolha e configure o tema de seu ÜBER Site, selecionando o estilo que melhor combina com a sua agência, ou personalizando os todos os itens do seu jeito.</p>
+							<h4 class="guide-title">2. Inserção de Modelos</h4>
+							<p>Alimente a sua base cadastrando os modelos de sua agência, adicionando informações que irão facilitar sua busca, além de fazer um upload de fotos para sua galeria, escolher foto de perfil e montar seu composite.</p>
 
 							<div class="website-content-btns">
-								<%= link_to "Configurar Novamente", "#", :class => "btn-silver-light-fluid put-right return-to-step", :id => "back-step-1" %>
+								<%= link_to "Inserir Modelos", new_model_path, :class => "anchor-btn-silver-light-4-column put-right" %>
 							</div>
 						</div>
 						
 						<div class="summary-block">
-							<h4 class="guide-title">3. Configuração de Busca</h4>
-							<p>Selecione qual o tipo de visualização de seu site. Note que cada uma delas pode afetar o desempenho de seu ÜBER site com os clientes.</p>
+							<h4 class="guide-title">3. Painel de Controle</h4>
+							<p>Vá para o seu Painel de Controle e descubra todas as ações que você pode aplicar em sua conta.</p>
 
 							<div class="website-content-btns">
-								<%= link_to "Configurar Novamente", "#", :class => "btn-silver-light-fluid put-right return-to-step", :id => "back-step-2" %>
-							</div>
-						</div>
-						
-						<div class="summary-block">
-							<h4 class="guide-title">4. Inserção de Modelos</h4>
-							<p>Explicação do processo de inserção dos modelos dentro do sistema. Review de todos os passos necessários para cadastrar um novo modelo.</p>
-
-							<div class="website-content-btns">
-								<%= link_to "Adicionar um Modelo", new_model_path, :class => "btn-silver-light-fluid put-right", :target => "_blank" %>
-								<%= link_to "Visualizar Fluxo", "#", :class => "btn-silver-light-fluid put-right return-to-step", :id => "back-step-3" %>
-							</div>
-						</div>
-						
-						<div class="summary-block">
-							<h4 class="guide-title">5. Busca de Modelos</h4>
-							<p>A busca por modelos conta com uma série de filtros que ajudam a tornar o resultado mais preciso e completo. Visualização de fluxo de busca, criação de CASTINGS e seu compartilhamento.</p>
-
-							<div class="website-content-btns">
-								<%= link_to "Realizar Busca", models_path, :class => "btn-silver-light-fluid put-right", :target => "_blank" %>
-								<%= link_to "Visualizar Fluxo", "#", :class => "btn-silver-light-fluid put-right return-to-step", :id => "back-step-4" %>
+								<%= link_to "Acessar Painel de Controle", agency_root_path, :class => "anchor-btn-silver-light-4-column put-right" %>
 							</div>
 						</div>
 						
@@ -310,17 +286,7 @@
 							</ul>
 							
 						</div>
-						
-						<div class="summary-block">
-							<h4 class="guide-title">Próximos Passos</h4>
-							<p>Comece a utilizar o sistema agora mesmo utilizando os links abaixo:</p>
-							
-							<div class="content-split"></div>
 
-							<%= link_to "Ir Para o Painel de Controle", agency_root_path, :class => "btn-silver-light-fluid put-left" %>
-				<%= content_tag :a, 'Ver ÜBER Site', { href: "/#{@website.subdomain}/home", class: 'anchor-btn-gold-liquid put-left', target: "_blank", id: "guide-view-site" } %>
-							
-						</div>
 						
 					</div>
 					
