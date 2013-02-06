@@ -17,6 +17,8 @@
 					<option value="template02">Template 02</option>
 					<option value="template03">Template 03</option>
 				</select>
+				
+				
 
 			</div>
 
@@ -92,21 +94,23 @@
 					<% if @composite.model.agency.website.logo.url == "/logos/original/missing.png" %>
 						Logomarca Aqui!
 					<% else %>
-						<%= image_tag @composite.model.agency.website.logo.url(:logo), {:style => "width:100px; height: auto;"} %>
+						<%= image_tag @composite.model.agency.website.logo.url(:logo), {:style => "width:80px; height: auto;"} %>
 					<% end %>
 				</span>
 				<span id="UberPowered" class="auto-size-block put-right">
-					<%= image_tag "admin/uber-powered-by.png" %>
+					<%= image_tag "admin/uber-powered-by.png", :class => "powered01" %>
+					<%= image_tag "admin/uber-powered-by-black.png", :class => "powered02" %>
 				</span>
 			</div>
 
 		</div>
 
-			<%= f.hidden_field :main_photo_id %>
-	    <%= f.hidden_field :first_sub_photo_id %>
-	    <%= f.hidden_field :second_sub_photo_id %>
-	    <%= f.hidden_field :third_sub_photo_id %>
-	    <%= f.hidden_field :fourth_sub_photo_id %>
+		<%= f.hidden_field :main_photo_id %>
+		<%= f.hidden_field :first_sub_photo_id %>
+		<%= f.hidden_field :second_sub_photo_id %>
+		<%= f.hidden_field :third_sub_photo_id %>
+		<%= f.hidden_field :fourth_sub_photo_id %>
+		<%= f.hidden_field :composite_style, :value => "composite-type-01" %>
 
 	</div>
 	

@@ -48,11 +48,13 @@ Ubercasting::Application.routes.draw do
     match 'update_score/:score' => 'model_customer_castings#update_score', via: :put, as: :update_score
   end
 
+  # Agency Routes
   resources :agencies, except: [:index]
 
   get 'agency_customers/destroy_selected'
   resources :agency_customers
 
+  # Testimonials Routes
   resources :testimonials
 
   resources :websites, only: [:edit, :update]
@@ -60,6 +62,7 @@ Ubercasting::Application.routes.draw do
   match "/websites/:id/guide" => "websites#guide", via: :get, as: :website_guide
   match "/websites/:id/guide_intro" => "websites#guide_intro", via: :get, as: :website_guide_intro
   match "/websites/guide_update/:id" => "websites#guide_update", via: :get, as: :website_guide_update
+  match "/websites/update_agency_about/:id" => "websites#update_agency_about", via: :get, as: :website_update_agency_about
 
   match 'connect_sites' => 'agencies#connect_sites', via: :get
 
@@ -73,6 +76,7 @@ Ubercasting::Application.routes.draw do
   match "/:subdomain" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
   match "/:subdomain/home" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
   match "/:subdomain/about" => "subdomain_websites#about", via: :get, as: :subdomain_websites_about
+  match "/:subdomain/casting_foreign" => "subdomain_websites#casting_foreign", via: :get, as: :subdomain_websites_casting_foreign
   match "/:subdomain/contact_us" => "subdomain_websites#contact_us", via: :get, as: :subdomain_websites_contact_us
   match "/:subdomain/be_model" => "subdomain_websites#be_model", via: :get, as: :subdomain_websites_be_model
 

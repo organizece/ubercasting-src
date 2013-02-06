@@ -10,6 +10,11 @@ class SubdomainWebsitesController < ApplicationController
     @website = Website.find_by_subdomain(params[:subdomain])
 
   end
+  
+  def casting_foreign
+    @website = Website.find_by_subdomain(params[:subdomain])
+
+  end
 
   def contact_us
     @website = Website.find_by_subdomain(params[:subdomain])

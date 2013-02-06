@@ -1,0 +1,28 @@
+<div id="website-agency-about-content" class="website-content-config">
+	
+	<h4>Sobre a Agência:</h4>
+	<p>Fale um pouco mais sobre a sua agência. Este conteúdo irá aparecer no menu "Sobre" de seu site.</p>
+	
+	<div class="content-split"></div>
+	
+	<%= form_for @agency, :remote => true, :url => website_update_agency_about_path(@agency.id), :method => "get" do |f| %>
+
+	<div id="footer-config">
+		<div class='row'>
+			<div class='span12'>
+				<%= f.text_area :agency_about %>
+			</div>    
+		</div>
+	</div>
+	
+	<div class="content-split"></div>
+
+	  	<div class="website-content-btns">
+			<%= f.submit 'Salvar Configurações', class: 'input-btn-gold-liquid put-right' %>
+			<%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn-silver-light-fluid put-right' } %>
+		</div>
+	
+	<% end %>
+	
+	
+</div>
