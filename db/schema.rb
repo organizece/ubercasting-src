@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222053929) do
+ActiveRecord::Schema.define(:version => 20130206002502) do
 
   create_table "agencies", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20121222053929) do
     t.integer  "fourth_sub_photo_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "composite_style"
   end
 
   create_table "customer_casting_messages", :force => true do |t|

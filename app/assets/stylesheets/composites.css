@@ -61,8 +61,9 @@ form{ margin: 0px !important; }
 
 .composite-thumbs .is-droppable img{ margin: 0px; position: relative; width: auto; max-width: none; }
 
-.composite-brands{ width: auto; height: auto; overflow: hidden; margin-top: 30px; }
+.composite-brands{ width: auto; height: auto; overflow: hidden; margin-top: 5px; }
 .composite-brands span{ font-size: 18px; padding: 5px 0px; }
+.composite-brands span#UberPowered{ margin-top: 30px; }
 
 #composite-action{ width: 910px; margin: 0 auto; height: 22px; }
 
@@ -111,3 +112,12 @@ form{ margin: 0px !important; }
 .composite-type-03 a,
 .composite-type-03 p,
 .composite-type-03 span{ color: #fff; }
+
+.composite-type-01 img.powered01{ display: block; }
+.composite-type-01 img.powered02{ display: none; }
+
+.composite-type-02 img.powered01{ display: none; }
+.composite-type-02 img.powered02{ display: block; }
+
+.composite-type-03 img.powered01{ display: block; }
+.composite-type-03 img.powered02{ display: none; }

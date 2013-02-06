@@ -42,22 +42,19 @@
 							<% end %>
 
 							<% if @website.castings %>
-							<li><%= link_to 'Castings', subdomain_castings_path(params[:subdomain]) %></li>
+								<% if customer_signed_in? %>
+									<li><%= link_to 'Casting', subdomain_castings_path(params[:subdomain]) %></li>
+								<% else %>
+									<li><%= link_to 'Casting', subdomain_websites_casting_foreign_path(params[:subdomain]) %></li>
+								<% end %>
 							<% end %>
 
 							<% if @website.contact_us %>
 							<li><%= link_to 'Contato', subdomain_websites_contact_us_path({subdomain: params[:subdomain]}) %></li>
 							<% end %>
 
-							<% if customer_signed_in? %>
-							<% else %>
-							<% if @website.create_account %>
-							<li><%= link_to 'Criar Conta', subdomain_websites_home_path({subdomain: params[:subdomain]}) %></li>
-							<% end %>
-							<% end %>
-
 							<% if @website.my_site %>
-							<li><%= link_to 'Meu Site', @website.external_site %></li>
+							<li><%= link_to 'Blog', @website.external_site %></li>
 							<% end %>
 
 							<% if @website.be_a_model %>
@@ -127,15 +124,15 @@
 						<% end %>
 
 						<% if @website.castings %>
-						<li><%= link_to 'Castings', subdomain_castings_path(params[:subdomain]) %></li>
+							<% if customer_signed_in? %>
+								<li><%= link_to 'Casting', subdomain_castings_path(params[:subdomain]) %></li>
+							<% else %>
+								<li><%= link_to 'Casting', subdomain_websites_casting_foreign_path(params[:subdomain]) %></li>
+							<% end %>
 						<% end %>
 
 						<% if @website.contact_us %>
 						<li><%= link_to 'Contato', subdomain_websites_contact_us_path({subdomain: params[:subdomain]}) %></li>
-						<% end %>
-
-						<% if @website.create_account %>
-						<li><%= link_to 'Criar Conta', subdomain_websites_home_path({subdomain: params[:subdomain]}) %></li>
 						<% end %>
 
 						<% if @website.my_site %>

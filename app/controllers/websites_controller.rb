@@ -4,6 +4,7 @@ class WebsitesController < ApplicationController
   def edit
     @website = Website.find(params[:id])
     redirect_to agency_root_path if @website.agency != current_agency
+    @agency = @website.agency
   end
 
   def update
@@ -35,6 +36,18 @@ class WebsitesController < ApplicationController
     
     respond_to do |format|
       if @website.update_attributes(params[:website])
+        format.js
+      else
+        format.js
+      end
+    end
+  end
+  
+  def update_agency_about
+    @agency = Agency.find(params[:id])
+    
+    respond_to do |format|
+      if @agency.update_attributes(params[:agency])
         format.js
       else
         format.js
