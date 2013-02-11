@@ -1,12 +1,11 @@
 <div id="casting-foreign-content-container">
 	<div class="auto-size-block">
 		<p class="lead">Casting</p>
-		
-		<p>Para começar a criar seus castings, você deve seguir um dos três caminhos abaixo:</p>
+		<p class="default">Para começar a criar seus castings, você deve seguir um dos três caminhos abaixo:</p>
 		
 		<div class="casting-block">
 			<h4 class="guide-title">1. Login</h4>
-			<p>Faça seu login para começar montar seus castings.</p>
+			<p class="default">Faça seu login para começar montar seus castings.</p>
 
 			<div class="website-content-btns">
 				<%= link_to "Login", customer_session_path, :class => "btn-silver-light-fluid" %>
@@ -15,7 +14,7 @@
 		
 		<div class="casting-block">
 			<h4 class="guide-title">2. Fazer um Cadastro</h4>
-			<p>Faça um pedido de cadastro para buscar modelos e montar seus castings.</p>
+			<p class="default">Faça um pedido de cadastro para buscar modelos e montar seus castings.</p>
 
 			<div class="website-content-btns">
 				<%= link_to "Pedir Cadastro", subdomain_websites_home_path({subdomain: params[:subdomain]}), :class => "btn-silver-light-fluid" %>
@@ -24,7 +23,7 @@
 		
 		<div class="casting-block">
 			<h4 class="guide-title">3. Entrar em Contato</h4>
-			<p>Entre em contato conosco através de nosso formulário de contato. </p>
+			<p class="default">Entre em contato conosco através de nosso formulário de contato. </p>
 
 			<div class="website-content-btns">
 				<%= link_to "Acessar Painel de Controle", subdomain_websites_contact_us_path({subdomain: params[:subdomain]}), :class => "btn-silver-light-fluid" %>

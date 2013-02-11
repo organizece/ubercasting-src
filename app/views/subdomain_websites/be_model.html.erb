@@ -1,26 +1,23 @@
 <div id="bemodel-content-container">
 	
 	<p class="lead">Seja um Modelo</p>
-	<p>Entre em contato conosco pelo formulário abaixo, ficaremos felizes em agendar uma avaliação.</p>
+	<p class="default">Entre em contato conosco pelo formulário abaixo, ficaremos felizes em agendar uma avaliação.</p>
 	
 	<%= form_tag(subdomain_websites_be_model_path) do -%>
 		
 		<%= hidden_field_tag :contact_email_to, @website.agency.email %>
 		
 		<div class="contact-input-field">
-			<%= label_tag :contact_name, "Nome:*", :required => true %>
-			<%= text_field_tag :contact_name, nil, :required => true, :autofocus => true %>
+			<%= text_field_tag :contact_name, nil, :required => true, :autofocus => true, :value => "Nome" %>
 		</div>
 		<div class="contact-input-field">
-			<%= label_tag :contact_mail, "Email:*" %>
-			<%= text_field_tag :contact_mail, nil, :required => true %>
+			<%= text_field_tag :contact_mail, nil, :required => true, :value => "E-mail" %>
 		</div>
 		<div class="contact-input-field">
-			<%= label_tag :contact_msg, "Mensagem:*" %>
 			<%= text_area_tag :contact_msg, nil, :required => true %>
 		</div>
 		
-		<div><%= submit_tag 'Enviar', :class => "btn-silver-light-fluid" %></div>
+		<div id="contact-form-button-set" class="auto-size-block"><%= submit_tag 'Enviar', :class => "btn-enviar" %></div>
 		
 	<% end -%>
 	
