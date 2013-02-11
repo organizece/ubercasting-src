@@ -869,6 +869,9 @@ $(document).ready(function(){
 				case 1:
 					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/02.jpg');
 				break;
+				case 2:
+					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/03.jpg');
+				break;
 			}
 			
 			$('div#website-theme-preview-thumb img').fadeIn(400);
@@ -888,6 +891,10 @@ $(document).ready(function(){
 					break;
 					case "cubical_theme":
 						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/02.jpg');
+						$(this).parent("li").addClass('theme-active');
+					break;
+					case "stylish_theme":
+						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/03.jpg');
 						$(this).parent("li").addClass('theme-active');
 					break;
 				}
