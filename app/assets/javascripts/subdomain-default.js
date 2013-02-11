@@ -22,7 +22,7 @@ $(document).ready(function(){
 				$('div#main-nav ul li a:eq(1)').addClass('active');
 			break;
 			case "bemodel":
-				$('div#main-nav ul li a:eq(7)').addClass('active');
+				$('div#main-nav ul li a:eq(6)').addClass('active');
 			break;
 			case "contactus":
 				$('div#main-nav ul li a:eq(4)').addClass('active');
@@ -30,16 +30,22 @@ $(document).ready(function(){
 			case "models":
 				$('div#main-nav ul li a:eq(2)').addClass('active');
 			break;
+			case "casting":
+				$('div#main-nav ul li a:eq(3)').addClass('active');
+			break;
 			
 		}
 	}
 	
 	var myLoadTime = "";
+	var myLoadTimeCount = "";
 	
 	function setupHomeImgs(){
 		if ($('div.theme-home-model-box').length > 0) {
 			$('div#content-container-wrapper div.theme-home-model-box img').resizeToParent();
-			myLoadTime = setInterval(setupSlideShow,2000);
+			myLoadTimeCount = parseInt($('div#content-container-wrapper div.theme-home-model-box img').length * 0.2,0);
+			myLoadTimeCount = myLoadTimeCount * 1000;
+			myLoadTime = setInterval(setupSlideShow,myLoadTimeCount);
 		};
 	}
 	
@@ -53,7 +59,8 @@ $(document).ready(function(){
 		
 		if(hasSlide > 0){
 			var myID = $('div.is-slide-show').index();
-			var myClass = $('div#content-container-wrapper div:eq('+myID+')').attr('class');
+			//var myClass = $('div#content-container-wrapper div:eq('+myID+')').attr('class');
+			var myClass = $('input#slide-show-photo').val();
 			var panelImg = myClass.substring(myClass.lastIndexOf("-")+1,myClass.length);
 			var totalPanels = $('div.is-slide-show div.theme-home-model-box').length / panelImg;
 			var totalImgs = $('div.theme-home-model-box').length;
@@ -106,8 +113,13 @@ $(document).ready(function(){
 		};
 	}
 	
+	function setupAboutUs(){
+		$('div#about-content-picture ul#about-picture-list li.about-picture img').resizeToParent({parent: '.about-picture'});
+	}
+	
 	setupNavBar();
 	setupHomeImgs();
 	searchSetupModelAvatar();
+	setupAboutUs();
 	
 });

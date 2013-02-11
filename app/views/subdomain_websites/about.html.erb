@@ -1,13 +1,13 @@
 <div id="about-content-container">
 	<div id="about-content-info" class="put-left">
 		<p class="lead">Sobre a agência</p>
-		<p><%= @website.agency.agency_about %></p>
+		<p class="default"><%= @website.agency.agency_about %></p>
 	</div>
 	
 	<div id="about-content-picture" class="put-right">
-		<ul class="auto-size-block put-list-inline">
-        	<li><%= image_tag "theme-cubical/photo-quem-somos/img01.jpg" %></li>
-            <li><%= image_tag "theme-cubical/photo-quem-somos/img01.jpg" %></li>
+		<ul id="about-picture-list" class="auto-size-block">
+			<li class="about-picture"><%= image_tag @website.agency.models[0].photos[0].image.url(:main_composite) %></li>
+            <li class="about-picture"><%= image_tag @website.agency.models[1].photos[1].image.url(:main_composite) %></li>
         </ul>
 	</div>
 </div>
