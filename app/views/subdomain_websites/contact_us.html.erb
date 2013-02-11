@@ -1,27 +1,30 @@
 <div id="contactus-content-container">
 	
-	<p class="lead">Fale Conosco</p>
-	<p>Fique a vontade para falar conosco através do formulário abaixo. Iremos responder o mais rápido possível.</p>
+	<div id="contact-form">
+		<p class="lead">Fale Conosco</p>
+		<p class="default">Fique a vontade para falar conosco através do formulário abaixo. Iremos responder o mais rápido possível.</p>
+
+		<%= form_tag(subdomain_websites_contact_us_path) do -%>
+
+			<%= hidden_field_tag :contact_email_to, @website.agency.email %>
+
+			<div class="contact-input-field">
+				<%= text_field_tag :contact_name, nil, :required => true, :autofocus => true, :value => "Nome" %>
+			</div>
+			<div class="contact-input-field">
+				<%= text_field_tag :contact_mail, nil, :required => true, :value => "E-mail" %>
+			</div>
+			<div class="contact-input-field">
+				<%= text_area_tag :contact_msg, nil, :required => true %>
+			</div>
+
+			<div id="contact-form-button-set" class="auto-size-block"><%= submit_tag 'Enviar', :class => "btn-enviar" %></div>
+
+		<% end -%>
+	</div>
 	
-	<%= form_tag(subdomain_websites_contact_us_path) do -%>
-		
-		<%= hidden_field_tag :contact_email_to, @website.agency.email %>
-		
-		<div class="contact-input-field">
-			<%= label_tag :contact_name, "Nome:*", :required => true %>
-			<%= text_field_tag :contact_name, nil, :required => true, :autofocus => true %>
-		</div>
-		<div class="contact-input-field">
-			<%= label_tag :contact_mail, "Email:*" %>
-			<%= text_field_tag :contact_mail, nil, :required => true %>
-		</div>
-		<div class="contact-input-field">
-			<%= label_tag :contact_msg, "Mensagem:*" %>
-			<%= text_area_tag :contact_msg, nil, :required => true %>
-		</div>
-		
-		<div><%= submit_tag 'Enviar', :class => "btn-silver-light-fluid" %></div>
-		
-	<% end -%>
+	<div id="contact-map">
+		<iframe width="468" height="492" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?ie=UTF8&amp;t=m&amp;ll=37.09024,-95.712891&amp;spn=34.259599,41.044922&amp;z=4&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/?ie=UTF8&amp;t=m&amp;ll=37.09024,-95.712891&amp;spn=34.259599,41.044922&amp;z=4&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+	</div>
 	
 </div>

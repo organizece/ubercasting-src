@@ -1,6 +1,7 @@
 <div id="website-theme-content" class="website-content-config">
 	
-	<h4>Escolha um Tema:</h4>
+	<h4>Escolha do Tema:</h4>
+	<p>Escolha e configure o tema de seu ÜBER Site, selecionando o estilo que melhor combina com a sua agência, ou personalizando todos os itens do seu jeito.</p>
 	
 	<div class="content-split"></div>
 	
@@ -17,6 +18,10 @@
 			<li>
 				<%= f.radio_button :theme, :cubical_theme %>
 			    <%= f.label :theme_cubical_theme, 'Cubical Theme' %>
+			</li>
+			<li>
+				<%= f.radio_button :theme, :stylish_theme %>
+			    <%= f.label :theme_stylish_theme, 'Stylish Theme' %>
 			</li>
 		</ul>
 	</div>

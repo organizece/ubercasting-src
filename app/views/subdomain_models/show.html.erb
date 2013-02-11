@@ -90,7 +90,7 @@
 
 						</div>
 						
-						<div id="composite-template" class="auto-size-block composite-panel composite-type-01 ui-widget ui-helper-clearfix">
+						<div id="composite-template" class="auto-size-block composite-panel <%= @model.composite.composite_style %> ui-widget ui-helper-clearfix">
 
 							<div class="composite-coverimg put-left auto-size-block">
 
@@ -177,11 +177,16 @@
 
 								<div class="composite-brands">
 									<span id="BrandAgendy" class="auto-size-block put-left">
-										Logo Agência &copy;
+										<% if @model.agency.website.logo.url == "/logos/original/missing.png" %>
+											Logomarca Aqui!				
+										<% else %>
+											<%= image_tag @model.agency.website.logo.url(:logo), {:style => "width:auto; height: 70px;"} %>
+										<% end %>
 									</span>
 									<span id="UberPowered" class="auto-size-block put-right">
-										<%= image_tag "admin/uber-powered-by.png" %>
-									</span>
+										<%= image_tag "admin/uber-powered-by.png", :class => "powered01" %>
+										<%= image_tag "admin/uber-powered-by-black.png", :class => "powered02" %>
+							        </span>
 								</div>
 
 							</div>

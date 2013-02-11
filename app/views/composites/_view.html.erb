@@ -95,7 +95,7 @@
 				<% if @composite.model.agency.website.logo.url == "/logos/original/missing.png" %>
 					Sua logomarca ficará aqui.
 				<% else %>
-					<%= image_tag @composite.model.agency.website.logo.url(:logo), {:style => "width:80px; height: auto;"} %>
+					<%= image_tag @composite.model.agency.website.logo.url(:logo), {:style => "width:auto; height: 70px;"} %>
 				<% end %>
 			</span>
 			<span id="UberPowered" class="auto-size-block put-right">
