@@ -43,7 +43,7 @@ $(document).ready(function(){
 	function setupHomeImgs(){
 		if ($('div.theme-home-model-box').length > 0) {
 			$('div#content-container-wrapper div.theme-home-model-box img').resizeToParent();
-			myLoadTimeCount = parseInt($('div#content-container-wrapper div.theme-home-model-box img').length * 0.2,0);
+			myLoadTimeCount = parseInt($('div#content-container-wrapper div.theme-home-model-box img').length * 0.2,0) + 1;
 			myLoadTimeCount = myLoadTimeCount * 1000;
 			myLoadTime = setInterval(setupSlideShow,myLoadTimeCount);
 		};
