@@ -1240,6 +1240,7 @@ div#about-content-container div#about-content-picture ul li{
 div#about-content-container div#about-content-picture ul li img{
 	width: auto;
 	max-width:none;
+	position: absolute;
 }
 
 /**************************************/

@@ -1814,11 +1814,16 @@ h3.header-title-general-data{
 	background:#fff url(admin/title-general-data.jpg) left top no-repeat scroll;
 }
 
-
+div#admin-model-insert-content select#model_specialty{ height: 100px; }
+div#admin-model-insert-content textarea#model_curriculum{ height: 90px; }
 
 /**************************************/
 /*  MODEL SHOW INFO  ******************/
 /**************************************/
+
+.header-button{
+	margin: 15px 20px 0px 0px;
+}
 
 div#model-primary-info{ padding: 15px 0 20px 14px; }
 div#model-primary-info div#model-profile-img{ width:200px; }
@@ -2233,8 +2238,10 @@ div#website-content-container div#website-content-nav ul li a{
 	color: #6b6b6b;
 	font-size: 110%;
 	display: block;
-	padding: 11% 0px 0px 11%;
 }
+
+div#website-content-container div#website-content-nav ul li:first-child a{ padding: 22px 0px 0px 15px; }
+div#website-content-container div#website-content-nav ul li:last-child a{ padding: 22px 0px 0px 23px; }
 
 /*  PAGE CLASSES  ************/
 
@@ -2568,6 +2575,15 @@ div#guide-content-container div#guide-step-01 div#guide-logo{ border-left:1px so
 div#guide-content-container div#guide-step-01 div#guide-logo div#logo-actions{ width: 350px; }
 div#guide-content-container div#guide-step-01 div#guide-logo div#logo-actions div#logo-update img{ width:100px; }
 div#guide-content-container div#guide-step-01 div#guide-logo div#logo-actions a#logo-update{ margin-left: 15px; }
+
+div#guide-content-container div#guide-step-03 div.website-view-block p{
+	color: #7c7c7c;
+	font-size: 90%;
+	font-weight: normal;
+	display: block;
+	clear: both;
+	line-height: 1.2em;
+}
 
 div#guide-content-container div#guide-step-04,
 div#guide-content-container div#guide-step-05{

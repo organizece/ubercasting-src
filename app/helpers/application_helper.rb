@@ -19,15 +19,16 @@ module ApplicationHelper
   end
 
   def start_year
-    1900  
+      Time.now.year
   end
 
   def end_year
-    Time.now.year
+    1900
   end
 
   def default_year
-    Time.now.years_ago(18)
+    #Time.now.years_ago(18)
+    Time.now
   end
 
 end

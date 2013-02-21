@@ -1,2 +1,47 @@
-<h1>MainPages#tour</h1>
-<p>Find me in app/views/main_pages/tour.html.erb</p>
+<%= stylesheet_link_tag    "internal" %>
+
+<div id="main-content-container" class="tour-content">
+	
+	<div id="content-wrapper">
+		
+		<div id="header">
+			<h2><strong>Tour</strong></h2>
+			<h3 class="sub-title">Assita aos vídeos abaixo para entender melhor o funcionamento do sistema.</h3>
+		</div>
+		
+		<div id="body">
+			
+			<div class="tab-selector-container">
+				<ul>
+					<li><a href="#" title="Sistema Geral" class="item01 link-active">Sistema Geral</a></li>
+					<li><a href="#" title="Cadastro e Gerenciamento" class="item02">Cadastro e Gerenciamento</a></li>
+					<li><a href="#" title="Busque e Selecione" class="item03">Busque e Selecione</a></li>
+					<li><a href="#" title="Exiba e Compartilhe" class="item04">Exiba e Compartilhe</a></li>
+					<li><%= link_to "Comece Agora", new_agency_registration_path, :class => "item05 link-stand-out" %></li>
+				</ul>
+			</div>
+			
+			<div class="content-split"></div>
+			
+			<div id="video-title" class="auto-size-block">
+				<h4>Sistema <strong>Geral</strong></h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu nunc quis lorem fermentum posuere. Phasellus nec felis semper elit rhoncus scelerisque. Cras ac tellus id justo feugiat malesuada.</p>
+			</div>
+			
+			<div id="video-player" class="auto-size-block">
+				<%= image_tag "internal/img-tour-video-placement.png" %>
+			</div>
+			
+			<div id="video-nav" class="auto-size-block">
+				<ul class="put-list-inline auto-size-block">
+					<li><%= link_to "« Anterior", "#", :class => "video-nav-btn" %></li>
+					<li><%= link_to "Próximo »", "#", :class => "video-nav-btn" %></li>
+				</ul>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</div>
+
