@@ -5,17 +5,16 @@ class Model < ActiveRecord::Base
                  negro 
                  mestico 
                  latino 
+                 moreno
                  oriental )
 
   GENDERS = %w( male
                 female )
 
-  EYES_COLOR = %w( azul_claro
-                   azul_escuro 
+  EYES_COLOR = %w( azul 
+                   verde
                    castanho_claro 
-                   castanho_escuro 
-                   verde_claro 
-                   verde_escuro )
+                   castanho_escuro )
   
   HAIR_COLOR = %w( branco 
                    castanho_claro 

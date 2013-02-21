@@ -256,7 +256,7 @@ pt:
         visualization_mode: Modo de Visualização
         theme: Tema
         footer: Rodapé
-        footer_navigation_itens: Itens de Navegação do Rodapé
+        footer_navigation_itens: Menu no Rodapé
         logo: Logomarca
         logo_url: Endereço da Logomarca
         body_background_image: Imagem de fundo do site
@@ -333,6 +333,7 @@ pt:
     negro: Negra(o)
     mestico: Mestiça(o)
     latino: Latina(o)
+    moreno: Morena(o)
     oriental: Oriental
 
   genders:
@@ -340,12 +341,10 @@ pt:
     female: Feminino
 
   eyes_color:
-    azul_claro: Azul claro
-    azul_escuro: Azul escuro
+    azul: Azul
     castanho_claro: Castanho claro
     castanho_escuro: Castanho escuro
-    verde_claro: Verde claro
-    verde_escuro: Verde escuro
+    verde: Verde
 
   hair_color:
     branco: Branco / Grisalho
