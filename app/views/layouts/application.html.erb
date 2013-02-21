@@ -45,7 +45,6 @@
 							<li><%= link_to '» Adicionar Novo Modelo', new_model_path %></li>
 							<li><%= link_to '» Visualizar Pedidos', new_model_path, :class => "hasfbicon offline" %></li>
 							<li><%= link_to '» Convidar Modelo', new_model_path, :class => "hasfbicon offline" %></li>
-							<li><%= link_to '» Conectar Sites', connect_sites_path, :class => "hasnewicon" %></li>
 						</ul>
 					</li>
                     <li class="hasdrop">
@@ -67,6 +66,7 @@
                                 <li><%= link_to '» Configurar Tema', edit_website_path(current_agency.website) %></li>
                                 <li><%= link_to '» Alterar Visualização', edit_website_path(current_agency.website) %></li>
                                 <li><%= link_to '» Customizar Domínio', edit_website_path(current_agency.website) %></li>
+								<li><%= link_to '» Conectar Sites', connect_sites_path, :class => "hasnewicon" %></li>
                             </ul>
                         </li>
                     <% else %>
@@ -75,6 +75,7 @@
                                 <li><%= link_to '» Configurar Tema', root_path %></li>
                                 <li><%= link_to '» Alterar Visualização', root_path %></li>
                                 <li><%= link_to '» Customizar Domínio', root_path %></li>
+								<li><%= link_to '» Conectar Sites', root_path, :class => "hasnewicon" %></li>
                             </ul>
                         </li>
                     <% end %>
@@ -85,7 +86,12 @@
             <div id="secundary-links">
                 <% if agency_signed_in? %>
                     <ul id="secundary-links-list">
-    					<li><%= link_to 'Minha Conta', edit_agency_registration_path %></li>
+						<% if agency_signed_in? && current_agency.website %>
+							<li class="agency-owner-name">Olá <%= current_agency.owner_name %>,</li> 
+						<% else %>
+							<li class="agency-owner-name">Olá usuário,</li> 
+						<% end %>  					
+						<li><%= link_to 'Minha Conta', edit_agency_registration_path %></li>
                         <li><%= link_to 'Sair »', destroy_agency_session_path %></li>
                     </ul>
                 <% end %>

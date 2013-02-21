@@ -269,6 +269,17 @@ $(document).ready(function(){
 		var currentPlanPeriod = "";
 		var currentPlanType = "";
 		
+		//SET UP TOOLTIP FUNCTIONS
+		$('a.has-tooltip').css('color', '#232323');
+		$('a.has-tooltip').css('font-size', '80%');
+		$('a.has-tooltip').tooltip('hide');
+		$('a.has-tooltip').mouseenter(function(event) {
+			$(this).tooltip('show');
+		});
+		$('a.has-tooltip').mouseleave(function(event) {
+			$(this).tooltip('hide');
+		});
+		
 		//CHECK IF RAILS RETURNED A FORM VALIDATION MESSAGE
 		if( $('div.alert').length != 0 ){
 			var errorVal = $('span.help-inline').parent("div.controls").find("input").val();
@@ -291,18 +302,18 @@ $(document).ready(function(){
 			switch( $(this).text() ){
 				case "Mensal":
 					$('input#agency_account_period').val("monthly");
-					$('div#plan-type div#type-02 p.price-top').html("R$"+topMonthPrice+",00<span>/mês</span>");
-					$('div#plan-type div#type-03 p.price-top').html("R$"+uberMonthPrice+",00<span>/mês</span>");
+					$('div#plan-type div#type-03 p.price-top').html("R$"+topMonthPrice+",00<span>/mês</span>");
+					$('div#plan-type div#type-02 p.price-top').html("R$"+uberMonthPrice+",00<span>/mês</span>");
 				break;
 				case "Semestral":
 					$('input#agency_account_period').val("semiannual");
-					$('div#plan-type div#type-02 p.price-top').html("R$"+(topMonthPrice*6)+",00<span>/total</span>");
-					$('div#plan-type div#type-03 p.price-top').html("R$"+(uberMonthPrice*6)+",00<span>/total</span>");
+					$('div#plan-type div#type-03 p.price-top').html("R$"+(topMonthPrice*6)+",00<span>/total</span>");
+					$('div#plan-type div#type-02 p.price-top').html("R$"+(uberMonthPrice*6)+",00<span>/total</span>");
 				break;
 				case "Anual":
 					$('input#agency_account_period').val("annual");
-					$('div#plan-type div#type-02 p.price-top').html("R$"+(topMonthPrice*12)+",00<span>/total</span>");
-					$('div#plan-type div#type-03 p.price-top').html("R$"+(uberMonthPrice*12)+",00<span>/total</span>");
+					$('div#plan-type div#type-03 p.price-top').html("R$"+(topMonthPrice*12)+",00<span>/total</span>");
+					$('div#plan-type div#type-02 p.price-top').html("R$"+(uberMonthPrice*12)+",00<span>/total</span>");
 				break;
 			}
 			
@@ -321,11 +332,11 @@ $(document).ready(function(){
 					$('div.plan-summary-folder ul li.plan-summary-models').text("Modelos para cadastro: "+freeModels);
 					$('div.plan-summary-folder ul li.plan-summary-domain').text("Domínio próprio: Não");
 				break;
-				case "type-02":
+				case "type-03":
 					currentPlanType = "top";
-					$('input#agency_account_type').val("top");
-					$('div.plan-summary-folder h4.plan-summary-type').text("Plano Top");
-					$('div.plan-summary-folder ul li.plan-summary-period').text("Plano: TOP");
+					$('input#agency_account_type').val("standard");
+					$('div.plan-summary-folder h4.plan-summary-type').text("Plano Standard");
+					$('div.plan-summary-folder ul li.plan-summary-period').text("Plano: STANDARD");
 					$('div.plan-summary-folder ul li.plan-summary-template').text("Templates para o site: "+topTemplates);
 					$('div.plan-summary-folder ul li.plan-summary-models').text("Modelos para cadastro: "+topModels);
 					$('div.plan-summary-folder ul li.plan-summary-domain').text("Domínio próprio: Sim");
@@ -339,7 +350,7 @@ $(document).ready(function(){
 					};
 					
 				break;
-				case "type-03":
+				case "type-02":
 					currentPlanType = "uber";
 					$('input#agency_account_type').val("uber");
 					$('div.plan-summary-folder h4.plan-summary-type').text("Plano Über");
@@ -904,6 +915,22 @@ $(document).ready(function(){
 		};
 	}
 	
+	function menuBarNameSetup(){
+		var myNameLength = $('div#secundary-links ul li.agency-owner-name').text().length;
+		
+		if ( myNameLength > 24 ){
+			var ownerNameFull = $('div#secundary-links ul li.agency-owner-name').text();
+			var ownerName = ownerNameFull.substring(4,ownerNameFull.length);
+			var spacePoint = ownerName.indexOf(" ");
+			var firstName = ownerName.substring(0,spacePoint);
+			firstName += ",";
+			$('div#secundary-links ul li.agency-owner-name').text("Olá "+firstName);
+		};
+		
+		$('div#secundary-links ul li.agency-owner-name').css('font-size', '13px');
+		
+	}
+	
 	btnFolderHover();
 	dropdownMenuNav();
 	searchAdvancedOpts();
@@ -918,6 +945,7 @@ $(document).ready(function(){
 	websiteUpdateThemePreview();
 	setupSimpleModal();
 	setupWebsiteGuide();
+	menuBarNameSetup();
 
 	//loginPanelSetup();
 	

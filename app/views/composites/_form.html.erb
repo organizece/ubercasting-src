@@ -2,8 +2,8 @@
   <%= hidden_field_tag :source, params[:source] %>
 
   <div id="container-composite" class="auto-size-block clear-margin-padding">
-    
-	<div id="composite-template" class="auto-size-block composite-panel composite-type-01 ui-widget ui-helper-clearfix">
+	
+	<div id="composite-template" class="auto-size-block composite-panel <% if !@composite.composite_style %>composite-type-01<% else %><%= @composite.composite_style %><% end %> ui-widget ui-helper-clearfix">
 
 		<div class="composite-coverimg put-left auto-size-block">
 
