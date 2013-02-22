@@ -429,6 +429,14 @@ p.inner-header-base-text{
 /*  INPUTS, BUTTON AND ANCHORS ELEMENTS  ****************************/
 
 /* TEXT */
+.input-txt-light-2-column{
+	width:150px;
+	height:23px !important;
+	display: block !important;
+	border: 1px solid #a1a1a1 !important;
+	background:#fff url(admin/bg-input-light.jpg) left top repeat-x scroll !important;
+}
+
 .input-txt-light-4-column{
 	width:295px;
 	height:23px !important;
@@ -983,7 +991,7 @@ span.icon-title-pencil{
 .form-block-4-columns select#model_birthday_2i{ width:142px; }
 
 .form-block-4-columns label.radio{
-	width:105px;
+	width:110px;
 	float:left;
 	margin: 0px 0px 0px 20px;
 	padding:0px !important;
@@ -1085,7 +1093,7 @@ span.icon-title-pencil{
 	text-indent: -10000px;
 }
 
-.modal-footer{ height:100px; overflow: hidden; }
+.modal-footer{ height:75px; overflow: hidden; }
 
 #modal-add-model{ min-height: 300px; height: auto; }
 
@@ -1959,12 +1967,6 @@ div#modal-add-model div#customer-casting-list{
 	overflow-y: auto !important;
 }
 
-div#modal-add-model div#agency-casting-list,
-div#modal-add-model div#customer-casting-list{ display: none; }
-
-div#modal-add-model ul#agency-casting-footer,
-div#modal-add-model ul#customer-casting-footer{ display: none; }
-
 div#modal-add-model a#display-agency-casting-list,
 div#modal-add-model a#display-customer-casting-list{ margin: 2em 1em 0px 0em; }
 
@@ -2243,12 +2245,56 @@ div#website-content-container div#website-content-nav ul li a{
 div#website-content-container div#website-content-nav ul li:first-child a{ padding: 22px 0px 0px 15px; }
 div#website-content-container div#website-content-nav ul li:last-child a{ padding: 22px 0px 0px 23px; }
 
+div#website-content-container div#website-content-subnav{
+	width:925px;
+	height: 52px;
+	background: #FFF url(ubersite-config/bg-website-subnav-container.jpg) left top repeat-x scroll;
+	margin: 22px auto;
+	border: 1px solid #b8b8b8;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
+
+div#website-content-container div#website-content-subnav ul{
+	width: 903px;
+	height: 34px;
+	display: block;
+	background: #FFF url(ubersite-config/bg-subnav-bar.jpg) left top repeat-x scroll;
+	margin: 8px auto; 
+	padding: 0;
+	border-top: 1px solid #b8b8b8;
+	border-left: 1px solid #b8b8b8;
+	border-right: 1px solid #b8b8b8;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+
+div#website-content-container div#website-content-subnav ul li{
+	margin: 0;
+	padding: 0;
+	display: block;
+	float: left;
+}
+
+div#website-content-container div#website-content-subnav ul li a{
+	color: #232323;
+	font-size: 90%;
+	display: block;
+	padding: 6px 20px 6px 20px;
+	border-right: 1px solid #b8b8b8;
+	border-left: 1px solid #FFF;
+}
+
+div#website-content-container div#website-content-subnav ul li:last-child a{ border-right:none; padding-left: 33px; }
+
+
 /*  PAGE CLASSES  ************/
 
 div.website-content-config{
 	width: 97%;
 	height: auto;
-	overflow: hidden;
 	display: block;
 	margin: 35px auto;
 }
@@ -2358,59 +2404,35 @@ div#website-theme-preview-thumb{
 }
 
 
-/*  THEME PART CONFIG  ************/
-div#website-theme-config div#theme-config-header{
-	width: auto;
-	height: auto;
-	display: block;
-	overflow: hidden;
-	clear: both;
-}
+/*  THEME PART CONFIG CUSTOM  ************/
+div#website-theme-config{ width: 280px; overflow: visible; }
 
-div#website-theme-config div#theme-config-header ul,
-div#website-theme-config div#theme-config-header ul li{ list-style: none; margin: 0; padding: 0; }
+div#theme-custom-header{ border-bottom: 1px solid #a1a1a1; }
 
-div#website-theme-config div#theme-config-header ul{ 
-	display: block; 
-	height: auto; 
-	overflow: hidden; 
-	margin: 10px 0px; 
-	border-bottom: 1px solid #999;
-}
+div#theme-custom-header label,
+div#theme-custom-header input{ display: block; float: left; }
 
-div#website-theme-config div#theme-config-header ul li{ 
-	display: block; 
-	float: left; 
-	margin-right: 10px; 
-	margin-bottom: 5px; 
-	padding: 5px 10px; 
-	font-size: 90%;
-}
+div#theme-custom-header label{ font-size: 90%; margin-left: 7px; }
 
-div#website-theme-config div#theme-config-header ul li:hover,
-div#website-theme-config div#theme-config-header ul li.active{ background-color: #a1a1a1; border-radius: 7px; }
+div#theme-custom-content{ width: auto; height: auto; } 
 
-div#website-theme-config div#theme-config-header ul li a{ color: #a1a1a1; }
-div#website-theme-config div#theme-config-header ul li:hover a,
-div#website-theme-config div#theme-config-header ul li.active a{ color: #fff; text-decoration: none; }
+div#theme-custom-pieces{ border-bottom: 1px solid #a1a1a1; margin-top: 9px; }
 
-div#website-theme-config div#theme-body-part{ border-bottom: 1px solid #999; }
+div#theme-custom-content select{ width: 246px; }
+div#theme-custom-content label{ font-size: 90%; margin-top: 5px; }
 
-div#website-theme-config select#website-theme-parts{ width: 100%; }
+div#theme-custom-part-body,
+div#theme-custom-part-header{ margin: 5px 0px; }
 
-div#website-theme-config div#theme-body-config,
-div#website-theme-config div#theme-body-config label,
-div#website-theme-config div#theme-body-config input{ font-size: 0.9em; }
+div#theme-custom-part-header,
+div#theme-custom-part-nav,
+div#theme-custom-part-content,
+div#theme-custom-part-footer{ display: none; }
 
-div#website-theme-config div#theme-body-config ul{ margin-top: 5px; }
-
-div#website-theme-config div#theme-body-config ul li{ width: 46%; display: block; }
-div#website-theme-config div#theme-body-config ul li.put-right{ margin-right: 2px; }
-div#website-theme-config div#theme-body-config ul li.full-item{ width: 100%; clear: both; }
-
-div#website-theme-config div#theme-body-config ul li input,
-div#website-theme-config div#theme-body-config ul li label{ width: 90%; }
-div#website-theme-config div#theme-body-config ul li.full-item input{ width: 95%; }
+div#theme-custom-part-body input#website_body_font_size,
+div#theme-custom-part-header input#website_header_font_size,
+div#theme-custom-part-content input#website_content_font_size,
+div#theme-custom-part-footer input#website_footer_font_size{ width: 230px; }
 
 /*  THEME LOGO CONFIG  ************/
 

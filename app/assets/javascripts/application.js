@@ -17,6 +17,7 @@
 //= require jquery-fileupload-main
 //= require jquery_maskedinput-1_3_min
 //= require jquery-resize-n-place
+//= require jquery_minicolors
 //= require bootstrap_aditions
 //= require find_cep
 //= require agencies

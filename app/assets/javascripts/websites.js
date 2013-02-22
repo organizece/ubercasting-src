@@ -39,8 +39,10 @@ $(function() {
 			if( myId == "change-to-theme" ){
 				$('div#subdomain-form').fadeOut('fast', function() {
 					$('div#website-config-form').fadeIn('slow');
+					$('div#website-content-subnav').fadeIn('slow');
 				});
 			}else{
+				$('div#website-content-subnav').fadeOut('fast');
 				$('div#website-config-form').fadeOut('fast', function() {
 					$('div#subdomain-form').fadeIn('slow');
 				});

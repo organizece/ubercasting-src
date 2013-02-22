@@ -138,8 +138,26 @@ $(function() {
 		};
 	}
 	
+	//SETUP TOPBAR USER NAME
+	function menuBarNameSetup(){
+		var myNameLength = $('div#secundary-links ul li.agency-owner-name').text().length;
+		
+		if ( myNameLength > 24 ){
+			var ownerNameFull = $('div#secundary-links ul li.agency-owner-name').text();
+			var ownerName = ownerNameFull.substring(4,ownerNameFull.length);
+			var spacePoint = ownerName.indexOf(" ");
+			var firstName = ownerName.substring(0,spacePoint);
+			firstName += ",";
+			$('div#secundary-links ul li.agency-owner-name').text("Olá "+firstName);
+		};
+		
+		$('div#secundary-links ul li.agency-owner-name').css('font-size', '13px');
+		
+	}
+	
 	checkAndPlaceImgs();
 	setupCompositeTemplate();
 	setupCompositeImgGallery();
+	menuBarNameSetup();
   
 });

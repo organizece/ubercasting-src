@@ -262,16 +262,16 @@ pt:
         body_background_image: Imagem de fundo do site
         body_background_color: Cor de fundo do site
         body_font_family: Tipo de fonte do site
-        body_font_size: Tamanho da fonte do site
+        body_font_size: Tamanho da fonte do site (em %)
         body_font_color: Cor da fonte do site
         header_background_color: Cor de fundo do cabeçalho
         header_font_family: Tipo de fonte do cabeçalho
         header_font_size: Tamanho da fonte do cabeçalho
         header_font_color: Cor da fonte do cabeçalho
         navigation_background_color: Cor de fundo do menu de navegação
-        navigation_font_family: Tipo de fonte do menu de navegaçnao
-        navigation_font_size: Tamanho da fonte do menu de navegaçnao
-        navigation_font_color: Cor da fonte do menu de navegaçnao
+        navigation_font_family: Tipo de fonte do menu de navegação
+        navigation_font_size: Tamanho da fonte do menu de navegação
+        navigation_font_color: Cor da fonte do menu de navegação
         content_background_color: Cor de fundo do conteúdo
         content_font_family: Tipo de fonte do conteúdo
         content_font_size: Tamanho da fonte do conteúdo
@@ -288,6 +288,7 @@ pt:
         create_account: Criar Conta
         my_site: Meu Site/Blog
         be_a_model: Seja Modelo
+        has_custom: Customizar Tema
       agency_customer:
         name: Nome
         email: Email

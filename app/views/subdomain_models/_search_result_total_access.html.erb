@@ -26,6 +26,9 @@
 			<%= link_to "Adicionar Selecionados", subdomain_castings_add_models_path({subdomain: params[:subdomain]}), via: :get, id: :add_selected %>
 		</li>
 		<li>
+			<%= link_to "Selecionar Todos", "#", :id => "models-mark-all" %>
+		</li>
+		<li>
 			<%= link_to "Adicionar Todos", subdomain_castings_add_models_path({subdomain: params[:subdomain], models: @models_ids}), remote: true, via: :get, id: :add_all_models %>
 		</li>
 		<li>

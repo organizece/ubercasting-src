@@ -12,6 +12,83 @@
   <%= csrf_meta_tags %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<% if @website.has_custom %>
+		<style type="text/css" media="screen">
+			body{
+				<% if @website.body_background_color %> background-color: <%= @website.body_background_color %> !important; <% end %>
+				<% if @website.body_font_family %> font-family: <%= @website.body_font_family %> !important; <% end %>
+				<% if @website.body_font_size %> font-size: <%= @website.body_font_size %>% !important; <% end %>
+				<% if @website.body_font_color %> color: <%= @website.body_font_color %> !important; <% end %>
+			}
+			
+			h6,h5,h4,h3,h2,h1,a,p,label,span,input{
+				<% if @website.body_font_color %> color: <%= @website.body_font_color %> !important; <% end %>
+			}
+			
+			div#header{
+				<% if @website.header_background_color %> background-color: <%= @website.header_background_color %> !important; <% end %>
+				<% if @website.header_font_family %> font-family: <%= @website.header_font_family %> !important; <% end %>
+				<% if @website.header_font_size %> font-size: <%= @website.header_font_size %>% !important; <% end %>
+				<% if @website.header_font_color %> color: <%= @website.header_font_color %> !important; <% end %>
+			}
+			
+			div#header h6, div#header h5, 
+			div#header h4, div#header h3, 
+			div#header h2, div#header h1, 
+			div#header a, div#header p, 
+			div#header label, div#header span, div#header input{
+				<% if @website.header_font_color %> color: <%= @website.header_font_color %> !important; <% end %>
+			}
+			
+			div#nav-container{
+				<% if @website.navigation_background_color %> background-color: <%= @website.navigation_background_color %> !important; <% end %>
+				<% if @website.navigation_font_family %> font-family: <%= @website.navigation_font_family %> !important; <% end %>
+				<% if @website.navigation_font_size %> font-size: <%= @website.navigation_font_size %>% !important; <% end %>
+				<% if @website.navigation_font_color %> color: <%= @website.navigation_font_color %> !important; <% end %>
+			}
+			
+			div#nav-container h6, div#nav-container h5, 
+			div#nav-container h4, div#nav-container h3, 
+			div#nav-container h2, div#nav-container h1, 
+			div#nav-container a, div#nav-container p, 
+			div#nav-container label, div#nav-container span, div#nav-container input{
+				<% if @website.navigation_font_size %> font-size: <%= @website.navigation_font_size %>% !important; <% end %>
+				<% if @website.navigation_font_color %> color: <%= @website.navigation_font_color %> !important; <% end %>
+			}
+			
+			div#content-container{
+				<% if @website.content_background_color %> background-color: <%= @website.content_background_color %> !important; <% end %>
+				<% if @website.content_font_family %> font-family: <%= @website.content_font_family %> !important; <% end %>
+				<% if @website.content_font_size %> font-size: <%= @website.content_font_size %>% !important; <% end %>
+				<% if @website.content_font_color %> color: <%= @website.content_font_color %> !important; <% end %>
+			}
+			
+			div#content-container h6, div#content-container h5, 
+			div#content-container h4, div#content-container h3, 
+			div#content-container h2, div#content-container h1, 
+			div#content-container a, div#content-container p, 
+			div#content-container label, div#content-container span, div#content-container input{
+				<% if @website.content_font_color %> color: <%= @website.content_font_color %> !important; <% end %>
+			}
+			
+			div#footer{
+				<% if @website.footer_background_color %> background-color: <%= @website.footer_background_color %> !important; <% end %>
+				<% if @website.footer_font_family %> font-family: <%= @website.footer_font_family %> !important; <% end %>
+				<% if @website.footer_font_size %> font-size: <%= @website.footer_font_size %>% !important; <% end %>
+				<% if @website.footer_font_color %> color: <%= @website.footer_font_color %> !important; <% end %>
+			}
+			
+			div#footer h6, div#footer h5, 
+			div#footer h4, div#footer h3, 
+			div#footer h2, div#footer h1, 
+			div#footer a, div#footer p, 
+			div#footer label, div#footer span, div#footer input{
+				<% if @website.footer_font_size %> font-size: <%= @website.footer_font_size %>% !important; <% end %>
+				<% if @website.footer_font_color %> color: <%= @website.footer_font_color %> !important; <% end %>
+			}
+		</style>
+	<% end %>
 
 </head>
 

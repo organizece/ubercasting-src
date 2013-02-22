@@ -1085,7 +1085,7 @@ div#footer-nav ul li{
 /**************************************/
 
 div#home-content-container{
-	width: 92%;
+	width: 960px;
 	height: auto;
 	max-height: 900px;
 	position: relative;
@@ -1107,17 +1107,13 @@ div#slide-loader{
 div#slide-loader img{ width: 16px; height: 16px; display: block; margin: 50px auto; }
 
 div.theme-home-model-box{
-	width: 220px;
-	height: 220px;
+	width: 315px;
+	height: 375px;
 	display: block;
 	float: left;
 	overflow: hidden;
 	position: relative;
-	margin: 0 1% 1% 1%;
-	border: 1px solid #333;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+	margin-left: 3px;
 }
 
 div.theme-home-model-box img{
