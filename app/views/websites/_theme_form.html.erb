@@ -7,6 +7,7 @@
 	
 	<%= form_for @website do |f| %>
 	
+	<!-- THEME INPUT SELECTION -->
 	<div id="website-theme-input">
 		<!-- Pensar em como armazenar todos os temas -->
 	    
@@ -26,56 +27,179 @@
 		</ul>
 	</div>
 	
+	<!-- THEME SELECTION PREVIEW -->
 	<div id="website-theme-preview">
 		<div id="website-theme-preview-thumb">
 			<%= image_tag "thumbs/01.jpg" %>
 		</div>
 	</div>
 	
-	<div id="website-theme-config" class="offline">
+	<!-- THEME CUSTOM CONFIGURATION -->
+	<div id="website-theme-config">
 		
-		<div id="theme-config-header">
-			<ul>
-				<li class="active"><a href="javascript: return false;">Default</a></li>
-				<li><a href="javascript: return false;">Custom</a></li>
-			</ul>
+		<!-- CHECK IF HAVE CUSTOM -->
+		<div id="theme-custom-header" class="auto-size-block">
+			<%= f.check_box :has_custom %>
+			<%= f.label :has_custom %>
 		</div>
 		
-		<div id="theme-config-body" class="auto-size-block">
+		<!-- CUSTOM CONFIG CONTAINER -->
+		<div id="theme-custom-content">
 			
-			<div id="theme-body-part" class="auto-size-block">
-				<select name="website-theme-parts" id="website-theme-parts" onchange="" size="1">
-					<option value="body">Corpo</option>
+			<!-- PART SELECTOR -->
+			<div id="theme-custom-pieces" class="auto-size-block">
+				<select name="theme-pieces" id="theme-pieces">
+					<option value="body">Geral</option>
 					<option value="header">Cabeçalho</option>
-					<option value="nav-container">Navegação</option>
-					<option value="content-container">Conteúdo</option>
+					<option value="nav">Menu</option>
+					<option value="content">Corpo</option>
 					<option value="footer">Rodapé</option>
 				</select>
 			</div>
+
+			<!-- SUBDOMAIN BODY -->
+			<div id="theme-custom-part-body" class="theme-custom-parts">
+				<%= f.label :body_background_color %>
+				<%= f.text_field :body_background_color, :value => "#{@website.body_background_color}", :class => "minicolors" %>
+				
+				<%= f.label :body_font_family %>
+				<%= f.select :body_font_family, ["Verdana, Geneva, sans-serif",
+												'Georgia, Times New Roman, Times, serif', 
+												'Courier New, Courier, monospace',
+												'Arial, Helvetica, sans-serif',
+												'Tahoma, Geneva, sans-serif',
+												'Trebuchet MS, Arial, Helvetica, sans-serif',
+												'Arial Black, Gadget, sans-serif',
+												'Times New Roman, Times, serif',
+												'Palatino Linotype, Book Antiqua, Palatino, serif',
+												'Lucida Sans Unicode, Lucida Grande, sans-serif',
+												'MS Serif, New York, serif',
+												'Lucida Console, Monaco, monospace',
+												'Comic Sans MS, cursive',
+												'Gill Sans MT, Gill Sans MT Bold'] %>
+												
+				<%= f.label :body_font_size %>
+				<%= f.text_field :body_font_size, :value => "#{@website.body_font_size}", :class => "theme-config-font-size" %>
+				
+				<%= f.label :body_font_color %>
+				<%= f.text_field :body_font_color, :value => "#{@website.body_font_color}", :class => "minicolors" %>
+				
+			</div>
 			
-			<div id="theme-body-config" class="auto-size-block">
-				<ul class="clear-list clear-margin-padding">
-					<li class="put-left">
-						<label for="website-background-img">Imagem de Fundo</label>
-						<input type="text" name="website-background-img" value="website-background-img" id="website-background-img">
-					</li>
-					<li class="put-right">
-						<label for="website-background-color">Cor de Fundo</label>
-						<input type="text" name="website-background-color" value="website-background-color" id="website-background-color">
-					</li>
-					<li class="put-left">
-						<label for="font-family">Tipografia</label>
-						<input type="text" name="font-family" value="font-family" id="font-family">
-					</li>
-					<li class="put-right">
-						<label for="font-size">Tamanho Tipografia</label>
-						<input type="text" name="font-size" value="font-size" id="font-size">
-					</li>
-					<li class="full-item">
-						<label for="color">Cor Tipografia</label>
-						<input type="text" name="color" value="color" id="color">
-					</li>
-				</ul>
+			<!-- SUBDOMAIN HEADER -->
+			<div id="theme-custom-part-header" class="theme-custom-parts">
+				<%= f.label :header_background_color %>
+				<%= f.text_field :header_background_color, :value => "#{@website.header_background_color}", :class => "minicolors" %>
+				
+				<%= f.label :header_font_family %>
+				<%= f.select :header_font_family, ["Verdana, Geneva, sans-serif",
+												'Georgia, Times New Roman, Times, serif', 
+												'Courier New, Courier, monospace',
+												'Arial, Helvetica, sans-serif',
+												'Tahoma, Geneva, sans-serif',
+												'Trebuchet MS, Arial, Helvetica, sans-serif',
+												'Arial Black, Gadget, sans-serif',
+												'Times New Roman, Times, serif',
+												'Palatino Linotype, Book Antiqua, Palatino, serif',
+												'Lucida Sans Unicode, Lucida Grande, sans-serif',
+												'MS Serif, New York, serif',
+												'Lucida Console, Monaco, monospace',
+												'Comic Sans MS, cursive',
+												'Gill Sans MT, Gill Sans MT Bold'] %>
+												
+				<%= f.label :header_font_size %>
+				<%= f.text_field :header_font_size, :value => "#{@website.header_font_size}", :class => "theme-config-font-size" %>
+				
+				<%= f.label :header_font_color %>
+				<%= f.text_field :header_font_color, :value => "#{@website.header_font_color}", :class => "minicolors" %>
+				
+			</div>
+			
+			<!-- SUBDOMAIN NAV -->
+			<div id="theme-custom-part-nav" class="theme-custom-parts">
+				<%= f.label :navigation_background_color %>
+				<%= f.text_field :navigation_background_color, :value => "#{@website.navigation_background_color}", :class => "minicolors" %>
+				
+				<%= f.label :navigation_font_family %>
+				<%= f.select :navigation_font_family, ["Verdana, Geneva, sans-serif",
+												'Georgia, Times New Roman, Times, serif', 
+												'Courier New, Courier, monospace',
+												'Arial, Helvetica, sans-serif',
+												'Tahoma, Geneva, sans-serif',
+												'Trebuchet MS, Arial, Helvetica, sans-serif',
+												'Arial Black, Gadget, sans-serif',
+												'Times New Roman, Times, serif',
+												'Palatino Linotype, Book Antiqua, Palatino, serif',
+												'Lucida Sans Unicode, Lucida Grande, sans-serif',
+												'MS Serif, New York, serif',
+												'Lucida Console, Monaco, monospace',
+												'Comic Sans MS, cursive',
+												'Gill Sans MT, Gill Sans MT Bold'] %>
+												
+				<%= f.label :navigation_font_size %>
+				<%= f.text_field :navigation_font_size, :value => "#{@website.navigation_font_size}", :class => "theme-config-font-size" %>
+				
+				<%= f.label :navigation_font_color %>
+				<%= f.text_field :navigation_font_color, :value => "#{@website.navigation_font_color}", :class => "minicolors" %>
+				
+			</div>
+			
+			<!-- SUBDOMAIN CONTENT -->
+			<div id="theme-custom-part-content" class="theme-custom-parts">
+				<%= f.label :content_background_color %>
+				<%= f.text_field :content_background_color, :value => "#{@website.content_background_color}", :class => "minicolors" %>
+				
+				<%= f.label :content_font_family %>
+				<%= f.select :content_font_family, ["Verdana, Geneva, sans-serif",
+												'Georgia, Times New Roman, Times, serif', 
+												'Courier New, Courier, monospace',
+												'Arial, Helvetica, sans-serif',
+												'Tahoma, Geneva, sans-serif',
+												'Trebuchet MS, Arial, Helvetica, sans-serif',
+												'Arial Black, Gadget, sans-serif',
+												'Times New Roman, Times, serif',
+												'Palatino Linotype, Book Antiqua, Palatino, serif',
+												'Lucida Sans Unicode, Lucida Grande, sans-serif',
+												'MS Serif, New York, serif',
+												'Lucida Console, Monaco, monospace',
+												'Comic Sans MS, cursive',
+												'Gill Sans MT, Gill Sans MT Bold'] %>
+												
+				<%= f.label :content_font_size %>
+				<%= f.text_field :content_font_size, :value => "#{@website.content_font_size}", :class => "theme-config-font-size" %>
+				
+				<%= f.label :content_font_color %>
+				<%= f.text_field :content_font_color, :value => "#{@website.content_font_color}", :class => "minicolors" %>
+				
+			</div>
+			
+			<!-- SUBDOMAIN CONTENT -->
+			<div id="theme-custom-part-footer" class="theme-custom-parts">
+				<%= f.label :footer_background_color %>
+				<%= f.text_field :footer_background_color, :value => "#{@website.footer_background_color}", :class => "minicolors" %>
+				
+				<%= f.label :footer_font_family %>
+				<%= f.select :footer_font_family, ["Verdana, Geneva, sans-serif",
+												'Georgia, Times New Roman, Times, serif', 
+												'Courier New, Courier, monospace',
+												'Arial, Helvetica, sans-serif',
+												'Tahoma, Geneva, sans-serif',
+												'Trebuchet MS, Arial, Helvetica, sans-serif',
+												'Arial Black, Gadget, sans-serif',
+												'Times New Roman, Times, serif',
+												'Palatino Linotype, Book Antiqua, Palatino, serif',
+												'Lucida Sans Unicode, Lucida Grande, sans-serif',
+												'MS Serif, New York, serif',
+												'Lucida Console, Monaco, monospace',
+												'Comic Sans MS, cursive',
+												'Gill Sans MT, Gill Sans MT Bold'] %>
+												
+				<%= f.label :footer_font_size %>
+				<%= f.text_field :footer_font_size, :value => "#{@website.footer_font_size}", :class => "theme-config-font-size" %>
+				
+				<%= f.label :footer_font_color %>
+				<%= f.text_field :footer_font_color, :value => "#{@website.footer_font_color}", :class => "minicolors" %>
+				
 			</div>
 			
 		</div>
@@ -84,9 +208,11 @@
 	
 	<div class="content-split"></div>
 	
+	<!-- BUTTON CTRLER BAR -->
 	<div class="website-content-btns">
 		<%= f.submit 'Salvar Configurações', class: 'input-btn-gold-liquid put-right' %>
 		<%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn-silver-light-fluid put-right' } %>
+		<%= link_to "Voltar ao topo", "#", :class => "btn-silver-light-fluid put-right has-scrollUp scrollTo-0" %>
 	</div>
 	
 	<% end %>

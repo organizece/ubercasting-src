@@ -1069,7 +1069,7 @@ div#header-wrapper{
 
 /*  NAV  *********/
 div#nav-container{
-	width: 850px;
+	width: auto;
 	height: 30px;
 	margin-top: 40px;
 	float:left;
@@ -1099,7 +1099,7 @@ div#nav-container ul li a.active{
 }
 
 /*  LOGO  *********/
-div#logo-container{ float: right; }
+div#logo-container{ float: right; margin: 5px; }
 
 div#logo-container img{ 
 	height: 80px;
