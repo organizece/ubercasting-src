@@ -606,6 +606,9 @@ $(document).ready(function(){
 				case 2:
 					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/03.jpg');
 				break;
+				case 3:
+					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/04.jpg');
+				break;
 			}
 			$('div#website-theme-preview-thumb img').fadeIn(400);
 			
@@ -627,6 +630,10 @@ $(document).ready(function(){
 					break;
 					case "stylish_theme":
 						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/03.jpg');
+						$(this).parent("li").addClass('theme-active');
+					break;
+					case "stripes_theme":
+						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/04.jpg');
 						$(this).parent("li").addClass('theme-active');
 					break;
 				}
@@ -883,6 +890,9 @@ $(document).ready(function(){
 				case 2:
 					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/03.jpg');
 				break;
+				case 3:
+					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/04.jpg');
+				break;
 			}
 			
 			$('div#website-theme-preview-thumb img').fadeIn(400);
@@ -906,6 +916,10 @@ $(document).ready(function(){
 					break;
 					case "stylish_theme":
 						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/03.jpg');
+						$(this).parent("li").addClass('theme-active');
+					break;
+					case "stripes_theme":
+						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/04.jpg');
 						$(this).parent("li").addClass('theme-active');
 					break;
 				}
