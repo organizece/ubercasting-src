@@ -37,8 +37,30 @@ $(document).ready(function(){
 		});
 	}
 	
+	function stripesThemeModelView(){
+		var currentTheme = $('input#current-theme').val();
+		
+		if ( currentTheme == "stripe-theme" ){
+			//Model Search Mouse Over
+			$('div.model-box').each(function(index) {
+			  $(this).find('div.model-box-links').hide();
+			});
+
+			$('div.model-box').each(function(index) {
+			  $(this).mouseenter(function(event) {
+			  	$(this).find('div.model-box-links').show();
+			  });
+
+			  $(this).mouseleave(function(event) {
+			  	$(this).find('div.model-box-links').hide();
+			  });
+			});
+		}
+	}
+	
 	modelBlockMoreLinks();
 	searchSetupModelAvatar();
 	modelMarkAll();
+	stripesThemeModelView();
 	
 });
