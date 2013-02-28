@@ -1,3 +1,5 @@
+$("#new_message_<%= @customer_casting.id %>").hide();
+
 $("#modals").empty();
 $("#modals").html("<%= escape_javascript(render('subdomain_castings/modals/messages')) %>");
 $("#modal-add-model").modal('show');

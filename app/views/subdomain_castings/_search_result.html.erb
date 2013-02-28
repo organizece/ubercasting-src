@@ -9,7 +9,12 @@
 			</ul>
 			
 			<ul class="requst-action">
-				<li class="chat-icon"><%= link_to 'Mensagens', subdomain_casting_messages_path(@website.subdomain, casting.id), title: 'Mensagens', remote: true %></li>
+				<li class="chat-icon">
+					<%= link_to 'Mensagens', subdomain_casting_messages_path(@website.subdomain, casting.id), title: 'Mensagens', remote: true %>
+					<% if casting.agency_new_message %>
+						<span id="new_message_<%= casting.id %>">Pan!</span>
+					<% end %>
+				</li>
 				<li class="request-icon request-add"><%= link_to 'Adicionar Modelos', subdomain_models_path(@website.subdomain), title: 'Adicionar Modelos' %></li>
 				<li class="request-icon request-view"><%= link_to 'Visualizar', subdomain_casting_path(@website.subdomain, casting), title: 'Visualizar' %></li>
 				<li class="request-icon request-del"><%= link_to 'Excluir', subdomain_casting_path(@website.subdomain, casting), method: :delete, remote: true, title: 'Excluir' %></li>
