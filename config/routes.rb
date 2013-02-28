@@ -80,6 +80,7 @@ Ubercasting::Application.routes.draw do
   match "/:subdomain/contact_us" => "subdomain_websites#contact_us", via: :get, as: :subdomain_websites_contact_us
   match "/:subdomain/contact_us" => "subdomain_websites#send_contact_us", via: :post, as: :subdomain_websites_send_contact_us
   match "/:subdomain/be_model" => "subdomain_websites#be_model", via: :get, as: :subdomain_websites_be_model
+  match "/:subdomain/be_model" => "subdomain_websites#send_be_model", via: :post, as: :subdomain_websites_send_be_model
 
   # Subdomain routes to models pages
   match "/:subdomain/models" => "subdomain_models#index", via: :get, as: :subdomain_models
