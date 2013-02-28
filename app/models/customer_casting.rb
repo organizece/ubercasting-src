@@ -1,5 +1,5 @@
 class CustomerCasting < ActiveRecord::Base
-  attr_accessible :agency_id, :agency_customer_id, :name
+  attr_accessible :agency_id, :agency_customer_id, :name, :agency_new_message, :customer_new_message
 
   belongs_to :agency
   belongs_to :agency_customer

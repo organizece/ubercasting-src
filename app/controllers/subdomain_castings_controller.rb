@@ -158,6 +158,10 @@ class SubdomainCastingsController < ApplicationController
     @messages = @customer_casting.customer_casting_messages.order(messages_sort_column)
 
     @message = CustomerCastingMessage.new
+
+    # Update customer_casting to hide message control
+    @customer_casting.agency_new_message = false
+    @customer_casting.save
   end
 
   def save_messages
@@ -168,11 +172,20 @@ class SubdomainCastingsController < ApplicationController
     @message.receiver = @customer_casting.agency
     @message.customer_casting = @customer_casting
 
+    if @message.save
+      @customer_casting.customer_new_message = true
+      if !@customer_casting.save
+        flash[:error] = @customer_casting.errors
+      end
+    else
+      flash[:error] = @message.errors
+    end
+
     respond_to do |format|
-      if @message.save
-        format.js { flash[:notice] = 'Mensagem enviada com sucesso.' }
-      else
+      if flash[:error]
         format.js { flash[:notice] = 'Problema ao enviar mensagem.' }
+      else
+        format.js { flash[:notice] = 'Mensagem enviada com sucesso.' }
       end
     end
   end

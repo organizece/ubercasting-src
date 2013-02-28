@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130222142237) do
+ActiveRecord::Schema.define(:version => 20130228174143) do
 
   create_table "agencies", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -119,8 +119,10 @@ ActiveRecord::Schema.define(:version => 20130222142237) do
     t.string   "name"
     t.integer  "agency_id"
     t.integer  "agency_customer_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+    t.boolean  "agency_new_message",   :default => false
+    t.boolean  "customer_new_message", :default => false
   end
 
   create_table "customers", :force => true do |t|
