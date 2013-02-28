@@ -18,9 +18,11 @@ class SubdomainModelsController < ApplicationController
   end
 
   def show
-    #TODO Melhoria: Validar se cliente realmente deveria ter acesso (logado ou site aberto)
     @website = Website.find_by_subdomain(params[:subdomain])
     @model = @website.agency.models.find(params[:id])
+
+    # Redirect to subdomain_models if the access type isn't open or full access
+    redirect_to subdomain_models_path(params[:subdomain]) unless customer_total_access? || @website.visualization_mode == 'open'
   end
   
   def composite
