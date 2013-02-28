@@ -78,6 +78,7 @@ Ubercasting::Application.routes.draw do
   match "/:subdomain/about" => "subdomain_websites#about", via: :get, as: :subdomain_websites_about
   match "/:subdomain/casting_foreign" => "subdomain_websites#casting_foreign", via: :get, as: :subdomain_websites_casting_foreign
   match "/:subdomain/contact_us" => "subdomain_websites#contact_us", via: :get, as: :subdomain_websites_contact_us
+  match "/:subdomain/contact_us" => "subdomain_websites#send_contact_us", via: :post, as: :subdomain_websites_send_contact_us
   match "/:subdomain/be_model" => "subdomain_websites#be_model", via: :get, as: :subdomain_websites_be_model
 
   # Subdomain routes to models pages

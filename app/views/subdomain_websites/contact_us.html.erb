@@ -4,9 +4,7 @@
 		<p class="lead">Fale Conosco</p>
 		<p class="default">Fique a vontade para falar conosco através do formulário abaixo. Iremos responder o mais rápido possível.</p>
 
-		<%= form_tag(subdomain_websites_contact_us_path) do -%>
-
-			<%= hidden_field_tag :contact_email_to, @website.agency.email %>
+		<%= form_tag(subdomain_websites_send_contact_us_path(@website.subdomain)) do %>
 
 			<div class="contact-input-field">
 				<%= text_field_tag :contact_name, nil, :required => true, :autofocus => true, :value => "Nome" %>
@@ -20,7 +18,7 @@
 
 			<div id="contact-form-button-set" class="auto-size-block"><%= submit_tag 'Enviar', :class => "btn-enviar" %></div>
 
-		<% end -%>
+		<% end %>
 	</div>
 	
 	<div id="contact-map">
