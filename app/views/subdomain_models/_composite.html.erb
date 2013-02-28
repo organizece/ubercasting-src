@@ -8,9 +8,22 @@
 
     <div class="composite-template-select auto-size-block">
       <ul class="btn-silver-list">
-        <li><a href="javascript:return false;" class="offline">Salvar em PDF</a></li>
-        <li><%= link_to "Mais Informações", subdomain_model_path(@composite.model.agency.website.subdomain, @composite.model.id) %></li>
-        <li><%= link_to 'Adicionar à Casting', subdomain_castings_add_models_path(params[:subdomain], {models: @composite.model.id}), remote: true, via: :get, :id=>"modal-add-casting" %></li>
+        <li>
+          <a href="javascript:return false;" class="offline">Salvar em PDF</a>
+        </li>
+        <li>
+          <%= link_to "Mais Informações", subdomain_model_path(@composite.model.agency.website.subdomain, @composite.model.id) %>
+        </li>
+        <% if @total_access %>
+          <li>
+            <%= link_to 'Adicionar à Casting', subdomain_castings_add_models_path(params[:subdomain], 
+                  {models: @composite.model.id}), remote: true, via: :get, :id=>"modal-add-casting" %>
+          </li>
+        <% else %>
+          <li>
+            <a href="javascript:return false;" class="offline">Adicionar à Casting</a>
+          </li>
+        <% end %>
       </ul>
       
     </div>
