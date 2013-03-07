@@ -12,6 +12,7 @@ class ModelSearchCriteria
     criteria.biotype = params[:biotype]
     criteria.eyes_color = params[:eyes_color]
     criteria.hair_color = params[:hair_color]
+    criteria.specialty = params[:specialty]
     criteria.weight_from = params[:weight_from]
     criteria.weight_to = params[:weight_to]
     criteria.bust_from = params[:bust_from]

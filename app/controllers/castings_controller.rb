@@ -109,8 +109,12 @@ class CastingsController < ApplicationController
   end
 
   def open_add_models
-    @castings = Casting.where(agency_id: current_agency.id)
-    @customer_castings = CustomerCasting.where(agency_id: current_agency.id)
+    if params[:models].blank?
+      flash[:error] = 'Selecione ao menos um modelo'
+    else
+      @castings = Casting.where(agency_id: current_agency.id)
+      @customer_castings = CustomerCasting.where(agency_id: current_agency.id)
+    end
   end
 
   def save_add_models
