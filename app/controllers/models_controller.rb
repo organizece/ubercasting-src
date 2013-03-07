@@ -69,6 +69,15 @@ class ModelsController < ApplicationController
   # Method called by the application step-by-step update flow
   def update
     @model = current_agency.models.find_by_id(params[:id])
+    if params[:model][:specialty_ids].class == String
+      if params[:model][:specialty_ids] == '[]'
+        # In this case, there is no IDs
+        params[:model][:specialty_ids] = nil
+      else
+        params[:model][:specialty_ids] = params[:model][:specialty_ids].slice(1, params[:model][:specialty_ids].length - 2)
+        params[:model][:specialty_ids] = params[:model][:specialty_ids].split(",").map { |s| s.to_i }
+      end
+    end
     @model.attributes = params[:model]
 
     @model.current_step = session[:model_step]

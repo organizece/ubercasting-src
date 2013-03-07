@@ -25,7 +25,8 @@
 		</li>
 		<li class="search-menu-end">
 			<%= Model.human_attribute_name(:specialty) %>:<br />
-		    <%= select_tag :specialty, options_for_select(specialties, params[:specialty]), :include_blank => true, class: 'input-medium' %>
+		    <%= select_tag :specialty, options_from_collection_for_select(Specialty.all, :id, :translated_name, params[:specialty]), 
+		    	:include_blank => true, class: 'input-medium' %>
 		</li>
 	</ul>
 	
