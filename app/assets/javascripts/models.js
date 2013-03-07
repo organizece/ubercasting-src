@@ -16,11 +16,11 @@ $(function() {
     return false;
   });
   $("#models #add_selected").live("click", function() {
-    var link = this.href + '?models='
+    var link = this.href + '?models=';
     $("input:checked").each(function(index, check){
       link += $(check).val() + ",";
     });
-    link = link.substring(0, link.length - 1) //Take out last ','
+    link = link.substring(0, link.length - 1); //Take out last ','
     $.getScript(link);
     return false;
   });
