@@ -131,7 +131,7 @@
 							<% end %>
 
 							<% if @website.my_site %>
-							<li><%= link_to 'Blog', @website.external_site %></li>
+							<li><%= link_to 'Blog', @website.external_site, :target => "_blank" %></li>
 							<% end %>
 
 							<% if @website.be_a_model %>
@@ -215,7 +215,7 @@
 						<% end %>
 
 						<% if @website.my_site %>
-						<li><%= link_to 'Meu Site', @website.external_site %></li>
+						<li><%= link_to 'Blog', @website.external_site, :target => "_blank" %></li>
 						<% end %>
 
 						<% if @website.be_a_model %>

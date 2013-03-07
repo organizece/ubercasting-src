@@ -972,7 +972,6 @@ span.btn-silver-light-fluid,
 	width: auto;
 	height: auto;
 	display: block;
-	overflow: hidden;
 	margin: 0px;
 	padding: 0px;
 }
@@ -1210,7 +1209,7 @@ div#slide-photo-nav a#btn-right{ float: right; background:url(theme-cubical/arro
 
 div#about-content-container div#about-content-info{
 	display: block;
-	width: 450px;	
+	width: 940px;	
 	height: auto;
 	overflow: hidden;
 	text-align: justify;
@@ -1407,6 +1406,18 @@ div.modal-share-msgs ul#new-message-list li{display: block;}
 div.modal-share-msgs ul#new-message-list textarea{ width: 880px; height:75px; display: block; margin-left:20px;}
 div.modal-share-msgs ul#new-message-list .margin-btn-right{margin-right:10px;}
 div.modal-share-msgs .chat-title-new-message{border:0; margin:0; height:15px; padding-top:0;}
+
+ul.requst-action li.chat-icon{ position: relative; }
+ul.requst-action li.chat-icon span.chat-flag{ 
+	position: absolute; 
+	top: -6px; 
+	right: 9px;
+	width:15px;
+	height:15px;
+	display: block;
+	text-indent: -10000px;
+	background: transparent url(admin/icon-new-msg.png) left top no-repeat scroll;
+}
 
 ul.requst-action li.chat-icon a{
 	background:url(admin/bg-icon-chat.png) no-repeat;
