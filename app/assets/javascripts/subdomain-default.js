@@ -115,10 +115,6 @@ $(document).ready(function(){
 		};
 	}
 	
-	function setupAboutUs(){
-		$('div#about-content-picture ul#about-picture-list li.about-picture img').resizeToParent({parent: '.about-picture'});
-	}
-	
 	function stripesThemeSetup(){
 		var currentTheme = $('input#current-theme').val();
 		
@@ -128,18 +124,12 @@ $(document).ready(function(){
 			$('div#about-content-picture ul#about-picture-list li.about-picture img');
 			$('div#mosaic-bottom ul li img').resizeToParent({parent: '.mosaic-container'});
 			
-			//Turn Off Other Themes About Picture
-			$('div.about-picture-cubical').remove();
-			
-		}else{
-			$('div.about-picture-stripes').remove();
 		};
 	}
 	
 	setupNavBar();
 	setupHomeImgs();
 	searchSetupModelAvatar();
-	setupAboutUs();
 	stripesThemeSetup();
 	
 });

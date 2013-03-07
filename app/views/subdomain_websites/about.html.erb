@@ -3,21 +3,4 @@
 		<p class="lead">Sobre a agência</p>
 		<p class="default"><%= @website.agency.agency_about %></p>
 	</div>
-	
-	<div id="about-content-picture" class="put-right about-picture-cubical">
-		<ul id="about-picture-list" class="auto-size-block">
-			<li class="about-picture"><%= image_tag @website.agency.models[0].photos[0].image.url(:main_composite) %></li>
-	        <li class="about-picture"><%= image_tag @website.agency.models[1].photos[1].image.url(:main_composite) %></li>
-	    </ul>
-	</div>
-	
-	<div id="about-content-picture" class="put-right about-picture-stripes">
-		<ul id="about-picture-list" class="auto-size-block">
-			<% if @website.agency.models.count >= 3 %>
-				<li class="about-picture"><%= image_tag @website.agency.models[0].photos[0].image.url(:main_composite) %></li>
-		        <li class="about-picture"><%= image_tag @website.agency.models[1].photos[1].image.url(:main_composite) %></li>
-				<li class="about-picture"><%= image_tag @website.agency.models[2].photos[2].image.url(:main_composite) %></li>
-			<% end %>
-	    </ul>
-	</div>
 </div>
