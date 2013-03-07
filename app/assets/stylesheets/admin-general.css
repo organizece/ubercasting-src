@@ -1286,7 +1286,6 @@ span.icon-title-pencil{
 	width: auto;
 	height: auto;
 	display: block;
-	overflow: hidden;
 	margin: 0px;
 	padding: 0px;
 }
@@ -1992,6 +1991,18 @@ div.modal-share-msgs ul#new-message-list textarea{ width: 880px; height:75px; di
 div.modal-share-msgs ul#new-message-list .margin-btn-right{margin-right:10px;}
 div.modal-share-msgs .chat-title-new-message{border:0; margin:0; height:15px; padding-top:0;}
 
+ul.requst-action li.chat-icon{ position: relative; }
+ul.requst-action li.chat-icon span.chat-flag{ 
+	position: absolute; 
+	top: -6px; 
+	right: 9px;
+	width:15px;
+	height:15px;
+	display: block;
+	text-indent: -10000px;
+	background: transparent url(admin/icon-new-msg.png) left top no-repeat scroll;
+}
+
 ul.requst-action li.chat-icon a{
 	background:url(admin/bg-icon-chat.png) no-repeat;
 	width:26px;
@@ -2440,6 +2451,9 @@ div#logo-actions,
 div.or-horizontal-split,
 div#logo-url{ float: left; margin-right: 20px; }
 
+div#logo-actions{ width: 30%; }
+div#logo-url{ width: 45%; }
+
 div#logo-actions h4,
 div#logo-url h4{ margin-bottom: 15px; }
 
@@ -2460,7 +2474,7 @@ div.or-horizontal-split{
 	height: 76px;
 	display: block;
 	background: #fff url(admin/img-or-split.jpg) left top no-repeat scroll;
-	margin: 10px 20px;
+	margin: 10px 5px;
 	text-indent: -10000px;
 }
 

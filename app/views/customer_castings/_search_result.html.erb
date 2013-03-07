@@ -14,7 +14,7 @@
 				<li class="chat-icon">
 					<%= link_to 'Mensagens', customer_casting_messages_path(casting), title: 'Mensagens', remote: true %>
 					<% if casting.customer_new_message %>
-						<span id="new_message_<%= casting.id %>">Pan!</span>
+						<span id="new_message_<%= casting.id %>" class="chat-flag">Pan!</span>
 					<% end %>
 				</li>
 				<li class="request-icon request-add"><%= link_to 'Adicionar Modelos', models_path, title: 'Adicionar Modelos' %></li>
