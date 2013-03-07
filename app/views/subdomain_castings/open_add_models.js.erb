@@ -1,38 +1,44 @@
-$("#modals").empty();
-$("#modals").html("<%= escape_javascript(render('subdomain_castings/modals/add_models')) %>");
-$("#modal-add-model").modal('show');
-$("#modal-add-model").on('shown', function () {
-  
-	//Removes Focus From Modal
-	$("#modal-add-model").blur();
-	
-	// Verify if casting lists are empty
-	function verifyCastingList(){
-		var agencyCastingListContent = $("div.modal-body div#agency-casting-list");
+<% if flash[:error] %>
+	$("#alert-msgs").empty();
+	$('#alert-msgs').prepend("<%= escape_javascript(render('utils/error_message')) %>");
+	<% flash.discard() %>
+<% else %>
+	$("#modals").empty();
+	$("#modals").html("<%= escape_javascript(render('subdomain_castings/modals/add_models')) %>");
+	$("#modal-add-model").modal('show');
+	$("#modal-add-model").on('shown', function () {
+	  
+		//Removes Focus From Modal
+		$("#modal-add-model").blur();
 		
-		
-		// Verify if list agency list is empty
-		
-		if( $("div.modal-body div#agency-casting-list div.request-line").length == 0 ){ 
-			if( $("div.modal-body div#agency-casting-list p.casting-empty-list").length == 0 ){
-				agencyCastingListContent.append("<p class='casting-empty-list'>Esta lista está vazia.</p>");
+		// Verify if casting lists are empty
+		function verifyCastingList(){
+			var agencyCastingListContent = $("div.modal-body div#agency-casting-list");
+			
+			
+			// Verify if list agency list is empty
+			
+			if( $("div.modal-body div#agency-casting-list div.request-line").length == 0 ){ 
+				if( $("div.modal-body div#agency-casting-list p.casting-empty-list").length == 0 ){
+					agencyCastingListContent.append("<p class='casting-empty-list'>Esta lista está vazia.</p>");
+				};
 			};
 		};
-	};
-	verifyCastingList();
-	
-	//Display Casting List Controller
-	$("#modals a.display-casting-list").click(function(event){
-		event.preventDefault();
+		verifyCastingList();
 		
-		var myAction = $(this).attr("id");
-		
-		// Display content according to link ID
-		if ( myAction == "display-agency-casting-list" ){
-			$("div.modal-body div#agency-casting-list").slideToggle("fast");
-			$("div.modal-footer ul#agency-casting-footer").fadeToggle("fast");
-		}
-		
-	});
+		//Display Casting List Controller
+		$("#modals a.display-casting-list").click(function(event){
+			event.preventDefault();
+			
+			var myAction = $(this).attr("id");
+			
+			// Display content according to link ID
+			if ( myAction == "display-agency-casting-list" ){
+				$("div.modal-body div#agency-casting-list").slideToggle("fast");
+				$("div.modal-footer ul#agency-casting-footer").fadeToggle("fast");
+			}
+			
+		});
 
-});
+	});
+<% end %>

@@ -77,10 +77,14 @@ class SubdomainCastingsController < ApplicationController
   end
 
   def open_add_models
-    agency = Website.find_by_subdomain(params[:subdomain]).agency
-    agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(agency.id, current_customer.id)
+    if params[:models].blank?
+      flash[:error] = 'Selecione ao menos um modelo'
+    else
+      agency = Website.find_by_subdomain(params[:subdomain]).agency
+      agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(agency.id, current_customer.id)
 
-    @castings = CustomerCasting.where(agency_id: agency.id).where(agency_customer_id: agency_customer.id)
+      @castings = CustomerCasting.where(agency_id: agency.id).where(agency_customer_id: agency_customer.id)
+    end
   end
 
   def save_add_models

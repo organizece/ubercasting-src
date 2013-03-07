@@ -34,11 +34,13 @@ class Model < ActiveRecord::Base
   has_one :composite, dependent: :destroy
   has_many :model_castings, dependent: :destroy
   has_many :castings, through: :model_castings
+  has_and_belongs_to_many :specialties
 
   attr_accessible :name, :birthday, :age, :gender, :biotype, :responsible_name, :responsible_birthday, :responsible_cpf, :responsible_rg,
     :height, :weight, :eyes_color, :hair_color, :bust, :waist, :hip, :mannequin, :shoes_size, :rg, :cpf, :personal_phone, :secondary_phone, 
     :curriculum, :job_phone, :specialty, :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :bank, 
-    :bank_account, :bank_account_type, :bank_agency, :personal_email, :job_email, :secondary_email, :site_url, :avatar_photo_id
+    :bank_account, :bank_account_type, :bank_agency, :personal_email, :job_email, :secondary_email, :site_url, :avatar_photo_id,
+    :specialty_ids
 
   attr_writer :current_step
 
@@ -85,7 +87,10 @@ class Model < ActiveRecord::Base
     models = models.where("biotype = ?", "#{criteria.biotype}") if criteria.biotype.present?
     models = models.where("eyes_color = ?", "#{criteria.eyes_color}") if criteria.eyes_color.present?
     models = models.where("hair_color = ?", "#{criteria.hair_color}") if criteria.hair_color.present?
-    models = models.where("specialty like ?", "%#{criteria.specialty}%") if criteria.specialty.present?
+    if criteria.specialty.present?
+      models = models.joins(:specialties)
+      models = models.where("specialties.id = ?", criteria.specialty)
+    end
     models = models.where("weight >= ?", "#{criteria.weight_from}") if criteria.weight_from.present?
     models = models.where("weight <= ?", "#{criteria.weight_to}") if criteria.weight_to.present?
     models = models.where("bust >= ?", "#{criteria.bust_from}") if criteria.bust_from.present?
