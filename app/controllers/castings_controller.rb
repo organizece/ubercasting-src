@@ -192,7 +192,9 @@ class CastingsController < ApplicationController
 
   def share
     casting = Casting.find(params[:casting_id])
-    agency_customer = AgencyCustomer.find_by_email(params[:customer])
+    customer = params[:customer].split(' - ')
+    customer = customer[customer.length - 1]
+    agency_customer = AgencyCustomer.find_by_email(customer)
 
     if agency_customer
       customer_casting = CustomerCasting.new
@@ -224,7 +226,7 @@ class CastingsController < ApplicationController
         end
       end
     else
-      flash[:error] = 'Casting invalido.'
+      flash[:error] = 'Problema ao buscar cliente para compartilhamento.'
     end
 
     respond_to do |format|
