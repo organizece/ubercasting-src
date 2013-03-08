@@ -137,6 +137,19 @@ class ModelsController < ApplicationController
       end
     end
   end
+  
+  # Method called via ajax to update model's youtube video
+  def update_video
+    @model = Model.find(params[:model_id])
+
+    respond_to do |format|
+      if @model.update_attributes(params[:model])
+        format.js { flash[:notice] = 'Video armazenado com sucesso.' }
+      else
+        format.js
+      end
+    end
+  end
 
   # DELETE /models/1
   # DELETE /models/1.json

@@ -40,7 +40,7 @@ class Model < ActiveRecord::Base
     :height, :weight, :eyes_color, :hair_color, :bust, :waist, :hip, :mannequin, :shoes_size, :rg, :cpf, :personal_phone, :secondary_phone, 
     :curriculum, :job_phone, :specialty, :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :bank, 
     :bank_account, :bank_account_type, :bank_agency, :personal_email, :job_email, :secondary_email, :site_url, :avatar_photo_id,
-    :specialty_ids
+    :specialty_ids, :video
 
   attr_writer :current_step
 

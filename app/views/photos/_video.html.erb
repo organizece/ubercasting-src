@@ -1,0 +1,16 @@
+<div id="model-video-container" class="auto-size-block">
+	
+	<h3 class="header-base-title-text">YouTube <strong>Video</strong></h3>
+	<p class="base-text">Possuí vídeos deste modelo no YouTube? Adicione a url no campo abaixo, ele estará disponível na galeria deste modelo.</p>
+	
+	<%= form_for @model, :remote => true, :url => model_update_video_path do |f| %>
+	
+		<%= f.text_field :video, :class => "input-txt-light-5-columns put-left" %>
+	
+		<%= f.submit 'Salvar Video', class: 'put-left btn-silver-light-fluid' %>
+	
+	<% end %>
+	
+	<div class="content-split"></div>
+	
+</div>
