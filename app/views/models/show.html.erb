@@ -334,6 +334,30 @@
 				
 				<div class="content-split"></div>
 				
+				<% if @model.video %>
+				
+					<div id="model-video-gallery" class="auto-size-block">
+					
+						<div class="model-show-inner-header">
+					
+							<h3 class="put-left">YouTube Video</h3>
+
+							<%= link_to 'Editar Vídeo', new_model_photo_path(@model, {source: 'edit'}), :class => "put-right anchor-btn-silver-light-normal" %>
+					
+						</div>
+				
+						<div class="content-split"></div>
+						
+						<div id="video-box">
+							<iframe width="560" height="315" src="<%= @model.video %>" frameborder="0" allowfullscreen></iframe>
+						</div>
+					
+					</div>
+				
+				<% end %>
+				
+				<div class="content-split"></div>
+				
 				<div class="auto-size-block bottom-ctrl-bar">
 					
 					<%= link_to 'Voltar', models_path, :class => "put-left anchor-btn-silver-light-4-column" %>
