@@ -11,10 +11,14 @@ Ubercasting::Application.routes.draw do
   match 'home' => 'main_pages#home', via: :get
   match 'who_we_are' => 'main_pages#who_we_are', via: :get
   match 'tour' => 'main_pages#tour', via: :get
+  match 'help' => 'main_pages#help', via: :get
+  match 'contract' => 'main_pages#contract', via: :get
+  match 'policy' => 'main_pages#policy', via: :get
   match 'viewtestimonials' => 'testimonials#testimonial_list', via: :get
 
   resources :models do
     match 'update_avatar/:avatar_photo_id' => 'models#update_avatar', via: :put, as: :update_avatar
+    match 'update_model_video' => 'models#update_video', via: :put, as: :update_video
     resources :photos, except: [:edit, :update]
     resources :composites, except: [:index, :destroy]
   end

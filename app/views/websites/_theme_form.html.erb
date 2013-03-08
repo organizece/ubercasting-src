@@ -205,7 +205,7 @@
 	<!-- BUTTON CTRLER BAR -->
 	<div class="website-content-btns">
 		<%= f.submit 'Salvar Configurações', class: 'input-btn-gold-liquid put-right' %>
-		<%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn-silver-light-fluid put-right' } %>
+		<%= content_tag :a, 'Ver website', { href: "/#{@website.subdomain}/home", class: 'btn-silver-light-fluid put-right', target: "_blank" } %>
 		<%= link_to "Voltar ao topo", "#", :class => "btn-silver-light-fluid put-right has-scrollUp scrollTo-0" %>
 	</div>
 	

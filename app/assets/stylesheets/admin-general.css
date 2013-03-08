@@ -240,6 +240,15 @@ p.inner-header-base-text{
 	line-height:16px;
 }
 
+p.inner-tip{
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	font-size: 80%;
+	color:#646464;
+	width:auto;
+	height:auto;
+	display: block;
+}
+
 
 /*  PAGINATOR AND ACTIONS TABS  ****************************/
 
@@ -1286,7 +1295,6 @@ span.icon-title-pencil{
 	width: auto;
 	height: auto;
 	display: block;
-	overflow: hidden;
 	margin: 0px;
 	padding: 0px;
 }
@@ -1856,7 +1864,8 @@ div#model-primary-info div#model-profile-img{ width:200px; }
 #model-photo-gallery{ height: auto; }
 
 #model-info-composite .model-show-inner-header,
-#model-photo-gallery .model-show-inner-header{
+#model-photo-gallery .model-show-inner-header,
+#model-video-gallery .model-show-inner-header{
 	width:100%;
 	height:auto;
 	display: block;
@@ -1867,8 +1876,15 @@ div#model-primary-info div#model-profile-img{ width:200px; }
 }
 
 #model-info-composite .model-show-inner-header a,
-#model-photo-gallery .model-show-inner-header a{ margin-right: 30px; }
+#model-photo-gallery .model-show-inner-header a,
+#model-video-gallery .model-show-inner-header a{ margin-right: 30px; }
 
+#model-video-gallery #video-box{
+	width: 560px;
+	display: block;
+	overflow: hidden;
+	margin: 5px auto;
+}
 
 /**************************************/
 /*  MODEL FILE UPLOAD  ****************/
@@ -1910,6 +1926,19 @@ div.btnbar-upload label{ font-size: 12px; display: block; margin-left: 7px; }
 
 div.fileupload-progress{ margin-top: 20px; width: 90%; height: 30px; }
 
+/**************************************/
+/*  MODEL VIDEO STORAGE  **************/
+/**************************************/
+
+div#model-video-container{
+	border-top: 1px solid #a1a1a1;
+	padding: 10px 10px;
+	margin-top: 20px;
+}
+
+div#model-video-container h3,
+div#model-video-container p{ margin: 0; }
+div#model-video-container .btn-silver-light-fluid{ margin-left: 20px; }
 
 
 /**************************************/
@@ -1991,6 +2020,18 @@ div.modal-share-msgs ul#new-message-list li{display: block;}
 div.modal-share-msgs ul#new-message-list textarea{ width: 880px; height:75px; display: block; }
 div.modal-share-msgs ul#new-message-list .margin-btn-right{margin-right:10px;}
 div.modal-share-msgs .chat-title-new-message{border:0; margin:0; height:15px; padding-top:0;}
+
+ul.requst-action li.chat-icon{ position: relative; }
+ul.requst-action li.chat-icon span.chat-flag{ 
+	position: absolute; 
+	top: -6px; 
+	right: 9px;
+	width:15px;
+	height:15px;
+	display: block;
+	text-indent: -10000px;
+	background: transparent url(admin/icon-new-msg.png) left top no-repeat scroll;
+}
 
 ul.requst-action li.chat-icon a{
 	background:url(admin/bg-icon-chat.png) no-repeat;
@@ -2440,6 +2481,9 @@ div#logo-actions,
 div.or-horizontal-split,
 div#logo-url{ float: left; margin-right: 20px; }
 
+div#logo-actions{ width: 30%; }
+div#logo-url{ width: 45%; }
+
 div#logo-actions h4,
 div#logo-url h4{ margin-bottom: 15px; }
 
@@ -2460,7 +2504,7 @@ div.or-horizontal-split{
 	height: 76px;
 	display: block;
 	background: #fff url(admin/img-or-split.jpg) left top no-repeat scroll;
-	margin: 10px 20px;
+	margin: 10px 5px;
 	text-indent: -10000px;
 }
 

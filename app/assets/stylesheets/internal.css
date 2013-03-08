@@ -243,9 +243,8 @@ span.btn-silver-light-fluid,
 div#main-content-container{
 	width:100%;
 	height: auto;
-	max-height: 1220px;
 	overflow: hidden;
-	background: #000 url(internal/bg-internal.jpg) left top repeat-y scroll;
+	background: #1f1f1f url(internal/bg-internal.jpg) left top no-repeat scroll;
 	color: #d4d4d4;
 	font-family: Arial, "MS Trebuchet", sans-serif;
 	font-size: 95%;
@@ -297,7 +296,17 @@ h3.sub-title{
 div#header h2 span,
 h2.main-title span{ font-weight: bold; }
 
+p.inner-tip{
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	font-size: 90% !important;
+	width:auto;
+	height:auto;
+	display: block;
+}
 
+a.outter-link{
+	color: #fff22d !important;
+}
 
 /**************************************/
 /*  TESTIMONIALS  *********************/
@@ -838,6 +847,7 @@ div.form-register-field{
 	width: 100%;
 	display: block;
 	padding-bottom: 2%;
+	overflow: hidden;
 }
 
 div.form-register-field div.controls{

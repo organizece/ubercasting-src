@@ -13,25 +13,25 @@ $(document).ready(function(){
 		}
 
 		$('div#main-nav ul li a').removeClass('active');
-		
+
 		switch(mySection){
 			case "home":
-				$('div#main-nav ul li a:eq(0)').addClass('active');
+				$('div#main-nav ul li.link-home a').addClass('active');
 			break;
 			case "about":
-				$('div#main-nav ul li a:eq(1)').addClass('active');
+				$('div#main-nav ul li.link-about a').addClass('active');
 			break;
 			case "bemodel":
-				$('div#main-nav ul li a:eq(6)').addClass('active');
+				$('div#main-nav ul li.link-be-model a').addClass('active');
 			break;
 			case "contactus":
-				$('div#main-nav ul li a:eq(4)').addClass('active');
+				$('div#main-nav ul li.link-contact a').addClass('active');
 			break;
 			case "models":
-				$('div#main-nav ul li a:eq(2)').addClass('active');
+				$('div#main-nav ul li.link-models a').addClass('active');
 			break;
 			case "casting":
-				$('div#main-nav ul li a:eq(3)').addClass('active');
+				$('div#main-nav ul li.link-casting a').addClass('active');
 			break;
 			
 		}
@@ -115,10 +115,6 @@ $(document).ready(function(){
 		};
 	}
 	
-	function setupAboutUs(){
-		$('div#about-content-picture ul#about-picture-list li.about-picture img').resizeToParent({parent: '.about-picture'});
-	}
-	
 	function stripesThemeSetup(){
 		var currentTheme = $('input#current-theme').val();
 		
@@ -128,18 +124,12 @@ $(document).ready(function(){
 			$('div#about-content-picture ul#about-picture-list li.about-picture img');
 			$('div#mosaic-bottom ul li img').resizeToParent({parent: '.mosaic-container'});
 			
-			//Turn Off Other Themes About Picture
-			$('div.about-picture-cubical').remove();
-			
-		}else{
-			$('div.about-picture-stripes').remove();
 		};
 	}
 	
 	setupNavBar();
 	setupHomeImgs();
 	searchSetupModelAvatar();
-	setupAboutUs();
 	stripesThemeSetup();
 	
 });

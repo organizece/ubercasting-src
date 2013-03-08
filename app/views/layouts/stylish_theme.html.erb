@@ -107,36 +107,36 @@
 					
 					<div id="main-nav" class="auto-size-block">
 						<ul class="auto-size-block put-list-inline">
-							<li>
+							<li class="link-home">
 							<%= link_to 'Home', subdomain_websites_home_path({subdomain: params[:subdomain]}), :class => "active" %>
 							</li>
 
 							<% if @website.about %>
-							<li><%= link_to 'Sobre', subdomain_websites_about_path({subdomain: params[:subdomain]}) %></li>
+							<li class="link-about"><%= link_to 'Sobre', subdomain_websites_about_path({subdomain: params[:subdomain]}) %></li>
 							<% end %>
 
 							<% if @website.models %>
-							<li><%= link_to 'Modelos', subdomain_models_path(params[:subdomain]) %></li>
+							<li class="link-models"><%= link_to 'Modelos', subdomain_models_path(params[:subdomain]) %></li>
 							<% end %>
 
 							<% if @website.castings %>
 								<% if customer_signed_in? %>
-									<li><%= link_to 'Casting', subdomain_castings_path(params[:subdomain]) %></li>
+									<li class="link-casting"><%= link_to 'Casting', subdomain_castings_path(params[:subdomain]) %></li>
 								<% else %>
-									<li><%= link_to 'Casting', subdomain_websites_casting_foreign_path(params[:subdomain]) %></li>
+									<li class="link-casting"><%= link_to 'Casting', subdomain_websites_casting_foreign_path(params[:subdomain]) %></li>
 								<% end %>
 							<% end %>
 
 							<% if @website.contact_us %>
-							<li><%= link_to 'Contato', subdomain_websites_contact_us_path({subdomain: params[:subdomain]}) %></li>
+							<li class="link-contact"><%= link_to 'Contato', subdomain_websites_contact_us_path({subdomain: params[:subdomain]}) %></li>
 							<% end %>
 
 							<% if @website.my_site %>
-							<li><%= link_to 'Blog', @website.external_site %></li>
+							<li class="link-blog"><%= link_to 'Blog', @website.external_site, :target => "_blank" %></li>
 							<% end %>
 
 							<% if @website.be_a_model %>
-							<li><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
+							<li class="link-be-model"><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
 							<% end %>
 							
 							<% if customer_signed_in? %>
@@ -233,7 +233,7 @@
 						<% end %>
 
 						<% if @website.my_site %>
-						<li><%= link_to 'Meu Site', @website.external_site %></li>
+						<li><%= link_to 'Blog', @website.external_site, :target => "_blank" %></li>
 						<% end %>
 
 						<% if @website.be_a_model %>

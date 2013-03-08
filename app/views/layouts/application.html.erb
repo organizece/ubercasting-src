@@ -64,7 +64,7 @@
                         <li class="hasdrop"><%= link_to 'Website', edit_website_path(current_agency.website), :class => "btn-website" %>
                             <ul class="dropdown">
                                 <li><%= link_to '» Configurar Übersite', edit_website_path(current_agency.website) %></li>
-                                <li><%= link_to '» Alterar Visualização', edit_website_path(current_agency.website) %></li>
+                                <li><%= link_to '» Alterar Visualização', edit_website_path(current_agency.website)+"#themeView" %></li>
                                 <li><%= link_to '» Customizar Domínio', edit_website_path(current_agency.website) %></li>
 								<li><%= link_to '» Conectar Sites', connect_sites_path, :class => "hasnewicon" %></li>
                             </ul>
@@ -128,19 +128,21 @@
                 <h5 id="footer-title-uber">Über</h5>
                 <ul class="footer-link-list">
                     <li><%= link_to 'Modelos »', models_path %></li>
-                    <li><%= link_to 'Castings »', root_path %></li>
-                    <li><%= link_to 'Clientes »', root_path %></li>
-					<li><%= link_to 'Website »', root_path %></li>
+                    <li><%= link_to 'Castings »', castings_path %></li>
+                    <li><%= link_to 'Clientes »', agency_customers_path %></li>
+					<% if agency_signed_in? && current_agency.website %>
+						<li><%= link_to 'Übersite »', edit_website_path(current_agency.website) %></li>
+					<% end %>
                 </ul>
             </div>
             
             <div id="footer-middle-column" class="footer-column">
                 <h5 id="footer-title-contato">Contato</h5>
                 <ul class="footer-link-list">
-                    <li><a href="#" title="Ajuda">Ajuda &raquo;</a></li>
+					<li><%= link_to 'Ajuda »', help_path, :target => "_blank" %></li>
                     <li><a href="#" title="Facebook">Facebook &raquo;</a></li>
-                    <li><a href="#" title="Termos de Uso">Termos de Uso &raquo;</a></li>
-                    <li><a href="#" title="Política de Privacidade">Política de Privacidade &raquo;</a></li>
+					<li><%= link_to 'Termos de Uso »', contract_path, :target => "_blank" %></li>   
+					<li><%= link_to 'Política de Privacidade »', policy_path, :target => "_blank" %></li>
                 </ul>
             </div>
             

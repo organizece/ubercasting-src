@@ -33,7 +33,7 @@
 				<div id="type-01" class="plan-box">
 					<h3>Plano Free</h3>
 					<ul>
-						<li>Templates para o site: 1</li>
+						<li>Templates para o site: 0</li>
 						<li>Modelos para cadastro: 5</li>
 						<li class="no-have">Domínio Próprio</li>
 					</ul>
@@ -44,14 +44,14 @@
 				<div id="type-02" class="plan-box">
 					<h3>Plano Über</h3>
 					<ul>
-						<li>Templates para o site: 10</li>
+						<li>Templates para o site: todos</li>
 						<li>Modelos para cadastro: ilimitado</li>
 						<li class="have">
 							Domínio Próprio
 							<a href="#" data-toggle="tooltip" title="Seu ÜberSite poderá ser acessado dessa forma: nomeagencia.ubercasting.com.br" class="has-tooltip">?</a>
 						</li>
 					</ul>
-					<p class="price-top">R$225,00<span>/mês</span></p>
+					<p class="price-top">R$0,00<span>/mês</span></p>
 					<a href="#" title="Experimentar" class="anchor-btn-gold-liquid">Contratar</a>
 				</div>
 				
@@ -62,7 +62,7 @@
 						<li>Modelos para cadastro: 50</li>
 						<li class="have">Domínio Próprio <a href="#" data-toggle="tooltip" title="Seu ÜberSite poderá ser acessado dessa forma: nomeagencia.ubercasting.com.br" class="has-tooltip">?</a></li>
 					</ul>
-					<p class="price-top">R$100,00<span>/mês</span></p>
+					<p class="price-top">R$0,00<span>/mês</span></p>
 					<a href="#" title="Contratar" class="anchor-btn-gold-liquid">Contratar</a>
 				</div>
 				
@@ -98,6 +98,7 @@
 				</div>
 				
 				<div class="form-register-field">
+					<p class="inner-tip">Ao clicar no botão "Finalizar", você declara que leu, entendeu e concordou com os nossos <%= link_to 'Termos de Uso', contract_path, :target => "_blank", :class => "outter-link" %>.</p>
 					<%= f.button :submit, "Finalizar", :class => "put-right input-btn-gold-light-4-column" %>
 				</div>
 				
@@ -273,12 +274,19 @@
 							<%= image_tag "internal/flag-boleto.jpg" %>
 						</li>
 					</ul>
+					
 				</div>
+				
+				<div id="content-split"></div>
 				
 				<div class="form-register-field">
 					<a class="btn-back btn-silver-light-fluid put-left" href="#" onclick="javascript:return false;">Voltar</a>
 					<%= f.button :submit, "Finalizar", :class => "put-right input-btn-gold-light-4-column" %>
 				</div>
+				
+				<div id="content-split"></div>
+				
+				<p class="inner-tip">Ao clicar no botão "Finalizar", você declara que leu, entendeu e concordou com os nossos <%= link_to 'Termos de Uso', contract_path, :target => "_blank", :class => "outter-link" %>.</p>
 				
 			</div>
 			
