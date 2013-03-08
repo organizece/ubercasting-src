@@ -251,12 +251,12 @@ $(document).ready(function(){
 		
 		// PLANS DEFINITION
 		var freeMonthPrice = 0;
-		var topMonthPrice = 100;
-		var uberMonthPrice = 225;
+		var topMonthPrice = 0;
+		var uberMonthPrice = 0;
 		
-		var freeTemplates = 1;
+		var freeTemplates = 0;
 		var topTemplates = 5;
-		var uberTemplates = 10;
+		var uberTemplates = 1000;
 		
 		var freeModels = 5;
 		var topModels = 50;
@@ -355,8 +355,8 @@ $(document).ready(function(){
 					$('input#agency_account_type').val("uber");
 					$('div.plan-summary-folder h4.plan-summary-type').text("Plano Über");
 					$('div.plan-summary-folder ul li.plan-summary-period').text("Plano: ÜBER");
-					$('div.plan-summary-folder ul li.plan-summary-template').text("Templates para o site: "+uberTemplates);
-					$('div.plan-summary-folder ul li.plan-summary-models').text("Modelos para cadastro: "+uberModels);
+					$('div.plan-summary-folder ul li.plan-summary-template').text("Templates para o site: todos");
+					$('div.plan-summary-folder ul li.plan-summary-models').text("Modelos para cadastro: ilimitado");
 					$('div.plan-summary-folder ul li.plan-summary-domain').text("Domínio próprio: Sim");
 					
 					if( $('input#agency_account_period').val() == "monthly" ){
