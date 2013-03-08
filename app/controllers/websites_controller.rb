@@ -1,10 +1,13 @@
 class WebsitesController < ApplicationController
-  before_filter :authenticate_agency!
+  before_filter :validate_agency
 
   def edit
     @website = Website.find(params[:id])
     redirect_to agency_root_path if @website.agency != current_agency
     @agency = @website.agency
+
+    @themes = @agency.subscription.themes
+    @themes += @agency.themes
   end
 
   def update
@@ -63,6 +66,19 @@ class WebsitesController < ApplicationController
       else
         format.js { flash[:notice] = 'Dominio livre!' }
       end
+    end
+  end
+
+private
+
+  def validate_agency
+    # First runs the Devise authenticator
+    authenticate_agency!
+
+    # If agency is loged in validate if it has permission to access the controller
+    unless current_agency.subscription.website_access?
+      flash[:error] = 'O seu perfil de assinatura nao tem permissao p/ acessar a funcionalidade.'
+      redirect_to agency_root_path
     end
   end
 

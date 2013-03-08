@@ -13,7 +13,7 @@ class Agency < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :photo,
           :name, :cnpj, :owner_name, :owner_cpf, :domain, :account_type, :account_period, :account_payment,
           :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :agency_about,
-          :insc_state, :insc_city, :fancy_name, :social_name, :phone, :fax, :agency_about
+          :insc_state, :insc_city, :fancy_name, :social_name, :phone, :fax, :agency_about, :subscription_id
          
   has_many :models, dependent: :destroy
   has_many :castings, dependent: :destroy
@@ -24,5 +24,8 @@ class Agency < ActiveRecord::Base
 
   has_many :customer_casting_messages, as: :sender
   has_many :customer_casting_messages, as: :receiver
+  
+  has_many :themes, as: :owner, dependent: :destroy
+  belongs_to :subscription
 
 end

@@ -396,3 +396,9 @@ pt:
     SP: São Paulo
     SE: Sergipe
     TO: Tocantins
+
+  themes:
+    subdomain_default: "Tema Default"
+    cubical_theme: "Tema Cubical"
+    stylish_theme: "Tema Stylish"
+    stripes_theme: "Tema Stripes"

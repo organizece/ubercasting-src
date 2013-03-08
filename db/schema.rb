@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306232022) do
+ActiveRecord::Schema.define(:version => 20130308225353) do
 
   create_table "agencies", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130306232022) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "subscription_id"
   end
 
   add_index "agencies", ["confirmation_token"], :name => "index_agencies_on_confirmation_token", :unique => true
@@ -231,12 +232,33 @@ ActiveRecord::Schema.define(:version => 20130306232022) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "subscriptions", :force => true do |t|
+    t.string   "name"
+    t.boolean  "model_access"
+    t.integer  "model_limit"
+    t.boolean  "casting_access"
+    t.integer  "casting_limit"
+    t.boolean  "customer_access"
+    t.integer  "customer_limit"
+    t.boolean  "website_access"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "testimonials", :force => true do |t|
     t.string   "from",       :limit => 60,  :null => false
     t.string   "title",      :limit => 140, :null => false
     t.text     "body",                      :null => false
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+  end
+
+  create_table "themes", :force => true do |t|
+    t.string   "name"
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "websites", :force => true do |t|

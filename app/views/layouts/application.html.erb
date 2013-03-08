@@ -105,7 +105,7 @@
 	
 	<div id="alert-msgs">
 		<% flash.each do |name, msg| %>
-		    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+		    <div class="<%= flash_css_class(name) %>">
 		    	<a class="close" data-dismiss="alert">×</a>
 		    	<%= msg %>
 		    </div>

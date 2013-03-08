@@ -1,8 +1,14 @@
 $("#alert-msgs").empty();
 <% if @casting.errors.any? %>
   $('#alert-msgs').prepend("<%= escape_javascript(render('utils/error_messages', errors: @casting.errors)) %>");
+<% elsif flash[:error] %>
+  $('#alert-msgs').prepend("<%= escape_javascript(render('utils/error_message')) %>");
 <% else %>
+  <% if flash[:alert] %>
+    $('#alert-msgs').prepend("<%= escape_javascript(render('utils/alert_message')) %>");
+  <% end %>
   $('#alert-msgs').prepend("<%= escape_javascript(render('utils/success_messages')) %>");
   $("#castings_search").submit();
   $('#casting_name').val("");
 <% end %>
+<% flash.discard() %>

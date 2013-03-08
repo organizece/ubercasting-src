@@ -148,4 +148,12 @@ class Model < ActiveRecord::Base
     lambda { |o| o.current_step == "general_info" }
   end
 
+  def create_limit_reached?
+    limit = agency.subscription.model_limit
+    current_models_number = agency.models.count
+
+    # Validates if the creation limit hasn't been reached. Unlimited(-1)
+    limit != -1 && limit == current_models_number
+  end
+
 end

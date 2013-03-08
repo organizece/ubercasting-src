@@ -31,4 +31,12 @@ module ApplicationHelper
     Time.now
   end
 
+  def flash_css_class(name)
+    css_class = "alert"
+    css_class += " alert-success" if name == :notice
+    css_class += " alert-error" if name == :error
+
+    css_class 
+  end
+
 end
