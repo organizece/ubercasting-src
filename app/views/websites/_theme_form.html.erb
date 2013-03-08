@@ -12,22 +12,12 @@
 		<!-- Pensar em como armazenar todos os temas -->
 	    
 		<ul>
-			<li class="theme-active">
-				<%= f.radio_button :theme, :subdomain_default %>
-			    <%= f.label :theme_subdomain_default, 'Tema Default' %>
-			</li>
-			<li>
-				<%= f.radio_button :theme, :cubical_theme %>
-			    <%= f.label :theme_cubical_theme, 'Cubical Theme' %>
-			</li>
-			<li>
-				<%= f.radio_button :theme, :stylish_theme %>
-			    <%= f.label :theme_stylish_theme, 'Stylish Theme' %>
-			</li>
-			<li>
-				<%= f.radio_button :theme, :stripes_theme %>
-			    <%= f.label :theme_stripes_theme, 'Stripes Theme' %>
-			</li>
+			<% @themes.each do |theme| %>
+				<li>
+					<%= f.radio_button :theme, theme.name %>
+				    <%= f.label :"theme_#{theme.name}", theme.translated_name %>
+				</li>
+			<% end %>
 		</ul>
 	</div>
 	

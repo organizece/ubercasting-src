@@ -9,7 +9,7 @@
 		<div class="content-split"></div>
 		
 		<div id="models">
-			<%= render 'search_result' %>
+			<%= render "search_result_#{current_agency.subscription.name}" %>
 		</div>
 		
 	<% end %>

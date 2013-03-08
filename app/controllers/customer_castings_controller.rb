@@ -1,5 +1,5 @@
 class CustomerCastingsController < ApplicationController
-  before_filter :authenticate_agency!
+  before_filter :validate_agency
 
   def index
     @castings = CustomerCasting.search(params[:name], current_agency.id, nil).
@@ -170,6 +170,19 @@ private
 
   def per_page
     ITENS_PER_PAGE.include?(params[:itens_per_page]) ? params[:itens_per_page] : 6
+  end
+
+private
+
+  def validate_agency
+    # First runs the Devise authenticator
+    authenticate_agency!
+
+    # If agency is loged in validate if it has permission to access the controller
+    unless current_agency.subscription.casting_access?
+      flash[:error] = 'O seu perfil de assinatura nao tem permissao p/ acessar a funcionalidade.'
+      redirect_to agency_root_path
+    end
   end
 
 end

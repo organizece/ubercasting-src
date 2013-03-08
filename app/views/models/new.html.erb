@@ -16,7 +16,7 @@
 		<div id="admin-model-insert-content" class="admin-container-top admin-container-top-noborder full-column-width">
 			
 			<%= simple_form_for @model do |f| %>
-			
+
 				<%= render "models/steps/hidden_fields", { f: f, current_step: @model.current_step} %>
 
 				<%= render "models/steps/#{@model.current_step}_step", f: f %>

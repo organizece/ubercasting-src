@@ -1,5 +1,5 @@
 class ModelsController < ApplicationController
-  before_filter :authenticate_agency!
+  before_filter :validate_agency
   helper_method :sort_column, :sort_direction
 
   # GET /models
@@ -27,7 +27,13 @@ class ModelsController < ApplicationController
   # GET /models/new.json
   def new
     @model = Model.new
+    @model.agency = current_agency
     session[:model_step] = nil
+
+    if @model.create_limit_reached?
+      flash[:error] = 'Voce nao pode mais criar modelos. Por favor verifique os limites do seu plano'
+      redirect_to models_path
+    end
   end
 
   # GET /models/1/edit
@@ -71,6 +77,7 @@ class ModelsController < ApplicationController
     else
       session[:model_step] = nil
       flash[:notice] = "Modelo criado com sucesso."
+      flash[:alert]  = "Limite do numero de modelos cadastrados atingido." if @model.create_limit_reached?
       redirect_to new_model_photo_path(@model)
     end
   end
@@ -174,6 +181,18 @@ class ModelsController < ApplicationController
 
   def per_page
     ITENS_PER_PAGE.include?(params[:itens_per_page]) ? params[:itens_per_page] : 6
+  end
+
+private
+
+  def validate_agency
+    # First runs the Devise authenticator
+    authenticate_agency!
+
+    # If agency is loged in validate if it has permission to access the controller
+    unless current_agency.subscription.model_access?
+      v
+    end
   end
 
 end

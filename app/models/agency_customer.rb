@@ -20,4 +20,12 @@ class AgencyCustomer < ActiveRecord::Base
     agency_customers
   end
 
+  def create_limit_reached?
+    limit = agency.subscription.customer_limit
+    current_customers_number = agency.agency_customers.count
+
+    # Validates if the creation limit hasn't been reached. Unlimited(-1)
+    limit != -1 && limit == current_customers_number
+  end
+
 end
