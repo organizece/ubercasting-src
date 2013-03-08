@@ -18,4 +18,12 @@ class Casting < ActiveRecord::Base
     castings
   end
 
+  def create_limit_reached?
+    limit = agency.subscription.casting_limit
+    current_castings_number = agency.castings.count
+
+    # Validates if the creation limit hasn't been reached. Unlimited(-1)
+    limit != -1 && limit == current_castings_number
+  end
+
 end

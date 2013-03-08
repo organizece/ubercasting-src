@@ -1,5 +1,5 @@
 class CastingsController < ApplicationController
-  before_filter :authenticate_agency!
+  before_filter :validate_agency
 
   # GET /castings
   # GET /castings.json
@@ -28,11 +28,6 @@ class CastingsController < ApplicationController
   # GET /castings/new.json
   def new
     @casting = Casting.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @casting }
-    end
   end
 
   # GET /castings/1/edit
@@ -47,13 +42,15 @@ class CastingsController < ApplicationController
     @casting.agency = current_agency
 
     respond_to do |format|
-      if @casting.save
+      if @casting.create_limit_reached?
+        format.html { render action: "new" }
+        format.js { flash[:error] = "Voce nao pode mais criar castings. Por favor verifique os limites do seu plano" }
+      elsif @casting.save
+        flash[:alert]  = "Limite do numero de castings cadastrados atingido." if @casting.create_limit_reached?
         format.html { redirect_to @casting, notice: 'Casting criado com sucesso.' }
-        format.json { render json: @casting, status: :created, location: @casting }
         format.js { flash[:notice] = 'Casting criado com sucesso.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @casting.errors, status: :unprocessable_entity }
         format.js
       end
     end
@@ -262,6 +259,17 @@ private
 
   def per_page
     ITENS_PER_PAGE.include?(params[:itens_per_page]) ? params[:itens_per_page] : 6
+  end
+
+  def validate_agency
+    # First runs the Devise authenticator
+    authenticate_agency!
+
+    # If agency is loged in validate if it has permission to access the controller
+    unless current_agency.subscription.casting_access?
+      flash[:error] = 'O seu perfil de assinatura nao tem permissao p/ acessar a funcionalidade.'
+      redirect_to agency_root_path
+    end
   end
 
 end

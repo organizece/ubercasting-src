@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  model_access: false
+  model_limit: 1
+  casting_access: false
+  casting_limit: 1
+  client_access: false
+  client_limit: 1
+  website_access: false
+
+two:
+  name: MyString
+  model_access: false
+  model_limit: 1
+  casting_access: false
+  casting_limit: 1
+  client_access: false
+  client_limit: 1
+  website_access: false
