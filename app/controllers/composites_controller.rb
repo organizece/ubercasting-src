@@ -20,6 +20,13 @@ class CompositesController < ApplicationController
     respond_to do |format|
       format.html
       format.js
+      format.pdf do
+        render pdf: @composite.model.name,
+               disposition: 'attachment',  
+               layout: 'pdf.html',
+               orientation: 'Landscape',
+               margin: {top: 0, right: 0, bottom: 0, left: 0}
+      end
     end
   end
 
