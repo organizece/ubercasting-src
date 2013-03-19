@@ -1,0 +1,8 @@
+/*
+ *= require admin-general
+ *= require_self
+*/
+
+body {
+  margin: 20px 0;
+}

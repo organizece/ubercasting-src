@@ -1,0 +1,27 @@
+<html>
+<head>
+
+  <%= wicked_pdf_stylesheet_link_tag 'pdf' %>
+
+</head>
+<body>
+  
+<div id="pdf-container">
+  
+  <div id="nav-container">
+        <div id="nav-wrapper"></div>
+  </div>
+  
+  <div id="nav-block-push">&nbsp;</div>
+  
+  <%= yield %>
+  
+  <div id="footer-container">
+      <div id="footer-wrapper"></div>
+  </div>
+  
+</div>
+
+
+</body>
+</html>
