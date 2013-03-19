@@ -14,6 +14,7 @@ gem 'aws-sdk'
 gem 'kaminari'
 gem 'simple_form'
 gem 'country_select'
+gem 'wicked_pdf'
 
 # Gems used only for assets and not required
 # in production environments by default.

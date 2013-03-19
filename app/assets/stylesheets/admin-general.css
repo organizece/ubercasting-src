@@ -42,6 +42,11 @@ div#container{
 	overflow:hidden;
 }
 
+div#pdf-container {
+  width: 297mm -23mm;
+  height: 210mm -21mm;
+}
+
 .content-split{
 	width:100%;
 	height:1px;
