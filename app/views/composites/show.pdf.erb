@@ -1,100 +1,97 @@
-<div id="composite-template" class="auto-size-block composite-panel <%= @composite.composite_style %> ui-widget ui-helper-clearfix">
+<% if @composite.composite_style == "composite-type-01" %>
+	<table id="composite-main" width="925" height="690" border="0" cellspacing="1" cellpadding="1" class="composite-type-01">
+<% end %>
 
-  <div class="composite-coverimg put-left auto-size-block">
+<% if @composite.composite_style == "composite-type-02" %>
+	<table id="composite-main" width="925" height="690" border="0" cellspacing="1" cellpadding="1" class="composite-type-02">
+<% end %>
 
-    <div id="composite-cover" class="is-droppable auto-size-block put-relative">
-      <%= photo_tag(@composite.main_photo_id, :main_composite, :pdf) %>
-    </div>
+<% if @composite.composite_style == "composite-type-03" %>
+	<table id="composite-main" width="925" height="690" border="0" cellspacing="1" cellpadding="1" class="composite-type-03">
+<% end %>
 
-  </div>
-
-  <div class="composite-info put-right auto-size-block">
-
-    <div class="composite-header auto-size-block">
-      <h3><%= @composite.model.name %></h3>
-      <ul class="pt-br put-list-inline">
-        <li>
-          <strong>Alt</strong>:
-            <%= @composite.model.height %>
-        </li>
-        <li>
-          <strong>Peso</strong>:
-            <%= @composite.model.weight %>
-        </li>
-        <li>
-          <strong>Manequim</strong>:
-            <%= @composite.model.mannequin %>
-        </li>
-        <li>
-          <strong>Olhos</strong>:
-            <%= @composite.model.eyes_color %>
-        </li>
-        <li>
-          <strong>Cabelo</strong>:
-            <%= @composite.model.hair_color %>
-        </li>
-      </ul>
-      
-      <div class="content-split"></div>
-      
-      <ul class="en-us put-list-inline">
-        <li>
-          <strong>Height</strong>:
-            <%= @composite.model.height %>
-        </li>
-        <li>
-          <strong>Weight</strong>:
-            <%= @composite.model.weight %>
-        </li>
-        <li>
-          <strong>Mannequin</strong>:
-            <%= @composite.model.mannequin %>
-        </li>
-        <li>
-          <strong>Eyes</strong>:
-            <%= @composite.model.eyes_color %>
-        </li>
-        <li>
-          <strong>Hair</strong>:
-            <%= @composite.model.hair_color %>
-        </li>
-      </ul>
-    </div>
-
-    <div class="composite-thumbs auto-size-block">
-
-      <div id="composite-01" class="is-droppable">
-        <%= photo_tag(@composite.first_sub_photo_id, :sub_composite, :pdf) %>
-      </div>
-          <div id="composite-02" class="is-droppable">
-        <%= photo_tag(@composite.second_sub_photo_id, :sub_composite, :pdf) %>
-      </div>
-
-      <div class="content-split"></div>
-
-          <div id="composite-03" class="is-droppable">
-        <%= photo_tag(@composite.third_sub_photo_id, :sub_composite, :pdf) %>
-      </div>
-          <div id="composite-04" class="is-droppable">
-        <%= photo_tag(@composite.fourth_sub_photo_id, :sub_composite, :pdf) %>
-      </div>
-
-    </div>
-    
-    <div class="composite-brands">
-      <span id="BrandAgendy" class="auto-size-block put-left">
-        <% if @composite.model.agency.website.logo.url == "/logos/original/missing.png" %>
-          Sua logomarca ficará aqui.
-        <% else %>
-          <%= wicked_pdf_image_tag @composite.model.agency.website.logo.url(:logo) %>
-        <% end %>
-      </span>
-      <span id="UberPowered" class="auto-size-block put-right">
-        <%= wicked_pdf_image_tag "admin/uber-powered-by.png", :class => "powered01" %>
-        <%= wicked_pdf_image_tag "admin/uber-powered-by-black.png", :class => "powered02" %>
-      </span>
-    </div>
-
-  </div>
-
-</div>
+	<tr>
+		<td><%= photo_tag(@composite.main_photo_id, :main_composite, :pdf) %></td>
+		<td>
+			<table border="0" cellspacing="1" cellpadding="1">
+				<tr>
+					<td>
+						<h3><%= @composite.model.name %></h3>
+						<p class="small-info">
+							<strong>Alt</strong>:
+				            <%= @composite.model.height %>
+				
+							<strong>Peso</strong>:
+					        <%= @composite.model.weight %>
+					
+							<strong>Manequim</strong>:
+					        <%= @composite.model.mannequin %>
+					
+							<strong>Olhos</strong>:
+					        <%= @composite.model.eyes_color %>
+					
+							<strong>Cabelo</strong>:
+					        <%= @composite.model.hair_color %>
+						</p>
+						<p class="small-info">
+							<strong>Height</strong>:
+					        <%= @composite.model.height %>
+				
+							<strong>Weight</strong>:
+						    <%= @composite.model.weight %>
+					
+							<strong>Mannequin</strong>:
+					        <%= @composite.model.mannequin %>
+					
+							<strong>Eyes</strong>:
+					        <%= @composite.model.eyes_color %>
+					
+							<strong>Hair</strong>:
+					        <%= @composite.model.hair_color %>
+						</p>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<table id="composite-thumbs" border="0" cellspacing="1" cellpadding="1">
+							<tr>
+								<td width="1" height="220"><%= photo_tag(@composite.first_sub_photo_id, :sub_composite, :pdf) %></td>
+								<td width="1" height="220"><%= photo_tag(@composite.second_sub_photo_id, :sub_composite, :pdf) %></td>
+							</tr>
+							<tr>
+								<td width="1" height="220"><%= photo_tag(@composite.third_sub_photo_id, :sub_composite, :pdf) %></td>
+								<td width="1" height="220"><%= photo_tag(@composite.fourth_sub_photo_id, :sub_composite, :pdf) %></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<table border="0" cellspacing="5" cellpadding="5">
+							<tr>
+								<td>
+									<span id="brandAgendy" class="auto-size-block">
+								        <% if @composite.model.agency.website.logo.url == "/logos/original/missing.png" %>
+								          Sua logomarca ficará aqui.
+								        <% else %>
+								          <%= wicked_pdf_image_tag @composite.model.agency.website.logo.url(:logo) %>
+								        <% end %>
+								      </span>
+								</td>
+								<td>
+									<span id="uberPowered" class="auto-size-block">
+								        <%= wicked_pdf_image_tag "admin/uber-powered-by.png", :class => "powered01" %>
+								        <%= wicked_pdf_image_tag "admin/uber-powered-by-black.png", :class => "powered02" %>
+								      </span>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	
+</table>

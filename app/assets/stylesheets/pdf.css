@@ -3,6 +3,56 @@
  *= require_self
 */
 
-body {
-  margin: 20px 0;
+body{
+	margin: 20px 0;
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	font-size: 100%;
+	color: #FFF;
+	height:700px !important;
 }
+
+table h3{
+	font-size: 30px;
+}
+
+p.small-info{
+	font-size: 11px;
+}
+
+table#composite-main{
+	width:925px;
+	margin: 10px auto;
+	padding-left: 50px;
+}
+
+table#composite-main td{
+	overflow: hidden;
+}
+
+table#composite-thumbs td img{
+	width:auto;
+	height:220px;
+}
+
+span#brandAgendy img{
+	width:auto;
+	height:70px !important;
+}
+
+.composite-type-01{ background-color: #000 !important; }
+.composite-type-01 a,
+.composite-type-01 p,
+.composite-type-01 span,
+.composite-type-01 h3{ color: #fff; }
+
+.composite-type-02{ background-color: #fff !important; border: 1px solid #CCC; }
+.composite-type-02 a,
+.composite-type-02 p,
+.composite-type-02 span,
+.composite-type-02 h3{ color: #000; }
+
+.composite-type-03{ background: #1d1d1d url(admin/bg-composite-grafite.jpg) left bottom repeat-x scroll !important; border: 1px solid #000; }
+.composite-type-03 a,
+.composite-type-03 p,
+.composite-type-03 span,
+.composite-type-03 h3{ color: #fff; }
