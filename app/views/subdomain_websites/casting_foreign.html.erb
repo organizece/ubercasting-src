@@ -17,7 +17,7 @@
 			<p class="default">Faça um pedido de cadastro para buscar modelos e montar seus castings.</p>
 
 			<div class="website-content-btns">
-				<%= link_to "Pedir Cadastro", subdomain_websites_home_path({subdomain: params[:subdomain]}), :class => "btn-silver-light-fluid" %>
+				<%= link_to "Pedir Cadastro", subdomain_new_customer_request_path({subdomain: params[:subdomain]}), :class => "btn-silver-light-fluid" %>
 			</div>
 		</div>
 		
@@ -26,7 +26,7 @@
 			<p class="default">Entre em contato conosco através de nosso formulário de contato. </p>
 
 			<div class="website-content-btns">
-				<%= link_to "Acessar Painel de Controle", subdomain_websites_contact_us_path({subdomain: params[:subdomain]}), :class => "btn-silver-light-fluid" %>
+				<%= link_to "Enviar Mensagem", subdomain_websites_contact_us_path({subdomain: params[:subdomain]}), :class => "btn-silver-light-fluid" %>
 			</div>
 		</div>
 		

@@ -50,7 +50,7 @@ $(function() {
 			
 		});
 		
-		//Check is has external website is checked and display input
+		//Check if has "external website" is checked and display input
 		if( $("input#website_my_site").is(':checked') ){
 			$('div#page-nav-external-site').slideDown('fast');
 		}else{
@@ -67,6 +67,15 @@ $(function() {
 		
 	}
 	
+	function ubersiteCheckDomain(){
+		var fullURL = window.location.href;
+		
+		if( fullURL.indexOf("#checkDomain") != -1 ){
+			$('a#change-to-domain').trigger('click');
+		};
+	}
+	
 	setupWebsiteConfigPage();
+	ubersiteCheckDomain();
 
 });

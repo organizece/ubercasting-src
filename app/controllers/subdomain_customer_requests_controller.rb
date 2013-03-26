@@ -1,8 +1,6 @@
 class SubdomainCustomerRequestsController < ApplicationController
   layout :subdomain_layout
 
-  before_filter :validate_customer
-
   def new
     @request = AgencyCustomerRequest.new
     @website = Website.find_by_subdomain(params[:subdomain])

@@ -13,8 +13,8 @@
 			
 			<ul class="requst-action">
 				<% if request.new_request? %>
-					<li>
-						Pan
+					<li class="request-icon request-add">
+						<span id="new_request_<%= request.id %>" class="customer-request-flag">Pan!</span>
 					</li>
 				<% end %>
 				<li class="request-icon request-view">

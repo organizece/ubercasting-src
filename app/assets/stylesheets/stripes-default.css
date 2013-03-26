@@ -460,3 +460,54 @@ div#bemodel-content-container textarea{ width: 895px; }
 div#bemodel-content-container input.btn-enviar{
 	margin: 0 20px 20px 0px;
 }
+
+/**************************************************
+				CUSTOMER REQUEST
+**************************************************/
+
+div#customer-request-container{ width: 940px; height:auto; overflow: hidden; background-color: #FFF; }
+
+div#customer-request-container .request-input-field{ margin-left: 17px; width: 440px; height: auto; }
+
+div#customer-request-container .request-input-field input{
+	background:url(theme-stripes/bg/bg-input.png) repeat-x;
+	width:95%;
+	height:42px;
+	border:none;
+	border-radius:0px;
+	-moz-border-radius:0px;
+	-webkit-border-radius:0px;
+	font: 0.8em Arial, Helvetica, sans-serif;
+	color:#232323;
+}
+
+div#customer-request-container .request-textarea,
+div#customer-request-container #request-form-button-set{ width:900px; margin-left: 17px;}
+
+div#customer-request-container .request-textarea textarea{
+	background:url(theme-stripes/bg/bg-textarea.png) repeat-x;
+	height:183px;
+	width:97%;
+	padding: 10px 0 0 12px;
+	border:none;
+	-moz-border-radius:0px;
+	-webkit-border-radius:0px;
+	font: 0.8em Arial, Helvetica, sans-serif;
+	color:#232323;
+}
+
+div#customer-request-container #request-form-button-set{ margin-bottom: 20px; }
+div#customer-request-container #request-form-button-set input.btn-enviar{
+	background:#FFF;
+	width: auto;
+	float:right;
+	height: 40px;
+	border:1px solid #696969;	
+	border-bottom-width:2px;
+	cursor:pointer;
+	font: 1.1em Arial, Helvetica, sans-serif;
+	text-transform:uppercase;
+	color:#232323;
+	padding: 0px 20px;
+	margin-right: 15px;
+}
