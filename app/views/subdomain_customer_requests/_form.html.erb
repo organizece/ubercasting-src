@@ -1,12 +1,35 @@
-<%= simple_form_for @request, url: subdomain_customer_requests_path(@website.subdomain) do |f| %>
-  
-  <ul id="new-request-list" class="auto-size-block put-list-inline">
-    <li><%= f.input :name, class: 'input-txt-light-8-columns' %></li>
-    <li><%= f.input :email, class: 'input-txt-light-8-columns' %></li>
-    <li><%= f.input :phone, class: 'input-txt-light-8-columns' %></li>
-    <li><%= f.input :company, class: 'input-txt-light-8-columns' %></li>
-    <li><%= f.input :message, class: 'input-txt-light-8-columns' %></li>
-    <li><%= f.submit 'Enviar Pedido', class: 'btn-silver-light-fluid' %></li>
-  </ul>
-  
-<% end %>
+<div id="customer-request-form">
+	
+	<p class="lead">Pedido de Cadastro</p>
+	<p class="default">Para ter acesso aos conteúdos exclusivos do site, você deve fazer um pedido de cadastro preenchendo o formulário abaixo.</p>
+	
+	<%= simple_form_for @request, url: subdomain_customer_requests_path(@website.subdomain) do |f| %>
+		
+		<div class="request-input-field put-left">
+			<%= f.input :name, class: 'input-txt-light-8-columns' %>
+		</div>
+		<div class="request-input-field put-left">
+			<%= f.input :email, class: 'input-txt-light-8-columns' %>
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div class="request-input-field put-left">
+			<%= f.input :phone, class: 'input-txt-light-8-columns' %>
+		</div>
+		<div class="request-input-field put-left">
+			<%= f.input :company, class: 'input-txt-light-8-columns' %>
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div class="request-textarea">
+			<%= f.input :message, class: 'input-txt-light-8-columns' %>
+		</div>
+		<div id="request-form-button-set" class="auto-size-block">
+			<%= f.submit 'Enviar Pedido', class: 'btn-enviar' %>
+		</div>
+
+	<% end %>
+	
+</div>
