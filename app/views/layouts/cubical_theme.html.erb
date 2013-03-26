@@ -136,6 +136,10 @@
 							<% if @website.be_a_model %>
 							<li class="link-be-model"><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
 							<% end %>
+
+							<li>
+								<%= link_to 'Pedido de Cadastro', new_customer_request_path(params[:subdomain]) %>
+							</li>
 							
 							<% if customer_signed_in? %>
 								<li class="no-border"><%= link_to 'Sair »', destroy_customer_session_path %></li>
@@ -219,6 +223,10 @@
 						<% if @website.be_a_model %>
 						<li><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
 						<% end %>
+
+						<li>
+							<%= link_to 'Pedido de Cadastro', new_customer_request_path(params[:subdomain]) %>
+						</li>
 						
 						<% if customer_signed_in? %>
 							<li><%= link_to 'Sair »', destroy_customer_session_path %></li>

@@ -1,0 +1,25 @@
+<ul>
+  <li>
+    <strong><%= AgencyCustomerRequest.human_attribute_name(:name) %></strong>
+    <%= @request.name %>
+  </li>
+  <li>
+    <strong><%= AgencyCustomerRequest.human_attribute_name(:email) %></strong>
+    <%= @request.email %>
+  </li>
+  <li>
+    <strong><%= AgencyCustomerRequest.human_attribute_name(:phone) %></strong>
+    <%= @request.phone %>
+  </li>
+  <li>
+    <strong><%= AgencyCustomerRequest.human_attribute_name(:company) %></strong>
+    <%= @request.company %>
+  </li>
+  <li>
+    <strong><%= AgencyCustomerRequest.human_attribute_name(:message) %></strong>
+    <%= @request.message %>
+  </li>
+</ul>
+
+<%= link_to "Voltar", agency_customer_requests_path %>
+<%= link_to "Criar novo Cliente", agency_customers_new_from_request_path({request_id: @request.id}) %>

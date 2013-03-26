@@ -1,0 +1,2 @@
+module SubdomainCustomerRequestsHelper
+end

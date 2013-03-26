@@ -22,6 +22,7 @@
 //= require find_cep
 //= require agencies
 //= require agency_customers
+//= require agency_customer_requests
 //= require castings
 //= require composites
 //= require control_panel
