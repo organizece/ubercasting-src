@@ -110,8 +110,8 @@ Ubercasting::Application.routes.draw do
   match "/:subdomain/model_castings/:id" => "subdomain_model_castings#destroy", via: :delete, as: :subdomain_model_casting
   match "/:subdomain/model_castings/:id/update_score/:score" => "subdomain_model_castings#update_score", via: :put, as: :subdomain_model_casting_update_score
 
-  match "/:subdomain/customer_requests/new" => "subdomain_customer_requests#new", via: :get, as: :new_customer_request
-  match "/:subdomain/customer_requests" => "subdomain_customer_requests#create", via: :post, as: :customer_requests
+  match "/:subdomain/customer_requests/new" => "subdomain_customer_requests#new", via: :get, as: :subdomain_new_customer_request
+  match "/:subdomain/customer_requests" => "subdomain_customer_requests#create", via: :post, as: :subdomain_customer_requests
 
   root :to => "main_pages#home"
 

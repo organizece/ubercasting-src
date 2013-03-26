@@ -17,7 +17,7 @@ class AgencyCustomerRequestsController < ApplicationController
     @request = AgencyCustomerRequest.find(params[:id])
     @request.destroy
 
-    flash[:notice] = 'Pedido deletado com sucesso.'
+    flash[:notice] = 'Pedido removido com sucesso.'
 
     respond_to do |format|
       format.html { redirect_to agency_customer_requests_url }
