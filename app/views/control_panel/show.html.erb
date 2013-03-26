@@ -30,9 +30,9 @@
 				
 				<div class="content-split"></div>
 			    
-				<%= link_to 'Pedidos de Casting: '+@agency.customer_castings.count.to_s, customer_castings_path, :class => "request-link" %>
-			  	<%= link_to 'Meus Clientes: '+@agency.agency_customers.count.to_s, agency_customers_path, :class => "request-link" %>
-			  	<%= link_to 'Novas Mensagens: '+@agency.customer_castings.count.to_s, customer_castings_path, :class => "request-link" %>
+				<%= link_to "Pedidos de Casting: #{@casting_requests}", customer_castings_path, :class => "request-link" %>
+			  <%= link_to "Pedidos de Clientes: #{@customer_requests}", agency_customer_requests_path, :class => "request-link" %>
+			  <%= link_to "Novas Mensagens: #{@new_messages}", customer_castings_path, :class => "request-link" %>
 
 			</div>
 			

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308225353) do
+ActiveRecord::Schema.define(:version => 20130326010849) do
 
   create_table "agencies", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(:version => 20130308225353) do
   add_index "agencies", ["confirmation_token"], :name => "index_agencies_on_confirmation_token", :unique => true
   add_index "agencies", ["email"], :name => "index_agencies_on_email", :unique => true
   add_index "agencies", ["reset_password_token"], :name => "index_agencies_on_reset_password_token", :unique => true
+
+  create_table "agency_customer_requests", :force => true do |t|
+    t.integer  "agency_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "company"
+    t.text     "message"
+    t.boolean  "new_request", :default => true
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "agency_customers", :force => true do |t|
     t.string   "name"

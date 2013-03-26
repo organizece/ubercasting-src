@@ -57,7 +57,8 @@
 					<li class="hasdrop"><%= link_to 'Clientes', agency_customers_path, :class => "btn-clients" %>
 						<ul class="dropdown">
 							<li><%= link_to '» Criar Novo Usuário', new_agency_customer_path %></li>
-							<li><%= link_to '» Lista de Clientes', agency_customers_path %></li>
+                            <li><%= link_to '» Lista de Clientes', agency_customers_path %></li>
+							<li><%= link_to '» Pedidos de Clientes', agency_customer_requests_path %></li>
 						</ul>
 					</li>
                     <% if agency_signed_in? && current_agency.website %>

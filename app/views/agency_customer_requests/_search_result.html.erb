@@ -1,0 +1,31 @@
+<div id="request-list" class="request-list">
+	
+	<% for request in @requests %>
+		
+		<div class="request-line">
+			<ul class="requst-info">
+				<li><%= check_box_tag request.id, request.id %></li>
+				<li><%= request.name %></li>
+				<li><%= request.email %></li>
+				<li><%= request.company %></li>
+				<li><%= request.phone %></li>
+			</ul>
+			
+			<ul class="requst-action">
+				<% if request.new_request? %>
+					<li>
+						Pan
+					</li>
+				<% end %>
+				<li class="request-icon request-view">
+					<%= link_to 'Visualizar', agency_customer_request_path(request), title: 'Visualizar' %>
+				</li>
+				<li class="request-icon request-del">
+					<%= link_to 'Excluir', agency_customer_request_path(request), method: :delete, remote: true, title: 'Excluir' %>
+				</li>
+			</ul>
+		</div>
+		
+	<% end %>
+	
+</div>
