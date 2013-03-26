@@ -188,6 +188,7 @@ pt:
       website: Website
       agency_customer: Cliente
       specialty: Especialidade
+      agency_customer_request: Pedido
     attributes:
       agency:
         name: Nome
@@ -308,6 +309,12 @@ pt:
         notes: Anotações
       specialty:
         name: Nome
+      agency_customer_request:
+        name: Nome
+        email: Email
+        phone: Telefone
+        company: Empresa
+        message: Mensagem
 
     errors:
       template:

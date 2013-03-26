@@ -14,6 +14,21 @@ class AgencyCustomersController < ApplicationController
     @agency_customer = AgencyCustomer.new
   end
 
+  def new_from_request
+    @agency_customer = AgencyCustomer.new
+    @request = current_agency.agency_customer_requests.find(params[:request_id])
+
+    if @request
+      @agency_customer.name = @request.name
+      @agency_customer.email = @request.email
+      @agency_customer.phone = @request.phone
+      @agency_customer.trade_name = @request.company
+      @agency_customer.corporate_name = @request.company
+    end
+
+    render :new
+  end
+
   def create
     @agency_customer = AgencyCustomer.new(params[:agency_customer])
 

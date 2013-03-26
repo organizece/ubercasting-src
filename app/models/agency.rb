@@ -20,6 +20,7 @@ class Agency < ActiveRecord::Base
   has_many :customer_castings, dependent: :destroy
   has_one  :website, dependent: :destroy
   has_many :agency_customers, dependent: :destroy
+  has_many :agency_customer_requests, dependent: :destroy
   has_many :customers, through: :agency_customers
 
   has_many :customer_casting_messages, as: :sender

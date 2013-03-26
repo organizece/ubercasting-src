@@ -1,0 +1,12 @@
+<%= simple_form_for @request, url: subdomain_customer_requests_path(@website.subdomain) do |f| %>
+  
+  <ul id="new-request-list" class="auto-size-block put-list-inline">
+    <li><%= f.input :name, class: 'input-txt-light-8-columns' %></li>
+    <li><%= f.input :email, class: 'input-txt-light-8-columns' %></li>
+    <li><%= f.input :phone, class: 'input-txt-light-8-columns' %></li>
+    <li><%= f.input :company, class: 'input-txt-light-8-columns' %></li>
+    <li><%= f.input :message, class: 'input-txt-light-8-columns' %></li>
+    <li><%= f.submit 'Enviar Pedido', class: 'btn-silver-light-fluid' %></li>
+  </ul>
+  
+<% end %>
