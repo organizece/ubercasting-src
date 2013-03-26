@@ -1330,14 +1330,16 @@ span.icon-title-pencil{
 
 .request-list .request-line .requst-action li.request-icon{ margin: 0px 20px; }
 
-.request-list .request-line .requst-action li.request-icon a{
+.request-list .request-line .requst-action li.request-icon a,
+.request-list .request-line .requst-action li.request-icon span{
 	height: 18px;
 	display: block;
 	text-indent: -10000px;
 	background: #f3f3f3 url(admin/bg-icon-request-action.jpg) left top no-repeat scroll;
 }
 
-.request-list .request-line .requst-action li.request-add a{
+.request-list .request-line .requst-action li.request-add a,
+.request-list .request-line .requst-action li.request-add span{
 	width: 23px;
 	background-position: top left;
 }
@@ -2208,6 +2210,19 @@ div#edit-agency-payment-info ul.payments li{ list-style: none; padding-bottom: 2
 div#edit-agency-payment-info ul.payments li{ display: block; float: left; margin-right: 12%; }
 div#edit-agency-payment-info ul.payments li input{ margin-right: 10px; }
 
+div#edit-agency-payment-info div#agency-account-type-info{ 
+	width: auto; 
+	background-color: #f9ed05; 
+	padding: 10px 0px 1px 10px; 
+	border-bottom: 1px solid #737373;
+	margin-top: 5px;
+}
+div#edit-agency-payment-info div#agency-account-type-info p{text-shadow: #FFF 0px 1px 1px;}
+div#edit-agency-payment-info div#agency-account-type-info span{ 
+	padding-left: 3px; 
+	text-transform: uppercase; 
+}
+
 div#edit-agency-cancel{ border-top: 1px solid #a1a1a1; margin-top: 20px; }
 
 div#edit-agency-cancel p{ padding-left: 20px; }
@@ -2591,6 +2606,35 @@ div#customer-primary-info ul li{
 }
 #customer-primary-info ul li.first{ margin: 0; }
 .progress-success.progress-striped .bar, .progress-striped .bar-success{background-color:#fff200;}
+
+/*  CLIENTS REGISTER REQUEST  ***************/
+
+#request-header,
+#request-message{ padding: 17px; font-size: 95%; }
+
+#request-message{ font-size: 100%; }
+
+.plain-list{ list-style: none; margin: 0; padding: 0; }
+
+.plain-list li{ list-style: none; clear: both; margin-bottom: 7px; }
+
+.plain-list span.list-label{ color: #737373; display: block; float: left; width:80px; }
+
+.plain-list .from-address{
+	height:24px;
+	padding: 2px 10px;
+	background: #e4e5f7 url(admin/bg-client-request-address.jpg) left top repeat-x scroll;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	
+	text-shadow: #FFF 0px 1px 1px;
+	-moz-text-shadow: #FFF 0px 1px 1px;
+	-webkit-text-shadow: #FFF 0px 1px 1px;
+	-o-text-shadow: #FFF 0px 1px 1px;
+}
+
+#request-message .list-label{ font-size: 85%; }
 
 /**************************************/
 /*  STEP BY STEP WEBSITE GUIDE   ******/

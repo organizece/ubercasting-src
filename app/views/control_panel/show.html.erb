@@ -25,7 +25,7 @@
 					O que é isso?
 					<span class="title">Resumo de</span>
 					<span class="bold">Pedidos</span>
-					<span class="content">O painel de resumo de pedidos está aqui para lhe alertar caso exista uma atualização no número de pedidos de Casting, mensagens e em sua quantidade de clientes. Também para fornecer um acesso mais rápido ao controle de cada um deles.</span>
+					<span class="content">O resumo de pedidos fornece rápido acesso aos controles de Castings, Clientes e Mensagens. Também informa atualizações em pedidos de casting, novas mensagens e exibe o número atual de clientes cadastrados.</span>
 				</a>
 				
 				<div class="content-split"></div>
@@ -104,7 +104,7 @@
 				<div>
 					<ul class="put-list-inline">
 						<li><%= link_to 'Configurar Tema', edit_website_path(current_agency.website), :class => "anchor-btn-silver-light-normal" %></li>
-						<li><%= link_to 'Editar Visualização', edit_website_path(current_agency.website), :class => "anchor-btn-silver-light-normal" %></li>
+						<li><%= link_to 'Editar Visualização', edit_website_path(current_agency.website)+"#themeView", :class => "anchor-btn-silver-light-normal" %></li>
 					</ul>
 				</div>
 				
