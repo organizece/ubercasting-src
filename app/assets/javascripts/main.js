@@ -1080,7 +1080,7 @@ $(document).ready(function(){
 	ubersiteConfigSecondNav();
 	ubersiteConfigCustomTheme();
 	ubersiteConfigColors();
-
+	
 	//loginPanelSetup();
 	
 });
