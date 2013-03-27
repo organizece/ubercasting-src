@@ -327,6 +327,7 @@ $(document).ready(function(){
 				case "type-01":
 					currentPlanType = "free";
 					$('input#agency_account_type').val("free");
+					$('div.plan-summary-folder h4.plan-summary-type').text("Plano Free");
 					$('div.plan-summary-folder ul li.plan-summary-period').text("Plano: FREE");
 					$('div.plan-summary-folder ul li.plan-summary-template').text("Templates para o site: "+freeTemplates);
 					$('div.plan-summary-folder ul li.plan-summary-models').text("Modelos para cadastro: "+freeModels);
@@ -872,6 +873,23 @@ $(document).ready(function(){
 				$('div.bottom-ctrl-bar').fadeIn("fast");
 			});
 		
+			//IF ACCOUNT FREE - SETUP AUTOMATIC DOMAIN NAME
+			if ( $('input.agency-account-type').length == 1 ) {
+				if ( $('input.agency-account-type').val() == "free" ){
+					if ( $('input#website_subdomain').val().length == 0 ){
+						var prefix = "0";
+						var fullDomainName = "";
+
+						for (var i = 0; i < 7; i++) {
+							prefix += Math.floor(Math.random()*11);
+						};
+
+						fullDomainName = prefix+"_"+$('input.agency-account-name').attr('id');
+						$('input#website_subdomain').val(fullDomainName);
+					};
+				};
+			};
+			
 			//SETUP THEME CTRLERS
 			//APPLY ACTIVE TO CHECKED RADIO
 			$("div#website-theme-input ul li").removeClass('theme-active');

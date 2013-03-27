@@ -31,7 +31,7 @@
 			<!-- INTERNAL HEADER -->
 			<div id="subheader01" class="auto-size-block admin-inner-container subheader" style="display:block">
 				<h2 class="font-body-title">Personalização do <strong>Sistema</strong></h2>
-				<p class="inner-header-base-text">Na etapa abaixo, você poderá entrar com o domínio (?) de sua agência e também fazer o upload de um arquivo de imagem contendo a sua logomarca, ou qualquer outra imagem que repsente a sua agência.</p>
+				<p class="inner-header-base-text">Na etapa abaixo, você poderá entrar com o domínio personalizado (?) para a sua agência.<% if @website.agency.account_type == "free" %>*<% end %></p>
 			</div>
 			
 			<div id="subheader02" class="auto-size-block admin-inner-container subheader" style="display:none">
@@ -71,17 +71,34 @@
 						
 						<!-- GUIDE STEP 01 - DOMAIN -->
 						<div id="guide-domain" class="auto-size-block put-left">
+							
 							<h4 class="guide-title">Escolha seu Domínio:</h4>
 							<p>Este será o caminho pelo qual os clientes poderão acessar o seu Über-site e seus modelos cadastrados.</p>
-
+							<%= hidden_field_tag @website.agency.account_type, @website.agency.account_type, :class => "agency-account-type" %>
+							
 							<div class="content-split"></div>
 
-							<div id="website-subdomain-input">
-								<span>www.ubercasting.com.br/</span>
-								<div class="content-split"></div>
-								<%= f.text_field :subdomain, :class => "input-txt-light-4-column put-left" %>
-							    <%= link_to 'Verificar', websites_verify_subdomain_path, remote: true, class: 'btn-silver-light-fluid put-left', id: 'verify_subdomain' %>
-							</div>
+							<% if @website.agency.account_type != "free" %>
+								<div id="website-subdomain-input">
+									<span>www.ubercasting.com.br/</span>
+									<div class="content-split"></div>
+									<%= f.text_field :subdomain, :class => "input-txt-light-4-column put-left" %>
+								    <%= link_to 'Verificar', websites_verify_subdomain_path, remote: true, class: 'btn-silver-light-fluid put-left', id: 'verify_subdomain' %>
+								</div>
+							<% else %>
+								<div id="website-subdomain-input">
+									<span>www.ubercasting.com.br/</span>
+									<div class="content-split"></div>
+									<%= hidden_field_tag @website.agency.name, @website.agency.name, :class => "agency-account-name" %>
+									<%= f.hidden_field :subdomain %>
+									<%= f.text_field :subdomain, :class => "input-txt-light-4-column put-left", :disabled => true %>
+								</div>
+									
+									<div class="content-split"></div>
+									<span class="tip">
+										<br />* O plano free não disponibiliza um domínio customizado, então o sistema irá gerar um automaticamente.</span>
+									
+							<% end %>
 
 						</div>
 						
@@ -95,22 +112,12 @@
 						
 						<div id="website-theme-input">
 							<ul>
-								<li class="theme-active">
-									<%= f.radio_button :theme, :subdomain_default %>
-								    <%= f.label :theme_subdomain_default, 'Tema Default' %>
-								</li>
-								<li>
-									<%= f.radio_button :theme, :cubical_theme %>
-								    <%= f.label :theme_cubical_theme, 'Cubical Theme' %>
-								</li>
-								<li>
-									<%= f.radio_button :theme, :stylish_theme %>
-								    <%= f.label :theme_stylish_theme, 'Stylish Theme' %>
-								</li>
-								<li>
-									<%= f.radio_button :theme, :stripes_theme %>
-								    <%= f.label :theme_stripes_theme, 'Stripes Theme' %>
-								</li>
+								<% @themes.each do |theme| %>
+									<li>
+										<%= f.radio_button :theme, theme.name %>
+									    <%= f.label :"theme_#{theme.name}", theme.translated_name %>
+									</li>
+								<% end %>
 							</ul>
 						</div>
 
