@@ -27,6 +27,10 @@ class WebsitesController < ApplicationController
   def guide
     @website = Website.find(params[:id])
     redirect_to agency_root_path if @website.agency != current_agency
+    
+    @agency = @website.agency
+    @themes = @agency.subscription.themes
+    @themes += @agency.themes
   end
   
   def guide_intro
