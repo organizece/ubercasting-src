@@ -2670,7 +2670,7 @@ div#guide-intro-content-container div#body a#btn-guide-intro-start{
 }
 
 /*  GUIDE STEPS   ******/
-div#guide-content-container div.subheader h2{ margin-top: 25px; }
+div#guide-content-container div.subheader h2{ margin-top: 25px; margin-left: 17px; }
 
 div#guide-content-container h4.guide-title{ font-weight: normal !important; font-size: 200%; margin-bottom: 10px; color: #595959; }
 div#guide-content-container h4{ font-weight: normal !important; font-size: 154%; margin-bottom: 10px; }
