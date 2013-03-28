@@ -15,13 +15,13 @@
     <div id="messages-list" class="request-list">
       <% for message in @messages %>
         <% if message.sender_type == AgencyCustomer.model_name %>
-          <div class="sender-message put-left">
+          <div class="sender-message put-right">
             <h3><%= @customer.name %>:</h3>
             <p><%= message.content %></p>
           </div>
 			<div class="content-split"></div>
         <% else %>
-          <div class="receiver-message put-right">
+          <div class="receiver-message put-left">
             <h3>
               <% if @agency.name %>
                 <%= @agency.name %>:
@@ -47,12 +47,13 @@
 
   <!-- ************** BODY ************** -->
 
-  <div class="modal-body">
-    <ul id="new-message-list" class="auto-size-block put-list-inline">
-      <li><%= f.text_area :content %></li>
-      <li><%= f.submit 'Enviar Mensagem', class: 'put-right input-btn-gold-light-4-column' %></li>
-    </ul>
-  </div>
+	<div class="modal-body">
+		<ul id="new-message-list" class="auto-size-block put-list-inline">
+			<li><%= f.text_area :content %></li>
+			<li><%= f.submit 'Enviar Mensagem', class: 'put-right input-btn-gold-light-4-column', id: "btn-share-msg" %></li>
+			<li class="loader-gif"><%= image_tag "admin/ajax-loader.gif" %> Enviando</li>
+		</ul>
+	</div>
 
   <% end %>
 

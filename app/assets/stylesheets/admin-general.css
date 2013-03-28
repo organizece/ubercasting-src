@@ -253,6 +253,7 @@ p.inner-tip{
 	display: block;
 }
 
+p.big-words{ font-size: 220%; margin-left: 16px; color: #a1a1a1; }
 
 /*  PAGINATOR AND ACTIONS TABS  ****************************/
 
@@ -566,8 +567,9 @@ span.btn-silver-light-fluid,
 	-webkit-text-shadow: #fff 0px 1px 1px;
 	padding: 9px 0px 0px 50px;
 }
-.anchor-btn-silver-medium-share{ background: #fff url(admin/bg-btn-silver-medium-share.jpg) left top no-repeat scroll; }
+.anchor-btn-silver-medium-share{ background: #fff url(admin/bg-btn-silver-medium-share.jpg) left top no-repeat scroll; padding: 9px 0px 0px 60px; }
 .anchor-btn-silver-medium-return{ background: #fff url(admin/bg-btn-silver-medium-return.jpg) left top no-repeat scroll; padding: 9px 0px 0px 60px; }
+.anchor-btn-silver-medium-link{ background: #fff url(admin/bg-btn-silver-medium-link.jpg) left top no-repeat scroll; padding: 9px 0px 0px 60px; }
 
 /* Gold Buttons */
 .input-btn-gold-light-4-column{
@@ -1361,6 +1363,12 @@ span.icon-title-pencil{
 	width: 14px;
 	background-position: -156px top;
 }
+.request-list .request-line .requst-action li.request-link a{
+	width: 18px;
+	background: #f3f3f3 url(admin/bg-icon-share.jpg) left top no-repeat scroll;
+}
+
+.request-list .request-line .requst-action li.request-link{ margin: 0px 7px 0px 0px; }
 
 /*  SIMPLE MODAL WINDOW  ****************************/
 
@@ -2034,6 +2042,8 @@ div.modal-share-msgs ul#new-message-list textarea{ width: 880px; height:75px; di
 div.modal-share-msgs ul#new-message-list .margin-btn-right{margin-right:10px;}
 div.modal-share-msgs .chat-title-new-message{border:0; margin:0; height:15px; padding-top:0;}
 
+div#modal-external-link{ height:150px; }
+
 ul.requst-action li.chat-icon{ position: relative; }
 ul.requst-action li.chat-icon span.chat-flag{ 
 	position: absolute; 
@@ -2056,6 +2066,7 @@ ul.requst-action li.chat-icon a{
 }
 
 div#casting-manager-content div#casting-form{ border-bottom: 1px solid #a1a1a1; }
+
 
 /**************************************/
 /*  CONNECT WEB SITES  ****************/
