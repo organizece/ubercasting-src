@@ -125,6 +125,8 @@ class CustomerCastingsController < ApplicationController
       @customer_casting.agency_new_message = true
       if !@customer_casting.save
         flash[:error] = @customer_casting.errors
+      else
+        CastingMailer.alert_new_message(@customer_casting, @message.sender, @message.receiver).deliver
       end
     else
       flash[:error] = @message.errors
@@ -137,6 +139,11 @@ class CustomerCastingsController < ApplicationController
         format.js { flash[:notice] = 'Mensagem enviada com sucesso.' }
       end
     end
+  end
+
+  def open_external_url
+     # Workaround to subdomain URL
+    @casting_url = root_url + "#{current_agency.website.subdomain}/castings/#{params[:customer_casting_id]}"
   end
 
 private

@@ -46,6 +46,7 @@ Ubercasting::Application.routes.draw do
     match 'remove_models' => 'customer_castings#remove_models', via: :get, as: :remove_models
     match 'messages' => 'customer_castings#open_messages', via: :get, as: :messages
     match 'messages' => 'customer_castings#save_messages', via: :post, as: :messages
+    match 'external_url' => 'customer_castings#open_external_url', via: :get, as: :external_url
   end
 
   resources :model_customer_castings, only: [:destroy] do

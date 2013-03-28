@@ -11,6 +11,10 @@
 			</ul>
 			
 			<ul class="requst-action">
+				<li>
+					<%= link_to "Link Externo", customer_casting_external_url_path(casting), title: 'Link Externo', remote: true %>
+				</li>
+
 				<li class="chat-icon">
 					<%= link_to 'Mensagens', customer_casting_messages_path(casting), title: 'Mensagens', remote: true %>
 					<% if casting.customer_new_message %>
