@@ -21,7 +21,7 @@
 				<h3 class="put-left header-base-title-text">Casting: <strong><%= @casting.name %></strong></h3>
 				
 				<ul class="put-right put-list-inline">
-					<li><%= link_to 'Compartilhar Castings', castings_path, title: 'Compartilhar', class: 'anchor-btn-silver-medium-base anchor-btn-silver-medium-share offline' %></li>
+					<li><%= link_to 'Compartilhar Casting', casting_share_path(@casting), title: 'Compartilhar', remote: true, class: 'anchor-btn-silver-medium-base anchor-btn-silver-medium-share' %></li>
 					<li><%= link_to "Visualizar Castings", castings_path, class: 'anchor-btn-silver-medium-base anchor-btn-silver-medium-return' %></li>
 				</ul>
 				
