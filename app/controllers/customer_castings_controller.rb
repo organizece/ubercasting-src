@@ -139,6 +139,11 @@ class CustomerCastingsController < ApplicationController
     end
   end
 
+  def open_external_url
+     # Workaround to subdomain URL
+    @casting_url = root_url + "#{current_agency.website.subdomain}/castings/#{params[:customer_casting_id]}"
+  end
+
 private
 
   def index_sort_column
