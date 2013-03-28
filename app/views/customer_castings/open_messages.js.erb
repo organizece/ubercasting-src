@@ -3,3 +3,13 @@ $("#new_message_<%= @customer_casting.id %>").hide();
 $("#modals").empty();
 $("#modals").html("<%= escape_javascript(render('customer_castings/modals/messages')) %>");
 $("#modal-add-model").modal('show');
+$("#modal-add-model").on('shown', function () {
+	
+	$("#modal-add-model li.loader-gif").hide();
+	
+	$("#modal-add-model input#btn-share-msg").click(function(){
+		$(this).hide();
+		$("#modal-add-model li.loader-gif").show();
+	});
+	
+});
