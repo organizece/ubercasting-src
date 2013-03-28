@@ -180,6 +180,8 @@ class SubdomainCastingsController < ApplicationController
       @customer_casting.customer_new_message = true
       if !@customer_casting.save
         flash[:error] = @customer_casting.errors
+      else
+        CastingMailer.alert_new_message(@customer_casting, @message.sender, @message.receiver).deliver
       end
     else
       flash[:error] = @message.errors
