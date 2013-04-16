@@ -1,5 +1,7 @@
 class TestimonialsController < ApplicationController
   layout "main_page"
+
+  before_filter :clear_location
   
   http_basic_authenticate_with :name => "uberadmin", :password => "ubercastingadmin@1234PP++", :except => [:testimonial_list]
   

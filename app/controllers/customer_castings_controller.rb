@@ -182,6 +182,9 @@ private
 private
 
   def validate_agency
+    # Clear the location of subdomain
+    clear_location
+    
     # First runs the Devise authenticator
     authenticate_agency!
 

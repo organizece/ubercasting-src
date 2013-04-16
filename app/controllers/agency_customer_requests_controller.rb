@@ -1,7 +1,6 @@
 class AgencyCustomerRequestsController < ApplicationController
   before_filter :validate_agency
 
-
   def index
     @requests = AgencyCustomerRequest.search(params[:name], current_agency.id, nil).
       order(sort_column).page(params[:page]).per(per_page)
@@ -63,6 +62,9 @@ private
   end
 
   def validate_agency
+    # Clear the location of subdomain
+    clear_location
+
     # Runs the Devise authenticator
     authenticate_agency!
   end

@@ -1,6 +1,8 @@
 class SubdomainWebsitesController < ApplicationController
   layout :subdomain_layout
 
+  before_filter :validate_customer
+
   def home
     @website = Website.find_by_subdomain(params[:subdomain])
     
@@ -54,6 +56,11 @@ private
     else
       'subdomain_default'
     end
+  end
+
+  def validate_customer
+    # Only change the default route to the current subdomain when customer log in
+    store_location(params[:subdomain])
   end
 
 end

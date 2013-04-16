@@ -1,6 +1,8 @@
 class SubdomainCustomerRequestsController < ApplicationController
   layout :subdomain_layout
 
+  before_filter :validate_customer
+
   def new
     @request = AgencyCustomerRequest.new
     @website = Website.find_by_subdomain(params[:subdomain])
@@ -36,14 +38,8 @@ private
   end
 
   def validate_customer
-    # First runs the Devise authenticator
-    authenticate_customer!
-
-    # If customer is loged in validate if it has an association with the agency
-    website = Website.find_by_subdomain(params[:subdomain])
-    agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(website.agency.id, current_customer.id)
-
-    redirect_to subdomain_websites_casting_foreign_path(params[:subdomain]) unless agency_customer
+    # Only change the default route to the current subdomain when customer log in
+    store_location(params[:subdomain])
   end
 
 end
