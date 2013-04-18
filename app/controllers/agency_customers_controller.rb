@@ -43,8 +43,15 @@ class AgencyCustomersController < ApplicationController
       @agency_customer.customer = customer
     end
 
+    if @agency_customer.valid?
+      @agency_customer.save!
+      AgencyCustomerMailer.invite_customer(@agency_customer).deliver
+    else
+      flash[:error] += @agency_customer.errors
+    end
+
     respond_to do |format|
-      if @agency_customer.save
+      if !flash[:error]
         format.html { redirect_to agency_customers_path, notice: 'Cliente criado com sucesso.' }
       else
         format.html { render action: "new" }
