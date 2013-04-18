@@ -51,7 +51,7 @@ class Customers::ConfirmationsController < Devise::ConfirmationsController
 
   def do_show
     @confirmation_token = params[:confirmation_token]
-    @subdomain = params[:subdomain]
+    @agency = @confirmable.agencies.first
     @requires_password = true
     self.resource = @confirmable
     render 'customers/confirmations/show'
@@ -60,8 +60,11 @@ class Customers::ConfirmationsController < Devise::ConfirmationsController
   def do_confirm
     @confirmable.confirm!
     set_flash_message :notice, :confirmed
+
+    # Set after login to first agency of customer
+    subdomain = @confirmable.agencies.first.website.subdomain
+    session[:users_return_to] = root_url + "#{subdomain}/home"
+
     sign_in_and_redirect(resource_name, @confirmable)
-    # sign_in(resource_name, @confirmable)
-    # respond_with @confirmable, :location => subdomain_websites_home_path(params[:subdomain])
   end
 end

@@ -1,5 +1,5 @@
 class AgenciesController < ActionController::Base
-    before_filter :authenticate_agency!
+    before_filter :validate_agency
     before_filter :first_access?, except: [:edit, :update, :connect_sites]
 
     layout "application"
@@ -35,5 +35,15 @@ class AgenciesController < ActionController::Base
       @agency = current_agency
       @website = @agency.website
     end
+
+private
+  
+  def validate_agency
+    # Clear the location of subdomain
+    clear_location
+
+    # First runs the Devise authenticator
+    authenticate_agency!
+  end
 
 end
