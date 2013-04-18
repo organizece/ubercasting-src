@@ -1,5 +1,5 @@
 class ModelCastingsController < ApplicationController
-  before_filter :authenticate_agency!
+  before_filter :validate_agency
 
   def destroy
     @casting_model = ModelCasting.find(params[:id])
@@ -23,6 +23,16 @@ class ModelCastingsController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+private
+
+  def validate_agency
+    # Clear the location of subdomain
+    clear_location
+
+    # First runs the Devise authenticator
+    authenticate_agency!
   end
 
 end
