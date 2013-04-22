@@ -186,12 +186,16 @@ class ModelsController < ApplicationController
 private
 
   def validate_agency
+    # Clear the location of subdomain
+    clear_location
+
     # First runs the Devise authenticator
     authenticate_agency!
 
     # If agency is loged in validate if it has permission to access the controller
     unless current_agency.subscription.model_access?
-      v
+      flash[:error] = 'O seu perfil de assinatura nao tem permissao p/ acessar a funcionalidade.'
+      redirect_to agency_root_path
     end
   end
 

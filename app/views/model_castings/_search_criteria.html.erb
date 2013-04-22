@@ -25,7 +25,7 @@
 			<%= link_to "Remover Selecionados", casting_remove_models_path(@casting), id: :remove_selected %>
 		</li>
 		<li>
-			<%= link_to "Selecionar Todos", "#", :id => "models-mark-all" %>
+			<%= link_to "Selecionar Todos", "#", :id => "models-mark-all", :class => "models-mark-all"  %>
 		</li>
 		<li>
 			<%= link_to "Remover Todos", casting_remove_models_path(@casting, {model_castings: @casting_models_ids}), remote: true, id: :add_all_models %>

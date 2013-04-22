@@ -238,6 +238,9 @@ private
   end
 
   def validate_customer
+    # Change the default route to the current subdomain when customer log in
+    store_location(params[:subdomain])
+
     # First runs the Devise authenticator
     authenticate_customer!
 

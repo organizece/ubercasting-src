@@ -1,5 +1,14 @@
 <div id="customer-login-container">
 	
+	<div id="alert-msgs">
+		<% flash.each do |name, msg| %>
+		    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+		    	<a class="close" data-dismiss="alert">×</a>
+		    	<%= msg %>
+		    </div>
+		<% end %>
+	</div>
+	
 	<div id="agency-logo"></div>
 	
 	<div id="customer-login-window">

@@ -1,6 +1,17 @@
 <div id="customer-login-container">
 	
-	<div id="agency-logo"></div>
+	<div id="alert-msgs">
+		<% flash.each do |name, msg| %>
+		    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+		    	<a class="close" data-dismiss="alert">×</a>
+		    	<%= msg %>
+		    </div>
+		<% end %>
+	</div>
+	
+	<div id="agency-logo">
+		<%= image_tag @agency.website.logo.url(:logo), {:style => "width:auto; height: 70px;"} %>
+	</div>
 	
 	<div id="customer-login-window">
 		
@@ -9,7 +20,8 @@
 			<fieldset>
 			
 			<p>Ativação de conta <% if resource.email %> para:<br /> <span class="gold-sign"><%= resource.email %></span><% end %></p>
-
+			<p>Agência Remetente: <br /> <span class="gold-sign"><%= @agency.name %></span></p>
+			
 			<div class="form-inputs">
 				<% if @requires_password %>
 					<div class="customer-login-input-field">

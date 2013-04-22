@@ -1,12 +1,19 @@
 Ubercasting::Application.routes.draw do
 
+  root :to => "main_pages#home"
+  
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   as :customer do
     match '/customer/confirmation' => 'customers/confirmations#update', :via => :put, :as => :update_customer_confirmation
   end
 
   devise_for :customers, :controllers => { :sessions => "customers/sessions", :confirmations => "customers/confirmations" }
+  ActiveAdmin.routes(self)
 
   devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations" }, :path_prefix => 'my'
+  ActiveAdmin.routes(self)
 
   match 'home' => 'main_pages#home', via: :get
   match 'who_we_are' => 'main_pages#who_we_are', via: :get
@@ -113,7 +120,5 @@ Ubercasting::Application.routes.draw do
 
   match "/:subdomain/customer_requests/new" => "subdomain_customer_requests#new", via: :get, as: :subdomain_new_customer_request
   match "/:subdomain/customer_requests" => "subdomain_customer_requests#create", via: :post, as: :subdomain_customer_requests
-
-  root :to => "main_pages#home"
 
 end

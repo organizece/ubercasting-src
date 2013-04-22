@@ -1,6 +1,8 @@
 class SubdomainModelsController < ApplicationController
   layout :subdomain_layout
 
+  before_filter :validate_customer
+
   def index
     @website = Website.find_by_subdomain(params[:subdomain])
     @models = Model.search(ModelSearchCriteria.build_criteria(params, @website.agency))
@@ -68,6 +70,11 @@ private
     end
 
     total_access
+  end
+
+  def validate_customer
+    # Only change the default route to the current subdomain when customer log in
+    store_location(params[:subdomain])
   end
 
 end
