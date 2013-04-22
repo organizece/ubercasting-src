@@ -28,11 +28,37 @@ $(document).ready(function(){
 		$('#models-mark-all').click(function(event) {
 			event.preventDefault();
 			
-			$('div.model-box-checkbox input').trigger('click');
-			$('div.model-box-checkbox').css('opacity', '1');
-			$('div.model-box-checkbox').css('-moz-opacity', '1');
-			$('div.model-box-checkbox').css('-webkit-opacity', '1');
-			$('div.model-box-checkbox').css('-webkit-opacity', '1');
+			if ( $('#models-mark-all').attr('class').indexOf("models-unmark-all") == -1 ){
+				$('#models-mark-all').addClass('models-unmark-all');
+				$('#models-mark-all').text('Deselecionar Todos');
+				
+				$('div.model-box-checkbox').each(function(index) {
+				  	if ( !$('div.model-box-checkbox:eq('+index+') input').is(':checked') ){
+						$('div.model-box-checkbox:eq('+index+') input').trigger('click');
+					};
+
+					$('div.model-box-checkbox:eq('+index+')').css('opacity', '1');
+					$('div.model-box-checkbox:eq('+index+')').css('-moz-opacity', '1');
+					$('div.model-box-checkbox:eq('+index+')').css('-webkit-opacity', '1');
+					$('div.model-box-checkbox:eq('+index+')').css('-webkit-opacity', '1');
+				});
+				
+			}else{
+				$('#models-mark-all').removeClass('models-unmark-all');
+				$('#models-mark-all').text('Selecionar Todos');
+				
+				$('div.model-box-checkbox').each(function(index) {
+					if ( $('div.model-box-checkbox:eq('+index+') input').is(':checked') ){
+						$('div.model-box-checkbox:eq('+index+') input').trigger('click');
+					};
+					$('div.model-box-checkbox:eq('+index+')').css('opacity', '0.5');
+					$('div.model-box-checkbox:eq('+index+')').css('-moz-opacity', '0.5');
+					$('div.model-box-checkbox:eq('+index+')').css('-webkit-opacity', '0.5');
+					$('div.model-box-checkbox:eq('+index+')').css('-webkit-opacity', '0.5');
+				});
+			};
+			
+			
 			
 		});
 	}

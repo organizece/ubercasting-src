@@ -2,7 +2,7 @@
 	
 	<div id="main-header" class="auto-size-block admin-panel-header">
 		
-		<h2 class="clear-margin-padding font-title">Visualizar Modelo: <span><%= @model.name %></span></h2>
+		<h2 class="clear-margin-padding font-title">Visualizar Modelo: <strong><%= @model.name %></strong></h2>
 		
 	</div>
 	
@@ -24,7 +24,7 @@
 						<ul class="auto-size-block put-left">
 							<li class="first">
 								<strong><%= Model.human_attribute_name(:name) %></strong>:
-							    <%= @model.name %>
+							    <%= @model.art_name %>
 							</li>
 							<li>
 								<strong><%= Model.human_attribute_name(:birthday) %>:</strong>
@@ -105,7 +105,7 @@
 							<div class="composite-info put-right auto-size-block">
 
 								<div class="composite-header auto-size-block">
-									<h3><%= @model.name %></h3>
+									<h3><%= @model.art_name %></h3>
 									<ul class="pt-br put-list-inline">
 										<li>
 											<strong>Alt</strong>:

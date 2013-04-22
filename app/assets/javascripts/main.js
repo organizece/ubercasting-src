@@ -237,6 +237,18 @@ $(document).ready(function(){
 		}
 	}
 	
+	function modelArtName(){
+		if ( $('input#model_art_name').length >= 1 ){
+			$('input#model_name').blur(function(event) {
+				var modelName = $(this).val();
+				var spaceIndex = modelName.lastIndexOf(" ");
+				var artName = modelName.substring(0,3);
+				artName += modelName.substring(spaceIndex,modelName.length);
+				$('input#model_art_name').val(artName);
+			});
+		};
+	}
+	
 	function registerFlow(){
 		
 		var hasRegister = $('div.register-flow').length;
@@ -1080,6 +1092,13 @@ $(document).ready(function(){
 		});
 	}
 	
+	function setupPopUpWindows(){
+		$('a.popup-link').click(function(event) {
+			event.preventDefault();
+			window.open($(this).attr('href'),'UberTermos','width=1060,height=550,resizable=no,scrollbars=yes,status=no,titlebar=no,toolbar=no,top=50,left=50');
+		});
+	}
+	
 	btnFolderHover();
 	dropdownMenuNav();
 	searchAdvancedOpts();
@@ -1088,6 +1107,7 @@ $(document).ready(function(){
 	mapModelMeasures();
 	modelShowSecondInfo();
 	modelFormValidation();
+	modelArtName();
 	checkModelAgeBox();
 	registerFlow();
 	getMainPath();
@@ -1098,6 +1118,7 @@ $(document).ready(function(){
 	ubersiteConfigSecondNav();
 	ubersiteConfigCustomTheme();
 	ubersiteConfigColors();
+	setupPopUpWindows();
 	
 	//loginPanelSetup();
 	

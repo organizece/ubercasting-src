@@ -144,7 +144,7 @@ div#agency-logo{
 	width: auto;
 	height: auto;
 	display: block;
-	margin: 10px 0px;
+	margin: 5px 0;
 }
 
 div#uber-logo{
@@ -152,4 +152,34 @@ div#uber-logo{
 	height: 51px;
 	display: block;
 	margin: 0px auto;
+}
+
+/*  ALERTS  ****************************/
+.alert{
+	width: 99%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 4px;
+	margin-bottom: 10px;
+	border: 1px solid #999;
+	border-radius:5px;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
+
+.alert-danger,
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #3a87ad;
 }

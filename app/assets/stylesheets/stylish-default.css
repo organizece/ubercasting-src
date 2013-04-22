@@ -236,35 +236,28 @@ p.inner-header-base-text{
 
 /* Silver Buttons */
 .input-btn-silver-light-4-column{
-	width:300px !important;
-	height:38px;
-	display: block;
-	border: none;
-	background:#fff url(admin/btn-bg-gray-4-column.jpg) left bottom no-repeat scroll !important;
-	color: #000;
-	font-size: 18px;
-	text-align: center;
-	text-transform: uppercase;
-	text-shadow: #fff 0px 1px 1px;
-	margin:7px 0px;
+	background:url(theme-stylish/btn-enviar.png) repeat-x;
+	height:28px;
+	width:250px !important;
+	padding: 0 20px;
+	font: bold 12px Arial, Helvetica, sans-serif;
+	color:#fff;
+	border:1px solid #6e6e6e;
+	float:right;
+	cursor:pointer;
 }
 
 a.btn-silver-light-fluid,
 span.btn-silver-light-fluid,
 .btn-silver-light-fluid{
-	width:auto !important;
-	height:29px;
+	background:url(theme-stylish/btn-enviar.png) repeat-x;
 	display: block;
-	padding: 8px 10px 0px 10px;
-	margin-right: 10px;
-	border-left: 1px solid #81817b;
-	border-top: 1px solid #81817b;
-	border-right: 1px solid #81817b;
-	background:#fff url(admin/btn-bg-gray-fluid.jpg) left top repeat-x scroll !important;
-	color: #000 !important;
-	font-size: 13px;
-	text-align: center;
-	text-shadow: #fff 0px 1px 1px;
+	height:28px;
+	width:auto;
+	font: bold 12px Arial, Helvetica, sans-serif;
+	color:#fff;
+	border:1px solid #6e6e6e;
+	cursor:pointer;
 }
 
 .btn-silver-light-fluid:hover{ 
@@ -273,11 +266,14 @@ span.btn-silver-light-fluid,
 }
 
 .btn-silver-light-fluid{ 
-	height: 38px; 
 	border-bottom: none; 
-	padding: 0px 10px 0px 10px; 
+	padding: 6px 15px 0px 15px; 
 	margin-right: 10px;
+	text-align: center;
 }
+
+a.btn-silver-light-fluid{ height:21px; }
+input.btn-silver-light-fluid{ height:28px; }
 
 .anchor-btn-silver-light-normal{
 	width:193px !important;
@@ -293,17 +289,15 @@ span.btn-silver-light-fluid,
 }
 
 .anchor-btn-silver-light-4-column{
-	width:300px !important;
-	height:28px;
-	padding-top: 10px;
-	display: block;
-	border: none;
-	background:#fff url(admin/btn-bg-gray-4-column.jpg) left bottom no-repeat scroll !important;
-	color: #000;
-	font-size: 18px;
-	text-align: center;
+	background:url(theme-stylish/btn-enviar.png) repeat-x;
+	height:21px;
+	width:150px !important;
+	padding: 7px 0px 0px 100px;
+	font: bold 12px Arial, Helvetica, sans-serif;
+	color:#fff;
+	border:1px solid #6e6e6e;
+	cursor:pointer;
 	text-transform: uppercase;
-	text-shadow: #fff 0px 1px 1px;
 }
 
 .anchor-btn-silver-medium-base{
@@ -318,7 +312,7 @@ span.btn-silver-light-fluid,
 	padding: 9px 0px 0px 50px;
 }
 .anchor-btn-silver-medium-share{ background: #fff url(admin/bg-btn-silver-medium-share.jpg) left top no-repeat scroll; }
-.anchor-btn-silver-medium-return{ background: #fff url(admin/bg-btn-silver-medium-return.jpg) left top no-repeat scroll; padding: 9px 0px 0px 60px; }
+.anchor-btn-silver-medium-return{ background: #fff url(admin/bg-btn-silver-medium-return.jpg) left top no-repeat scroll;}
 
 /* Gold Buttons */
 .input-btn-gold-light-4-column{
