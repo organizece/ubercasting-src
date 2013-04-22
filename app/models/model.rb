@@ -40,13 +40,14 @@ class Model < ActiveRecord::Base
     :height, :weight, :eyes_color, :hair_color, :bust, :waist, :hip, :mannequin, :shoes_size, :rg, :cpf, :personal_phone, :secondary_phone, 
     :curriculum, :job_phone, :specialty, :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :bank, 
     :bank_account, :bank_account_type, :bank_agency, :personal_email, :job_email, :secondary_email, :site_url, :avatar_photo_id,
-    :specialty_ids, :video
+    :specialty_ids, :video, :art_name
 
   attr_writer :current_step
 
   validates :name, presence: true, if: :basic_info_step?
   validates :birthday, presence: true, if: :basic_info_step?
   validates :gender, presence: true, if: :basic_info_step?
+  validates :art_name, presence: true, if: :basic_info_step?
   validates :biotype, presence: true, if: :basic_info_step?
   validates :personal_phone, presence: true, if: :basic_info_step?
   validates :personal_email, presence: true, if: :basic_info_step?

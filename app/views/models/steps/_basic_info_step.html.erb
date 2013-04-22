@@ -37,6 +37,10 @@
 	
 	<div class="content-split"></div>
 	
+	<div class="put-left form-block-4-columns field-isreq">
+		<%= f.input :art_name, required: true %>
+	</div>
+	
 	<div class="put-left form-block-4-columns">
 		<%= f.input :rg %>
 	</div>
@@ -44,6 +48,8 @@
 	<div class="put-left form-block-4-columns">
 		<%= f.input :cpf %>
 	</div>
+	
+	<div class="content-split"></div>
 	
 	<div class="put-left form-block-4-columns field-isreq">
 		<%= f.input :biotype, required: true, collection: biotypes, input_html: { class: "full-select" } %>

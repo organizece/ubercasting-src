@@ -27,7 +27,7 @@
 			<%= link_to "Adicionar Selecionados", castings_open_add_models_path, id: :add_selected %>
 		</li>
 		<li>
-			<%= link_to "Selecionar Todos", "#", :id => "models-mark-all" %>
+			<%= link_to "Selecionar Todos", "#", :id => "models-mark-all", :class => "models-mark-all"  %>
 		</li>
 		<li>
 			<%= link_to "Adicionar Todos", castings_open_add_models_path({models: @models_ids}), remote: true, id: :add_all_models %>

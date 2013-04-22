@@ -39,6 +39,10 @@
 							    <%= @model.name %>
 							</li>
 							<li>
+								<strong><%= Model.human_attribute_name(:art_name) %></strong>:
+							    <%= @model.art_name %>
+							</li>
+							<li>
 								<strong><%= Model.human_attribute_name(:birthday) %>:</strong>
 							    <%= l @model.birthday %>
 							</li>
