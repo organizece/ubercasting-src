@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   def clear_location
     session[:users_return_to] = agency_root_path
   end
+  
+  def do_something_awesome
+    session[:users_return_to] = admin_root_path
+  end
 
   def stored_location_for(resource_or_scope)
     session[:users_return_to] || super
