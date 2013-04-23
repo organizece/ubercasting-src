@@ -67,7 +67,7 @@ Ubercasting::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 
-  config.action_mailer.default_url_options = { :host => 'ubercasting-test.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'ubercasting.herokuapp.com' }
 
   # Enable threaded mode
   # config.threadsafe!
