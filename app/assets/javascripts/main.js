@@ -596,8 +596,8 @@ $(document).ready(function(){
 			
 			// PLANS DEFINITION
 			var freeMonthPrice = 0;
-			var topMonthPrice = 100;
-			var uberMonthPrice = 200;
+			var topMonthPrice = 0;
+			var uberMonthPrice = 0;
 			
 			var monthMult = 1;
 			var semiannualMult = 6;
