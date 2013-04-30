@@ -220,6 +220,17 @@ h3.header-base-title-text-small{
 
 h3.header-base-title-text-small span{ font-weight: bold; }
 
+h4.header-base-title,
+h5.header-base-title{
+	font-family:'Conv_Nexa',Sans-Serif;
+	font-size: 180%;
+	font-weight: normal;
+	color: #000;
+	margin: 15px 0px 5px 0px;
+}
+
+h5.header-base-title{ font-size: 150%; }
+
 p.base-text{
 	font-family: Arial, "MS Trebuchet", sans-serif;
 	font-size: 95%;
@@ -2240,6 +2251,8 @@ div#edit-agency-payment-info div#agency-account-type-info span{
 	text-transform: uppercase; 
 }
 
+div#edit-agency-payment-info div#agency-account-type-info a{ float: right; margin-right: 15px; }
+
 div#edit-agency-cancel{ border-top: 1px solid #a1a1a1; margin-top: 20px; }
 
 div#edit-agency-cancel p{ padding-left: 20px; }
@@ -2270,7 +2283,70 @@ div#edit-agency-agency-info div.form-block-4-columns textarea#agency_agency_abou
 	display: block;
 }
 
+div.ui-tab-container{
+	width:95%;
+	height: 52px;
+	background: #FFF url(ubersite-config/bg-website-subnav-container.jpg) left top repeat-x scroll;
+	margin: 10px 0px 0px 0px;
+	border: 1px solid #b8b8b8;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
 
+div.ui-tab-container ul{
+	width: 98%;
+	height: 34px;
+	display: block;
+	background: #FFF url(ubersite-config/bg-subnav-bar.jpg) left top repeat-x scroll;
+	margin: 8px auto; 
+	padding: 0;
+	border-top: 1px solid #b8b8b8;
+	border-left: 1px solid #b8b8b8;
+	border-right: 1px solid #b8b8b8;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+
+div.ui-tab-container ul li{
+	margin: 0;
+	padding: 0;
+	display: block;
+	float: left;
+}
+
+div.ui-tab-container ul li a{
+	color: #232323;
+	font-size: 90%;
+	display: block;
+	padding: 6px 20px 6px 20px;
+	border-right: 1px solid #b8b8b8;
+	border-left: 1px solid #FFF;
+}
+
+div.ui-tab-container ul li a.active-tab{ background-color: #EEE; }
+
+div.ui-tab-container ul li:last-child a{ border-right:none; }
+
+div.ui-tab-container-small{ width: 40%; }
+div.ui-tab-container-small ul{ width: 92%; }
+
+div.ui-tab-container-medium{ width: 47%; }
+div.ui-tab-container-medium ul{ width: 92%; }
+div.ui-tab-container-medium ul li:last-child a{ padding-left: 25px; }
+
+div#agency-account-final-values{
+	width:95%;
+	height: auto;
+	background: #FFF url(ubersite-config/bg-website-subnav-container.jpg) left top repeat-x scroll;
+	margin: 10px 0px 0px 0px;
+	border: 1px solid #b8b8b8;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	padding: 15px;
+}
 
 /**************************************/
 /*  WEBSITE CONFIGURATION  ************/
