@@ -27,6 +27,7 @@ group :assets do
   gem 'bootstrap-sass'
   gem 'jquery-fileupload-rails'
   gem 'uglifier', '>= 1.0.3'
+  gem 'awesome_print', :require => 'ap'
 end
 
 gem 'jquery-rails'
