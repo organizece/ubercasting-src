@@ -64,11 +64,17 @@
 		    &nbsp;até&nbsp;
 		    <%= select_tag :hip_to, options_for_select(hips_to, params[:hip_to]), :include_blank => true, class: 'input-mini' %>
 		</li>
-		<li class="search-menu-end">
+		<li>
 			<%= Model.human_attribute_name(:mannequin) %>:<br />
 		    <%= select_tag :mannequin_from, options_for_select(mannequins_from, params[:mannequin_from]), :include_blank => true, class: 'input-mini' %>
 		    &nbsp;até&nbsp;
 		    <%= select_tag :mannequin_to, options_for_select(mannequins_to, params[:mannequin_to]), :include_blank => true, class: 'input-mini' %>
+		</li>
+		<li class="search-menu-end">
+			<%= Model.human_attribute_name(:shoes_size) %>:<br />
+		    <%= select_tag :shoes_size_from, options_for_select(shoes_sizes_from, params[:shoes_size_from]), :include_blank => true, class: 'input-mini' %>
+		    &nbsp;até&nbsp;
+		    <%= select_tag :shoes_size_to, options_for_select(shoes_sizes_to, params[:shoes_size_to]), :include_blank => true, class: 'input-mini' %>
 		</li>
 	</ul>
 	

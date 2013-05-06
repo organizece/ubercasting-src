@@ -102,6 +102,8 @@ class Model < ActiveRecord::Base
     models = models.where("hip <= ?", "#{criteria.hip_to}") if criteria.hip_to.present?
     models = models.where("mannequin >= ?", "#{criteria.mannequin_from}") if criteria.mannequin_from.present?
     models = models.where("mannequin <= ?", "#{criteria.mannequin_to}") if criteria.mannequin_to.present?
+    models = models.where("shoes_size >= ?", "#{criteria.shoes_size_from}") if criteria.shoes_size_from.present?
+    models = models.where("shoes_size <= ?", "#{criteria.shoes_size_to}") if criteria.shoes_size_to.present?
 
     models
   end
