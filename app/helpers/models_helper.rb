@@ -174,6 +174,26 @@ module ModelsHelper
     mannequins
   end
 
+  def shoes_sizes_from
+    shoes_sizes = []
+    shoes_sizes << ["- 20", 0]
+    (21..50).each do |shoes_size|
+      shoes_sizes << [shoes_size, shoes_size]
+    end
+    shoes_sizes << ['50 +', 51]
+    shoes_sizes
+  end
+
+  def shoes_sizes_to
+    shoes_sizes = []
+    shoes_sizes << ['- 20', 19]
+    (21..50).each do |shoes_size|
+      shoes_sizes << [shoes_size, shoes_size]
+    end
+    shoes_sizes << ['50 +', '']
+    shoes_sizes
+  end
+
   def shoes_size
     shoes_size = []
     (20..50).each do |size|

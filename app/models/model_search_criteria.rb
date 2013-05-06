@@ -1,7 +1,7 @@
 class ModelSearchCriteria
   attr_accessor :gender, :age_from, :age_to, :biotype, :eyes_color, :hair_color, :specialty,
     :weight_from, :weight_to, :bust_from, :bust_to, :waist_from, :waist_to, 
-    :hip_from, :hip_to, :mannequin_from, :mannequin_to, :agency_id
+    :hip_from, :hip_to, :mannequin_from, :mannequin_to, :agency_id, :shoes_size_from, :shoes_size_to
 
   def self.build_criteria(params, current_agency)
     criteria = ModelSearchCriteria.new
@@ -23,6 +23,8 @@ class ModelSearchCriteria
     criteria.hip_to = params[:hip_to]
     criteria.mannequin_from = params[:mannequin_from]
     criteria.mannequin_to = params[:mannequin_to]
+    criteria.shoes_size_from = params[:shoes_size_from]
+    criteria.shoes_size_to = params[:shoes_size_to]
 
     criteria
   end
