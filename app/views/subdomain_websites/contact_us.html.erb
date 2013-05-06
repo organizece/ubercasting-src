@@ -4,7 +4,7 @@
 		<p class="lead">Fale Conosco</p>
 		<p class="default">Fique a vontade para falar conosco através do formulário abaixo. Iremos responder o mais rápido possível.</p>
 
-		<%= form_tag(subdomain_websites_send_contact_us_path(@website.subdomain)) do %>
+		<%= form_tag(subdomain_websites_send_contact_us_path(subdomain: @website.subdomain)) do %>
 
 			<div class="contact-input-field">
 				<%= text_field_tag :contact_name, nil, :required => true, :autofocus => true, :value => "Nome" %>

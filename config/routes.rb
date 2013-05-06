@@ -89,36 +89,36 @@ Ubercasting::Application.routes.draw do
   match "customer_panel/" => "main_pages#home", as: :customer_root
 
   # Subdomain routes to static pages
-  match "/:subdomain" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
-  match "/:subdomain/home" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home
-  match "/:subdomain/about" => "subdomain_websites#about", via: :get, as: :subdomain_websites_about
-  match "/:subdomain/casting_foreign" => "subdomain_websites#casting_foreign", via: :get, as: :subdomain_websites_casting_foreign
-  match "/:subdomain/contact_us" => "subdomain_websites#contact_us", via: :get, as: :subdomain_websites_contact_us
-  match "/:subdomain/contact_us" => "subdomain_websites#send_contact_us", via: :post, as: :subdomain_websites_send_contact_us
-  match "/:subdomain/be_model" => "subdomain_websites#be_model", via: :get, as: :subdomain_websites_be_model
-  match "/:subdomain/be_model" => "subdomain_websites#send_be_model", via: :post, as: :subdomain_websites_send_be_model
+  match "/website" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/home" => "subdomain_websites#home", via: :get, as: :subdomain_websites_home, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/about" => "subdomain_websites#about", via: :get, as: :subdomain_websites_about, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/casting_foreign" => "subdomain_websites#casting_foreign", via: :get, as: :subdomain_websites_casting_foreign, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/contact_us" => "subdomain_websites#contact_us", via: :get, as: :subdomain_websites_contact_us, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/contact_us" => "subdomain_websites#send_contact_us", via: :post, as: :subdomain_websites_send_contact_us, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/be_model" => "subdomain_websites#be_model", via: :get, as: :subdomain_websites_be_model, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/be_model" => "subdomain_websites#send_be_model", via: :post, as: :subdomain_websites_send_be_model, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
 
   # Subdomain routes to models pages
-  match "/:subdomain/models" => "subdomain_models#index", via: :get, as: :subdomain_models
-  match "/:subdomain/models/:id" => "subdomain_models#show", via: :get, as: :subdomain_model
-  match "/:subdomain/models/:id/composite" => "subdomain_models#composite", via: :get, as: :subdomain_model_composite
+  match "/website/models" => "subdomain_models#index", via: :get, as: :subdomain_models, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/models/:id" => "subdomain_models#show", via: :get, as: :subdomain_model, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/models/:id/composite" => "subdomain_models#composite", via: :get, as: :subdomain_model_composite, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
 
   # Subdomain routes to castings pages
-  match '/:subdomain/castings/add_models/' => "subdomain_castings#open_add_models", via: :get, as: :subdomain_castings_add_models
-  match '/:subdomain/castings/add_models/' => "subdomain_castings#save_add_models", via: :post, as: :subdomain_castings_add_models
-  match "/:subdomain/castings/destroy_selected" => "subdomain_castings#destroy_selected", via: :get, as: :subdomain_castings_destroy_selected
-  match "/:subdomain/castings" => "subdomain_castings#index", via: :get, as: :subdomain_castings
-  match "/:subdomain/castings" => "subdomain_castings#create", via: :post, as: :subdomain_castings
-  match "/:subdomain/castings/:id" => "subdomain_castings#show", via: :get, as: :subdomain_casting
-  match "/:subdomain/castings/:id" => "subdomain_castings#destroy", via: :delete, as: :subdomain_casting
-  match "/:subdomain/castings/:id/remove_models" => "subdomain_castings#remove_models", via: :get, as: :subdomain_casting_remove_models
-  match "/:subdomain/castings/:id/messages" => "subdomain_castings#open_messages", via: :get, as: :subdomain_casting_messages
-  match "/:subdomain/castings/:id/messages" => "subdomain_castings#save_messages", via: :post, as: :subdomain_casting_messages
+  match "/website/castings/add_models/" => "subdomain_castings#open_add_models", via: :get, as: :subdomain_castings_add_models, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/castings/add_models/" => "subdomain_castings#save_add_models", via: :post, as: :subdomain_castings_add_models, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/castings/destroy_selected" => "subdomain_castings#destroy_selected", via: :get, as: :subdomain_castings_destroy_selected, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/castings" => "subdomain_castings#index", via: :get, as: :subdomain_castings, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/castings" => "subdomain_castings#create", via: :post, as: :subdomain_castings, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/castings/:id" => "subdomain_castings#show", via: :get, as: :subdomain_casting, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/castings/:id" => "subdomain_castings#destroy", via: :delete, as: :subdomain_casting, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/castings/:id/remove_models" => "subdomain_castings#remove_models", via: :get, as: :subdomain_casting_remove_models, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/castings/:id/messages" => "subdomain_castings#open_messages", via: :get, as: :subdomain_casting_messages, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/castings/:id/messages" => "subdomain_castings#save_messages", via: :post, as: :subdomain_casting_messages, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
 
-  match "/:subdomain/model_castings/:id" => "subdomain_model_castings#destroy", via: :delete, as: :subdomain_model_casting
-  match "/:subdomain/model_castings/:id/update_score/:score" => "subdomain_model_castings#update_score", via: :put, as: :subdomain_model_casting_update_score
+  match "/website/model_castings/:id" => "subdomain_model_castings#destroy", via: :delete, as: :subdomain_model_casting, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/model_castings/:id/update_score/:score" => "subdomain_model_castings#update_score", via: :put, as: :subdomain_model_casting_update_score, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
 
-  match "/:subdomain/customer_requests/new" => "subdomain_customer_requests#new", via: :get, as: :subdomain_new_customer_request
-  match "/:subdomain/customer_requests" => "subdomain_customer_requests#create", via: :post, as: :subdomain_customer_requests
+  match "/website/customer_requests/new" => "subdomain_customer_requests#new", via: :get, as: :subdomain_new_customer_request, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/customer_requests" => "subdomain_customer_requests#create", via: :post, as: :subdomain_customer_requests, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
 
 end

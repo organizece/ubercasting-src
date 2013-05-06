@@ -43,7 +43,7 @@
     <h3 class="title-new-casting">Nova Mensagem</h3>
   </div>
 
-  <%= form_for @message, url: subdomain_casting_messages_path(params[:subdomain], @customer_casting.id), method: :post, remote: true do |f| %>
+  <%= form_for @message, url: subdomain_casting_messages_path(@customer_casting, subdomain: request.subdomain), method: :post, remote: true do |f| %>
 
   <!-- ************** BODY ************** -->
 
