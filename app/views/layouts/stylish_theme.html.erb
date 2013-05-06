@@ -108,27 +108,27 @@
 					<div id="main-nav" class="auto-size-block">
 						<ul class="auto-size-block put-list-inline">
 							<li class="link-home">
-							<%= link_to 'Home', subdomain_websites_home_path({subdomain: params[:subdomain]}), :class => "active" %>
+							<%= link_to 'Home', subdomain_websites_home_path(subdomain: request.subdomain), :class => "active" %>
 							</li>
 
 							<% if @website.about %>
-							<li class="link-about"><%= link_to 'Sobre', subdomain_websites_about_path({subdomain: params[:subdomain]}) %></li>
+							<li class="link-about"><%= link_to 'Sobre', subdomain_websites_about_path(subdomain: request.subdomain) %></li>
 							<% end %>
 
 							<% if @website.models %>
-							<li class="link-models"><%= link_to 'Modelos', subdomain_models_path(params[:subdomain]) %></li>
+							<li class="link-models"><%= link_to 'Modelos', subdomain_models_path(subdomain: request.subdomain) %></li>
 							<% end %>
 
 							<% if @website.castings %>
 								<% if customer_signed_in? %>
-									<li class="link-casting"><%= link_to 'Casting', subdomain_castings_path(params[:subdomain]) %></li>
+									<li class="link-casting"><%= link_to 'Casting', subdomain_castings_path(subdomain: request.subdomain) %></li>
 								<% else %>
-									<li class="link-casting"><%= link_to 'Casting', subdomain_websites_casting_foreign_path(params[:subdomain]) %></li>
+									<li class="link-casting"><%= link_to 'Casting', subdomain_websites_casting_foreign_path(subdomain: request.subdomain) %></li>
 								<% end %>
 							<% end %>
 
 							<% if @website.contact_us %>
-							<li class="link-contact"><%= link_to 'Contato', subdomain_websites_contact_us_path({subdomain: params[:subdomain]}) %></li>
+							<li class="link-contact"><%= link_to 'Contato', subdomain_websites_contact_us_path(subdomain: request.subdomain) %></li>
 							<% end %>
 
 							<% if @website.my_site %>
@@ -136,12 +136,12 @@
 							<% end %>
 
 							<% if @website.be_a_model %>
-							<li class="link-be-model"><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
+							<li class="link-be-model"><%= link_to 'Seja um modelo', subdomain_websites_be_model_path(subdomain: request.subdomain) %></li>
 							<% end %>
 
 							<% if !customer_signed_in? %>
 							<li>
-								<%= link_to 'Cadastro', subdomain_new_customer_request_path(params[:subdomain]) %>
+								<%= link_to 'Cadastro', subdomain_new_customer_request_path(subdomain: request.subdomain) %>
 							</li>
 							<% end %>
 							
@@ -189,15 +189,15 @@
 				
 				<div id="news-main-content">
                 	<div class="news-content">
-                    	<h2><%= link_to 'SOBRE', subdomain_websites_about_path({subdomain: params[:subdomain]}) %></h2>
+                    	<h2><%= link_to 'SOBRE', subdomain_websites_about_path(subdomain: request.subdomain) %></h2>
                         <p><%= @website.agency.agency_about %></p>
                     </div>
                     <div class="news-content">
-                    	<h2><%= link_to 'Modelos', subdomain_models_path(params[:subdomain]) %></h2>
+                    	<h2><%= link_to 'Modelos', subdomain_models_path(subdomain: request.subdomain) %></h2>
                         <p>Venha conhecer um pouco mais sobre os nossos <strong><%= @website.agency.models.count %> modelos</strong>.</p>
                     </div>
                     <div class="news-content last">
-                    	<h2><%= link_to 'FALE CONOSCO', subdomain_websites_contact_us_path({subdomain: params[:subdomain]}) %></h2>
+                    	<h2><%= link_to 'FALE CONOSCO', subdomain_websites_contact_us_path(subdomain: request.subdomain) %></h2>
                         <p>Monte seu casting e envie para nós. Caso tenha dúvidas ou queira pedir uma sugestão, nos envie uma mensagem. Vamos responder o mais rápido possível.</p>
                     </div>
                 </div>
@@ -215,27 +215,27 @@
 				<div id="footer-nav">
 					<ul class="auto-size-block put-list-inline">
 						<li>
-						<%= link_to 'Home', subdomain_websites_home_path({subdomain: params[:subdomain]}) %>
+						<%= link_to 'Home', subdomain_websites_home_path(subdomain: request.subdomain) %>
 						</li>
 
 						<% if @website.about %>
-						<li><%= link_to 'Sobre', subdomain_websites_about_path({subdomain: params[:subdomain]}) %></li>
+						<li><%= link_to 'Sobre', subdomain_websites_about_path(subdomain: request.subdomain) %></li>
 						<% end %>
 
 						<% if @website.models %>
-						<li><%= link_to 'Modelos', subdomain_models_path(params[:subdomain]) %></li>
+						<li><%= link_to 'Modelos', subdomain_models_path(subdomain: request.subdomain) %></li>
 						<% end %>
 
 						<% if @website.castings %>
 							<% if customer_signed_in? %>
-								<li><%= link_to 'Casting', subdomain_castings_path(params[:subdomain]) %></li>
+								<li><%= link_to 'Casting', subdomain_castings_path(subdomain: request.subdomain) %></li>
 							<% else %>
-								<li><%= link_to 'Casting', subdomain_websites_casting_foreign_path(params[:subdomain]) %></li>
+								<li><%= link_to 'Casting', subdomain_websites_casting_foreign_path(subdomain: request.subdomain) %></li>
 							<% end %>
 						<% end %>
 
 						<% if @website.contact_us %>
-						<li><%= link_to 'Contato', subdomain_websites_contact_us_path({subdomain: params[:subdomain]}) %></li>
+						<li><%= link_to 'Contato', subdomain_websites_contact_us_path(subdomain: request.subdomain) %></li>
 						<% end %>
 
 						<% if @website.my_site %>
@@ -243,12 +243,12 @@
 						<% end %>
 
 						<% if @website.be_a_model %>
-						<li><%= link_to 'Seja um modelo', subdomain_websites_be_model_path({subdomain: params[:subdomain]}) %></li>
+						<li><%= link_to 'Seja um modelo', subdomain_websites_be_model_path(subdomain: request.subdomain) %></li>
 						<% end %>
 
 						<% if !customer_signed_in? %>
 						<li>
-								<%= link_to 'Cadastro', subdomain_new_customer_request_path(params[:subdomain]) %>
+								<%= link_to 'Cadastro', subdomain_new_customer_request_path(subdomain: request.subdomain) %>
 						</li>
 						<% end %>
 						

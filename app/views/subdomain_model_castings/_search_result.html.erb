@@ -21,15 +21,15 @@
 				
 				<ul>
 					<% if model.composite %>
-					<li class="model-box-view-composite"><%= link_to 'Visualizar Composite', subdomain_model_composite_path(params[:subdomain], model), remote: true %></li>
+					<li class="model-box-view-composite"><%= link_to 'Visualizar Composite', subdomain_model_composite_path(model, subdomain: request.subdomain), remote: true %></li>
 					<% end %>
-					<li><h4><%= link_to model.art_name, subdomain_model_path(@website.subdomain, model.id) %></h4></li>
+					<li><h4><%= link_to model.art_name, subdomain_model_path(model, subdomain: request.subdomain) %></h4></li>
 					<li>
 						<div id='model-casting-score-<%= casting_model.id %>'>
 							<%= render 'score_buttons', casting_model: casting_model %>
 						</div>
 					</li>
-					<li class="model-box-add-composite"><%= link_to 'Remover do Casting', subdomain_model_casting_path(params[:subdoamin], casting_model), method: :delete, remote: true %></li>
+					<li class="model-box-add-composite"><%= link_to 'Remover do Casting', subdomain_model_casting_path(casting_model, subdomain: request.subdomain), method: :delete, remote: true %></li>
 					
 				</ul>
 				

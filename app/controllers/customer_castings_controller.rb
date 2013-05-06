@@ -142,8 +142,7 @@ class CustomerCastingsController < ApplicationController
   end
 
   def open_external_url
-     # Workaround to subdomain URL
-    @casting_url = root_url + "#{current_agency.website.subdomain}/castings/#{params[:customer_casting_id]}"
+    @casting_url = subdomain_casting_url(params[:customer_casting_id], subdomain: current_agency.website.subdomain)
   end
 
 private

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def store_location(subdomain)
-    session[:users_return_to] = subdomain_websites_home_path(subdomain)
+    session[:users_return_to] = subdomain_websites_home_path(subdomain: subdomain)
   end
 
   def clear_location

@@ -4,7 +4,7 @@ class SubdomainCastingsController < ApplicationController
   before_filter :validate_customer
 
   def index
-    @website = Website.find_by_subdomain(params[:subdomain])
+    @website = Website.find_by_subdomain(request.subdomain)
     agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(@website.agency.id, current_customer.id)
 
     @castings = CustomerCasting.search(params[:name], @website.agency.id, agency_customer.id).
@@ -13,7 +13,7 @@ class SubdomainCastingsController < ApplicationController
   end
 
   def show
-    @website = Website.find_by_subdomain(params[:subdomain])
+    @website = Website.find_by_subdomain(request.subdomain)
     @casting = CustomerCasting.find(params[:id])
     @casting_models = ModelCustomerCasting.where(customer_casting_id: @casting.id).joins(:model)
 
@@ -28,7 +28,7 @@ class SubdomainCastingsController < ApplicationController
 
   def create
     @casting = CustomerCasting.new(params[:customer_casting])
-    @casting.agency = Website.find_by_subdomain(params[:subdomain]).agency
+    @casting.agency = Website.find_by_subdomain(request.subdomain).agency
     agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(@casting.agency.id, current_customer.id)
     @casting.agency_customer = agency_customer
 
@@ -80,7 +80,7 @@ class SubdomainCastingsController < ApplicationController
     if params[:models].blank?
       flash[:error] = 'Selecione ao menos um modelo'
     else
-      agency = Website.find_by_subdomain(params[:subdomain]).agency
+      agency = Website.find_by_subdomain(request.subdomain).agency
       agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(agency.id, current_customer.id)
 
       @castings = CustomerCasting.where(agency_id: agency.id).where(agency_customer_id: agency_customer.id)
@@ -88,7 +88,7 @@ class SubdomainCastingsController < ApplicationController
   end
 
   def save_add_models
-    agency = Website.find_by_subdomain(params[:subdomain]).agency
+    agency = Website.find_by_subdomain(request.subdomain).agency
     agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(agency.id, current_customer.id)
 
     models = params[:models].split(',') if params[:models]
@@ -198,8 +198,8 @@ class SubdomainCastingsController < ApplicationController
 
 private
   def subdomain_layout
-    if params[:subdomain] && !params[:subdomain].empty?
-      website = Website.find_by_subdomain(params[:subdomain])
+    if request.subdomain && !request.subdomain.empty?
+      website = Website.find_by_subdomain(request.subdomain)
       website.theme
     else
       'subdomain_default'
@@ -239,16 +239,16 @@ private
 
   def validate_customer
     # Change the default route to the current subdomain when customer log in
-    store_location(params[:subdomain])
+    store_location(request.subdomain)
 
     # First runs the Devise authenticator
     authenticate_customer!
 
     # If customer is loged in validate if it has an association with the agency
-    website = Website.find_by_subdomain(params[:subdomain])
+    website = Website.find_by_subdomain(request.subdomain)
     agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(website.agency.id, current_customer.id)
 
-    redirect_to subdomain_websites_casting_foreign_path(params[:subdomain]) unless agency_customer
+    redirect_to subdomain_websites_casting_foreign_path(request.subdomain) unless agency_customer
   end
 
 end

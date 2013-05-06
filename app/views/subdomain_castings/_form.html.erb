@@ -1,7 +1,7 @@
 <p class="lead">Novo Casting</p>
 <p class="default">Para criar um novo casting, digite o seu nome no campo abaixo e depois clique em <b>'Adicionar Novo Casting'</b></p>
 
-<%= form_for @casting, url: subdomain_castings_path(@website.subdomain), remote: true do |f| %>
+<%= form_for @casting, url: subdomain_castings_path(subdomain: request.subdomain), remote: true do |f| %>
 	
 	<ul id="new-casting-list" class="auto-size-block put-list-inline">
 		<li><%= f.text_field :name, class: 'input-txt-light-8-columns' %></li>
