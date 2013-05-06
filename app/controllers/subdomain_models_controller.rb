@@ -4,7 +4,7 @@ class SubdomainModelsController < ApplicationController
   before_filter :validate_customer
 
   def index
-    @website = Website.find_by_subdomain(params[:subdomain])
+    @website = Website.find_by_subdomain(request.subdomain)
     @models = Model.search(ModelSearchCriteria.build_criteria(params, @website.agency))
 
     @visualization_mode = @website.visualization_mode
@@ -20,11 +20,11 @@ class SubdomainModelsController < ApplicationController
   end
 
   def show
-    @website = Website.find_by_subdomain(params[:subdomain])
+    @website = Website.find_by_subdomain(request.subdomain)
     @model = @website.agency.models.find(params[:id])
 
     # Redirect to subdomain_models if the access type isn't open or full access
-    redirect_to subdomain_models_path(params[:subdomain]) unless customer_total_access? || @website.visualization_mode == 'open'
+    redirect_to subdomain_models_path(request.subdomain) unless customer_total_access? || @website.visualization_mode == 'open'
   end
   
   def composite
@@ -38,8 +38,8 @@ class SubdomainModelsController < ApplicationController
 
 private
   def subdomain_layout
-    if params[:subdomain] && !params[:subdomain].empty?
-      website = Website.find_by_subdomain(params[:subdomain])
+    if request.subdomain && !request.subdomain.empty?
+      website = Website.find_by_subdomain(request.subdomain)
       website.theme
     else
       'subdomain_default'
@@ -63,7 +63,7 @@ private
     
     if customer_signed_in?
       # If customer is signed in validate if it has an association with the agency
-      website = Website.find_by_subdomain(params[:subdomain])
+      website = Website.find_by_subdomain(request.subdomain)
       agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(website.agency.id, current_customer.id)
 
       total_access = true if agency_customer
@@ -74,7 +74,7 @@ private
 
   def validate_customer
     # Only change the default route to the current subdomain when customer log in
-    store_location(params[:subdomain])
+    store_location(request.subdomain)
   end
 
 end
