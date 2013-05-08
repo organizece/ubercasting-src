@@ -157,6 +157,11 @@ class ModelsController < ApplicationController
       end
     end
   end
+  
+  # Method called via ajax to open profile pic resize and crop window
+  def open_profile_pic
+    @model = Model.find(params[:model_id])
+  end
 
   # DELETE /models/1
   # DELETE /models/1.json

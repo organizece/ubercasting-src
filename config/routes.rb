@@ -26,6 +26,7 @@ Ubercasting::Application.routes.draw do
   resources :models do
     match 'update_avatar/:avatar_photo_id' => 'models#update_avatar', via: :put, as: :update_avatar
     match 'update_model_video' => 'models#update_video', via: :put, as: :update_video
+    match 'profile_pic' => 'models#open_profile_pic', via: :get, as: :profile_pic
     resources :photos, except: [:edit, :update]
     resources :composites, except: [:index, :destroy]
   end

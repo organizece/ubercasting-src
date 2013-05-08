@@ -6,6 +6,11 @@ $("#modal-casting-view").on('shown', function () {
 	//Removes Focus From Modal
 	$("#modal-casting-view").blur();
 	
+	//Window Goes to Top
+	function goToTop() {
+		window.pageYOffset = 0;
+	}
+	
 	//Adjusts Composite Main Image
 	$('#modal-casting-view div#composite-cover img').fadeIn("fast");
 	$('#modal-casting-view div#composite-cover img').resizeToParent();
@@ -84,6 +89,7 @@ $("#modal-casting-view").on('shown', function () {
 		
 	}
 	
+	goToTop();
 	compositeNavHandler();
 	copyScore();
 

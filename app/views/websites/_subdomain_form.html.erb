@@ -9,14 +9,14 @@
 	
 		<% if @website.agency.account_type != "free" %>
 			<div id="website-subdomain-input">
-				<span>www.ubercasting.com.br/</span>
 				<%= f.text_field :subdomain, :class => "input-txt-light-4-column" %>
+				<span>.ubercasting.com.br</span>
 			    <%= link_to 'Verificar', websites_verify_subdomain_path, remote: true, class: 'btn-silver-light-fluid', id: 'verify_subdomain' %>
 			</div>
 		<% else %>
 			<div id="website-subdomain-input">
-				<span>www.ubercasting.com.br/</span>
 				<%= f.text_field :subdomain, :class => "input-txt-light-4-column", :disabled => true %>
+				<span>.ubercasting.com.br</span>
 			</div>
 		<% end %>
 		

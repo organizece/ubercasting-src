@@ -17,6 +17,12 @@
 			<li><%= submit_tag 'Compartilhar Casting', class: 'btn-silver-light-fluid', id: "btn-send-share-casting" %></li>
 			<li class="loader-gif"><%= image_tag "admin/ajax-loader.gif" %></li>
 		</ul>
+		
+		<div id="modal-share-buttons" class="auto-size-block">
+			<a href="#" id="reset-share-add-address" class="anchor-btn-silver-light-normal put-left offline">Reset</a>
+			<a href="#" id="share-add-address" class="anchor-btn-silver-light-normal put-right">Adicionar E-mail</a>
+		</div>
+		
 	</div>
 
   <% end %> 

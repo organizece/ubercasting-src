@@ -7,6 +7,7 @@
  *= require bootstrap_and_overrides
  *= require jquery.fileupload-ui
  *= require jquery-minicolors
+ *= require jquery.Jcrop.min
  *= require admin-general
  *= require composites
 */
