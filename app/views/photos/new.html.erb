@@ -71,6 +71,8 @@
 				                <span>Apagar</span>
 				            </button>
 				
+							<%= link_to "Escolher Foto de Perfil", model_profile_pic_path, title: 'Perfil Update', :class => "btn-silver-light-fluid put-left", remote: true %>
+							
 							<div class="put-left">
 								<input type="checkbox" class="toggle put-left">
 								<label class="put-left">Selecionar Todos</label>
@@ -96,9 +98,9 @@
 				<!-- The loading indicator is shown during file processing -->
 				    <div class="fileupload-loading"></div>
 				    <br />
-
-				    <!-- The table listing the files available for upload/download -->
-				    <table role="presentation" class="table table-striped auto-size-block clear-margin-padding">
+					
+					<!-- The table listing the files available for upload/download -->
+				    <table id="table-img-display" role="presentation" class="table table-striped auto-size-block clear-margin-padding">
 						<tbody class="files auto-size-block clear-margin-padding" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
 					</table>
 

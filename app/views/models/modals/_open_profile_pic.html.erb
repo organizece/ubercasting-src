@@ -1,0 +1,49 @@
+<div id="modal-profile-pic" class="modal hide fade modal-share-msgs" tabindex="-1" role="dialog" aria-hidden="true">
+	
+	<div class="auto-size-block modal-content">
+		
+		<h2 class="font-title">Escolher <strong>Foto de Perfil</strong></h2>
+		
+		<h4 class="header-base-title">Modelo: <strong><%= @model.name %></strong></h4>
+		
+		<div class="modal-alert">
+			<p>Por favor, faça o upload dos arquivos antes de escolher a foto de perfil.</p>
+		</div>
+		
+		<div id="profile-pic-preview">
+			
+			<input type="hidden" value="" id="original-img-w">
+			<input type="hidden" value="" id="original-img-h">
+			
+			<div id="profile-pic-original" class="put-left">
+				<p>Imagem original aqui</p>
+			</div>
+			
+			<div id="profile-pic-thumb" class="put-left">
+				<p>Imagem preview aqui</p>
+			</div>
+			
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div id="profile-pic-list" class="auto-size-block">
+			<p>Selecione a imagem desejada na lista abaixo:</p>
+			<ul class="put-list-inline">
+				<% for photo in @model.photos.each %>
+
+					<li class="is-draggable ui-widget-content ui-corner-tr">
+					<%= image_tag photo.image.url(:main_composite), alt: photo.image_file_name, id: photo.id %>
+					</li>
+
+				<% end %>
+			</ul>
+		</div>
+		
+		<div class="modal-btn-action">
+			<%= link_to "SALVAR", "#", :class => "anchor-btn-gold-light-4-column" %>
+		</div>
+		
+	</div>
+	
+</div>

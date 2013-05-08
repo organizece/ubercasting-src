@@ -19,6 +19,7 @@
 //= require jquery-resize-n-place
 //= require jquery_minicolors
 //= require bootstrap_aditions
+//= require jquery.Jcrop.min
 //= require find_cep
 //= require agencies
 //= require agency_customers

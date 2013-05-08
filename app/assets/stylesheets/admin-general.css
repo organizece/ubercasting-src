@@ -1958,6 +1958,90 @@ div.btnbar-upload label{ font-size: 12px; display: block; margin-left: 7px; }
 
 div.fileupload-progress{ margin-top: 20px; width: 90%; height: 30px; }
 
+div#modal-profile-pic{ min-height: 360px; height: auto; }
+
+div#modal-profile-pic div#profile-pic-list{ display: none; }
+
+div#modal-profile-pic div#profile-pic-original{
+	width: 450px;
+	height: 300px;
+	display: block;
+	overflow: hidden;
+	background-color: #DDD;
+	border: 1px solid #CCC;
+	margin: 10px 0px;
+}
+
+div#modal-profile-pic div#profile-pic-thumb{
+	width: 300px;
+	height: 256px;
+	display: block;
+	overflow: hidden;
+	background-color: #DDD;
+	border: 1px solid #CCC;
+	margin: 10px 0px;
+	margin-left: 20px;
+}
+
+div#modal-profile-pic div#profile-pic-thumb img{
+	width: auto;
+	height: auto;
+	max-width: none;
+}
+
+div#modal-profile-pic div#profile-pic-original p,
+div#modal-profile-pic div#profile-pic-thumb p{ margin: 7px; font-size: 80%; }
+
+div#modal-profile-pic div#profile-pic-list ul{ margin: 0px; }
+
+div#modal-profile-pic div#profile-pic-list ul li{
+	width: auto;
+	height: 60px;
+	padding: 7px;
+	cursor: pointer;
+	margin: 1px;
+}
+
+div#modal-profile-pic div#profile-pic-list ul li:hover{ 
+	background-color: #CCC; 
+	border: 1px solid #BBB;
+	padding: 6px;
+	box-shadow:#AAA 0px 1px 1px;
+}
+
+div#modal-profile-pic div#profile-pic-list ul li img{
+	width: auto;
+	height: 60px;
+	max-width:none;
+}
+
+div.modal-content{
+	width: 96%;
+	margin: 15px auto;
+}
+
+div.modal-content div.modal-alert{
+	width:98%;
+	height:35px;
+	display: none;
+	background-color: #F4CF91;
+	border: 1px solid #DAB981;
+	border-radius:4px;
+	margin: 20px 0px;
+}
+
+div.modal-content div.modal-alert p{
+	color: #7D6A4A;
+	text-shadow: #FFE1DB 0px 1px 0px;
+	padding: 8px 0px 0px 10px;
+}
+
+div.modal-btn-action{
+	width: 50%;
+	height: auto;
+	margin: 15px 0px;
+}
+
 /**************************************/
 /*  MODEL VIDEO STORAGE  **************/
 /**************************************/
@@ -2031,10 +2115,13 @@ div#modal-add-model div#customer-casting-list{
 div#modal-add-model a#display-agency-casting-list,
 div#modal-add-model a#display-customer-casting-list{ margin: 2em 1em 0px 0em; }
 
-div#modal-share-casting{ height: 200px; }
+div#modal-share-casting{ min-height: 200px; height: auto; }
+div#modal-share-casting .modal-body{ height: auto; overflow: visible; }
 
-div#modal-share-casting div.modal-body ul#new-message-list{ padding-left: 20px; width: 850px; }
+div#modal-share-casting div.modal-body ul#new-message-list{ padding-left: 20px; width: 850px; margin: 20px 0px; }
 div#modal-share-casting div.modal-body ul#new-message-list input{ width: 650px; }
+div#modal-share-casting div.modal-body ul#new-message-list li{ margin: 0px; }
+div#modal-share-casting div#modal-share-buttons{ padding:15px 17px 15px 17px; border-top: 1px solid #ddd; }
 
 div.modal-share-msgs div#messages-list{ 
 	max-height: 200px; 
@@ -2493,7 +2580,7 @@ div.website-content-config div#website-subdomain-input a{ float: left; }
 
 div.website-content-config div#website-subdomain-input span{ padding: 10px 5px 0px 0px; }
 
-div.website-content-config div#website-subdomain-input input{ margin-top: 2px; }
+div.website-content-config div#website-subdomain-input input{ margin: 2px 5px 0px 0px; text-align: right; }
 
 div.website-content-config div#website-subdomain-input a.btn-silver-light-fluid{ width: 10% !important; margin-left: 10px; }
 

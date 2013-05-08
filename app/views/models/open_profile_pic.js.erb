@@ -1,0 +1,87 @@
+$("#modals").empty();
+$("#modals").html("<%= escape_javascript(render('models/modals/open_profile_pic')) %>");
+$("#modal-profile-pic").modal('show');
+$("#modal-profile-pic").on('shown', function () {
+	
+	//Removes Focus From Modal
+	$("#modal-profile-pic").blur();
+	
+	//Window Goes to Top
+	function goToTop(){
+		window.pageYOffset = -50;
+	};
+	
+	//Check if there is anything to display; Displays error msg otherwise;
+	function verifyImgList() {
+		if ( $('div.fileupload-buttonbar').length >= 1 ) {
+			
+			if ( $('table#table-img-display tbody tr').length == 0 ){
+				$('div.modal-alert').show();
+				$('div#profile-pic-list').hide();
+				$("#modal-profile-pic").css("height","200px");
+			}else{
+				$('div.modal-alert').hide();
+				$('div#profile-pic-list').show();
+			};
+			
+		};
+	};
+	
+	//Image Select; APply JCrop on select image and calls preview
+	function profileImgSelect(){
+		
+		$('div#profile-pic-list ul li').click(function(event){
+			event.preventDefault();
+			
+			var imgAlt = $(this).find("img").attr("alt");
+			var imgID = $(this).find("img").attr("id");
+			var imgSrc = $(this).find("img").prop("src");
+			var imgInception = '<img alt="'+imgAlt+'" id="'+imgID+'" src="'+imgSrc+'">';
+			
+			if ( $('div#profile-pic-original p').length == 1 ){
+				$('div#profile-pic-original p').remove();
+				$('div#profile-pic-thumb p').remove();
+			}else{
+				$('div#profile-pic-original').find("img").remove();
+				$('div#profile-pic-thumb').find("img").remove();
+				$('div#profile-pic-original').find('div.jcrop-holder').remove();
+			};
+			
+			$('div#profile-pic-original').append(imgInception);
+			$('div#profile-pic-thumb').append(imgInception);
+			
+			$('div#profile-pic-thumb').find("img").attr("id","img-crop-preview");
+			
+			$('div#profile-pic-original').find("img").css("width","auto");
+			$('div#profile-pic-original').find("img").css("height","300px");
+			$('div#profile-pic-original').css("width","auto");
+			
+			$('#original-img-w').val($('div#profile-pic-original').find("img").width());
+			$('#original-img-h').val($('div#profile-pic-original').find("img").height());
+			
+			$('div#profile-pic-original').find("img").Jcrop({
+				onChange: showPreview,
+				onSelect: showPreview,
+				aspectRatio: 0
+			});
+			
+		});
+	};
+	
+	function showPreview(coords){
+		var rx = 300 / coords.w;
+		var ry = 256 / coords.h;
+
+		$('div#profile-pic-thumb #img-crop-preview').css({
+			width: Math.round(rx * $('#original-img-w').val()) + 'px',
+			height: Math.round(ry * $('#original-img-h').val()) + 'px',
+			marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+			marginTop: '-' + Math.round(ry * coords.y) + 'px'
+		});
+	};
+	
+	goToTop();
+	verifyImgList();
+	profileImgSelect();
+	
+});

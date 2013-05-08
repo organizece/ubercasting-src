@@ -715,7 +715,7 @@ $(document).ready(function(){
 	
 	function getMainPath() {
 		var fullURL = window.location.href;
-		var mainURL = fullURL.substring(0, fullURL.lastIndexOf("/"));
+		var mainURL = fullURL.substring(7, fullURL.lastIndexOf("/"));
 		
 		if ( $('span.my-main-domain').length > 0 ) {
 			$('span.my-main-domain').append(mainURL+"/");

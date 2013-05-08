@@ -16,4 +16,32 @@ $("#modal-share-casting").on('shown', function () {
 		});
 	});
 	
+	//ADD E-MAIL FIELD TO SHARE - CASTING
+	function addEmailField(){
+		$("a#share-add-address").click(function(event){
+			event.preventDefault();
+			var inputCopy = $('ul#new-message-list li:eq(0)').html();
+			$('ul#new-message-list').prepend('<li>'+inputCopy+'</li>');
+			$('ul#new-message-list li:eq(0)').css("outline","none");
+			
+			$('a#reset-share-add-address').removeClass("offline");
+		});
+		
+		$('a#reset-share-add-address').click(function(event){
+			event.preventDefault();
+			
+			if ( $('ul#new-message-list li').length > 3 ){
+				var totalList = $('ul#new-message-list li').length - 3;
+				for (var i = 0; i < totalList; i++) {
+					$('ul#new-message-list li:eq(0)').remove();
+				};
+				$('a#reset-share-add-address').addClass("offline");
+			};
+			
+		});
+	}
+	
+	//METHOD CALLING
+	addEmailField();
+	
 });
