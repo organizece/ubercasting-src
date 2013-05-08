@@ -33,7 +33,9 @@ $(document).ready(function(){
 			case "casting":
 				$('div#main-nav ul li.link-casting a').addClass('active');
 			break;
-			
+			case "customer":
+				$('div#main-nav ul li.link-register a').addClass('active');
+			break;
 		}
 	}
 	

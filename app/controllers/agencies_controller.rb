@@ -1,4 +1,4 @@
-class AgenciesController < ActionController::Base
+class AgenciesController < ApplicationController
     before_filter :validate_agency
     before_filter :first_access?, except: [:edit, :update, :connect_sites]
 
@@ -33,7 +33,21 @@ class AgenciesController < ActionController::Base
     
     def connect_sites
       @agency = current_agency
-      @website = @agency.website
+    end
+    
+    def create_file
+      @text = params[:text]
+      out = render_to_string(:action => 'wrap')
+
+      filename = File.join(RAILS_ROOT, 'tmp', \
+      'files', params[:filename])
+      File.open(filename, 'w') do |f|
+        f.write(out)
+      end
+
+      flash[:notice] = "File created"
+      #response.redirect url_for(:action => 'index')
+      redirect_to :action => 'index'
     end
 
 private
@@ -41,7 +55,7 @@ private
   def validate_agency
     # Clear the location of subdomain
     clear_location
-
+    
     # First runs the Devise authenticator
     authenticate_agency!
   end
