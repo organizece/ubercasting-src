@@ -13,20 +13,20 @@
 		</li>
 		<li>
 			<%= Model.human_attribute_name(:biotype) %>:<br />
-		    <%= select_tag :biotype, options_for_select(biotypes, params[:biotype]), :include_blank => true, class: 'input-small' %>
+		    <%= select_tag :biotype, options_for_select(biotypes, params[:biotype]), :include_blank => true, multiple: true,  class: 'input-small' %>
 		</li>
 		<li>
 			<%= Model.human_attribute_name(:eyes_color) %>:<br />
-		    <%= select_tag :eyes_color, options_for_select(eyes_color, params[:eyes_color]), :include_blank => true, class: 'input-small' %>
+		    <%= select_tag :eyes_color, options_for_select(eyes_color, params[:eyes_color]), :include_blank => true, multiple: true,  class: 'input-small' %>
 		</li>
 		<li>
 			<%= Model.human_attribute_name(:hair_color) %>:<br />
-		    <%= select_tag :hair_color, options_for_select(hair_color, params[:hair_color]), :include_blank => true, class: 'input-small' %>
+		    <%= select_tag :hair_color, options_for_select(hair_color, params[:hair_color]), :include_blank => true, multiple: true,  class: 'input-small' %>
 		</li>
 		<li class="search-menu-end">
 			<%= Model.human_attribute_name(:specialty) %>:<br />
 		    <%= select_tag :specialty, options_from_collection_for_select(Specialty.all, :id, :translated_name, params[:specialty]), 
-		    	:include_blank => true, class: 'input-medium' %>
+		    	:include_blank => true, multiple: true, class: 'input-medium' %>
 		</li>
 	</ul>
 	

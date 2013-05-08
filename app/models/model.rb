@@ -85,12 +85,13 @@ class Model < ActiveRecord::Base
       age_from = Date.today >> (-1 * Integer(criteria.age_from) * 12)
       models = models.where("birthday <= ?", "#{age_from}")
     end
-    models = models.where("biotype = ?", "#{criteria.biotype}") if criteria.biotype.present?
-    models = models.where("eyes_color = ?", "#{criteria.eyes_color}") if criteria.eyes_color.present?
-    models = models.where("hair_color = ?", "#{criteria.hair_color}") if criteria.hair_color.present?
-    if criteria.specialty.present?
+    models = models.where(biotype: criteria.biotype) if criteria.biotype.present? && criteria.biotype[0] != ''
+    models = models.where(eyes_color: criteria.eyes_color) if criteria.eyes_color.present? && criteria.eyes_color[0] != ''
+    models = models.where(hair_color: criteria.hair_color) if criteria.hair_color.present? && criteria.hair_color[0] != ''
+    if criteria.specialty.present? && criteria.specialty[0] != ''
       models = models.joins(:specialties)
-      models = models.where("specialties.id = ?", criteria.specialty)
+      # .uniq -> To bring only one row with the same model has many specialties
+      models = models.where('specialties.id' => criteria.specialty).uniq 
     end
     models = models.where("weight >= ?", "#{criteria.weight_from}") if criteria.weight_from.present?
     models = models.where("weight <= ?", "#{criteria.weight_to}") if criteria.weight_to.present?
