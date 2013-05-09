@@ -171,15 +171,15 @@ class Model < ActiveRecord::Base
     self.avatar = URI.parse(url)
   end
 
+  def cropping?
+    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+  end
+
 private
 
   def reprocess_avatar
     avatar.reprocess!
-  end
-
-  def cropping?
-    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
-  end
+  end  
 
   # def image_url_provided?
   #   !self.avatar_url.blank?
