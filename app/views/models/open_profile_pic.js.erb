@@ -58,6 +58,8 @@ $("#modal-profile-pic").on('shown', function () {
 			
 			$('#original-img-w').val($('div#profile-pic-original').find("img").width());
 			$('#original-img-h').val($('div#profile-pic-original').find("img").height());
+
+			$('#avatar_url').val(imgSrc);
 			
 			$('div#profile-pic-original').find("img").Jcrop({
 				onChange: showPreview,
@@ -71,6 +73,11 @@ $("#modal-profile-pic").on('shown', function () {
 	function showPreview(coords){
 		var rx = 300 / coords.w;
 		var ry = 256 / coords.h;
+
+		$("#crop_x").val(Math.round(coords.x));
+	  $("#crop_y").val(Math.round(coords.y));
+	  $("#crop_w").val(Math.round(coords.w));
+	  $("#crop_h").val(Math.round(coords.h));
 
 		$('div#profile-pic-thumb #img-crop-preview').css({
 			width: Math.round(rx * $('#original-img-w').val()) + 'px',
