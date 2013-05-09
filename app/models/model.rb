@@ -42,7 +42,7 @@ class Model < ActiveRecord::Base
     :bank_account, :bank_account_type, :bank_agency, :personal_email, :job_email, :secondary_email, :site_url,
     :specialty_ids, :video, :art_name, :avatar_photo_id
 
-  has_attached_file :avatar, :styles => { :crop => "500x500>" }, :processors => [:cropper]
+  has_attached_file :avatar, :styles => { :crop => "500x500>" }#, :processors => [:cropper]
 
   attr_writer :current_step
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :avatar_file_name
