@@ -39,9 +39,17 @@
 				<% end %>
 			</ul>
 		</div>
-		
-		<div class="modal-btn-action">
-			<%= link_to "SALVAR", "#", :class => "anchor-btn-gold-light-4-column" %>
+
+		<div class="content-split"></div>
+
+		<div>
+		<%= form_tag model_profile_pic_path(@model), remote: true do %>
+		  <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+		    <%= hidden_field_tag attribute, nil, id: attribute %>
+		  <% end %>
+		  <%= hidden_field_tag :avatar_url, nil, id: :avatar_url %>
+		  <%= submit_tag "SALVAR", class: "put-right input-btn-gold-light-4-column" %>
+		<% end %>
 		</div>
 		
 	</div>

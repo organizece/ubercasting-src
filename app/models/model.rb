@@ -39,10 +39,17 @@ class Model < ActiveRecord::Base
   attr_accessible :name, :birthday, :age, :gender, :biotype, :responsible_name, :responsible_birthday, :responsible_cpf, :responsible_rg,
     :height, :weight, :eyes_color, :hair_color, :bust, :waist, :hip, :mannequin, :shoes_size, :rg, :cpf, :personal_phone, :secondary_phone, 
     :curriculum, :job_phone, :specialty, :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :bank, 
-    :bank_account, :bank_account_type, :bank_agency, :personal_email, :job_email, :secondary_email, :site_url, :avatar_photo_id,
-    :specialty_ids, :video, :art_name
+    :bank_account, :bank_account_type, :bank_agency, :personal_email, :job_email, :secondary_email, :site_url,
+    :specialty_ids, :video, :art_name, :avatar_photo_id
+
+  has_attached_file :avatar, :styles => { :crop => "500x500>" }, :processors => [:cropper]
 
   attr_writer :current_step
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :avatar_file_name
+
+  after_update :reprocess_avatar, :if => :cropping?
+
+  # before_validation :download_remote_image, :if => :image_url_provided?
 
   validates :name, presence: true, if: :basic_info_step?
   validates :birthday, presence: true, if: :basic_info_step?
@@ -70,9 +77,9 @@ class Model < ActiveRecord::Base
     (birthday <=> major_age) == 1
   end
 
-  def avatar
-    self.photos.find_by_id(avatar_photo_id)
-  end
+  # def avatar
+  #   self.photos.find_by_id(avatar_photo_id)
+  # end
 
   def self.search(criteria)
     models = Model.where(agency_id: criteria.agency_id)
@@ -159,5 +166,34 @@ class Model < ActiveRecord::Base
     # Validates if the creation limit hasn't been reached. Unlimited(-1)
     limit != -1 && limit == current_models_number
   end
+
+  def avatar_from_url(url)
+    self.avatar = URI.parse(url)
+  end
+
+private
+
+  def reprocess_avatar
+    avatar.reprocess!
+  end
+
+  def cropping?
+    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+  end
+
+  # def image_url_provided?
+  #   !self.avatar_url.blank?
+  # end
+
+  # def download_remote_image
+  #   self.avatar = do_download_remote_image
+  # end
+  
+  # def do_download_remote_image
+  #   io = open(URI.parse(avatar_url))
+  #   def io.original_filename; base_uri.path.split('/').last; end
+  #   io.original_filename.blank? ? nil : io
+  #   rescue # catch url errors with validations instead of exceptions (Errno::ENOENT, OpenURI::HTTPError, etc...)
+  # end  
 
 end
