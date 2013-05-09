@@ -178,7 +178,7 @@ class Model < ActiveRecord::Base
 private
 
   def reprocess_avatar
-    avatar.reprocess!
+    #avatar.reprocess!
   end  
 
   # def image_url_provided?
