@@ -165,12 +165,13 @@ class ModelsController < ApplicationController
 
   def save_profile_pic
     @model = Model.find(params[:model_id])
+    @model.avatar_from_url(params[:avatar_url].split('?')[0])
+    @model.save!
+
     @model.crop_x = params[:crop_x]
     @model.crop_y = params[:crop_y]
     @model.crop_h = params[:crop_h]
     @model.crop_w = params[:crop_w]
-    logger.debug params[:avatar_url].split('?')[0]
-    @model.avatar_from_url(params[:avatar_url].split('?')[0])
 
     respond_to do |format|
       if @model.save!

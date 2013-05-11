@@ -40,12 +40,12 @@ class Model < ActiveRecord::Base
     :height, :weight, :eyes_color, :hair_color, :bust, :waist, :hip, :mannequin, :shoes_size, :rg, :cpf, :personal_phone, :secondary_phone, 
     :curriculum, :job_phone, :specialty, :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :bank, 
     :bank_account, :bank_account_type, :bank_agency, :personal_email, :job_email, :secondary_email, :site_url,
-    :specialty_ids, :video, :art_name, :avatar_photo_id
+    :specialty_ids, :video, :art_name, :avatar_photo_id, :avatar
 
   has_attached_file :avatar, :styles => { :crop => "500x500>" }#, :processors => [:cropper]
 
   attr_writer :current_step
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :avatar_file_name
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
   after_update :reprocess_avatar, :if => :cropping?
 
