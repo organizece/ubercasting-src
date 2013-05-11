@@ -42,14 +42,12 @@ class Model < ActiveRecord::Base
     :bank_account, :bank_account_type, :bank_agency, :personal_email, :job_email, :secondary_email, :site_url,
     :specialty_ids, :video, :art_name, :avatar_photo_id, :avatar
 
-  has_attached_file :avatar, :styles => { :crop => "500x500>" }#, :processors => [:cropper]
+  has_attached_file :avatar, :styles => { :search => "300x256#" }, :processors => [:cropper]
 
   attr_writer :current_step
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
   after_update :reprocess_avatar, :if => :cropping?
-
-  # before_validation :download_remote_image, :if => :image_url_provided?
 
   validates :name, presence: true, if: :basic_info_step?
   validates :birthday, presence: true, if: :basic_info_step?
@@ -76,10 +74,6 @@ class Model < ActiveRecord::Base
 
     (birthday <=> major_age) == 1
   end
-
-  # def avatar
-  #   self.photos.find_by_id(avatar_photo_id)
-  # end
 
   def self.search(criteria)
     models = Model.where(agency_id: criteria.agency_id)
@@ -178,22 +172,7 @@ class Model < ActiveRecord::Base
 private
 
   def reprocess_avatar
-    #avatar.reprocess!
+    avatar.reprocess!
   end  
-
-  # def image_url_provided?
-  #   !self.avatar_url.blank?
-  # end
-
-  # def download_remote_image
-  #   self.avatar = do_download_remote_image
-  # end
-  
-  # def do_download_remote_image
-  #   io = open(URI.parse(avatar_url))
-  #   def io.original_filename; base_uri.path.split('/').last; end
-  #   io.original_filename.blank? ? nil : io
-  #   rescue # catch url errors with validations instead of exceptions (Errno::ENOENT, OpenURI::HTTPError, etc...)
-  # end  
 
 end

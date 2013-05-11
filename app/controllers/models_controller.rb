@@ -166,19 +166,22 @@ class ModelsController < ApplicationController
   def save_profile_pic
     @model = Model.find(params[:model_id])
     @model.avatar_from_url(params[:avatar_url])
-    # @model.save!
-
-    # @model.crop_x = params[:crop_x]
-    # @model.crop_y = params[:crop_y]
-    # @model.crop_h = params[:crop_h]
-    # @model.crop_w = params[:crop_w]
+    if @model.save
+      @model.crop_x = params[:crop_x]
+      @model.crop_y = params[:crop_y]
+      @model.crop_h = params[:crop_h]
+      @model.crop_w = params[:crop_w]
+      if @model.save
+        flash[:notice] = 'Avatar atualizado com sucesso.'
+      else
+        flash[:error] = 'Erro ao atualizar o avatar.'
+      end
+    else
+      flash[:error] = 'Erro ao atualizar o avatar.'
+    end
 
     respond_to do |format|
-      if @model.save
-        format.js { flash[:notice] = 'Avatar atualizado com sucesso.' }
-      else
-        format.js
-      end
+      format.js
     end
   end
 
