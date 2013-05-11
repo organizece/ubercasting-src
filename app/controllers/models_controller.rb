@@ -165,9 +165,7 @@ class ModelsController < ApplicationController
 
   def save_profile_pic
     @model = Model.find(params[:model_id])
-    logger.debug 'params[:avatar_url].split(?)[0]'
-    logger.debug params[:avatar_url].split('?')[0]
-    @model.avatar_from_url(params[:avatar_url].split('?')[0])
+    @model.avatar_from_url(params[:avatar_url])
     # @model.save!
 
     # @model.crop_x = params[:crop_x]
@@ -176,7 +174,7 @@ class ModelsController < ApplicationController
     # @model.crop_w = params[:crop_w]
 
     respond_to do |format|
-      if @model.save!
+      if @model.save
         format.js { flash[:notice] = 'Avatar atualizado com sucesso.' }
       else
         format.js
