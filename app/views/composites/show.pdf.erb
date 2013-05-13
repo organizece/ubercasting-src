@@ -1,93 +1,76 @@
 <% if @composite.composite_style == "composite-type-01" %>
-	<table id="composite-main" width="925" height="690" border="0" cellspacing="1" cellpadding="1" class="composite-type-01">
+	<table id="composite-main" width="930" height="690" border="0" cellspacing="1" cellpadding="1" class="composite-type-01">
 <% end %>
 
 <% if @composite.composite_style == "composite-type-02" %>
-	<table id="composite-main" width="925" height="690" border="0" cellspacing="1" cellpadding="1" class="composite-type-02">
+	<table id="composite-main" width="930" height="690" border="0" cellspacing="1" cellpadding="1" class="composite-type-02">
 <% end %>
 
 <% if @composite.composite_style == "composite-type-03" %>
-	<table id="composite-main" width="925" height="690" border="0" cellspacing="1" cellpadding="1" class="composite-type-03">
+	<table id="composite-main" width="930" height="690" border="0" cellspacing="1" cellpadding="1" class="composite-type-03">
 <% end %>
 
-	<tr>
-		<td><%= photo_tag(@composite.main_photo_id, :main_composite, :pdf) %></td>
+	<tr align="center" valign="top">
+		<td width="1" height="330" class="composite-main-pic"><%= photo_tag(@composite.main_photo_id, :main_composite, :pdf) %></td>
 		<td>
-			<table border="0" cellspacing="1" cellpadding="1">
+			<table border="0" cellspacing="2" cellpadding="2" style="width:100%">
 				<tr>
 					<td>
 						<h3><%= @composite.model.name %></h3>
 						<p class="small-info">
 							<strong>Alt</strong>:
 				            <%= @composite.model.height %>
-				
+
 							<strong>Peso</strong>:
 					        <%= @composite.model.weight %>
-					
+
 							<strong>Manequim</strong>:
 					        <%= @composite.model.mannequin %>
-					
+
 							<strong>Olhos</strong>:
 					        <%= @composite.model.eyes_color %>
-					
+
 							<strong>Cabelo</strong>:
 					        <%= @composite.model.hair_color %>
 						</p>
 						<p class="small-info">
 							<strong>Height</strong>:
 					        <%= @composite.model.height %>
-				
+
 							<strong>Weight</strong>:
 						    <%= @composite.model.weight %>
-					
+
 							<strong>Mannequin</strong>:
 					        <%= @composite.model.mannequin %>
-					
+
 							<strong>Eyes</strong>:
 					        <%= @composite.model.eyes_color %>
-					
+
 							<strong>Hair</strong>:
 					        <%= @composite.model.hair_color %>
 						</p>
 					</td>
 				</tr>
-				
 				<tr>
 					<td>
 						<table id="composite-thumbs" border="0" cellspacing="1" cellpadding="1">
 							<tr>
-								<td width="1" height="220"><%= photo_tag(@composite.first_sub_photo_id, :sub_composite, :pdf) %></td>
-								<td width="1" height="220"><%= photo_tag(@composite.second_sub_photo_id, :sub_composite, :pdf) %></td>
-							</tr>
-							<tr>
-								<td width="1" height="220"><%= photo_tag(@composite.third_sub_photo_id, :sub_composite, :pdf) %></td>
-								<td width="1" height="220"><%= photo_tag(@composite.fourth_sub_photo_id, :sub_composite, :pdf) %></td>
-							</tr>
+								<td width="1" height="140"><%= photo_tag(@composite.first_sub_photo_id, :sub_composite, :pdf) %></td>
+								<td width="1" height="140"><%= photo_tag(@composite.second_sub_photo_id, :sub_composite, :pdf) %></td>
+								<td width="1" height="140"><%= photo_tag(@composite.third_sub_photo_id, :sub_composite, :pdf) %></td>
+								<td width="1" height="140"><%= photo_tag(@composite.fourth_sub_photo_id, :sub_composite, :pdf) %></td>
 						</table>
 					</td>
 				</tr>
-				
 				<tr>
 					<td>
-						<table border="0" cellspacing="5" cellpadding="5">
-							<tr>
-								<td>
-									<span id="brandAgendy" class="auto-size-block">
-								        <% if @composite.model.agency.website.logo.url == "/logos/original/missing.png" %>
-								          Sua logomarca ficará aqui.
-								        <% else %>
-								          <%= wicked_pdf_image_tag @composite.model.agency.website.logo.url(:logo) %>
-								        <% end %>
-								      </span>
-								</td>
-								<td>
-									<span id="uberPowered" class="auto-size-block">
-								        <%= wicked_pdf_image_tag "admin/uber-powered-by.png", :class => "powered01" %>
-								        <%= wicked_pdf_image_tag "admin/uber-powered-by-black.png", :class => "powered02" %>
-								      </span>
-								</td>
-							</tr>
-						</table>
+						<span id="brandAgendy" class="auto-size-block">
+					        <% if @composite.model.agency.website.logo.url == "/logos/original/missing.png" %>
+					          Sua logomarca ficará aqui.
+					        <% else %>
+					          <%= wicked_pdf_image_tag @composite.model.agency.website.logo.url(:logo) %>
+					        <% end %>
+					      </span>
 					</td>
 				</tr>
 			</table>

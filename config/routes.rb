@@ -83,6 +83,7 @@ Ubercasting::Application.routes.draw do
   match "/websites/update_agency_about/:id" => "websites#update_agency_about", via: :get, as: :website_update_agency_about
 
   match 'connect_sites' => 'agencies#connect_sites', via: :get
+  match 'create_file' => 'agencies#create_file', via: :post, as: :create_uber_file
 
   match "find_cep/:cep" => "utilities#find_cep", via: :get, as: :find_cep
 
