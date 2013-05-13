@@ -29,9 +29,14 @@ table#composite-main td{
 	overflow: hidden;
 }
 
+table#composite-main td.composite-main-pic img{ 
+	width: auto; 
+	height:330px;
+}
+
 table#composite-thumbs td img{
 	width:auto;
-	height:220px;
+	height:140px;
 }
 
 span#brandAgendy img{
