@@ -58,6 +58,73 @@ $(document).ready(function(){
 		});
 	}
 	
+	function searchBarSetup() {
+		$('select.colapse-list').each(function(index) {
+		  $(this).hide();
+		});
+		
+		$('a.colapse-list-link').each(function(index) {
+			$(this).addClass('stand');
+			
+			$(this).click(function(event) {
+				event.preventDefault();
+				$(this).parent('li').find('select.colapse-list').slideToggle('fast');
+				
+				var linkClass = $(this).attr('class');
+				
+				if ( linkClass.indexOf("stand") != -1 ){
+					$(this).removeClass('stand');
+					$(this).addClass('active');
+					$(this).animate({"margin-top": "-25px"}, "fast");
+				}else{
+					$(this).removeClass('active');
+					$(this).addClass('stand');
+					$(this).animate({"margin-top": "20px"}, "fast");
+				};
+			});
+		});
+	}
+	
+	function searchHorizontalHidden() {
+		$('div.horizontal-hidden-menu a.horizontal-hidden-link').each(function(index) {
+		  $(this).hide();
+		});
+		
+		$('div.horizontal-hidden-menu').click(function(event) {
+			$("a.horizontal-hidden-link",this).show();
+		});
+		
+		$('div.horizontal-hidden-menu').mouseenter(function(event) {
+			$("a.horizontal-hidden-link",this).show();
+		});
+		
+		$('div.horizontal-hidden-menu').mouseleave(function(event) {
+			$("a.horizontal-hidden-link",this).hide();
+		});
+		
+		$('div.horizontal-hidden-menu a.menu-right').click(function(event) {
+			event.preventDefault();
+			
+			var wDif = $(this).parent('div').find('ul').width() - $(this).parent('div').width();
+			var lPos = parseInt($(this).parent('div').find('ul').css('margin-left'),10);
+			
+			if ( lPos == 0 ) {
+				$(this).parent('div').find('ul').animate({"margin-left": (wDif*-1)+"px"}, "fast");
+			};
+		});
+		
+		$('div.horizontal-hidden-menu a.menu-left').click(function(event) {
+			event.preventDefault();
+			
+			var wDif = $(this).parent('div').find('ul').width() - $(this).parent('div').width();
+			var lPos = parseInt($(this).parent('div').find('ul').css('margin-left'),10);
+			
+			if ( lPos < 0 ) {
+				$(this).parent('div').find('ul').animate({"margin-left": "0px"}, "fast");
+			};
+		});
+	}
+	
 	function searchSetupModelAvatar(){
 		var hasModelResult = $('div#search-models-result').length;
 		var hasCastingResult = $('div#casting-models-result').length;
@@ -719,7 +786,11 @@ $(document).ready(function(){
 		
 		if ( $('span.my-main-domain').length > 0 ) {
 			$('span.my-main-domain').append(mainURL+"/");
+ 			$('input#html_content').val('<script type="text/javascript">window.location = "http://'+$('input#agency_subdomain').val()+'.'+mainURL+'/website/models";</script>');
+			$('a.uber-black-btn').attr('href', 'http://'+$('input#agency_subdomain').val()+'.'+mainURL+'/website/models');
+			$('a.uber-gold-btn').attr('href', 'http://'+$('input#agency_subdomain').val()+'.'+mainURL+'/website/models');
 		};
+		
 	}
 	
 	function websiteUpdateThemePreview() {
@@ -1226,6 +1297,8 @@ $(document).ready(function(){
 	dropdownMenuNav();
 	searchAdvancedOpts();
 	searchSetupModelAvatar();
+	searchBarSetup();
+	searchHorizontalHidden();
 	mapModelAge();
 	mapModelMeasures();
 	modelShowSecondInfo();
