@@ -40,14 +40,11 @@ class Model < ActiveRecord::Base
     :height, :weight, :eyes_color, :hair_color, :bust, :waist, :hip, :mannequin, :shoes_size, :rg, :cpf, :personal_phone, :secondary_phone, 
     :curriculum, :job_phone, :specialty, :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :bank, 
     :bank_account, :bank_account_type, :bank_agency, :personal_email, :job_email, :secondary_email, :site_url,
-    :specialty_ids, :video, :art_name, :avatar_photo_id, :avatar
+    :specialty_ids, :video, :art_name, :avatar_photo_id, :avatar, :crop_x, :crop_y, :crop_w, :crop_h
 
-  has_attached_file :avatar, :styles => { :search => "300x256#" }, :processors => [:cropper]
+  has_attached_file :avatar
 
   attr_writer :current_step
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
-
-  after_update :reprocess_avatar, :if => :cropping?
 
   validates :name, presence: true, if: :basic_info_step?
   validates :birthday, presence: true, if: :basic_info_step?
@@ -164,15 +161,5 @@ class Model < ActiveRecord::Base
   def avatar_from_url(url)
     self.avatar = URI.parse(url)
   end
-
-  def cropping?
-    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
-  end
-
-private
-
-  def reprocess_avatar
-    avatar.reprocess!
-  end  
 
 end
