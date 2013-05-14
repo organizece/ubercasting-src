@@ -234,6 +234,14 @@ class CastingsController < ApplicationController
 
   end
 
+  def export
+    @casting = Casting.find(params[:casting_id])
+    @models = @casting.models
+    respond_to do |format|
+      format.xls
+    end
+  end
+
 private
 
   def index_sort_column

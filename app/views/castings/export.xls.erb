@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="<%= @casting.name %>">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:name) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:birthday) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:gender) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:art_name) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:biotype) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:height) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:weight) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:bust) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:waist) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:hip) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:mannequin) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:eyes_color) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:hair_color) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:shoes_size) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:specialty) %></Data></Cell>
+      </Row>
+    <% @models.each do |model| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= model.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= l(model.birthday) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t(model.gender, scope: :genders) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= model.art_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t(model.biotype, scope: :biotypes) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "#{model.height} m" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "#{model.weight} kg" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "#{model.bust} cm" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "#{model.waist} cm" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "#{model.hip} cm" %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= model.mannequin %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t(model.eyes_color, scope: :eyes_color) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t(model.hair_color, scope: :hair_color) %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= model.shoes_size %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= model.specialties.map { |f| t(f.name, scope: :specialties) }.join ', ' %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
