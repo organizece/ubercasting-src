@@ -8,6 +8,9 @@ $("#modal-share-casting").on('shown', function () {
 	$("#modal-share-casting input#btn-send-share-casting").click(function(){
 		$(this).hide();
 		$("#modal-share-casting li.loader-gif").show();
+
+		var emails = $('ul#new-message-list input.customer-email').map(function() { return this.value; });
+		$("#modal-share-casting input#customer").val(emails.get().join(';'));
 	});
 	
 	$("ul#new-message-list li:eq(0) input").focusin(function(event) {
@@ -18,11 +21,17 @@ $("#modal-share-casting").on('shown', function () {
 	
 	//ADD E-MAIL FIELD TO SHARE - CASTING
 	function addEmailField(){
+		var shareLimit = 5;
+
 		$("a#share-add-address").click(function(event){
 			event.preventDefault();
 			var inputCopy = $('ul#new-message-list li:eq(0)').html();
-			$('ul#new-message-list').prepend('<li>'+inputCopy+'</li>');
-			$('ul#new-message-list li:eq(0)').css("outline","none");
+
+			var totalInputs = $('ul#new-message-list input.customer-email').size();
+			if (totalInputs < shareLimit) {
+				$('ul#new-message-list').prepend('<li>'+inputCopy+'</li>');
+				$('ul#new-message-list li:eq(0)').css("outline","none");
+			};
 			
 			$('a#reset-share-add-address').removeClass("offline");
 		});
