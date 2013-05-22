@@ -41,11 +41,18 @@ class AgenciesController < ApplicationController
       
       @text = params[:html_content]
       out = render_to_string(:action => 'uber_index')
+      
+      basepath = "#{Rails.root}/tmp/files"
+      
+      if !File.exists?(basepath) && !File.directory?(basepath)
+        Dir.mkdir "#{Rails.root}/tmp/files"
+      end
 
       filename = File.join(Rails.root , 'tmp', \
       'files', @agency.id.to_s+'-uber-index.html')
-      File.open(filename, 'w') do |f|
+      File.open(filename, 'wb') do |f|
         f.write(out)
+        f.close
       end
       
       filepath = "#{Rails.root}/tmp/files/"+@agency.id.to_s+'-uber-index.html'
