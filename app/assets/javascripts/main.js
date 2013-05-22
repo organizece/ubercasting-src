@@ -125,18 +125,82 @@ $(document).ready(function(){
 		});
 	}
 	
+	/*
+		MODELS » SEARCH » PROFILE PIC SETUP
+	*/
 	function searchSetupModelAvatar(){
 		var hasModelResult = $('div#search-models-result').length;
 		var hasCastingResult = $('div#casting-models-result').length;
 		
 		if ( hasModelResult > 0 ) {
-			$('#search-models-result .model-box .model-box-img img').resizeToParent();
+			
+			$('div.model-box').each(function(index) {
+
+				if ( $(this).find('input#crop_x').val() != "" ){
+					var coordX = $(this).find('input#crop_x').val();
+					var coordY = $(this).find('input#crop_y').val();
+					var coordW = $(this).find('input#crop_w').val();
+					var coordH = $(this).find('input#crop_h').val();
+
+					var originalW = 0;
+					var originalH = 0;
+					
+					$('div.model-box-img img',this).load(function() {
+						$(this).height(300);
+						
+						originalW = $(this).width();
+						originalH = $(this).height();
+						
+						var rx = 300 / coordW;
+						var ry = 256 / coordH;
+
+						$(this).css({
+							width: Math.round(rx * originalW) + 'px',
+							height: Math.round(ry * originalH) + 'px',
+							marginLeft: '-' + Math.round(rx * coordX) + 'px',
+							marginTop: '-' + Math.round(ry * coordY) + 'px'
+						});
+					});
+
+				};
+			});
 		};
 		
 		if ( hasCastingResult > 0 ) {
-			$('#casting-models-result .model-box .model-box-img img').resizeToParent();
+			
+			$('div.model-box').each(function(index) {
+
+				if ( $(this).find('input#crop_x').val() != "" ){
+					var coordX = $(this).find('input#crop_x').val();
+					var coordY = $(this).find('input#crop_y').val();
+					var coordW = $(this).find('input#crop_w').val();
+					var coordH = $(this).find('input#crop_h').val();
+
+					var originalW = 0;
+					var originalH = 0;
+					
+					$('div.model-box-img img',this).load(function() {
+						$(this).height(300);
+						
+						originalW = $(this).width();
+						originalH = $(this).height();
+						
+						var rx = 300 / coordW;
+						var ry = 256 / coordH;
+
+						$(this).css({
+							width: Math.round(rx * originalW) + 'px',
+							height: Math.round(ry * originalH) + 'px',
+							marginLeft: '-' + Math.round(rx * coordX) + 'px',
+							marginTop: '-' + Math.round(ry * coordY) + 'px'
+						});
+					});
+
+				};
+			});
+			
 		};
-	}
+	};
 	
 	function mapModelAge(){
 		var objDate = new Date();
@@ -198,6 +262,10 @@ $(document).ready(function(){
 		
 	}
 	
+	/*
+		MODELS » SEARCH » SHOW OPTIONS LIST
+		MODELS » SEARCH » RESIZE COMPOSITE IMAGES
+	*/
 	function modelShowSecondInfo(){
 		$('a#btn-model-show-data').click(function(event) {
 			$('div#model-secondary-info').slideToggle(400);
@@ -1296,7 +1364,6 @@ $(document).ready(function(){
 	btnFolderHover();
 	dropdownMenuNav();
 	searchAdvancedOpts();
-	searchSetupModelAvatar();
 	searchBarSetup();
 	searchHorizontalHidden();
 	mapModelAge();
