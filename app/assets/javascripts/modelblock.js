@@ -107,7 +107,7 @@ $(document).ready(function() {
 			marginLeft: '-' + Math.round(rx * coordObj._x) + 'px',
 			marginTop: '-' + Math.round(ry * coordObj._y) + 'px'
 		});
-	}
+	};
 	
 	function modelMarkAll(){
 		$('#models-mark-all').click(function(event) {
