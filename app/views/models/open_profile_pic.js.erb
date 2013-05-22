@@ -18,10 +18,14 @@ $("#modal-profile-pic").on('shown', function () {
 			if ( $('table#table-img-display tbody tr').length == 0 ){
 				$('div.modal-alert').show();
 				$('div#profile-pic-list').hide();
+				$('div#profile-pic-preview').hide();
+				$('input.input-btn-gold-light-4-column').hide();
 				$("#modal-profile-pic").css("height","200px");
 			}else{
 				$('div.modal-alert').hide();
 				$('div#profile-pic-list').show();
+				$('div#profile-pic-preview').show();
+				$('input.input-btn-gold-light-4-column').show();
 			};
 			
 		};
@@ -75,9 +79,9 @@ $("#modal-profile-pic").on('shown', function () {
 		var ry = 256 / coords.h;
 
 		$("#crop_x").val(Math.round(coords.x));
-	  $("#crop_y").val(Math.round(coords.y));
-	  $("#crop_w").val(Math.round(coords.w));
-	  $("#crop_h").val(Math.round(coords.h));
+	  	$("#crop_y").val(Math.round(coords.y));
+	  	$("#crop_w").val(Math.round(coords.w));
+	  	$("#crop_h").val(Math.round(coords.h));
 
 		$('div#profile-pic-thumb #img-crop-preview').css({
 			width: Math.round(rx * $('#original-img-w').val()) + 'px',
@@ -87,8 +91,16 @@ $("#modal-profile-pic").on('shown', function () {
 		});
 	};
 	
+	function displayLoad(){
+		$('input#btn-save-profile-pic').click(function(event){
+			$(this).hide();
+			$('.ajax-loader').show();
+		});
+	}
+	
 	goToTop();
 	verifyImgList();
 	profileImgSelect();
+	displayLoad();
 	
 });

@@ -48,7 +48,8 @@
 		    <%= hidden_field_tag attribute, nil, id: attribute %>
 		  <% end %>
 		  <%= hidden_field_tag :avatar_url, nil, id: :avatar_url %>
-		  <%= submit_tag "SALVAR", class: "put-right input-btn-gold-light-4-column" %>
+		  <%= submit_tag "SALVAR", :id => "btn-save-profile-pic", class: "put-right input-btn-gold-light-4-column" %>
+			<%= image_tag "admin/ajax-loader.gif", :class => "put-right ajax-loader", :style => "display:none;" %>
 		<% end %>
 		</div>
 		
