@@ -1,7 +1,25 @@
-<p>Hello <%= @resource.email %>!</p>
-
-<p>Your account has been locked due to an excessive amount of unsuccessful sign in attempts.</p>
-
-<p>Click the link below to unlock your account:</p>
-
-<p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
+<div id="container" style="background: #e5e5e5 url(http://www.ubercasting.com.br/assets/admin/bg-container.jpg) left top repeat scroll; width: 100%; height: auto; margin:0; padding:10px 0px;">
+	
+	<table border="0" cellspacing="0" cellpadding="0" style="width: 650px; height: auto; margin:20px auto; background: #FFFFF1 !important; border:1px solid #CCC; border-radius:7px; font-family:Arial; box-shadow:#ABABAB 0px 2px 7px !important; -webkit-box-shadow:#ABABAB 0px 2px 7px !important; -moz-box-shadow:#ABABAB 0px 2px 7px !important;">
+		<tbody style="box-shadow:#AAA 0px 2px 7px; -webkit-box-shadow:#AAA 0px 2px 7px; -moz-box-shadow:#AAA 0px 2px 7px;">
+			<tr>
+				<th style="background: #FEFEFE !important; border-bottom:1px solid #CCC; border-radius:7px 7px 0px 0px; padding:25px 10px 5px 10px;">
+					<h1 style="font-size:30px;">Olá <%= @resource.email %>!</h1>
+				</th>
+			</tr>
+			<tr>
+				<td style="background: #FEFEFE !important; border-bottom:1px solid #CCC; padding:20px 10px; font-size: 13px;">
+					<p>Sua conta foi bloqueada por causa de um muitas tentativas de login sem sucesso.</p>
+					<p>Clique no link abaixo para desbloquear a sua conta:</p>
+					<p><%= link_to 'Desbloquear minha conta', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:2px solid #999; border-top:1px solid #FFF; background-color:#EEE; padding:20px 10px; font-size: 10px; color:#999; border-radius:0px 0px 7px 7px; text-align:center; text-shadow:#FFF 0px 1px 0px;">
+					<p style="text-shadow:#FEFEFE 0px 1px 0px !important; -webkit-text-shadow:#FEFEFE 0px 1px 0px !important; -moz-text-shadow:#FEFEFE 0px 1px 0px !important;">Über - Casting Made Easy - &copy; Todos os direitos reservados.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+</div>

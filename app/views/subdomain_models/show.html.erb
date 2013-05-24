@@ -17,7 +17,7 @@
 				<div id="model-primary-info" class="auto-size-block full-column-width admin-inner-container body-content-padding">
 					
 					<div id="model-profile-img" class="auto-size-block put-left">
-						<%= avatar_tag @model.avatar %>
+						<%= image_tag @model.avatar.url %>
 					</div>
 					
 					<div id="model-primary-info-content" class="put-left-margin">
@@ -177,16 +177,20 @@
 
 								<div class="composite-brands">
 									<span id="BrandAgendy" class="auto-size-block put-left">
-										<% if @model.agency.website.logo.url == "/logos/original/missing.png" %>
-											Logomarca Aqui!				
+										<% if @model.agency.website.logo_url == ""  %>
+
+											<% if @model.agency.website.logo.url == "/logos/original/missing.png" %>
+												Sua logomarca ficará aqui.
+											<% else %>
+												<%= image_tag @model.agency.website.logo.url(:logo), {:style => "width:auto; height: 70px;"} %>
+											<% end %>
+
 										<% else %>
-											<%= image_tag @model.agency.website.logo.url(:logo), {:style => "width:auto; height: 70px;"} %>
+
+											<%= image_tag @model.agency.website.logo_url, {:style => "width:auto; height: 70px;"} %>
+
 										<% end %>
 									</span>
-									<span id="UberPowered" class="auto-size-block put-right">
-										<%= image_tag "admin/uber-powered-by.png", :class => "powered01" %>
-										<%= image_tag "admin/uber-powered-by-black.png", :class => "powered02" %>
-							        </span>
 								</div>
 
 							</div>
@@ -224,6 +228,28 @@
 				    </ul>
 					
 				</div>
+				
+				<div class="content-split"></div>
+				
+				<% if @model.video %>
+				
+					<div id="model-video-gallery" class="auto-size-block">
+					
+						<div class="model-show-inner-header">
+					
+							<h3 class="put-left">YouTube Video</h3>
+					
+						</div>
+				
+						<div class="content-split"></div>
+						
+						<div id="video-box">
+							<iframe width="560" height="315" src="<%= @model.video %>" frameborder="0" allowfullscreen></iframe>
+						</div>
+					
+					</div>
+				
+				<% end %>
 				
 				<div class="content-split"></div>
 				

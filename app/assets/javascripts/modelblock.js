@@ -99,7 +99,7 @@ $(document).ready(function() {
 		coordObj._orh = domObj.height();
 		
 		var rx = 300 / coordObj._w;
-		var ry = 256 / coordObj._h;
+		var ry = 256 / (coordObj._h-20);
 
 		domObj.css({
 			width: Math.round(rx * coordObj._orw) + 'px',

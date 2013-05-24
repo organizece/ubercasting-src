@@ -2,7 +2,6 @@ class AgenciesController < ApplicationController
     before_filter :validate_agency
     before_filter :first_access?, except: [:edit, :update, :connect_sites, :create_file]
 
-    #layout "application"
     layout :resolve_layout
 
     def show
