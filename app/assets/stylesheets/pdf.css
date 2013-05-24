@@ -3,6 +3,8 @@
  *= require_self
 */
 
+/*table, tr, td{ border: 1px solid #FFF; }*/
+
 body{
 	margin: 20px 0;
 	font-family: Arial, "MS Trebuchet", sans-serif;
@@ -22,7 +24,6 @@ p.small-info{
 table#composite-main{
 	width:925px;
 	margin: 10px auto;
-	padding-left: 50px;
 }
 
 table#composite-main td{
@@ -31,17 +32,17 @@ table#composite-main td{
 
 table#composite-main td.composite-main-pic img{ 
 	width: auto; 
-	height:330px;
+	height:340px;
 }
 
 table#composite-thumbs td img{
 	width:auto;
-	height:140px;
+	height:190px;
 }
 
 span#brandAgendy img{
 	width:auto;
-	height:70px !important;
+	height:60px !important;
 }
 
 .composite-type-01{ background-color: #000 !important; }

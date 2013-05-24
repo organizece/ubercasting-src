@@ -12,7 +12,7 @@ Ubercasting::Application.routes.draw do
   devise_for :customers, :controllers => { :sessions => "customers/sessions", :confirmations => "customers/confirmations" }
   ActiveAdmin.routes(self)
 
-  devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations" }, :path_prefix => 'my'
+  devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations", :passwords => "agencies/passwords", :confirmations => "agencies/confirmations" }, :path_prefix => 'my'
   ActiveAdmin.routes(self)
 
   match 'home' => 'main_pages#home', via: :get

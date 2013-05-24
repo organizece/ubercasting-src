@@ -13,11 +13,9 @@
 			
 			<ul class="requst-action">
 				<% if request.new_request? %>
-					<li class="request-icon request-add">
-						<span id="new_request_<%= request.id %>" class="customer-request-flag">Pan!</span>
-					</li>
+					<li class="request-icon request-text">Novo</li>
 				<% end %>
-				<li class="request-icon request-view">
+				<li class="request-icon request-add">
 					<%= link_to 'Visualizar', agency_customer_request_path(request), title: 'Visualizar' %>
 				</li>
 				<li class="request-icon request-del">

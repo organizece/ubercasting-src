@@ -68,7 +68,16 @@ $("#modal-profile-pic").on('shown', function () {
 			$('div#profile-pic-original').find("img").Jcrop({
 				onChange: showPreview,
 				onSelect: showPreview,
-				aspectRatio: 0
+				aspectRatio: 1
+			});
+			
+			$('div#profile-pic-original').mouseup(function(event) {
+				if ( $('div#profile-pic-thumb img').width() == 0 ){
+					alert("Ocorreu um erro ao gerar o preview da imagem. Por favor, tente novamente mais tarde.");
+					$("#modal-profile-pic").modal('hide');
+					$('div#profile-pic-thumb img').remove();
+					$('div#profile-pic-thumb').append('<p>Ocorreu um erro ao gerar o preview da imagem. Por favor, tente novamente mais tarde.</p>');
+				};
 			});
 			
 		});
@@ -76,7 +85,7 @@ $("#modal-profile-pic").on('shown', function () {
 	
 	function showPreview(coords){
 		var rx = 300 / coords.w;
-		var ry = 256 / coords.h;
+		var ry = 256 / (coords.h-20);
 
 		$("#crop_x").val(Math.round(coords.x));
 	  	$("#crop_y").val(Math.round(coords.y));

@@ -331,12 +331,13 @@ div#admin-model-manage-container{ background-color: #FFF; }
 
 div#admin-model-manage-container div#search-criteria-main{
 	border-top: 1px dotted #a1a1a1;
+	height: 125px;
 }
 
 div#admin-model-manage-container ul.search-menu li{
 	border-right: 1px dotted #a1a1a1;
 	margin: 0px;
-	padding: 10px 13px;
+	padding: 35px 15px; 
 }
 
 div#admin-model-manage-container ul.search-menu li:last-child{ border-right: none; }

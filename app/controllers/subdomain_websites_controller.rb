@@ -27,7 +27,7 @@ class SubdomainWebsitesController < ApplicationController
     @website = Website.find_by_subdomain(request.subdomain)
     
     contact_msg = SubdomainContactMailer.contact_message(params[:contact_name], params[:contact_mail], 
-      params[:contact_msg], @website.agency.email, 'Novo Cliente')
+      params[:contact_msg], @website.agency.email, '')
     contact_msg.deliver
     
     redirect_to subdomain_websites_contact_us_path, :notice => "Pedido enviado com sucesso!"
