@@ -153,10 +153,18 @@
 				</div>
 				
 				<div id="logo-container" class="auto-size-block width-50 put-center">
-					<% if  @website.logo.url(:logo) == "/logos/logo/missing.png" %>
-						<p>Sua logomarca ficará aqui.</p>
+					<% if @website.logo_url == ""  %>
+
+						<% if @website.logo.url == "/logos/original/missing.png" %>
+							Sua logomarca ficará aqui.
+						<% else %>
+							<%= image_tag @website.logo.url(:logo), :class => "base-padding" %>
+						<% end %>
+
 					<% else %>
-						<%= image_tag @website.logo.url(:logo), :class => "base-padding" %>
+
+						<%= image_tag @website.logo_url, :class => "base-padding" %>
+
 					<% end %>
 				</div>
 			

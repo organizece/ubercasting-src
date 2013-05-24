@@ -141,6 +141,19 @@ span.btn-silver-light-fluid,
 	-webkit-border-radius: 4px;
 }
 
+.anchor-btn-silver-light-4-column{
+	width:300px !important;
+	height:28px;
+	padding-top: 10px;
+	display: block;
+	border: none;
+	background:#fff url(admin/btn-bg-gray-4-column.jpg) left bottom no-repeat scroll !important;
+	color: #000;
+	font-size: 18px;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: #fff 0px 1px 1px;
+}
 
 /* Gold Buttons */
 .input-btn-gold-light-4-column{

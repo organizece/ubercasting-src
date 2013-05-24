@@ -58,6 +58,9 @@ $(document).ready(function(){
 		});
 	}
 	
+	/*
+		MODELS » SEARCH » SEARCH CRITERIA SETUP
+	*/
 	function searchBarSetup() {
 		$('select.colapse-list').each(function(index) {
 		  $(this).hide();
@@ -372,13 +375,16 @@ $(document).ready(function(){
 		}
 	}
 	
+	/*
+		MODELS » REGISTER » ART NAME
+	*/
 	function modelArtName(){
 		if ( $('input#model_art_name').length >= 1 ){
 			$('input#model_name').blur(function(event) {
 				var modelName = $(this).val();
-				var spaceIndex = modelName.lastIndexOf(" ");
-				var artName = modelName.substring(0,3);
-				artName += modelName.substring(spaceIndex,modelName.length);
+				var spaceIndex = modelName.indexOf(" ");
+				var artName = modelName.substring(0,spaceIndex);
+				artName += modelName.substring(spaceIndex,spaceIndex+5);
 				$('input#model_art_name').val(artName);
 			});
 		};
@@ -1361,6 +1367,32 @@ $(document).ready(function(){
 		});
 	}
 	
+	/*
+		PHOTO UPLOAD » VIDEO UPLOAD » CHANGE VIDEO STRING TO EMBED
+	*/
+	function videoString(){
+		var videoContainer = $('div#model-video-container').length;
+		
+		if ( videoContainer > 0 ){
+			
+			var videoString = "";
+			var videoStringIndex = 0;
+			var videoCode = "";
+			
+			$('input#model_video').blur(function(event) {
+				videoString = $(this).val();
+				
+				if ( videoString.indexOf("/embed/") == -1 ){
+					videoStringIndex = videoString.indexOf("v=")+2;
+					videoCode = videoString.substring(videoStringIndex, videoString.length);
+					$(this).val('http://www.youtube.com/embed/'+videoCode);
+				};
+				
+			});
+			
+		};
+	}
+	
 	btnFolderHover();
 	dropdownMenuNav();
 	searchAdvancedOpts();
@@ -1383,6 +1415,7 @@ $(document).ready(function(){
 	ubersiteConfigCustomTheme();
 	ubersiteConfigColors();
 	setupPopUpWindows();
+	videoString();
 	
 	//loginPanelSetup();
 	
