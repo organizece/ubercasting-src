@@ -149,18 +149,14 @@
 				</div>
 				
 				<div id="logo-container" class="auto-size-block">
-					<% if @website.logo_url == ""  %>
-
+					<% if !@website.logo_url.blank?  %>
+						<%= image_tag @website.logo_url, :class => "base-padding" %>
+					<% else %>
 						<% if @website.logo.url == "/logos/original/missing.png" %>
 							Sua logomarca ficará aqui.
 						<% else %>
 							<%= image_tag @website.logo.url(:logo), :class => "base-padding" %>
 						<% end %>
-
-					<% else %>
-
-						<%= image_tag @website.logo_url, :class => "base-padding" %>
-
 					<% end %>
 				</div>
 			
