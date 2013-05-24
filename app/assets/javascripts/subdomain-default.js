@@ -110,13 +110,6 @@ $(document).ready(function(){
 		
 	}
 	
-	function searchSetupModelAvatar() {
-		var hasModelResult = $('div#search-models-result').length;
-		if ( hasModelResult > 0 ) {
-			$('#search-models-result .model-box .model-box-img img').resizeToParent();
-		};
-	}
-	
 	function stripesThemeSetup(){
 		var currentTheme = $('input#current-theme').val();
 		
@@ -131,7 +124,6 @@ $(document).ready(function(){
 	
 	setupNavBar();
 	setupHomeImgs();
-	searchSetupModelAvatar();
 	stripesThemeSetup();
 	
 });
