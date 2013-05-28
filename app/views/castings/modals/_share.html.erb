@@ -8,12 +8,12 @@
   </div>
 
   <%= form_tag casting_share_path(@casting), method: :post, remote: true do |f| %>
-
+    <%= hidden_field_tag :customer, nil %>
   <!-- ************** BODY ************** -->
 
 	<div class="modal-body">
 		<ul id="new-message-list" class="auto-size-block put-list-inline">
-			<li><input type="text" name="customer" data-provide="typeahead" data-items="4" data-source="<%= @customers_names %>" /></li>
+			<li><input type="text" class="customer-email" data-provide="typeahead" data-items="4" data-source="<%= @customers_names %>" /></li>
 			<li><%= submit_tag 'Compartilhar Casting', class: 'btn-silver-light-fluid', id: "btn-send-share-casting" %></li>
 			<li class="loader-gif"><%= image_tag "admin/ajax-loader.gif" %></li>
 		</ul>

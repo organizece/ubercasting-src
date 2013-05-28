@@ -14,5 +14,11 @@ class MainPagesController < ApplicationController
 
   def viewtestimonials
   end
+
+private
+
+  def use_https?
+    false # Override in other controllers
+  end
   
 end

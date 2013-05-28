@@ -189,47 +189,57 @@ class CastingsController < ApplicationController
 
   def share
     casting = Casting.find(params[:casting_id])
-    customer = params[:customer].split(' - ')
-    customer = customer[customer.length - 1]
-    agency_customer = AgencyCustomer.find_by_email(customer)
+    params[:customer].split(';').each do |cust|
+      customer = cust.split(' - ')
+      customer = customer[customer.length - 1]
+      agency_customer = AgencyCustomer.find_by_email(customer)
 
-    if agency_customer
-      customer_casting = CustomerCasting.new
-      customer_casting.agency = current_agency
-      customer_casting.agency_customer = agency_customer
-      customer_casting.name = casting.name
+      if agency_customer
+        customer_casting = CustomerCasting.new
+        customer_casting.agency = current_agency
+        customer_casting.agency_customer = agency_customer
+        customer_casting.name = casting.name
 
-      if customer_casting.valid?
-        customer_casting.save
-      else
-        flash[:error] = customer_casting.errors
-      end
+        if customer_casting.valid?
+          customer_casting.save
+        else
+          flash[:error] = 'Ocorreu um erro ao compartilhar o casting.'
+        end
 
-      if !flash[:error] && customer_casting
-        casting.models.each do |model|
-          model_casting = ModelCustomerCasting.new
-          model_casting.customer_casting = customer_casting
-          model_casting.model = model
+        if !flash[:error] && customer_casting
+          casting.models.each do |model|
+            model_casting = ModelCustomerCasting.new
+            model_casting.customer_casting = customer_casting
+            model_casting.model = model
 
-          if model_casting.valid?
-            model_casting.save
-          else
-            flash[:error] += model_casting.errors
+            if model_casting.valid?
+              model_casting.save
+            else
+              flash[:error] = 'Ocorreu um erro ao compartilhar o casting.'
+            end
+          end
+          if !flash[:error]
+            CastingMailer.share_casting(customer_casting).deliver
+            flash[:notice] = 'Casting compartilhado com sucesso.'
           end
         end
-        if !flash[:error]
-          CastingMailer.share_casting(customer_casting).deliver
-          flash[:notice] = 'Casting compartilhado com sucesso.'
-        end
+      else
+        flash[:error] = 'Problema ao buscar cliente para compartilhamento.'
       end
-    else
-      flash[:error] = 'Problema ao buscar cliente para compartilhamento.'
     end
 
     respond_to do |format|
       format.js
     end
 
+  end
+
+  def export
+    @casting = Casting.find(params[:casting_id])
+    @models = @casting.models
+    respond_to do |format|
+      format.xls
+    end
   end
 
 private
