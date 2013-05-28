@@ -1181,12 +1181,13 @@ div#home-content-container{
 	overflow: hidden;
 }
 
-div#home-slider{ width: auto; height: auto; overflow: hidden; }
+div#home-slider,
+div#home-slider-container{ width: auto; height: auto; overflow: hidden; display: block; }
 
 div#slide-loader{ 
 	width: 100%; 
 	height: 100%; 
-	display: block; 
+	display: none; 
 	margin: 0 auto; 
 	background-color: #fff; 
 	position: absolute;
@@ -1198,13 +1199,13 @@ div#slide-loader img{ width: 16px; height: 16px; display: block; margin: 50px au
 div.theme-home-model-box{
 	border-radius: 5px;
 	border: 1px solid #ccc;
-	width:316px;
+	width:318px;
 	height:198px;
 	display: block;
 	float: left;
 	overflow: hidden;
 	position: relative;
-	margin: 0px 2px 2px 0px;
+	margin: 0px 0px 2px 0px;
 }
 
 div.theme-home-model-box img{

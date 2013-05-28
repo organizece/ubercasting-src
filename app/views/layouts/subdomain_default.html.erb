@@ -170,7 +170,7 @@
 	
 		<div id="content-container" class="auto-size-block vert-shade base-padding">
 		
-			<div id="content-container-wrapper" class="auto-size-block width-70 put-center base-padding round-border">
+			<div id="content-container-wrapper" class="auto-size-block put-center base-padding round-border">
 			
 				<div id="alert-msgs">
 					<% flash.each do |name, msg| %>
@@ -181,7 +181,9 @@
 					<% end %>
 				</div>
 				
-				<input type="hidden" name="slide-show-photo" value="slide-show-3" id="slide-show-photo">
+				<input type="hidden" name="current-theme" value="subdomain-theme" id="current-theme">
+				<input type="hidden" name="slide-show-lines" value="1" id="slide-show-lines">
+				<input type="hidden" name="slide-show-cols" value="3" id="slide-show-cols">
 
 				<%= yield %>
 			

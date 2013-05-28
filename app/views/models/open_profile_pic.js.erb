@@ -60,8 +60,15 @@ $("#modal-profile-pic").on('shown', function () {
 			$('div#profile-pic-original').find("img").css("height","300px");
 			$('div#profile-pic-original').css("width","auto");
 			
-			$('#original-img-w').val($('div#profile-pic-original').find("img").width());
-			$('#original-img-h').val($('div#profile-pic-original').find("img").height());
+			if ( $('div#profile-pic-original').find("img").width() == 0 ){
+				$('div#profile-pic-original').find("img").load(function() {
+					$('#original-img-w').val($(this).width());
+					$('#original-img-h').val($(this).height());
+				});
+			}else{
+				$('#original-img-w').val($('div#profile-pic-original').find("img").width());
+				$('#original-img-h').val($('div#profile-pic-original').find("img").height());
+			};
 
 			$('#avatar_url').val(imgSrc);
 			
@@ -71,22 +78,16 @@ $("#modal-profile-pic").on('shown', function () {
 				aspectRatio: 1
 			});
 			
-			$('div#profile-pic-original').mouseup(function(event) {
-				if ( $('div#profile-pic-thumb img').width() == 0 ){
-					alert("Ocorreu um erro ao gerar o preview da imagem. Por favor, tente novamente mais tarde.");
-					$("#modal-profile-pic").modal('hide');
-					$('div#profile-pic-thumb img').remove();
-					$('div#profile-pic-thumb').append('<p>Ocorreu um erro ao gerar o preview da imagem. Por favor, tente novamente mais tarde.</p>');
-				};
-			});
+			
 			
 		});
 	};
 	
 	function showPreview(coords){
+		
 		var rx = 300 / coords.w;
-		var ry = 256 / (coords.h-20);
-
+		var ry = 256 / (coords.h-30);
+		
 		$("#crop_x").val(Math.round(coords.x));
 	  	$("#crop_y").val(Math.round(coords.y));
 	  	$("#crop_w").val(Math.round(coords.w));

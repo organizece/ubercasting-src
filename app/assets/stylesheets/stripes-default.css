@@ -104,16 +104,19 @@ div#home-content-container{
 	position: relative;
 }
 
-div#home-slider{ 
+div#home-slider,
+div#home-slider-container{ 
 	width: auto; 
 	height: auto;
+	display: block;
+	overflow: hidden;
 }
 
 div#slide-loader{ 
 	width: 100%; 
 	height: 100%;
 	max-height: 100%;
-	display: block; 
+	display: none; 
 	margin: 0 auto; 
 	background-color: #fff; 
 	position: absolute;
