@@ -70,7 +70,7 @@ Ubercasting::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 
-  config.action_mailer.default_url_options = { :host => 'ubercasting.com' }
+  config.action_mailer.default_url_options = { :host => 'ubercasting.com.br' }
 
   # Enable threaded mode
   # config.threadsafe!

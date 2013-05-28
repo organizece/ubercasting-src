@@ -88,7 +88,6 @@ $(document).ready(function() {
 		};
 	};
 	
-	
 	/*
 		PROFILE PICTURE » RESIZE FUNCTION
 	*/

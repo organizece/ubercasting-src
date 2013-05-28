@@ -64,7 +64,7 @@
 					<li class="model-box-view-composite"><%= link_to 'Visualizar Composite', subdomain_model_composite_path(model, subdomain: request.subdomain), remote: true %></li>
 					<% end %>
 					<li><h4><%= link_to model.art_name, subdomain_model_path(model, subdomain: request.subdomain) %></h4></li>
-					<li class="model-box-add-composite"><%= link_to 'Adicionar à Casting', subdomain_castings_add_models_path({models: model.id}, subdomain: request.subdomain), remote: true, via: :get %></li>
+					<li class="model-box-add-composite"><%= link_to 'Adicionar à Casting', subdomain_castings_add_models_path(models: model.id, subdomain: request.subdomain), remote: true, via: :get %></li>
 				</ul>
 				
 			</div>

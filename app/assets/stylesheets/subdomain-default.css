@@ -1074,6 +1074,8 @@ div#footer{
 	margin-bottom: 7px;
 }
 
+div#content-container-wrapper{ width: 960px; }
+
 div#footer-nav ul li{
 	font-size: 85%;
 	margin-right: 10px;
@@ -1091,12 +1093,15 @@ div#home-content-container{
 	overflow: hidden;
 }
 
-div#home-slider{ width: auto; height: auto; overflow: hidden; }
+div#home-slider,
+div#home-slider-container{ width: auto; height: auto; overflow: hidden; }
+
+div#home-slider{ width: 955px; }
 
 div#slide-loader{ 
 	width: 100%; 
 	height: 100%; 
-	display: block; 
+	display: none; 
 	margin: 0 auto; 
 	background-color: #fff; 
 	position: absolute;
@@ -1106,13 +1111,13 @@ div#slide-loader{
 div#slide-loader img{ width: 16px; height: 16px; display: block; margin: 50px auto; }
 
 div.theme-home-model-box{
-	width: 315px;
+	width: 318px;
 	height: 375px;
 	display: block;
 	float: left;
 	overflow: hidden;
 	position: relative;
-	margin-left: 3px;
+	margin: 0px;
 }
 
 div.theme-home-model-box img{
@@ -1204,7 +1209,7 @@ ul.search-menu li{
 	display: block; 
 	height: 55px;
 }
-ul.search-menu li.custom-attr{ width: 135px; }
+ul.search-menu li.custom-attr{ width: 115px; }
 ul.search-menu li.search-menu-end{ border: none; }
 ul.search-menu li a{ 
 	display: block; 
@@ -1215,7 +1220,7 @@ ul.search-menu li a{
 	background: transparent url(admin/search-icon-arrow-bg.jpg) right 4px no-repeat scroll;
 }
 
-ul.search-menu li select.input-custom{ width:135px; }
+ul.search-menu li select.input-custom{ width:115px; }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     ul.search-menu li select.input-custom

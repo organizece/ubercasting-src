@@ -155,7 +155,7 @@ $(document).ready(function(){
 						originalH = $(this).height();
 						
 						var rx = 300 / coordW;
-						var ry = 256 / coordH;
+						var ry = 256 / (coordH-30);
 
 						$(this).css({
 							width: Math.round(rx * originalW) + 'px',
@@ -189,7 +189,7 @@ $(document).ready(function(){
 						originalH = $(this).height();
 						
 						var rx = 300 / coordW;
-						var ry = 256 / coordH;
+						var ry = 256 / (coordH-30);
 
 						$(this).css({
 							width: Math.round(rx * originalW) + 'px',

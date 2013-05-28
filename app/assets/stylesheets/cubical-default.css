@@ -1140,12 +1140,13 @@ div#home-content-container{
 	overflow: hidden;
 }
 
-div#home-slider{ width: auto; height: auto; overflow: hidden; }
+div#home-slider,
+div#home-slider-container{ width: auto; height: auto; overflow: hidden; display: block; }
 
 div#slide-loader{ 
 	width: 100%; 
 	height: 100%; 
-	display: block; 
+	display: none; 
 	margin: 0 auto; 
 	background-color: #fff; 
 	position: absolute;
