@@ -58,18 +58,152 @@ $(document).ready(function(){
 		});
 	}
 	
+	/*
+		MODELS » SEARCH » SEARCH CRITERIA SETUP
+	*/
+	function searchBarSetup() {
+		$('select.colapse-list').each(function(index) {
+		  $(this).hide();
+		});
+		
+		$('a.colapse-list-link').each(function(index) {
+			$(this).addClass('stand');
+			
+			$(this).click(function(event) {
+				event.preventDefault();
+				$(this).parent('li').find('select.colapse-list').slideToggle('fast');
+				
+				var linkClass = $(this).attr('class');
+				
+				if ( linkClass.indexOf("stand") != -1 ){
+					$(this).removeClass('stand');
+					$(this).addClass('active');
+					$(this).animate({"margin-top": "-25px"}, "fast");
+				}else{
+					$(this).removeClass('active');
+					$(this).addClass('stand');
+					$(this).animate({"margin-top": "20px"}, "fast");
+				};
+			});
+		});
+	}
+	
+	function searchHorizontalHidden() {
+		$('div.horizontal-hidden-menu a.horizontal-hidden-link').each(function(index) {
+		  $(this).hide();
+		});
+		
+		$('div.horizontal-hidden-menu').click(function(event) {
+			$("a.horizontal-hidden-link",this).show();
+		});
+		
+		$('div.horizontal-hidden-menu').mouseenter(function(event) {
+			$("a.horizontal-hidden-link",this).show();
+		});
+		
+		$('div.horizontal-hidden-menu').mouseleave(function(event) {
+			$("a.horizontal-hidden-link",this).hide();
+		});
+		
+		$('div.horizontal-hidden-menu a.menu-right').click(function(event) {
+			event.preventDefault();
+			
+			var wDif = $(this).parent('div').find('ul').width() - $(this).parent('div').width();
+			var lPos = parseInt($(this).parent('div').find('ul').css('margin-left'),10);
+			
+			if ( lPos == 0 ) {
+				$(this).parent('div').find('ul').animate({"margin-left": (wDif*-1)+"px"}, "fast");
+			};
+		});
+		
+		$('div.horizontal-hidden-menu a.menu-left').click(function(event) {
+			event.preventDefault();
+			
+			var wDif = $(this).parent('div').find('ul').width() - $(this).parent('div').width();
+			var lPos = parseInt($(this).parent('div').find('ul').css('margin-left'),10);
+			
+			if ( lPos < 0 ) {
+				$(this).parent('div').find('ul').animate({"margin-left": "0px"}, "fast");
+			};
+		});
+	}
+	
+	/*
+		MODELS » SEARCH » PROFILE PIC SETUP
+	*/
 	function searchSetupModelAvatar(){
 		var hasModelResult = $('div#search-models-result').length;
 		var hasCastingResult = $('div#casting-models-result').length;
 		
 		if ( hasModelResult > 0 ) {
-			$('#search-models-result .model-box .model-box-img img').resizeToParent();
+			
+			$('div.model-box').each(function(index) {
+
+				if ( $(this).find('input#crop_x').val() != "" ){
+					var coordX = $(this).find('input#crop_x').val();
+					var coordY = $(this).find('input#crop_y').val();
+					var coordW = $(this).find('input#crop_w').val();
+					var coordH = $(this).find('input#crop_h').val();
+
+					var originalW = 0;
+					var originalH = 0;
+					
+					$('div.model-box-img img',this).load(function() {
+						$(this).height(300);
+						
+						originalW = $(this).width();
+						originalH = $(this).height();
+						
+						var rx = 300 / coordW;
+						var ry = 256 / (coordH-30);
+
+						$(this).css({
+							width: Math.round(rx * originalW) + 'px',
+							height: Math.round(ry * originalH) + 'px',
+							marginLeft: '-' + Math.round(rx * coordX) + 'px',
+							marginTop: '-' + Math.round(ry * coordY) + 'px'
+						});
+					});
+
+				};
+			});
 		};
 		
 		if ( hasCastingResult > 0 ) {
-			$('#casting-models-result .model-box .model-box-img img').resizeToParent();
+			
+			$('div.model-box').each(function(index) {
+
+				if ( $(this).find('input#crop_x').val() != "" ){
+					var coordX = $(this).find('input#crop_x').val();
+					var coordY = $(this).find('input#crop_y').val();
+					var coordW = $(this).find('input#crop_w').val();
+					var coordH = $(this).find('input#crop_h').val();
+
+					var originalW = 0;
+					var originalH = 0;
+					
+					$('div.model-box-img img',this).load(function() {
+						$(this).height(300);
+						
+						originalW = $(this).width();
+						originalH = $(this).height();
+						
+						var rx = 300 / coordW;
+						var ry = 256 / (coordH-30);
+
+						$(this).css({
+							width: Math.round(rx * originalW) + 'px',
+							height: Math.round(ry * originalH) + 'px',
+							marginLeft: '-' + Math.round(rx * coordX) + 'px',
+							marginTop: '-' + Math.round(ry * coordY) + 'px'
+						});
+					});
+
+				};
+			});
+			
 		};
-	}
+	};
 	
 	function mapModelAge(){
 		var objDate = new Date();
@@ -131,6 +265,10 @@ $(document).ready(function(){
 		
 	}
 	
+	/*
+		MODELS » SEARCH » SHOW OPTIONS LIST
+		MODELS » SEARCH » RESIZE COMPOSITE IMAGES
+	*/
 	function modelShowSecondInfo(){
 		$('a#btn-model-show-data').click(function(event) {
 			$('div#model-secondary-info').slideToggle(400);
@@ -237,13 +375,16 @@ $(document).ready(function(){
 		}
 	}
 	
+	/*
+		MODELS » REGISTER » ART NAME
+	*/
 	function modelArtName(){
 		if ( $('input#model_art_name').length >= 1 ){
 			$('input#model_name').blur(function(event) {
 				var modelName = $(this).val();
-				var spaceIndex = modelName.lastIndexOf(" ");
-				var artName = modelName.substring(0,3);
-				artName += modelName.substring(spaceIndex,modelName.length);
+				var spaceIndex = modelName.indexOf(" ");
+				var artName = modelName.substring(0,spaceIndex);
+				artName += modelName.substring(spaceIndex,spaceIndex+5);
 				$('input#model_art_name').val(artName);
 			});
 		};
@@ -719,7 +860,11 @@ $(document).ready(function(){
 		
 		if ( $('span.my-main-domain').length > 0 ) {
 			$('span.my-main-domain').append(mainURL+"/");
+ 			$('input#html_content').val('<script type="text/javascript">window.location = "http://'+$('input#agency_subdomain').val()+'.'+mainURL+'/website/models";</script>');
+			$('a.uber-black-btn').attr('href', 'http://'+$('input#agency_subdomain').val()+'.'+mainURL+'/website/models');
+			$('a.uber-gold-btn').attr('href', 'http://'+$('input#agency_subdomain').val()+'.'+mainURL+'/website/models');
 		};
+		
 	}
 	
 	function websiteUpdateThemePreview() {
@@ -1222,10 +1367,37 @@ $(document).ready(function(){
 		});
 	}
 	
+	/*
+		PHOTO UPLOAD » VIDEO UPLOAD » CHANGE VIDEO STRING TO EMBED
+	*/
+	function videoString(){
+		var videoContainer = $('div#model-video-container').length;
+		
+		if ( videoContainer > 0 ){
+			
+			var videoString = "";
+			var videoStringIndex = 0;
+			var videoCode = "";
+			
+			$('input#model_video').blur(function(event) {
+				videoString = $(this).val();
+				
+				if ( videoString.indexOf("/embed/") == -1 ){
+					videoStringIndex = videoString.indexOf("v=")+2;
+					videoCode = videoString.substring(videoStringIndex, videoString.length);
+					$(this).val('http://www.youtube.com/embed/'+videoCode);
+				};
+				
+			});
+			
+		};
+	}
+	
 	btnFolderHover();
 	dropdownMenuNav();
 	searchAdvancedOpts();
-	searchSetupModelAvatar();
+	searchBarSetup();
+	searchHorizontalHidden();
 	mapModelAge();
 	mapModelMeasures();
 	modelShowSecondInfo();
@@ -1243,6 +1415,7 @@ $(document).ready(function(){
 	ubersiteConfigCustomTheme();
 	ubersiteConfigColors();
 	setupPopUpWindows();
+	videoString();
 	
 	//loginPanelSetup();
 	

@@ -1,6 +1,6 @@
 // JavaScript Document
 
-$(document).ready(function(){
+$(document).ready(function() {
 
 	function modelBlockMoreLinks(){
 		$('div#models a.model-box-open-link').click(function(event) {
@@ -11,18 +11,102 @@ $(document).ready(function(){
 		});
 	}
 	
+	/*
+		MODELS » SEARCH » PROFILE PIC SETUP
+	*/
 	function searchSetupModelAvatar(){
 		var hasModelResult = $('div#search-models-result').length;
 		var hasCastingResult = $('div#casting-models-result').length;
 		
+		var coordObj = new Object();
+		
 		if ( hasModelResult > 0 ) {
-			$('#search-models-result .model-box .model-box-img img').resizeToParent();
+			
+			$('div.model-box').each(function(index) {
+
+				if ( $(this).find('input#crop_x').val() != "" ){
+					
+					coordObj._orw = 0;
+					coordObj._orh = 0;
+					
+					if ( $('div.model-box-img img',this).height() == 0 ){
+						
+						$('div.model-box-img img',this).load(function() {
+							coordObj._x = $(this).parent('.model-box-img').find('.model-box-checkbox input#crop_x').val();
+							coordObj._y = $(this).parent('.model-box-img').find('.model-box-checkbox input#crop_y').val();
+							coordObj._w = $(this).parent('.model-box-img').find('.model-box-checkbox input#crop_w').val();
+							coordObj._h = $(this).parent('.model-box-img').find('.model-box-checkbox input#crop_h').val();
+							
+							resizeProfilePicture($(this), coordObj);
+						});
+						
+					}else{
+						coordObj._x = $(this).find('input#crop_x').val();
+						coordObj._y = $(this).find('input#crop_y').val();
+						coordObj._w = $(this).find('input#crop_w').val();
+						coordObj._h = $(this).find('input#crop_h').val();
+						
+						resizeProfilePicture($('div.model-box-img img',this), coordObj);
+					};
+					
+				};
+			});
 		};
 		
 		if ( hasCastingResult > 0 ) {
-			$('#casting-models-result .model-box .model-box-img img').resizeToParent();
+			
+			$('div.model-box').each(function(index) {
+
+				if ( $(this).find('input#crop_x').val() != "" ){
+				
+					coordObj._orw = 0;
+					coordObj._orh = 0;
+					
+					if ( $('div.model-box-img img',this).height() == 0 ){
+						
+						$('div.model-box-img img',this).load(function() {
+							coordObj._x = $(this).parent('.model-box-img').find('.model-box-checkbox input#crop_x').val();
+							coordObj._y = $(this).parent('.model-box-img').find('.model-box-checkbox input#crop_y').val();
+							coordObj._w = $(this).parent('.model-box-img').find('.model-box-checkbox input#crop_w').val();
+							coordObj._h = $(this).parent('.model-box-img').find('.model-box-checkbox input#crop_h').val();
+							
+							resizeProfilePicture($(this), coordObj);
+						});
+						
+					}else{
+						coordObj._x = $(this).find('input#crop_x').val();
+						coordObj._y = $(this).find('input#crop_y').val();
+						coordObj._w = $(this).find('input#crop_w').val();
+						coordObj._h = $(this).find('input#crop_h').val();
+						
+						resizeProfilePicture($('div.model-box-img img',this), coordObj);
+					};
+
+				};
+			});
+			
 		};
-	}
+	};
+	
+	/*
+		PROFILE PICTURE » RESIZE FUNCTION
+	*/
+	function resizeProfilePicture(domObj, coordObj){
+		domObj.height(300);
+		
+		coordObj._orw = domObj.width();
+		coordObj._orh = domObj.height();
+		
+		var rx = 300 / coordObj._w;
+		var ry = 256 / (coordObj._h-20);
+
+		domObj.css({
+			width: Math.round(rx * coordObj._orw) + 'px',
+			height: Math.round(ry * coordObj._orh) + 'px',
+			marginLeft: '-' + Math.round(rx * coordObj._x) + 'px',
+			marginTop: '-' + Math.round(ry * coordObj._y) + 'px'
+		});
+	};
 	
 	function modelMarkAll(){
 		$('#models-mark-all').click(function(event) {
@@ -90,3 +174,5 @@ $(document).ready(function(){
 	stripesThemeModelView();
 	
 });
+
+

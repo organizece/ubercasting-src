@@ -12,7 +12,7 @@ Ubercasting::Application.routes.draw do
   devise_for :customers, :controllers => { :sessions => "customers/sessions", :confirmations => "customers/confirmations" }
   ActiveAdmin.routes(self)
 
-  devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations" }, :path_prefix => 'my'
+  devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations", :passwords => "agencies/passwords", :confirmations => "agencies/confirmations" }, :path_prefix => 'my'
   ActiveAdmin.routes(self)
 
   match 'home' => 'main_pages#home', via: :get
@@ -84,6 +84,7 @@ Ubercasting::Application.routes.draw do
   match "/websites/update_agency_about/:id" => "websites#update_agency_about", via: :get, as: :website_update_agency_about
 
   match 'connect_sites' => 'agencies#connect_sites', via: :get
+  match 'create_file' => 'agencies#create_file', via: :post, as: :create_uber_file
 
   match "find_cep/:cep" => "utilities#find_cep", via: :get, as: :find_cep
 

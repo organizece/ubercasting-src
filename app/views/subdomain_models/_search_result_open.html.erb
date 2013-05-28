@@ -26,9 +26,13 @@
 		<div class="model-box">
 			
 			<div class="model-box-img">
-				
+				<div class="model-box-checkbox">
+					<%= hidden_field_tag "crop_x", model.crop_x %>
+					<%= hidden_field_tag "crop_y", model.crop_y %>
+					<%= hidden_field_tag "crop_w", model.crop_w %>
+					<%= hidden_field_tag "crop_h", model.crop_h %>
+				</div>
 				<%= image_tag model.avatar.url %>
-			
 			</div>
 			
 			<div class="model-box-links">

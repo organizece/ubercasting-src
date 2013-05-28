@@ -149,10 +149,14 @@
 				</div>
 				
 				<div id="logo-container" class="auto-size-block">
-					<% if  @website.logo.url(:logo) == "/logos/logo/missing.png" %>
-						<p>Sua logomarca ficará aqui.</p>
+					<% if !@website.logo_url.blank?  %>
+						<%= image_tag @website.logo_url, :class => "base-padding" %>
 					<% else %>
-						<%= image_tag @website.logo.url(:logo), :class => "base-padding" %>
+						<% if @website.logo.url == "/logos/original/missing.png" %>
+							Sua logomarca ficará aqui.
+						<% else %>
+							<%= image_tag @website.logo.url(:logo), :class => "base-padding" %>
+						<% end %>
 					<% end %>
 				</div>
 			
@@ -174,7 +178,9 @@
 					<% end %>
 				</div>
 				
-				<input type="hidden" name="slide-show-photo" value="slide-show-4" id="slide-show-photo">
+				<input type="hidden" name="current-theme" value="cubical-theme" id="current-theme">
+				<input type="hidden" name="slide-show-lines" value="1" id="slide-show-lines">
+				<input type="hidden" name="slide-show-cols" value="5" id="slide-show-cols">
 
 				<%= yield %>
 			

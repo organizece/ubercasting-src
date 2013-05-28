@@ -92,15 +92,15 @@
 		
 		<div class="composite-brands">
 			<span id="BrandAgendy" class="auto-size-block put-left">
-				<% if @composite.model.agency.website.logo.url == "/logos/original/missing.png" %>
-					Sua logomarca ficará aqui.
+				<% if !@composite.model.agency.website.logo_url.blank?  %>
+					<%= image_tag @composite.model.agency.website.logo_url, {:style => "width:auto; height: 70px;"} %>
 				<% else %>
-					<%= image_tag @composite.model.agency.website.logo.url(:logo), {:style => "width:auto; height: 70px;"} %>
+					<% if @composite.model.agency.website.logo.url == "/logos/original/missing.png" %>
+						Sua logomarca ficará aqui.
+					<% else %>
+						<%= image_tag @composite.model.agency.website.logo.url(:logo), {:style => "width:auto; height: 70px;"} %>
+					<% end %>
 				<% end %>
-			</span>
-			<span id="UberPowered" class="auto-size-block put-right">
-				<%= image_tag "admin/uber-powered-by.png", :class => "powered01" %>
-				<%= image_tag "admin/uber-powered-by-black.png", :class => "powered02" %>
 			</span>
 		</div>
 

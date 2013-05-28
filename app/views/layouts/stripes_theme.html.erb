@@ -103,10 +103,14 @@
 			<div id="header-wrapper" class="auto-size-block">
 				
 				<div id="logo-container" class="auto-size-block">
-					<% if  @website.logo.url(:logo) == "/logos/logo/missing.png" %>
-						<p>Sua logomarca ficará aqui.</p>
+					<% if !@website.logo_url.blank?  %>
+						<%= image_tag @website.logo_url, :class => "base-padding" %>
 					<% else %>
-						<%= image_tag @website.logo.url(:logo), :class => "base-padding" %>
+						<% if @website.logo.url == "/logos/original/missing.png" %>
+							Sua logomarca ficará aqui.
+						<% else %>
+							<%= image_tag @website.logo.url(:logo), :class => "base-padding" %>
+						<% end %>
 					<% end %>
 				</div>
 				
@@ -178,7 +182,8 @@
 				</div>
 
 				<input type="hidden" name="current-theme" value="stripe-theme" id="current-theme">
-				<input type="hidden" name="slide-show-photo" value="slide-show-3" id="slide-show-photo">
+				<input type="hidden" name="slide-show-lines" value="1" id="slide-show-lines">
+				<input type="hidden" name="slide-show-cols" value="3" id="slide-show-cols">
 				
 				<%= yield %>
 				
@@ -214,11 +219,11 @@
         	<ul>
 				<% if @website.agency.models.count <= 16 %>
 					<% @website.agency.models.each do |model| %>
-	            		<li class='mosaic-container'><%= avatar_tag model.avatar, :search %></li>
+	            		<li class='mosaic-container'><%= image_tag model.avatar.url %></li>
 					<% end %>
 				<% else %>
 					<% (1..16).each do |i| %>
-					    <li class='mosaic-container'><%= avatar_tag @website.agency.models[i].avatar, :search %></li>
+					    <li class='mosaic-container'><%= image_tag @website.agency.models[i].avatar.url %></li>
 					<% end %>
 				<% end %>
             </ul>	

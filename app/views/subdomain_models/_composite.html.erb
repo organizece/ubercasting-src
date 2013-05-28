@@ -8,21 +8,15 @@
 
     <div class="composite-template-select auto-size-block">
       <ul class="btn-silver-list">
-        <li>
-          <a href="javascript:return false;" class="offline">Salvar em PDF</a>
-        </li>
-        <li>
-          <%= link_to "Mais Informações", subdomain_model_path(@composite.model.id, subdomain: request.subdomain) %>
-        </li>
-        <% if @total_access %>
-          <li>
-            <%= link_to 'Adicionar à Casting', subdomain_castings_add_models_path({models: @composite.model.id}, subdomain: request.subdomain), remote: true, via: :get, id: "modal-add-casting" %>
-          </li>
+        <li><a href="javascript:return false;" class="offline">Salvar PDF</a></li>
+        <li><%= link_to "Mais Informações", subdomain_model_path(@composite.model.id, subdomain: request.subdomain) %></li>
+        
+		<% if @total_access %>
+        	<li><%= link_to 'Adicionar à Casting', subdomain_castings_add_models_path(models: @composite.model.id, subdomain: request.subdomain), remote: true, via: :get, id: "modal-add-casting" %></li>
         <% else %>
-          <li>
-            <a href="javascript:return false;" class="offline">Adicionar à Casting</a>
-          </li>
+        	<li><a href="javascript:return false;" class="offline">Adicionar à Casting</a></li>
         <% end %>
+
       </ul>
       
     </div>
@@ -104,15 +98,15 @@
     
     <div class="composite-brands">
       <span id="BrandAgendy" class="auto-size-block put-left">
-        	<% if @composite.model.agency.website.logo.url == "/logos/original/missing.png" %>
-				  Logomarca Aqui!				
-		    <% else %>
-			    <%= image_tag @composite.model.agency.website.logo.url(:logo), {:style => "width:auto; height: 70px;"} %>
-		    <% end %>
-      </span>
-      <span id="UberPowered" class="auto-size-block put-right">
-        	<%= image_tag "admin/uber-powered-by.png", :class => "powered01" %>
-			<%= image_tag "admin/uber-powered-by-black.png", :class => "powered02" %>
+        	<% if !@composite.model.agency.website.logo_url.blank?  %>
+				<%= image_tag @composite.model.agency.website.logo_url, {:style => "width:auto; height: 70px;"} %>
+			<% else %>
+				<% if @composite.model.agency.website.logo.url == "/logos/original/missing.png" %>
+					Sua logomarca ficará aqui.
+				<% else %>
+					<%= image_tag @composite.model.agency.website.logo.url(:logo), {:style => "width:auto; height: 70px;"} %>
+				<% end %>
+			<% end %>
       </span>
     </div>
 

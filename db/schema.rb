@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511140133) do
+ActiveRecord::Schema.define(:version => 20130513233009) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -260,6 +260,10 @@ ActiveRecord::Schema.define(:version => 20130511140133) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "crop_x"
+    t.integer  "crop_y"
+    t.integer  "crop_h"
+    t.integer  "crop_w"
   end
 
   create_table "models_specialties", :force => true do |t|

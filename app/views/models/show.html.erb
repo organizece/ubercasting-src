@@ -29,7 +29,7 @@
 				<div id="model-primary-info" class="auto-size-block full-column-width admin-inner-container body-content-padding">
 					
 					<div id="model-profile-img" class="auto-size-block put-left">
-						<%= avatar_tag @model.avatar %>
+						<%= image_tag @model.avatar.url %>
 					</div>
 					
 					<div id="model-primary-info-content" class="put-left-margin">
@@ -291,14 +291,15 @@
 
 								<div class="composite-brands">
 									<span id="BrandAgendy" class="auto-size-block put-left">
-										<% if @model.agency.website.logo.url == "/logos/original/missing.png" %>
-											Sua logomarca ficará aqui.
+										<% if !@model.agency.website.logo_url.blank?  %>
+											<%= image_tag @model.agency.website.logo_url, {:style => "width:auto; height: 70px;"} %>
 										<% else %>
-											<%= image_tag @model.agency.website.logo.url(:logo), {:style => "width:100px; height: auto;"} %>
+											<% if @model.agency.website.logo.url == "/logos/original/missing.png" %>
+												Sua logomarca ficará aqui.
+											<% else %>
+												<%= image_tag @model.agency.website.logo.url(:logo), {:style => "width:auto; height: 70px;"} %>
+											<% end %>
 										<% end %>
-									</span>
-									<span id="UberPowered" class="auto-size-block put-right">
-										<%= image_tag "admin/uber-powered-by.png" %>
 									</span>
 								</div>
 
