@@ -1,3 +1,3 @@
-class Agencies::ConfirmationsController < Devise::SessionsController
+class Agencies::ConfirmationsController < Devise::ConfirmationsController
   layout "main_page"
 end

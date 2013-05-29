@@ -10,6 +10,7 @@ class AgencyCustomer < ActiveRecord::Base
   belongs_to :customer
 
   validates_presence_of :name, :email
+  validates_uniqueness_of :email, scope: :agency_id, case_sensitive: false
 
   def self.search(name, agency_id, customer_id)
     agency_customers = AgencyCustomer.where(agency_id: agency_id)
