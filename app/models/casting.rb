@@ -5,7 +5,7 @@ class Casting < ActiveRecord::Base
   has_many :model_castings, dependent: :destroy
   has_many :models, through: :model_castings
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 30 }
 
   scope :not_associated_with_model, lambda { |associated_castings|
     where('id not in (?)', associated_castings.map(&:casting_id)) if !associated_castings.empty? }
