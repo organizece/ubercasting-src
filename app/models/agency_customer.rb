@@ -29,4 +29,10 @@ class AgencyCustomer < ActiveRecord::Base
     limit != -1 && limit == current_customers_number
   end
 
+  after_create do |agency_customer|
+    AgencyCustomerRequest.where(email: agency_customer.email).each do |request|
+      request.destroy
+    end
+  end
+
 end
