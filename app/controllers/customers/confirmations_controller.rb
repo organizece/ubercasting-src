@@ -63,7 +63,7 @@ class Customers::ConfirmationsController < Devise::ConfirmationsController
 
     # Set after login to first agency of customer
     subdomain = @confirmable.agencies.first.website.subdomain
-    session[:users_return_to] = root_url + "#{subdomain}/home"
+    session[:users_return_to] = subdomain_websites_home_url(subdomain: subdomain)
 
     sign_in_and_redirect(resource_name, @confirmable)
   end

@@ -189,6 +189,7 @@ pt:
       agency_customer: Cliente
       specialty: Especialidade
       agency_customer_request: Pedido
+      customer_casting: Pedido de casting
     attributes:
       agency:
         name: Nome
@@ -316,6 +317,8 @@ pt:
         phone: Telefone
         company: Empresa
         message: Mensagem
+      customer_casting:
+        name: Nome
 
     errors:
       template:

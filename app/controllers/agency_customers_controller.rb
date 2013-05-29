@@ -47,7 +47,7 @@ class AgencyCustomersController < ApplicationController
       @agency_customer.save!
       AgencyCustomerMailer.invite_customer(@agency_customer).deliver
     else
-      flash[:error] += @agency_customer.errors
+      flash[:error] = 'Ocorreu um erro ao criar o cliente.'
     end
 
     respond_to do |format|
