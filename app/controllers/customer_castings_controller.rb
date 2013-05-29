@@ -18,6 +18,10 @@ class CustomerCastingsController < ApplicationController
     @casting_models_ids = @casting_models_ids.join(',')
 
     @casting_models = @casting_models.order(show_sort_column).page(params[:page]).per(per_page)
+
+    # Set casting as visualized
+    @casting.visualized = true
+    @casting.save!
   end
 
   def destroy

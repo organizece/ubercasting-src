@@ -10,12 +10,13 @@ class AgencyCustomer < ActiveRecord::Base
   belongs_to :customer
 
   validates_presence_of :name, :email
+  validates_uniqueness_of :email, scope: :agency_id, case_sensitive: false
 
   def self.search(name, agency_id, customer_id)
     agency_customers = AgencyCustomer.where(agency_id: agency_id)
     agency_customers = agency_customers.where(customer_id: customer_id) if customer_id
     name = "%#{name}%"
-    agency_customers = agency_customers.where("name like ? ", name) unless name.blank?
+    agency_customers = agency_customers.where("lower(name) like ? ", name.downcase) unless name.blank?
 
     agency_customers
   end
@@ -26,6 +27,12 @@ class AgencyCustomer < ActiveRecord::Base
 
     # Validates if the creation limit hasn't been reached. Unlimited(-1)
     limit != -1 && limit == current_customers_number
+  end
+
+  after_create do |agency_customer|
+    AgencyCustomerRequest.where(email: agency_customer.email).each do |request|
+      request.destroy
+    end
   end
 
 end
