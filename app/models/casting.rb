@@ -13,7 +13,7 @@ class Casting < ActiveRecord::Base
   def self.search(name, agency_id)
     castings = Casting.where(agency_id: agency_id)
     name = "%#{name}%"
-    castings = castings.where("name like ? ", name) unless name.blank?
+    castings = castings.where("lower(name) like ? ", name.downcase) unless name.blank?
 
     castings
   end

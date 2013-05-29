@@ -16,7 +16,7 @@ class AgencyCustomer < ActiveRecord::Base
     agency_customers = AgencyCustomer.where(agency_id: agency_id)
     agency_customers = agency_customers.where(customer_id: customer_id) if customer_id
     name = "%#{name}%"
-    agency_customers = agency_customers.where("name like ? ", name) unless name.blank?
+    agency_customers = agency_customers.where("lower(name) like ? ", name.downcase) unless name.blank?
 
     agency_customers
   end

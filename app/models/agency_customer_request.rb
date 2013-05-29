@@ -9,7 +9,7 @@ class AgencyCustomerRequest < ActiveRecord::Base
     requests = AgencyCustomerRequest.where(agency_id: agency_id)
     requests = requests.where(customer_id: customer_id) if customer_id
     name = "%#{name}%"
-    requests = requests.where("name like ? ", name) unless name.blank?
+    requests = requests.where("lower(name) like ? ", name.downcase) unless name.blank?
 
     requests
   end
