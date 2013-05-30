@@ -77,7 +77,7 @@ class SubdomainCastingsController < ApplicationController
   end
 
   def open_add_models
-    if params[:models].blank?
+    if params[:models_id].blank?
       flash[:error] = 'Selecione ao menos um modelo'
     else
       agency = Website.find_by_subdomain(request.subdomain).agency
@@ -91,7 +91,7 @@ class SubdomainCastingsController < ApplicationController
     agency = Website.find_by_subdomain(request.subdomain).agency
     agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(agency.id, current_customer.id)
 
-    models = params[:models].split(',') if params[:models]
+    models = params[:models_id].split(',') if params[:models_id]
 
     casting = nil
     if params[:type].to_sym == :create_and_add

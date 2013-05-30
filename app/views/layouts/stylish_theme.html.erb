@@ -7,9 +7,9 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
 
-  <%= stylesheet_link_tag    "stylish", media: "all" %>
-  <%= javascript_include_tag "subdomain" %>
-  <%= csrf_meta_tags %>
+	<%= javascript_include_tag "subdomain" %>  
+	<%= stylesheet_link_tag    "stylish", media: "all" %>
+	<%= csrf_meta_tags %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
@@ -144,7 +144,18 @@
 							<% if customer_signed_in? %>
 								<li class="no-border"><%= link_to 'Sair »', destroy_customer_session_path %></li>
 							<% else %>
-								<li class="no-border"><%= link_to 'Login', customer_session_path, :class => "btn-login" %></li>
+								<li class="no-border">
+									<% if !@website.logo_url.blank?  %>
+										<%= hidden_field_tag "logo-img", @website.logo_url %>
+									<% else %>
+										<% if @website.logo.url == "/logos/original/missing.png" %>
+											<%= hidden_field_tag "logo-img" %>
+										<% else %>
+											<%= hidden_field_tag "logo-img", @website.logo.url(:logo) %>
+										<% end %>
+									<% end %>
+									<%= link_to 'Login', customer_session_path, :class => "btn-login sub-popup-link popupw-555 popuph-740" %>
+								</li>
 							<% end %>
 						</ul>
 					</div>

@@ -90,17 +90,16 @@ $(document).ready(function(){
 		var slideTotal = $('div.theme-home-model-box').length;
 		
 		var slideH = $('div.theme-home-model-box').height();
-		slideH += parseInt($('div.theme-home-model-box').css('margin-bottom'),10);
-		slideH += parseInt($('div.theme-home-model-box').css('margin-top'),10);
-		slideH += parseInt($('div.theme-home-model-box').css('border'),10);
+		slideH = slideH + parseInt($('div.theme-home-model-box').css('margin-bottom'),10);
+		slideH = slideH + parseInt($('div.theme-home-model-box').css('margin-top'),10);
 		var slideW = $('div.theme-home-model-box').width();
-
+		
 		var slideHTot = (slideH*slideTotal)/slideShowCols;
 		var slideWTot = $('div.theme-home-model-box').width()*slideShowCols;
 		
 		var slidePos = 0;
 		var limitDisplay = slideShowLines * slideH;
-
+		
 		$('div#home-slider').css({
 			height: limitDisplay+'px',
 			overflow: "hidden"
