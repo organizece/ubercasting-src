@@ -13,7 +13,11 @@ class Agency < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :photo,
           :name, :cnpj, :owner_name, :owner_cpf, :domain, :account_type, :account_period, :account_payment,
           :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :agency_about,
-          :insc_state, :insc_city, :fancy_name, :social_name, :phone, :fax, :agency_about, :subscription_id
+          :insc_state, :insc_city, :fancy_name, :social_name, :phone, :fax, :agency_about, :subscription_id,
+          :latitude, :longitude
+
+  geocoded_by :full_address
+  after_validation :geocode, :if => :full_address_changed?
          
   has_many :models, dependent: :destroy
   has_many :castings, dependent: :destroy
@@ -28,5 +32,13 @@ class Agency < ActiveRecord::Base
   
   has_many :themes, as: :owner, dependent: :destroy
   belongs_to :subscription
+
+  def full_address
+    "#{address} #{address_number} #{cep} #{city} #{state} #{country}"
+  end
+
+  def full_address_changed?
+    address_changed? || address_number_changed? || cep_changed? || city_changed? || state_changed? || country_changed?
+  end
 
 end
