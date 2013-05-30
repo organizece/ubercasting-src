@@ -254,12 +254,7 @@ $(document).ready(function(){
 		
 		if ( $("#model_height").length > 0 ){
 			
-			$("#model_height").mask("9.99?99m");
-			$("#model_weight").mask("99?99Kg");
-			$("#model_bust").mask("99?99cm");
-			$("#model_waist").mask("99?99cm");
-			$("#model_hip").mask("99?99cm");
-			$("#model_mannequin").mask("99");
+			
 			
 		};
 		
