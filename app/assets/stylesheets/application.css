@@ -8,6 +8,7 @@
  *= require jquery.fileupload-ui
  *= require jquery-minicolors
  *= require jquery.Jcrop.min
+ *= require lightbox
  *= require admin-general
  *= require composites
 */

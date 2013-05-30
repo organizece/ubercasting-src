@@ -329,7 +329,9 @@
 
 				      <% for photo in @model.photos.each %>
 						<li class="is-draggable ui-widget-content ui-corner-tr">
-				          <%= image_tag photo.image.url(:sub_composite), alt: photo.image_file_name, id: photo.id %>
+							<a href="<%= photo.image.url(:main_composite) %>" rel="lightbox[roadtrip]" title="<%= @model.name %>">
+								<%= image_tag photo.image.url(:sub_composite), alt: photo.image_file_name, id: photo.id %>
+							</a>
 				        </li>
 				      <% end %>
 
