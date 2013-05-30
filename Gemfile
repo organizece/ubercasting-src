@@ -15,6 +15,7 @@ gem 'kaminari'
 gem 'simple_form'
 gem 'country_select'
 gem 'wicked_pdf'
+gem 'geocoder'
 
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'

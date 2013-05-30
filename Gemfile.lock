@@ -110,6 +110,7 @@ GEM
     fastercsv (1.5.5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    geocoder (1.1.8)
     has_scope (0.5.1)
     hike (1.2.1)
     httparty (0.10.0)
@@ -230,6 +231,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   country_select
   devise
+  geocoder
   jquery-fileupload-rails
   jquery-rails
   kaminari
