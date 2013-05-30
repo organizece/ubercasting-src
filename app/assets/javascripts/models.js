@@ -1,6 +1,6 @@
 $(function() {
   $("#models .pagination a").live("click", function() {
-    $.getScript(this.href);
+	$.getScript(this.href);
     return false;
   });
   $("#models .itens_per_page select").live("change", function() {
@@ -16,7 +16,7 @@ $(function() {
     return false;
   });
   $("#models #add_selected").live("click", function() {
-    var link = this.href + '?models=';
+    var link = this.href + '?models_id=';
     $("input:checked").each(function(index, check){
       link += $(check).val() + ",";
     });

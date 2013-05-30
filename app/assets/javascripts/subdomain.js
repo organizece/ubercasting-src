@@ -16,6 +16,7 @@
 //= require bootstrap_aditions
 //= require jquery_scrollTo-min
 //= require jquery-resize-n-place
+//= require lightbox
 //= require castings
 //= require composites
 //= require models

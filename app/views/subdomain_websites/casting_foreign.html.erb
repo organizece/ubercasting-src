@@ -8,7 +8,16 @@
 			<p class="default">Faça seu login para começar montar seus castings.</p>
 
 			<div class="website-content-btns">
-				<%= link_to "Login", customer_session_path, :class => "btn-silver-light-fluid" %>
+				<% if !@website.logo_url.blank?  %>
+					<%= hidden_field_tag "logo-img", @website.logo_url %>
+				<% else %>
+					<% if @website.logo.url == "/logos/original/missing.png" %>
+						<%= hidden_field_tag "logo-img" %>
+					<% else %>
+						<%= hidden_field_tag "logo-img", @website.logo.url(:logo) %>
+					<% end %>
+				<% end %>
+				<%= link_to "Login", customer_session_path, :class => "btn-silver-light-fluid sub-popup-link popupw-555 popuph-740" %>
 			</div>
 		</div>
 		

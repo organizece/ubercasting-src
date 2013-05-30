@@ -56,7 +56,7 @@ class CustomerCastingsController < ApplicationController
   end
 
   def save_add_models
-    models = params[:models].split(',') if params[:models]
+    models = params[:models_id].split(',') if params[:models_id]
     casting = CustomerCasting.find(params[:casting_id])
 
     models.each do |model_id|

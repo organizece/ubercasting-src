@@ -1,15 +1,36 @@
-<h2>Forgot your password?</h2>
+<div id="customer-login-container">
+	
+	<div id="alert-msgs">
+		<% flash.each do |name, msg| %>
+		    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+		    	<a class="close" data-dismiss="alert">×</a>
+		    	<%= msg %>
+		    </div>
+		<% end %>
+	</div>
+	
+	<div id="agency-logo"></div>
+	
+	<div id="customer-login-window">
+		
+		<p><span class="gold-sign">Esqueceu sua senha?</span></p>
+		<br />
+		<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+			<%= f.error_notification %>
 
-<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= f.error_notification %>
+			<div class="form-inputs">
+				<%= f.input :email, :required => true, :autofocus => true %>
+			</div>
 
-  <div class="form-inputs">
-    <%= f.input :email, :required => true %>
-  </div>
+			<div class="form-actions">
+				<%= f.button :submit, "instruções reset de senha", :class => "input-btn-silver-light-4-column" %>
+			</div>
+		<% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
+		<%= render "customers/shared/links" %>
+		
+	</div>
+	
+</div>
 
-<%= render "devise/shared/links" %>
+

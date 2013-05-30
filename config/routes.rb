@@ -9,7 +9,7 @@ Ubercasting::Application.routes.draw do
     match '/customer/confirmation' => 'customers/confirmations#update', :via => :put, :as => :update_customer_confirmation
   end
 
-  devise_for :customers, :controllers => { :sessions => "customers/sessions", :confirmations => "customers/confirmations" }
+  devise_for :customers, :controllers => { :sessions => "customers/sessions", :confirmations => "customers/confirmations", :passwords => "customers/passwords" }
   ActiveAdmin.routes(self)
 
   devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations", :passwords => "agencies/passwords", :confirmations => "agencies/confirmations" }, :path_prefix => 'my'

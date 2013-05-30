@@ -3,4 +3,5 @@
  *= require bootstrap_and_overrides
  *= require stylish-default
  *= require composites
+ *= require lightbox
 */

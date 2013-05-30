@@ -374,6 +374,9 @@ pt:
     eventos: Eventos
     publicidade: Publicidade
     atuacao: Ator / Atriz
+    promotor: Promotor
+    mao_pe: Mão / Pé
+    figurante: Figurante
 
   bank_account_type:
     conta_corrente: Conta Corrente

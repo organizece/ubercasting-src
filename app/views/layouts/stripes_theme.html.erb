@@ -7,9 +7,9 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
 
-  <%= stylesheet_link_tag    "stripes", media: "all" %>
-  <%= javascript_include_tag "subdomain" %>
-  <%= csrf_meta_tags %>
+	<%= javascript_include_tag "subdomain" %>
+	<%= stylesheet_link_tag    "stripes", media: "all" %>
+	<%= csrf_meta_tags %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
@@ -157,7 +157,18 @@
 							<% if customer_signed_in? %>
 								<li class="no-border"><%= link_to 'Sair »', destroy_customer_session_path %></li>
 							<% else %>
-								<li class="no-border"><%= link_to 'Login', customer_session_path, :class => "btn-login" %></li>
+								<li class="no-border">
+									<% if !@website.logo_url.blank?  %>
+										<%= hidden_field_tag "logo-img", @website.logo_url %>
+									<% else %>
+										<% if @website.logo.url == "/logos/original/missing.png" %>
+											<%= hidden_field_tag "logo-img" %>
+										<% else %>
+											<%= hidden_field_tag "logo-img", @website.logo.url(:logo) %>
+										<% end %>
+									<% end %>
+									<%= link_to 'Login', customer_session_path, :class => "btn-login sub-popup-link popupw-555 popuph-740" %>
+								</li>
 							<% end %>
 						</ul>
 					</div>
@@ -201,7 +212,7 @@
                 <%= link_to 'Ver Modelos »', subdomain_models_path(params[:subdomain]) %>
             </div>
             <div id="teaser-right" class="teaser-content">
-            	<p>Estamos a disposição para montar e oferecer castings que vão de encontro as suas necessidades. Clique no botão abaixo para começar a montar o seu casting. Você deve efetuar o seu login para começar a montar um casting. Caso não tenha um login, você pode fazer um pedido de cadastro para nós. Lhe responderemos em breve.</p>
+            	<p>Para começar a montar seu casting basta clicar no botão abaixo. Lembre-se que é necessário ter um cadastro em nosso site para elaborar um casting. Caso ainda não o tenha feito, use o menu <strong>CADASTRO</strong> para enviar o seu pedido. Responderemos o mais rápido possível.</p>
                 <% if @website.castings %>
 					<% if customer_signed_in? %>
 						<%= link_to 'Montar Casting »', subdomain_castings_path(params[:subdomain]) %>

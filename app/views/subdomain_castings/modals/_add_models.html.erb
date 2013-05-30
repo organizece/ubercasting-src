@@ -9,7 +9,7 @@
 
 	<%= form_tag subdomain_castings_add_models_path(subdomain: request.subdomain), method: :post, remote: true do %>
 		
-	<%= hidden_field_tag :models, params[:models] %>
+	<%= hidden_field_tag :models_id, params[:models_id] %>
 	<%= hidden_field_tag :type, :create_and_add %>
 	
 	<!-- ************** BODY ************** -->
@@ -34,7 +34,7 @@
 	
 	<%= form_tag subdomain_castings_add_models_path(subdomain: request.subdomain), method: :post, remote: true do %>
 		
-	<%= hidden_field_tag :models, params[:models] %>
+	<%= hidden_field_tag :models_id, params[:models_id] %>
 	<%= hidden_field_tag :type, :add_only %>
 		
 	<!-- ************** BODY ************** -->
