@@ -29,7 +29,7 @@
 			<%= link_to "Selecionar Todos", "#", :id => "models-mark-all", :class => "models-mark-all"  %>
 		</li>
 		<li>
-			<%= link_to "Adicionar Todos", subdomain_castings_add_models_path(models: @models_ids, subdomain: request.subdomain), remote: true, via: :get, id: :add_all_models %>
+			<%= link_to "Adicionar Todos", subdomain_castings_add_models_path(models_id: @models_ids, subdomain: request.subdomain), remote: true, via: :get, id: :add_all_models %>
 		</li>
 		<li>
 			<%= link_to "Visualizar Castings", subdomain_castings_path(subdomain: request.subdomain) %>
@@ -64,7 +64,7 @@
 					<li class="model-box-view-composite"><%= link_to 'Visualizar Composite', subdomain_model_composite_path(model, subdomain: request.subdomain), remote: true %></li>
 					<% end %>
 					<li><h4><%= link_to model.art_name, subdomain_model_path(model, subdomain: request.subdomain) %></h4></li>
-					<li class="model-box-add-composite"><%= link_to 'Adicionar à Casting', subdomain_castings_add_models_path(models: model.id, subdomain: request.subdomain), remote: true, via: :get %></li>
+					<li class="model-box-add-composite"><%= link_to 'Adicionar à Casting', subdomain_castings_add_models_path(models_id: model.id, subdomain: request.subdomain), remote: true, via: :get %></li>
 				</ul>
 				
 			</div>

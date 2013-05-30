@@ -20,6 +20,7 @@
 //= require jquery_minicolors
 //= require bootstrap_aditions
 //= require jquery.Jcrop.min
+//= require lightbox
 //= require find_cep
 //= require agencies
 //= require agency_customers

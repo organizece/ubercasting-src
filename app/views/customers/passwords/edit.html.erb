@@ -1,19 +1,38 @@
-<h2>Change your password</h2>
+<div id="customer-login-container">
+	
+	<div id="alert-msgs">
+		<% flash.each do |name, msg| %>
+		    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+		    	<a class="close" data-dismiss="alert">×</a>
+		    	<%= msg %>
+		    </div>
+		<% end %>
+	</div>
+	
+	<div id="agency-logo"></div>
+	
+	<div id="customer-login-window">
+		
+		<p><span class="gold-sign">Atualizar Senha</span></p>
 
-<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= f.error_notification %>
+		<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+			<%= f.error_notification %>
 
-  <%= f.input :reset_password_token, :as => :hidden %>
-  <%= f.full_error :reset_password_token %>
+			<%= f.input :reset_password_token, :as => :hidden %>
+			<%= f.full_error :reset_password_token %>
 
-  <div class="form-inputs">
-    <%= f.input :password, :label => "New password", :required => true %>
-    <%= f.input :password_confirmation, :label => "Confirm your new password", :required => true %>
-  </div>
+			<div class="form-inputs">
+				<%= f.input :password, :label => "New password", :required => true %>
+				<%= f.input :password_confirmation, :label => "Confirm your new password", :required => true %>
+			</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
-  </div>
-<% end %>
+			<div class="form-actions">
+				<%= f.button :submit, "Atualizar Senha", :class => "input-btn-silver-light-4-column" %>
+			</div>
+		<% end %>
 
-<%= render "devise/shared/links" %>
+		<%= render "customers/shared/links" %>
+		
+	</div>
+	
+</div>

@@ -106,7 +106,7 @@ class CastingsController < ApplicationController
   end
 
   def open_add_models
-    if params[:models].blank?
+    if params[:models_id].blank?
       flash[:error] = 'Selecione ao menos um modelo'
     else
       @castings = Casting.where(agency_id: current_agency.id)
@@ -115,7 +115,7 @@ class CastingsController < ApplicationController
   end
 
   def save_add_models
-    models = params[:models].split(',') if params[:models]
+    models = params[:models_id].split(',') if params[:models_id]
 
     casting = nil
     if params[:type].to_sym == :create_and_add

@@ -9,7 +9,7 @@
 			</ul>
 			
 			<ul class="requst-action">
-				<li><%= link_to "Excel", casting_export_path(casting, format: :xls) %></li>
+				<li class="request-icon request-text"><%= link_to "Gerar Excel", casting_export_path(casting, format: :xls) %></li>
 				<li class="request-icon request-add"><%= link_to 'Adicionar Modelos', models_path, title: 'Adicionar Modelos' %></li>
 				<li class="request-icon request-share"><%= link_to 'Compartilhar', casting_share_path(casting), title: 'Compartilhar', remote: true %></li>
 				<li class="request-icon request-view"><%= link_to 'Visualizar', casting_path(casting), title: 'Visualizar' %></li>

@@ -1379,7 +1379,7 @@ span.icon-title-pencil{
 	background: #f3f3f3 url(admin/bg-icon-share.jpg) left top no-repeat scroll;
 }
 
-.request-list .request-line .requst-action li.request-link{ margin: 0px 7px 0px 0px; }
+.request-list .request-line .requst-action li.request-link{ margin: 0px 5px 0px 20px; }
 
 .request-list .request-line .requst-action li.request-text{ 
 	background-color: #929ea9;
@@ -1394,6 +1394,15 @@ span.icon-title-pencil{
 	opacity: 0.6;
 	-moz-opacity: 0.6;
 	filter:alpha(opacity=60);
+}
+
+.request-list .request-line .requst-action li.request-text a{
+	background: none;
+	text-indent: 0px;
+	color: #FFF;
+	text-shadow: #111 0px 1px 0px;
+	height: 20px;
+	font-size: 110%;
 }
 
 /*  SIMPLE MODAL WINDOW  ****************************/

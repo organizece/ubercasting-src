@@ -254,12 +254,7 @@ $(document).ready(function(){
 		
 		if ( $("#model_height").length > 0 ){
 			
-			$("#model_height").mask("9.99?99m");
-			$("#model_weight").mask("99?99Kg");
-			$("#model_bust").mask("99?99cm");
-			$("#model_waist").mask("99?99cm");
-			$("#model_hip").mask("99?99cm");
-			$("#model_mannequin").mask("99");
+			
 			
 		};
 		
@@ -1365,7 +1360,69 @@ $(document).ready(function(){
 			event.preventDefault();
 			window.open($(this).attr('href'),'UberTermos','width=1060,height=550,resizable=no,scrollbars=yes,status=no,titlebar=no,toolbar=no,top=50,left=50');
 		});
-	}
+	};
+	
+	/*
+		SUBDOMAIN » SETUP LOGIN WINDOW
+	*/
+	function subdomainLogin(){
+		$('a.sub-popup-link').click(function(event) {
+			event.preventDefault();
+			
+			var popWIndex = $(this).attr('class').indexOf("popupw-")+7;
+			var popWLastIndex = $(this).attr('class').lastIndexOf(" ");
+			var popHIndex = $(this).attr('class').indexOf("popuph-")+7;
+			var popLastHIndex = $(this).attr('class').length;
+			
+			var popW = parseInt($(this).attr('class').substring(popWIndex,popWLastIndex),10);
+			var popH = parseInt($(this).attr('class').substring(popHIndex,popLastHIndex),10);
+			
+			var agencyLogo = "";
+			
+			if ( $(this).parent('li').length > 0 ){
+				agencyLogo = $(this).parent('li').find('input#logo-img').val();	
+			}else{
+				agencyLogo = $(this).parent('div').find('input#logo-img').val();
+			};
+			
+			window.open(($(this).attr('href')+"?sublogo="+agencyLogo),'UberTermos','width='+popW+',height='+popH+',resizable=no,scrollbars=no,status=no,titlebar=no,toolbar=no,top=30,left=30');
+		});
+	};
+	
+	function subdomainLoginVerify(){
+		var isSubLogin = $('#customer-login-container').length;
+		
+		if ( isSubLogin > 0 ){
+			var myURL = window.location.href;
+			var logoUrlIndex = myURL.indexOf("?sublogo=")+9;
+			var logoUrl = myURL.substring(logoUrlIndex,myURL.length);
+			
+			if ( logoUrlIndex != 8 ){
+				var myLogoImg = '<img src='+logoUrl+' style="height: 140px; width: auto;" />';
+				$('div#agency-logo').append(myLogoImg);
+				
+				$('a').each(function(index) {
+					var myHref = $(this).attr('href');
+					myHref += "?sublogo="+logoUrl;
+					$(this).attr('href', myHref);
+				});
+			};
+		};
+		
+		var windowW = $(window).width();
+		var hasAlert = $('div.alert').length;
+		var alertMsg = "";
+		
+		if ( hasAlert > 0 ){
+			alertMsg = $('div.alert').text();
+			if ( alertMsg.indexOf("Login") != -1 && ( windowW <= 555 ) ){
+				$('div.alert').parents('body').remove();
+				window.opener.location.reload();
+				window.close();
+			};
+		};
+		
+	};
 	
 	/*
 		PHOTO UPLOAD » VIDEO UPLOAD » CHANGE VIDEO STRING TO EMBED
@@ -1415,6 +1472,8 @@ $(document).ready(function(){
 	ubersiteConfigCustomTheme();
 	ubersiteConfigColors();
 	setupPopUpWindows();
+	subdomainLogin();
+	subdomainLoginVerify();
 	videoString();
 	
 	//loginPanelSetup();

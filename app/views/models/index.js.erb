@@ -1,2 +1,2 @@
 $("#models").html('<%= escape_javascript(render("search_result_#{current_agency.subscription.name}")) %>');
-$("#add_all_models").attr('href', '<%= castings_open_add_models_path({models: @models_ids}) %>');
+$("#add_all_models").attr('href', '<%= castings_open_add_models_path({models_id: @models_ids}) %>');
