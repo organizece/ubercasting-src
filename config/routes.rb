@@ -12,6 +12,11 @@ Ubercasting::Application.routes.draw do
   devise_for :customers, :controllers => { :sessions => "customers/sessions", :confirmations => "customers/confirmations", :passwords => "customers/passwords" }
   ActiveAdmin.routes(self)
 
+  as :agency do
+    match '/my/agencies/do_payment' => 'agencies/registrations#do_payment', via: :post, as: :agency_do_payment
+    match '/my/agencies/confirm_payment' => 'agencies/registrations#confirm_payment', via: :get, as: :agency_confirm_payment
+  end
+
   devise_for :agencies, :controllers => { :sessions => "agencies/sessions", :registrations => "agencies/registrations", :passwords => "agencies/passwords", :confirmations => "agencies/confirmations" }, :path_prefix => 'my'
   ActiveAdmin.routes(self)
 
