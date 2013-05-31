@@ -250,16 +250,6 @@ $(document).ready(function(){
 		
 	}
 	
-	function mapModelMeasures(){
-		
-		if ( $("#model_height").length > 0 ){
-			
-			
-			
-		};
-		
-	}
-	
 	/*
 		MODELS » SEARCH » SHOW OPTIONS LIST
 		MODELS » SEARCH » RESIZE COMPOSITE IMAGES
@@ -395,6 +385,9 @@ $(document).ready(function(){
 		
 	}
 	
+	/*
+		AGENCY » REGISTER » MAIN FLOW
+	*/
 	function setupRegisterFlow(){
 		
 		// PLANS DEFINITION
@@ -578,6 +571,11 @@ $(document).ready(function(){
 					}
 				});
 				
+				//Fill PLAN ID Hidden input
+				var planIdInput = $('input#agency_account_period').val()+"-"+$('input#agency_account_type').val();
+				var planId = $('input#'+planIdInput).val();
+				$('input#plan_id').val(planId);
+				
 			}else{
 				$('div.form-register-field input.input-btn-gold-light-4-column').click(function(event) {
 					
@@ -591,6 +589,9 @@ $(document).ready(function(){
 					};
 					
 				});
+				
+				//Fill PLAN ID Hidden input
+				$('input#plan_id').val("nil");
 				
 			};
 			
@@ -1456,7 +1457,6 @@ $(document).ready(function(){
 	searchBarSetup();
 	searchHorizontalHidden();
 	mapModelAge();
-	mapModelMeasures();
 	modelShowSecondInfo();
 	modelFormValidation();
 	modelArtName();

@@ -211,13 +211,13 @@ pt:
         responsible_birthday: Data de Nascimento do Responsável
         responsible_cpf: CPF do Responsável
         responsible_rg: RG do Responsável
-        weight: Peso
-        height: Altura
+        weight: Peso (kg)
+        height: Altura (m)
         eyes_color: Cor dos Olhos
         hair_color: Cor dos Cabelos
-        bust: Busto
-        waist: Cintura
-        hip: Quadril
+        bust: Busto (cm)
+        waist: Cintura (cm)
+        hip: Quadril (cm)
         mannequin: Manequim
         shoes_size: N Sapatos
         curriculum: Curriculum

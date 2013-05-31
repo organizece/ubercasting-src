@@ -4,14 +4,28 @@
 	
 	<div id="content-wrapper">
 		
-		<%= simple_form_for(resource, as: resource_name, url: agency_do_payment_path(resource_name)) do |f| %>
+		<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 		
 		<%= f.error_notification %>
 		
 		<div id="plans">
 			
+			<% @monthly.each do |monthly| %>
+				<%= hidden_field_tag "monthly-#{monthly.subscription.name}", monthly.id %>
+			<% end %>
+			
+			<% @semiannual.each do |semiannual| %>
+				<%= hidden_field_tag "semiannual-#{semiannual.subscription.name}", semiannual.id %>
+			<% end %>
+			
+			<% @annual.each do |annual| %>
+				<%= hidden_field_tag "annual-#{annual.subscription.name}", annual.id %>
+			<% end %>
+			
 			<%= f.hidden_field :account_period, :value => "monthly" %>
 			<%= f.hidden_field :account_type %>
+			
+			<%= hidden_field_tag "plan_id" %>
 			
 			<h2 class="main-title">Nossos <span>Planos</span></h2>
 			<p>Confira qual o melhor plano para o seu negócio e faça o seu cadastro. É simples, e em caso de dúvidas, fale conosco.</p>

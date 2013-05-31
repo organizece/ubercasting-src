@@ -1031,6 +1031,8 @@ span.icon-title-pencil{
 	padding: 0px 0px 5px 0;
 }
 
+.form-block-2-columns span.tip{ margin: -10px 0px 0px 5px; }
+
 .form-block-2-columns input.input-txt-light-4-column,
 .form-block-2-columns select.full-select{ width:125px !important; }
 
