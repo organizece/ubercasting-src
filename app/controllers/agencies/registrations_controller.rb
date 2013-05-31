@@ -8,9 +8,28 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
 
     super
   end
+
+  def do_payment
+    build_resource
+    session[:registration_new_agency] = resource
+
+    redirect_to "http://www.google.com"
+    # fazer pagamento
+  end
+
+  def confirm_payment
+    resource = session[:registration_new_agency]
+
+    # fazer recorrente
+
+    session[:registration_new_agency] = resource
+  end
   
   def create
-    build_resource
+    resource = session[:registration_new_agency]
+
+    # Clean session key
+    session[:registration_new_agency] = nil
 
     subscription = Subscription.find_by_name(resource.account_type)
     resource.subscription = subscription
