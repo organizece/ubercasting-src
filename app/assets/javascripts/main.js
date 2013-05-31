@@ -250,16 +250,6 @@ $(document).ready(function(){
 		
 	}
 	
-	function mapModelMeasures(){
-		
-		if ( $("#model_height").length > 0 ){
-			
-			
-			
-		};
-		
-	}
-	
 	/*
 		MODELS » SEARCH » SHOW OPTIONS LIST
 		MODELS » SEARCH » RESIZE COMPOSITE IMAGES
@@ -1456,7 +1446,6 @@ $(document).ready(function(){
 	searchBarSetup();
 	searchHorizontalHidden();
 	mapModelAge();
-	mapModelMeasures();
 	modelShowSecondInfo();
 	modelFormValidation();
 	modelArtName();
