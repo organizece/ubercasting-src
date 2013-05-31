@@ -4,4 +4,5 @@ class Subscription < ActiveRecord::Base
 
   has_many :agencies
   has_many :themes, as: :owner, dependent: :destroy
+  has_many :subscription_plans
 end

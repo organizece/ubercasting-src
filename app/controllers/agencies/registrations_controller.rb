@@ -1,5 +1,13 @@
 class Agencies::RegistrationsController < Devise::RegistrationsController
   layout "main_page", :except => [:edit, :update]
+
+  def new
+    @monthly = SubscriptionPlan.where(months_qty: 1)
+    @semiannual = SubscriptionPlan.where(months_qty: 6)
+    @annual = SubscriptionPlan.where(months_qty: 12)
+
+    super
+  end
   
   def create
     build_resource
