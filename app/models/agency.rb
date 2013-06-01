@@ -14,7 +14,8 @@ class Agency < ActiveRecord::Base
           :name, :cnpj, :owner_name, :owner_cpf, :domain, :account_type, :account_period, :account_payment,
           :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :agency_about,
           :insc_state, :insc_city, :fancy_name, :social_name, :phone, :fax, :agency_about, :subscription_id,
-          :latitude, :longitude
+          :latitude, :longitude, :paypal_customer_token, :paypal_recurring_profile_token
+  attr_accessor :paypal_payment_token
 
   geocoded_by :full_address
   after_validation :geocode, :if => :full_address_changed?
