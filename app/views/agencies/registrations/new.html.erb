@@ -10,22 +10,31 @@
 		
 		<div id="plans">
 			
+			<!-- BEGIN MONTH VALUES -->
 			<% @monthly.each do |monthly| %>
 				<%= hidden_field_tag "monthly-#{monthly.subscription.name}", monthly.id %>
+				<%= hidden_field_tag "monthly-price-#{monthly.subscription.name}", monthly.price %>
 			<% end %>
-			
+			<!-- END MONTH VALUES -->
+			<!-- BEGIN SEMIANNUAL VALUES -->
 			<% @semiannual.each do |semiannual| %>
 				<%= hidden_field_tag "semiannual-#{semiannual.subscription.name}", semiannual.id %>
+				<%= hidden_field_tag "semiannual-price-#{semiannual.subscription.name}", semiannual.price %>
 			<% end %>
-			
+			<!-- END SEMIANNUAL VALUES -->
+			<!-- BEGIN ANNUAL VALUES -->
 			<% @annual.each do |annual| %>
 				<%= hidden_field_tag "annual-#{annual.subscription.name}", annual.id %>
+				<%= hidden_field_tag "annual-price-#{annual.subscription.name}", annual.price %>
 			<% end %>
+			<!-- END ANNUAL VALUES -->
 			
 			<%= f.hidden_field :account_period, :value => "monthly" %>
 			<%= f.hidden_field :account_type %>
 			
+			<!-- MAIN VALUES -->
 			<%= hidden_field_tag "plan_id" %>
+			<%= hidden_field_tag "plan_price" %>
 			
 			<h2 class="main-title">Nossos <span>Planos</span></h2>
 			<p>Confira qual o melhor plano para o seu negócio e faça o seu cadastro. É simples, e em caso de dúvidas, fale conosco.</p>
@@ -34,9 +43,9 @@
 			
 			<div id="plan-period">
 				<ul>
-					<li><a href="javascript:return false;" title="Mensal" class="monthly period-active">Mensal</a></li>
-					<li><a href="javascript:return false;" title="Semestral" class="semiannual">Semestral</a></li>
-					<li><a href="javascript:return false;" title="Anual" class="annual">Anual</a></li>
+					<li><a href="javascript:void(0);" title="Mensal" class="monthly period-active">Mensal</a></li>
+					<li><a href="javascript:void(0);" title="Semestral" class="semiannual">Semestral</a></li>
+					<li><a href="javascript:void(0);" title="Anual" class="annual">Anual</a></li>
 				</ul>
 			</div>
 			
