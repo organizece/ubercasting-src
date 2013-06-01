@@ -13,14 +13,40 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
     build_resource
     session[:registration_new_agency] = resource
 
-    redirect_to "http://www.google.com"
-    # fazer pagamento
+    plan = SubscriptionPlan.find(params[:plan_id])
+    if resource.account_payment == 'PayPal'
+      payment = PaypalPayment.new(plan, resource)
+      redirect_to payment.checkout_url(
+        return_url: agency_confirm_payment_url(plan_id: plan.id),
+        cancel_url: root_url
+      )
+    elsif resource.account_payment == 'PagSeguro'
+      flash[:notice] = 'Funcionalidade do pagseguro ainda sera implementada.'
+      redirect_to root_path
+    else
+      flash[:error] = 'Opcao invalida de pagamento.'
+      redirect_to root_path
+    end
   end
 
   def confirm_payment
     resource = session[:registration_new_agency]
 
-    # fazer recorrente
+    plan = SubscriptionPlan.find(params[:plan_id])
+    if resource.account_payment == 'PayPal'
+      resource.paypal_customer_token = params[:PayerID]
+      resource.paypal_payment_token = params[:token]
+      payment = PaypalPayment.new(plan, resource)
+
+      response = payment.make_recurring
+      resource.paypal_recurring_profile_token = response.profile_id
+    elsif resource.account_payment == 'PagSeguro'
+      flash[:notice] = 'Funcionalidade do pagseguro ainda sera implementada.'
+      redirect_to root_path
+    else
+      flash[:error] = 'Opcao invalida de pagamento.'
+      redirect_to root_path
+    end
 
     session[:registration_new_agency] = resource
   end
