@@ -10,7 +10,15 @@
 	</div>
 	
 	<div id="agency-logo">
-		<%= image_tag @agency.website.logo.url(:logo), {:style => "width:auto; height: 70px;"} %>
+		<% if !@agency.website.logo_url.blank?  %>
+			<%= image_tag @agency.website.logo_url, {:style => "width:auto; height: 100px;"} %>
+		<% else %>
+			<% if @agency.website.logo.url == "/logos/original/missing.png" %>
+				Sua logomarca ficará aqui.
+			<% else %>
+				<%= image_tag @agency.website.logo.url(:logo), {:style => "width:auto; height: 100px;"} %>
+			<% end %>
+		<% end %>
 	</div>
 	
 	<div id="customer-login-window">
@@ -47,10 +55,6 @@
 			
 		<% end %>
 		
-	</div>
-	
-	<div id="uber-logo">
-		<%= image_tag "customer/img-uber-logo.png" %>
 	</div>
 	
 </div>

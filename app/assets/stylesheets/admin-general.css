@@ -2369,15 +2369,18 @@ div#edit-agency-profile-pic div#profile-pic-container{
 	height: 128px;
 	background-color: #fff;
 	border: 1px solid #a1a1a1;
-	padding: 5px;
 	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
 }
 
 div#edit-agency-profile-pic div#profile-pic-container img{
-	width: 128px;
-	height: 128px;
+	width: auto;
+	max-width:none;
+	height: auto;
 	display: block;
 	margin: 0 auto;
+	position: absolute;
 }
 
 div#edit-agency-inputs h3{

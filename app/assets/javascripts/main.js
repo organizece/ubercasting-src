@@ -727,6 +727,15 @@ $(document).ready(function(){
 		$("#agency_fax").mask("(99)9999-9999");
 	}
 	
+	/*
+		AGENCY » MY ACCOUNT » PROFILE PICTURE
+	*/
+	function setupAgencyProfilePic(){
+		if ($('div#edit-agency-profile-pic').length > 0) {
+			$('div#profile-pic-container img').resizeToParent();
+		};
+	}
+	
 	function setupAgencyAccountUpgrade(){
 		
 		if ( $('div#agency-account-upgrade').length ){
@@ -1463,6 +1472,7 @@ $(document).ready(function(){
 	checkModelAgeBox();
 	registerFlow();
 	setupAgencyAccountUpgrade();
+	setupAgencyProfilePic();
 	getMainPath();
 	websiteUpdateThemePreview();
 	setupSimpleModal();
