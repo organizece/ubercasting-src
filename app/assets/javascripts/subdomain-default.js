@@ -185,9 +185,20 @@ $(document).ready(function(){
 		};
 	}
 	
+	/*
+		SUBDOMAIN » PHONE NUMBER MASK
+	*/
+	function customerRequestInputMask(){
+		var isCustomerReq = $('div#customer-request-form').length;
+		if ( isCustomerReq > 0 ){
+			$('input#agency_customer_request_phone').mask("(99) 9999-9999");
+		};
+	}
+	
 	setupNavBar();
 	setupHomeImgs();
 	stripesThemeSetup();
 	checkSlideCall();
+	customerRequestInputMask();
 	
 });
