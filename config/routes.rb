@@ -17,7 +17,7 @@ Ubercasting::Application.routes.draw do
     match '/my/agencies/confirm_paypal_payment' => 'agencies/registrations#confirm_paypal_payment', via: :get, as: :agency_confirm_paypal_payment
     match '/my/agencies/confirm_pagseguro_payment' => 'agencies/registrations#confirm_pagseguro_payment', via: :get, as: :agency_confirm_pagseguro_payment
     match '/my/agencies/cancel_subscription' => 'agencies/registrations#cancel_subscription', via: :get, as: :agency_cancel_subscription
-    match '/my/agencies/change_subscription' => 'agencies/registrations#change_subscription', via: :get, as: :agency_change_subscription
+    match '/my/agencies/change_subscription' => 'agencies/registrations#change_subscription', via: :post, as: :agency_change_subscription
     match '/my/agencies/confirm_change_subscription' => 'agencies/registrations#confirm_change_subscription', via: :get, as: :agency_confirm_change_subscription
   end
 

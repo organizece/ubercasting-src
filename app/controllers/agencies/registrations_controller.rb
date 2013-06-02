@@ -1,10 +1,16 @@
 class Agencies::RegistrationsController < Devise::RegistrationsController
-  layout "main_page", :except => [:edit, :update]
+  layout "main_page", :except => [:edit, :update, :cancel_subscription]
 
   def new
     @monthly = SubscriptionPlan.where(months_qty: 1)
     @semiannual = SubscriptionPlan.where(months_qty: 6)
     @annual = SubscriptionPlan.where(months_qty: 12)
+
+    super
+  end
+  
+  def edit
+    initialize_subscription_data
 
     super
   end
@@ -128,6 +134,7 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
 
       redirect_to destroy_agency_session_path
     else
+      initialize_subscription_data
       flash[:error] = 'O seu periodo minimo de utilizacao do servico nao acabou.'
       render "edit"
     end
@@ -174,7 +181,10 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
     else
       @agency.subscription_cancellation_date = nil
     end
-
+    
+    @agency.account_type = plan.subscription.name
+    @agency.account_period = plan.period
+    
     @agency.save!
     flash[:notice] = 'Alteracao no plano realizada com sucesso!'
     redirect_to agency_root_path
@@ -200,6 +210,14 @@ private
 
   def cancel_pagseguro
 
+  end
+  
+  def initialize_subscription_data
+    @plan = SubscriptionPlan.find(current_agency.plan_id)
+    
+    @monthly = SubscriptionPlan.where(months_qty: 1)
+    @semiannual = SubscriptionPlan.where(months_qty: 6)
+    @annual = SubscriptionPlan.where(months_qty: 12)
   end
   
 end
