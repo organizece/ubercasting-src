@@ -390,26 +390,39 @@ $(document).ready(function(){
 	*/
 	function setupRegisterFlow(){
 		
-		// PLANS DEFINITION
-		var freeMonthPrice = 0;
-		var topMonthPrice = 0;
-		var uberMonthPrice = 0;
-		
-		var freeTemplates = 0;
-		var topTemplates = 5;
-		var uberTemplates = 1000;
-		
-		var freeModels = 5;
-		var topModels = 50;
-		var uberModels = 1000;
-		
-		var freeDomain = false;
-		var topDomain = true;
-		var uberDomain = true;
-		
-		var currentPlanPeriod = "";
-		var currentPlanType = "";
-		
+		if ( $('div#plans').length > 0 ){
+			// PLANS DEFINITION
+			var freeMonthPrice = 0;
+
+			var topMonthPrice = $('input#monthly-price-standard').val();
+			var uberMonthPrice = $('input#monthly-price-uber').val();
+
+			var topSemiPrice = $('input#semiannual-price-standard').val();
+			var uberSemiPrice = $('input#semiannual-price-uber').val();
+
+			var topAnnualPrice = $('input#annual-price-standard').val();
+			var uberAnnualPrice = $('input#annual-price-uber').val();
+
+			var freeTemplates = 0;
+			var topTemplates = 5;
+			var uberTemplates = 1000;
+
+			var freeModels = 5;
+			var topModels = 50;
+			var uberModels = 1000;
+
+			var freeDomain = false;
+			var topDomain = true;
+			var uberDomain = true;
+
+			var currentPlanPeriod = "";
+			var currentPlanType = "";
+			
+			//APPLY INITIAL PRICES
+			$('div#plan-type div#type-03 p.price-top').html("R$"+topMonthPrice+"0<span>/mês</span>");
+			$('div#plan-type div#type-02 p.price-top').html("R$"+uberMonthPrice+"0<span>/mês</span>");
+		};
+
 		//SET UP TOOLTIP FUNCTIONS
 		$('a.has-tooltip').css('color', '#232323');
 		$('a.has-tooltip').css('font-size', '80%');
@@ -443,18 +456,18 @@ $(document).ready(function(){
 			switch( $(this).text() ){
 				case "Mensal":
 					$('input#agency_account_period').val("monthly");
-					$('div#plan-type div#type-03 p.price-top').html("R$"+topMonthPrice+",00<span>/mês</span>");
-					$('div#plan-type div#type-02 p.price-top').html("R$"+uberMonthPrice+",00<span>/mês</span>");
+					$('div#plan-type div#type-03 p.price-top').html("R$"+topMonthPrice+"0<span>/mês</span>");
+					$('div#plan-type div#type-02 p.price-top').html("R$"+uberMonthPrice+"0<span>/mês</span>");
 				break;
 				case "Semestral":
 					$('input#agency_account_period').val("semiannual");
-					$('div#plan-type div#type-03 p.price-top').html("R$"+(topMonthPrice*6)+",00<span>/total</span>");
-					$('div#plan-type div#type-02 p.price-top').html("R$"+(uberMonthPrice*6)+",00<span>/total</span>");
+					$('div#plan-type div#type-03 p.price-top').html("R$"+(topSemiPrice)+"0<span>/mês</span>");
+					$('div#plan-type div#type-02 p.price-top').html("R$"+(uberSemiPrice)+"0<span>/mês</span>");
 				break;
 				case "Anual":
 					$('input#agency_account_period').val("annual");
-					$('div#plan-type div#type-03 p.price-top').html("R$"+(topMonthPrice*12)+",00<span>/total</span>");
-					$('div#plan-type div#type-02 p.price-top').html("R$"+(uberMonthPrice*12)+",00<span>/total</span>");
+					$('div#plan-type div#type-03 p.price-top').html("R$"+(topAnnualPrice)+"0<span>/mês</span>");
+					$('div#plan-type div#type-02 p.price-top').html("R$"+(uberAnnualPrice)+"0<span>/mês</span>");
 				break;
 			}
 			
@@ -482,15 +495,7 @@ $(document).ready(function(){
 					$('div.plan-summary-folder ul li.plan-summary-template').text("Templates para o site: "+topTemplates);
 					$('div.plan-summary-folder ul li.plan-summary-models').text("Modelos para cadastro: "+topModels);
 					$('div.plan-summary-folder ul li.plan-summary-domain').text("Domínio próprio: Sim");
-					
-					if( $('input#agency_account_period').val() == "monthly" ){
-						$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+topMonthPrice+",00 <span>/mês</span>");
-					}else if( $('input#agency_account_period').val() == "semiannual" ){
-						$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+(topMonthPrice*6)+",00 <span>/total</span>");
-					}else{
-						$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+(topMonthPrice*12)+",00 <span>/total</span>");
-					};
-					
+					/* PRICE SET UP RIGHT BELOW */
 				break;
 				case "type-02":
 					currentPlanType = "uber";
@@ -500,15 +505,7 @@ $(document).ready(function(){
 					$('div.plan-summary-folder ul li.plan-summary-template').text("Templates para o site: todos");
 					$('div.plan-summary-folder ul li.plan-summary-models').text("Modelos para cadastro: ilimitado");
 					$('div.plan-summary-folder ul li.plan-summary-domain').text("Domínio próprio: Sim");
-					
-					if( $('input#agency_account_period').val() == "monthly" ){
-						$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+uberMonthPrice+",00 <span>/mês</span>");
-					}else if( $('input#agency_account_period').val() == "semiannual" ){
-						$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+(uberMonthPrice*6)+",00 <span>/total</span>");
-					}else{
-						$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+(uberMonthPrice*12)+",00 <span>/total</span>");
-					};
-					
+					/* PRICE SET UP RIGHT BELOW */
 				break;
 			}
 			
@@ -575,6 +572,12 @@ $(document).ready(function(){
 				var planIdInput = $('input#agency_account_period').val()+"-"+$('input#agency_account_type').val();
 				var planId = $('input#'+planIdInput).val();
 				$('input#plan_id').val(planId);
+				
+				//Fill PLAN PRICE Hidden input and setup price folder
+				var planPriceInput = $('input#agency_account_period').val()+"-price-"+$('input#agency_account_type').val();
+				var planPrice = $('input#'+planPriceInput).val();
+				$('input#plan_price').val(planPrice);
+				$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+(planPrice)+"0 <span>/total</span>");
 				
 			}else{
 				$('div.form-register-field input.input-btn-gold-light-4-column').click(function(event) {
