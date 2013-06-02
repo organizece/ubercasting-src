@@ -9,48 +9,6 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  def do_payment
-    build_resource
-    session[:registration_new_agency] = resource
-
-    plan = SubscriptionPlan.find(params[:plan_id])
-    if resource.account_payment == 'PayPal'
-      payment = PaypalPayment.new(plan, resource)
-      redirect_to payment.checkout_url(
-        return_url: agency_confirm_payment_url(plan_id: plan.id),
-        cancel_url: root_url
-      )
-    elsif resource.account_payment == 'PagSeguro'
-      flash[:notice] = 'Funcionalidade do pagseguro ainda sera implementada.'
-      redirect_to root_path
-    else
-      flash[:error] = 'Opcao invalida de pagamento.'
-      redirect_to root_path
-    end
-  end
-
-  def confirm_payment
-    resource = session[:registration_new_agency]
-
-    plan = SubscriptionPlan.find(params[:plan_id])
-    if resource.account_payment == 'PayPal'
-      resource.paypal_customer_token = params[:PayerID]
-      resource.paypal_payment_token = params[:token]
-      payment = PaypalPayment.new(plan, resource)
-
-      response = payment.make_recurring
-      resource.paypal_recurring_profile_token = response.profile_id
-    elsif resource.account_payment == 'PagSeguro'
-      flash[:notice] = 'Funcionalidade do pagseguro ainda sera implementada.'
-      redirect_to root_path
-    else
-      flash[:error] = 'Opcao invalida de pagamento.'
-      redirect_to root_path
-    end
-
-    session[:registration_new_agency] = resource
-  end
-  
   def create
     resource = session[:registration_new_agency]
 
@@ -83,7 +41,6 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
   end
   
   def update
-  
     # required for settings form to submit when password is left blank
     if params[:agency][:password].blank?
       params[:agency].delete("password")
@@ -102,8 +59,128 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
     end
 
   end
+
+  def do_payment
+    build_resource
+    plan = SubscriptionPlan.find(params[:plan_id])
+
+    resource.plan_id = plan.id
+    session[:registration_new_agency] = resource
+
+    if resource.account_payment == 'PayPal'
+      payment = PaypalPayment.new(plan, resource)
+      redirect_to payment.checkout_url(
+        return_url: agency_confirm_paypal_payment_url,
+        cancel_url: root_url
+      )
+    elsif resource.account_payment == 'PagSeguro'
+      flash[:notice] = 'Funcionalidade do pagseguro ainda sera implementada.'
+      redirect_to root_path
+    else
+      flash[:error] = 'Opcao invalida de pagamento.'
+      redirect_to root_path
+    end
+  end
+
+  def confirm_paypal_payment
+    resource = session[:registration_new_agency]
+    plan = SubscriptionPlan.find(resource.plan_id)
+
+    resource.paypal_customer_token = params[:PayerID]
+    resource.paypal_payment_token = params[:token]
+    
+    payment = PaypalPayment.new(plan, resource)
+    response = payment.make_recurring
+    resource.paypal_recurring_profile_token = response.profile_id
+
+    # If not a monthly plan set the cancellation date
+    if plan.months_qty != 1
+      resource.subscription_cancellation_date = Date.current.months_since(plan.months_qty)
+    else
+      resource.subscription_cancellation_date = nil
+    end
+
+    session[:registration_new_agency] = resource
+  end
+
+  def confirm_pagseguro_payment
+    resource = session[:registration_new_agency]
+
+    plan = SubscriptionPlan.find(resource.plan_id)
+    flash[:notice] = 'Funcionalidade do pagseguro ainda sera implementada.'
+    redirect_to root_path
+
+    session[:registration_new_agency] = resource
+  end
+
+  def cancel_subscription
+    @agency = current_agency
+    if @agency.can_cancel?
+
+      if @agency.account_payment == 'PayPal'
+        cancel_paypal
+      elsif @agency.account_payment == 'PagSeguro'
+        cancel_pagseguro
+      end
+
+      @agency.active = false
+      @agency.save!
+
+      redirect_to destroy_agency_session_path
+    else
+      flash[:error] = 'O seu periodo minimo de utilizacao do servico nao acabou.'
+      render "edit"
+    end
+  end
+
+  def change_subscription
+    @agency = current_agency
+    plan = SubscriptionPlan.find(params[:plan_id])
+
+    if @agency.account_payment == 'PayPal'
+      @agency.paypal_customer_token = nil
+      @agency.paypal_payment_token = nil
+
+      payment = PaypalPayment.new(plan, @agency)
+      redirect_to payment.checkout_url(
+        return_url: agency_confirm_change_subscription_url(plan_id: plan.id),
+        cancel_url: agency_root_url
+      )
+    elsif @agency.account_payment == 'PagSeguro'
+      flash[:notice] = 'Funcionalidade do pagseguro ainda sera implementada.'
+      redirect_to root_path
+    else
+      redirect_to agency_root_path
+    end
+  end
+
+  def confirm_change_subscription
+    @agency = current_agency
+    plan = SubscriptionPlan.find(params[:plan_id])
+
+    cancel_paypal
+
+    @agency.paypal_customer_token = params[:PayerID]
+    @agency.paypal_payment_token = params[:token]
+    @agency.plan_id = plan.id
+    
+    payment = PaypalPayment.new(plan, @agency)
+    response = payment.make_recurring
+    @agency.paypal_recurring_profile_token = response.profile_id
+
+    # If not a monthly plan set the cancellation date
+    if plan.months_qty != 1
+      @agency.subscription_cancellation_date = Date.current.months_since(plan.months_qty)
+    else
+      @agency.subscription_cancellation_date = nil
+    end
+
+    @agency.save!
+    flash[:notice] = 'Alteracao no plano realizada com sucesso!'
+    redirect_to agency_root_path
+  end
   
-  protected
+protected
   
   def after_sign_up_path_for(resource)
       "/my/agencies/sign_in"
@@ -111,6 +188,18 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
   
   def after_inactive_sign_up_path_for(resource)
       "/my/agencies/sign_in"
+  end
+
+private
+
+  def cancel_paypal
+    plan = SubscriptionPlan.find(@agency.plan_id)
+    payment = PaypalPayment.new(plan, @agency)
+    payment.cancel_recurring
+  end
+
+  def cancel_pagseguro
+
   end
   
 end
