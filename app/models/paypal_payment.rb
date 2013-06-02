@@ -13,7 +13,11 @@ class PaypalPayment
   end
   
   def make_recurring
-    process :create_recurring_profile, period: :monthly, frequency: @plan.months_qty, start_at: Time.zone.now
+    process :create_recurring_profile, period: :monthly, frequency: billing_frequency, start_at: billing_date
+  end
+
+  def cancel_recurring
+    process :cancel
   end
   
 private
@@ -30,4 +34,16 @@ private
     raise response.errors.inspect if response.errors.present?
     response
   end
+
+  def billing_date
+    bill_date = Date.current.change(day: 5)
+    bill_date = bill_date.next_month if bill_date.past?
+
+    bill_date
+  end
+
+  def billing_frequency
+    1
+  end
+
 end
