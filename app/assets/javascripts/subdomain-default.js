@@ -144,9 +144,10 @@ $(document).ready(function(){
 		
 		var slidePos = 0;
 		var limitDisplay = slideShowCols * slideW;
-		alert("just checking");
+		
 		if ( (slideH <= 50) || (slideH == 0) ){
 			$('div.theme-home-model-box img').load(function() {
+
 				slideH = $('div.theme-home-model-box').height();
 				slideW = $('div.theme-home-model-box').width() + parseInt($('div.theme-home-model-box').css('margin-left'),10) + parseInt($('div.theme-home-model-box').css('margin-right'),10);
 
