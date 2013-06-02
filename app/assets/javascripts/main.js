@@ -745,17 +745,19 @@ $(document).ready(function(){
 			
 			// PLANS DEFINITION
 			var freeMonthPrice = 0;
-			var topMonthPrice = 0;
-			var uberMonthPrice = 0;
 			
-			var monthMult = 1;
-			var semiannualMult = 6;
-			var annualMult = 12;
+			var topMonthPrice = $('input#monthly-price-standard').val();
+			var uberMonthPrice = $('input#monthly-price-uber').val();
+
+			var topSemiPrice = $('input#semiannual-price-standard').val();
+			var uberSemiPrice = $('input#semiannual-price-uber').val();
+
+			var topAnnualPrice = $('input#annual-price-standard').val();
+			var uberAnnualPrice = $('input#annual-price-uber').val();
 			
-			var calcVet = new Array();
-			
-			var actualValue = 0;
-			var upgradeValue = 0;
+			var subPeriod = "monthly";
+			var subType = "";
+			var finalId = "";
 			
 			//HIDE UPGRADE BLOCK
 			$('div#agency-account-upgrade').hide();
@@ -769,42 +771,6 @@ $(document).ready(function(){
 			  $(this).removeClass('active-tab');
 			});
 			
-			//CHECK ACCOUNT TYPE
-			switch($('#agency_account_type').val()){
-				case "free":
-					$('ul#agency-account-upgrade-type li:eq(0) a').addClass('active-tab');
-					calcVet[0] = freeMonthPrice;
-				break;
-				case "standard":
-					$('ul#agency-account-upgrade-type li:eq(1) a').addClass('active-tab');
-					calcVet[0] = topMonthPrice;
-				break;
-				case "uber":
-					$('ul#agency-account-upgrade-type li:eq(2) a').addClass('active-tab');
-					calcVet[0] = uberMonthPrice;
-				break;
-			}
-			
-			//CHECK ACCOUNT PERIOD
-			switch($('#agency_account_period').val()){
-				case "monthly":
-					$('ul#agency-account-upgrade-period li:eq(0) a').addClass('active-tab');
-					calcVet[1] = monthMult;
-				break;
-				case "semiannual":
-					$('ul#agency-account-upgrade-period li:eq(1) a').addClass('active-tab');
-					calcVet[1] = semiannualMult;
-				break;
-				case "annual":
-					$('ul#agency-account-upgrade-period li:eq(2) a').addClass('active-tab');
-					calcVet[1] = annualMult;
-				break;
-			}
-			
-			//CHECK ACCOUNT VALUE
-			actualValue = calcVet[0] * calcVet[1];
-			$('span#account-up-actual-price').text('R$'+actualValue+",00");
-			
 			//CHECK ACCOUNT TYPE AND PERIOD
 			$('div.ui-tab-container ul li a').each(function(index) {
 			  $(this).click(function(event) {
@@ -817,44 +783,20 @@ $(document).ready(function(){
 				var activeIndex = linkClass.indexOf("active-tab");
 				var linkValue = linkClass.substring(0,activeIndex-1);
 				
-				if ( linkValue == "free" || linkValue == "standard" || linkValue == "uber" ){
-					$('#agency_account_type').val(linkValue);
-				}else if( linkValue == "monthly" || linkValue == "semiannual" || linkValue == "annual" ){
-					$('#agency_account_period').val(linkValue);
+				if ( $(this).parents('ul').attr('id') == "agency-account-upgrade-type" ){
+					subType = linkValue;
 				};
 				
-				//CHECK ACCOUNT TYPE
-				switch($('#agency_account_type').val()){
-					case "free":
-						calcVet[0] = freeMonthPrice;
-						$('#agency_subscription_id').val(1);
-					break;
-					case "standard":
-						calcVet[0] = topMonthPrice;
-						$('#agency_subscription_id').val(2);
-					break;
-					case "uber":
-						calcVet[0] = uberMonthPrice;
-						$('#agency_subscription_id').val(3);
-					break;
+				if ( $(this).parents('ul').attr('id') == "agency-account-upgrade-period" ){
+					subPeriod = linkValue;
 				};
 				
-				//CHECK ACCOUNT PERIOD
-				switch($('#agency_account_period').val()){
-					case "monthly":
-						calcVet[1] = monthMult;
-					break;
-					case "semiannual":
-						calcVet[1] = semiannualMult;
-					break;
-					case "annual":
-						calcVet[1] = annualMult;
-					break;
+				if ( subPeriod != "" && subType != "" ){
+					finalId = subPeriod +"-"+ subType;
+					finalPriceId = subPeriod +"-price-"+ subType;
+					$('input#plan_id').val($('input#'+finalId).val());
+					$('input#plan_price').val($('input#'+finalPriceId).val());
 				};
-				
-				//CHECK ACCOUNT UPGRADE VALUE
-				upgradeValue = calcVet[0] * calcVet[1];
-				$('span#account-up-upgrade-price').text('R$'+upgradeValue+",00");
 				
 			  });
 			});

@@ -17,7 +17,7 @@ class PaypalPayment
   end
 
   def cancel_recurring
-    process :cancel
+    process :cancel, profile_id: @agency.paypal_recurring_profile_token
   end
   
 private
