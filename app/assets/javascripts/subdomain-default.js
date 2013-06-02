@@ -144,7 +144,7 @@ $(document).ready(function(){
 		
 		var slidePos = 0;
 		var limitDisplay = slideShowCols * slideW;
-		
+		alert("just checking");
 		if ( (slideH <= 50) || (slideH == 0) ){
 			$('div.theme-home-model-box img').load(function() {
 				slideH = $('div.theme-home-model-box').height();
