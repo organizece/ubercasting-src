@@ -14,7 +14,8 @@ class Agency < ActiveRecord::Base
           :name, :cnpj, :owner_name, :owner_cpf, :domain, :account_type, :account_period, :account_payment,
           :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :agency_about,
           :insc_state, :insc_city, :fancy_name, :social_name, :phone, :fax, :agency_about, :subscription_id,
-          :latitude, :longitude, :paypal_customer_token, :paypal_recurring_profile_token
+          :latitude, :longitude, :paypal_customer_token, :paypal_recurring_profile_token, :subscription_cancellation_date,
+          :active, :plan_id
   attr_accessor :paypal_payment_token
 
   geocoded_by :full_address
@@ -40,6 +41,10 @@ class Agency < ActiveRecord::Base
 
   def full_address_changed?
     address_changed? || address_number_changed? || cep_changed? || city_changed? || state_changed? || country_changed?
+  end
+
+  def can_cancel?
+    !subscription_cancellation_date || subscription_cancellation_date.past?
   end
 
 end
