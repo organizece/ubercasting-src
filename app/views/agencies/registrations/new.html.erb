@@ -284,18 +284,12 @@
 				
 				<div class="form-register-field">
 					<ul class="payments">
+						<!--<li><%= f.radio_button :account_payment, "PagSeguro" %><%= image_tag "internal/flag-pagseguro.jpg" %></li>-->
 						<li>
-							<%= f.radio_button :account_payment, "PagSeguro" %>
-							<%= image_tag "internal/flag-pagseguro.jpg" %>
-						</li>
-						<li>
-							<%= f.radio_button :account_payment, "PayPal" %>
+							<%= f.radio_button :account_payment, "PayPal", :checked => "checked" %>
 							<%= image_tag "internal/flag-paypal.jpg" %>
 						</li>
-						<li>
-							<%= f.radio_button :account_payment, "Boleto", :checked => true %>
-							<%= image_tag "internal/flag-boleto.jpg" %>
-						</li>
+						<!--<li><%= f.radio_button :account_payment, "Boleto", :checked => true %><%= image_tag "internal/flag-boleto.jpg" %></li>-->
 					</ul>
 					
 				</div>
@@ -310,6 +304,7 @@
 				<div id="content-split"></div>
 				
 				<p class="inner-tip">Ao clicar no botão "Finalizar", você declara que leu, entendeu e concordou com os nossos <%= link_to 'Termos de Uso', contract_path, :target => "_blank", :class => "outter-link  popup-link" %>.</p>
+				<p class="inner-tip">Não possuí uma conta no PayPal? Você pode criar uma <%= link_to 'clicando aqui', "http://www.paypal.com.br", :target => "_blank", :class => "outter-link" %>. É fácil, rápido e seguro (pois não compartilha os dados do seu cartão).</p>
 				
 			</div>
 			

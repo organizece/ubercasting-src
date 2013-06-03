@@ -2414,11 +2414,11 @@ div#edit-agency-payment-info ul.payments li{ display: block; float: left; margin
 div#edit-agency-payment-info ul.payments li input{ margin-right: 10px; }
 
 div#edit-agency-payment-info div#agency-account-type-info{ 
-	width: auto; 
+	width: 93%; 
 	background-color: #f9ed05; 
 	padding: 10px 0px 1px 10px; 
 	border-bottom: 1px solid #737373;
-	margin-top: 5px;
+	margin: 5px auto;
 }
 div#edit-agency-payment-info div#agency-account-type-info p{text-shadow: #FFF 0px 1px 1px;}
 div#edit-agency-payment-info div#agency-account-type-info span{ 
@@ -2428,9 +2428,21 @@ div#edit-agency-payment-info div#agency-account-type-info span{
 
 div#edit-agency-payment-info div#agency-account-type-info a{ float: right; margin-right: 15px; }
 
-div#edit-agency-cancel{ border-top: 1px solid #a1a1a1; margin-top: 20px; }
+div#agency-account-upgrade{ width: 94%; margin: 10px auto; }
+div#agency-account-upgrade h3{
+	font-family: 'Conv_Nexa',Sans-Serif;
+	font-size: 180%;
+	font-weight: bold;
+	color: #000;
+}
 
-div#edit-agency-cancel p{ padding-left: 20px; }
+div#agency-account-upgrade-tabs{ width: 35%; }
+
+div#edit-agency-cancel,
+div#edit-agency-subscription{ border-top: 1px solid #a1a1a1; margin-top: 20px; }
+
+div#edit-agency-cancel p,
+div#edit-agency-subscription p{ padding-left: 20px; }
 
 div#edit-agency-cancel a{
 	width:20%;
@@ -2504,16 +2516,19 @@ div.ui-tab-container ul li a.active-tab{ background-color: #EEE; }
 
 div.ui-tab-container ul li:last-child a{ border-right:none; }
 
-div.ui-tab-container-small{ width: 40%; }
+div.ui-tab-container-small{ width: 252px; }
 div.ui-tab-container-small ul{ width: 92%; }
 
-div.ui-tab-container-medium{ width: 47%; }
+div.ui-tab-container-medium{ width: 286px; }
 div.ui-tab-container-medium ul{ width: 92%; }
 div.ui-tab-container-medium ul li:last-child a{ padding-left: 25px; }
 
+ul#agency-account-upgrade-type li:first-child a,
+ul#agency-account-upgrade-type li:last-child a{ padding-left: 27px; padding-right: 27px; }
+
 div#agency-account-final-values{
-	width:95%;
-	height: auto;
+	width:60%;
+	height: 198px;
 	background: #FFF url(ubersite-config/bg-website-subnav-container.jpg) left top repeat-x scroll;
 	margin: 10px 0px 0px 0px;
 	border: 1px solid #b8b8b8;
@@ -2522,6 +2537,8 @@ div#agency-account-final-values{
 	-webkit-border-radius:4px;
 	padding: 15px;
 }
+
+div#agency-account-upgrade-action{ margin: 30px 0px; }
 
 /**************************************/
 /*  WEBSITE CONFIGURATION  ************/

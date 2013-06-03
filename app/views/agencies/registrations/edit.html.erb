@@ -226,33 +226,24 @@
 							<%= hidden_field_tag :account_period, @plan.months_qty %>
 							<%= hidden_field_tag :account_type, @plan.subscription.name %>
 						<% else %>
-							<%= hidden_field_tag :account_period, :none %>
-							<%= hidden_field_tag :account_type, :free %>
+							<%= hidden_field_tag :account_period, @agency.account_period %>
+							<%= hidden_field_tag :account_type, @agency.account_type %>
 						<% end %>
 						
-
 						<!-- MAIN VALUES -->
 						<%= hidden_field_tag :plan_id %>
 						<%= hidden_field_tag :plan_price %>
 						
 						<div id="edit-agency-payment-info" class="edit-agency-input-group">
 						
-							<h3>Informações de Pagamento</h3>
-						
 							<div>
 								<ul class="payments">
-									<!--<li>
-										<%= radio_button_tag :account_payment, "PagSeguro" %>
-										<%= image_tag "admin/flag-pagseguro.jpg" %>
-									</li>-->
+									<!--<li><%= radio_button_tag :account_payment, "PagSeguro" %><%= image_tag "admin/flag-pagseguro.jpg" %></li>-->
 									<li>
-										<!--<%= radio_button_tag :account_payment, "PayPal" %>-->
+										<%= radio_button_tag :account_payment, "PayPal", :checked => "checked" %>
 										<%= image_tag "admin/flag-paypal.jpg" %>
 									</li>
-									<!--<li>
-										<%= radio_button_tag :account_payment, "Boleto" %>
-										<%= image_tag "admin/flag-boleto.jpg" %>
-									</li>-->
+									<!--<li><%= radio_button_tag :account_payment, "Boleto" %><%= image_tag "admin/flag-boleto.jpg" %></li>-->
 								</ul>
 							</div>
 						
@@ -271,47 +262,45 @@
 						<div class="content-split"></div>
 					
 						<div id="agency-account-upgrade" class="edit-agency-input-group">
-						
-							<h3>Upgrade de Conta</h3>
-						
-							<%= hidden_field_tag :account_period %>
-							<%= hidden_field_tag :account_type %>
-							<%= hidden_field_tag :subscription_id %>
-						
-							<h4 class="header-base-title">Tipos de <strong>Conta</strong></h4>
-							<div class="ui-tab-container ui-tab-container-small">
-								<ul id="agency-account-upgrade-type" class="put-list-inline">
-									<li><a href="#" title="free" class="free">Free</a></li>
-									<li><a href="#" title="standard" class="standard">Standard</a></li>
-									<li><a href="#" title="uber" class="uber active-tab">Über</a></li>
-								</ul>
+							
+							<div id="agency-account-upgrade-tabs" class="put-left auto-size-block">
+								<h3>Upgrade de Conta</h3>
+
+								<h4 class="header-base-title">Tipos de <strong>Conta</strong></h4>
+								<div class="ui-tab-container ui-tab-container-medium">
+									<ul id="agency-account-upgrade-type" class="put-list-inline">
+										<li><a href="#" title="free" class="free">Free</a></li>
+										<li><a href="#" title="standard" class="standard">Standard</a></li>
+										<li><a href="#" title="uber" class="uber active-tab">Über</a></li>
+									</ul>
+								</div>
+
+								<div class="content-split"></div>
+
+								<h4 class="header-base-title">Período</h4>
+								<div class="ui-tab-container ui-tab-container-medium">
+									<ul id="agency-account-upgrade-period">
+										<li><a href="#" title="monthly" class="monthly">Mensal</a></li>
+										<li><a href="#" title="semiannual" class="semiannual">Semestral</a></li>
+										<li><a href="#" title="annual" class="annual active-tab">Anual</a></li>
+									</ul>
+								</div>
 							</div>
 
-							<div class="content-split"></div>
-
-							<h4 class="header-base-title">Período</h4>
-							<div class="ui-tab-container ui-tab-container-medium">
-								<ul id="agency-account-upgrade-period">
-									<li><a href="#" title="monthly" class="monthly">Mensal</a></li>
-									<li><a href="#" title="semiannual" class="semiannual">Semestral</a></li>
-									<li><a href="#" title="annual" class="annual active-tab">Anual</a></li>
+							<div id="agency-account-final-values" class="put-left">
+								<h4 class="header-base-title">Valores <strong>Finais</strong></h4>
+								<ul id="agency-account-upgrade-price">
+									<li>Valor Atual: <strong><span id="account-up-actual-price"></span></strong></li>
+									<li><h4>Valor Upgrade: <strong><span id="account-up-upgrade-price">R$ -,00</span></strong></h4></li>
 								</ul>
 							</div>
 							
 							<div class="content-split"></div>
 
-							<div id="agency-account-final-values">
-								<h4 class="header-base-title">Valores <strong>Finais</strong></h4>
-								<ul id="agency-account-upgrade-price">
-									<li><p>Valor Atual: <strong><span id="account-up-actual-price"></span></strong></p></li>
-									<li><h4>Valor Upgrade: <strong><span id="account-up-upgrade-price">R$ -,00</span></strong></h4></li>
-								</ul>
+							<div id="agency-account-upgrade-action">
+								<%= submit_tag "FAZER MUDANÇA", :class => "input-btn-gold-light-4-column" %>
 							</div>
-						
-						</div>
-					
-						<div>
-							<%= submit_tag "ATUALIZAR", :class => "put-right input-btn-gold-light-4-column" %>
+							
 						</div>
 						
 					<% end %>
