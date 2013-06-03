@@ -544,6 +544,7 @@ $(document).ready(function(){
 							case "register-pay-02":
 								$('div#register-pay-02').fadeOut('fast', function() {
 									$('div#register-pay-03').fadeIn('slow');
+									$('div#register-pay-03 ul.payments li:first input').attr('checked', 'checked');
 								});
 							break;
 						}
@@ -577,7 +578,7 @@ $(document).ready(function(){
 				var planPriceInput = $('input#agency_account_period').val()+"-price-"+$('input#agency_account_type').val();
 				var planPrice = $('input#'+planPriceInput).val();
 				$('input#plan_price').val(planPrice);
-				$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+(planPrice)+"0 <span>/total</span>");
+				$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+(planPrice)+"0 <span>/mês</span>");
 				
 			}else{
 				$('div.form-register-field input.input-btn-gold-light-4-column').click(function(event) {
@@ -755,8 +756,8 @@ $(document).ready(function(){
 			var topAnnualPrice = $('input#annual-price-standard').val();
 			var uberAnnualPrice = $('input#annual-price-uber').val();
 			
-			var subPeriod = "monthly";
-			var subType = "";
+			var subPeriod = $('input#account_period').val();
+			var subType = $('input#account_type').val();
 			var finalId = "";
 			
 			//HIDE UPGRADE BLOCK
@@ -769,6 +770,40 @@ $(document).ready(function(){
 			//CLEAR ACTIVE TAB
 			$('div.ui-tab-container ul li a').each(function(index) {
 			  $(this).removeClass('active-tab');
+			});
+			
+			//FILL INITIAL INFO
+			var currentAccountType = $('input#account_type').val();
+			var currentAccountPeriod = $('input#account_period').val();
+			
+			if ( currentAccountPeriod.length <= 2 ){
+				switch(currentAccountPeriod){
+					case "1":
+						currentAccountPeriod = "monthly";
+					break;
+					case "6":
+						currentAccountPeriod = "semiannual";
+					break;
+					case "12":
+						currentAccountPeriod = "annual";
+					break;
+				};
+			};
+			
+			var initPriceId = currentAccountPeriod +"-price-"+ currentAccountType;
+			
+			$('ul#agency-account-upgrade-price li span#account-up-actual-price').text("R$ "+$('input#'+initPriceId).val()+"0");
+			
+			$('ul#agency-account-upgrade-type li a').each(function(index) {
+				if ( $(this).attr('class') == currentAccountType ){
+					$(this).addClass('active-tab');
+				};
+			});
+			
+			$('ul#agency-account-upgrade-period li a').each(function(index) {
+				if ( $(this).attr('class') == currentAccountPeriod ){
+					$(this).addClass('active-tab');
+				};
 			});
 			
 			//CHECK ACCOUNT TYPE AND PERIOD
@@ -785,18 +820,20 @@ $(document).ready(function(){
 				
 				if ( $(this).parents('ul').attr('id') == "agency-account-upgrade-type" ){
 					subType = linkValue;
+					$('input#account_type').val(subType);
 				};
 				
 				if ( $(this).parents('ul').attr('id') == "agency-account-upgrade-period" ){
 					subPeriod = linkValue;
+					$('input#account_period').val(subPeriod);
 				};
 				
-				if ( subPeriod != "" && subType != "" ){
-					finalId = subPeriod +"-"+ subType;
-					finalPriceId = subPeriod +"-price-"+ subType;
-					$('input#plan_id').val($('input#'+finalId).val());
-					$('input#plan_price').val($('input#'+finalPriceId).val());
-				};
+				finalId = subPeriod +"-"+ subType;
+				finalPriceId = subPeriod +"-price-"+ subType;
+				$('input#plan_id').val($('input#'+finalId).val());
+				$('input#plan_price').val($('input#'+finalPriceId).val());
+				
+				$('span#account-up-upgrade-price').text("R$ "+$('input#plan_price').val()+"0/mês");
 				
 			  });
 			});
