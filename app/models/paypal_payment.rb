@@ -26,7 +26,7 @@ private
     options = options.reverse_merge(
       token: @agency.paypal_payment_token,
       payer_id: @agency.paypal_customer_token,
-      description: @plan.subscription.name,
+      description: @plan.full_description,
       amount: @plan.price,
       currency: "USD"
     )

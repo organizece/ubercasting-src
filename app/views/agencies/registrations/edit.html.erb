@@ -222,8 +222,14 @@
 						<% end %>
 						<!-- END ANNUAL VALUES -->
 
-						<%= hidden_field_tag :account_period, @plan.months_qty %>
-						<%= hidden_field_tag :account_type, @plan.subscription.name %>
+						<% if @plan %>
+							<%= hidden_field_tag :account_period, @plan.months_qty %>
+							<%= hidden_field_tag :account_type, @plan.subscription.name %>
+						<% else %>
+							<%= hidden_field_tag :account_period, :none %>
+							<%= hidden_field_tag :account_type, :free %>
+						<% end %>
+						
 
 						<!-- MAIN VALUES -->
 						<%= hidden_field_tag :plan_id %>
