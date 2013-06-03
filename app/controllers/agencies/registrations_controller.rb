@@ -2,15 +2,14 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
   layout "main_page", :except => [:edit, :update, :cancel_subscription]
 
   def new
-    @monthly = SubscriptionPlan.where(months_qty: 1)
-    @semiannual = SubscriptionPlan.where(months_qty: 6)
-    @annual = SubscriptionPlan.where(months_qty: 12)
+    initialize_subscription_plans
 
     super
   end
   
   def edit
-    initialize_subscription_data
+    initialize_agency_plan
+    initialize_subscription_plans
 
     super
   end
@@ -68,24 +67,31 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
 
   def do_payment
     build_resource
-    plan = SubscriptionPlan.find(params[:plan_id])
-
-    resource.plan_id = plan.id
-    session[:registration_new_agency] = resource
-
-    if resource.account_payment == 'PayPal'
-      payment = PaypalPayment.new(plan, resource)
-      redirect_to payment.checkout_url(
-        return_url: agency_confirm_paypal_payment_url,
-        cancel_url: root_url
-      )
-    elsif resource.account_payment == 'PagSeguro'
-      flash[:notice] = 'Funcionalidade do pagseguro ainda sera implementada.'
-      redirect_to root_path
+    
+    if resource.account_type == 'free'
+      session[:registration_new_agency] = resource
+      render 'confirm_paypal_payment'
     else
-      flash[:error] = 'Opcao invalida de pagamento.'
-      redirect_to root_path
+      plan = SubscriptionPlan.find(params[:plan_id])
+
+      resource.plan_id = plan.id
+      session[:registration_new_agency] = resource
+
+      if resource.account_payment == 'PayPal'
+        payment = PaypalPayment.new(plan, resource)
+        redirect_to payment.checkout_url(
+          return_url: agency_confirm_paypal_payment_url,
+          cancel_url: root_url
+        )
+      elsif resource.account_payment == 'PagSeguro'
+        flash[:notice] = 'Funcionalidade do pagseguro ainda sera implementada.'
+        redirect_to root_path
+      else
+        flash[:error] = 'Opcao invalida de pagamento.'
+        redirect_to root_path
+      end
     end
+
   end
 
   def confirm_paypal_payment
@@ -134,7 +140,9 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
 
       redirect_to destroy_agency_session_path
     else
-      initialize_subscription_data
+      initialize_agency_plan
+      initialize_subscription_plans
+
       flash[:error] = 'O seu periodo minimo de utilizacao do servico nao acabou.'
       render "edit"
     end
@@ -143,6 +151,12 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
   def change_subscription
     @agency = current_agency
     plan = SubscriptionPlan.find(params[:plan_id])
+
+    # Depois arrumar p/ escolher o modo de pagamento da tela
+    if @agency.account_type == 'free'
+      @agency.account_payment = 'PayPal'
+      @agency.save!
+    end
 
     if @agency.account_payment == 'PayPal'
       @agency.paypal_customer_token = nil
@@ -203,21 +217,25 @@ protected
 private
 
   def cancel_paypal
-    plan = SubscriptionPlan.find(@agency.plan_id)
-    payment = PaypalPayment.new(plan, @agency)
-    payment.cancel_recurring
+    if current_agency.plan_id
+      plan = SubscriptionPlan.find(@agency.plan_id)
+      payment = PaypalPayment.new(plan, @agency)
+      payment.cancel_recurring
+    end
   end
 
   def cancel_pagseguro
 
   end
   
-  def initialize_subscription_data
-    @plan = SubscriptionPlan.find(current_agency.plan_id)
-    
+  def initialize_subscription_plans
     @monthly = SubscriptionPlan.where(months_qty: 1)
     @semiannual = SubscriptionPlan.where(months_qty: 6)
     @annual = SubscriptionPlan.where(months_qty: 12)
+  end
+
+  def initialize_agency_plan
+    @plan = SubscriptionPlan.find(current_agency.plan_id) if current_agency.plan_id
   end
   
 end

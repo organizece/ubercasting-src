@@ -12,5 +12,21 @@ class SubscriptionPlan < ActiveRecord::Base
       "annual"
     end
   end
+
+  def full_description
+    subscription.name.capitalize + ' - ' + period_description
+  end
+
+private
+
+  def period_description
+    if months_qty == 1
+      "Mensal"
+    elsif months_qty == 6
+      "Semestral"
+    else
+      "Anual"
+    end
+  end
   
 end
