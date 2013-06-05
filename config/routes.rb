@@ -1,5 +1,6 @@
 Ubercasting::Application.routes.draw do
 
+  match "" => "subdomain_websites#home", constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
   root :to => "main_pages#home"
   
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -133,5 +134,7 @@ Ubercasting::Application.routes.draw do
 
   match "/website/customer_requests/new" => "subdomain_customer_requests#new", via: :get, as: :subdomain_new_customer_request, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
   match "/website/customer_requests" => "subdomain_customer_requests#create", via: :post, as: :subdomain_customer_requests, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+
+
 
 end
