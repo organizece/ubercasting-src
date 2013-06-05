@@ -1468,6 +1468,4 @@ $(document).ready(function(){
 	subdomainLoginVerify();
 	videoString();
 	
-	//loginPanelSetup();
-	
 });
