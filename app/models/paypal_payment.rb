@@ -28,7 +28,7 @@ private
       payer_id: @agency.paypal_customer_token,
       description: @plan.full_description,
       amount: @plan.price,
-      currency: "USD"
+      currency: "BRL"
     )
     response = PayPal::Recurring.new(options).send(action)
     raise response.errors.inspect if response.errors.present?
