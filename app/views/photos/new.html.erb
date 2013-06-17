@@ -73,6 +73,8 @@
 				
 							<%= link_to "Escolher Foto de Perfil", model_profile_pic_path, title: 'Perfil Update', :class => "btn-silver-light-fluid put-left", remote: true %>
 							
+							<%= hidden_field_tag :model_profile_picture, @model.avatar_file_name %>
+							
 							<div class="put-left">
 								<input type="checkbox" class="toggle put-left">
 								<label class="put-left">Selecionar Todos</label>
@@ -177,10 +179,10 @@
 			        <% end %>
 
 					<% if params[:source] == 'edit' %>
-			            <%= link_to "Continuar", edit_model_composite_path(@model, @model.composite), class: 'put-right anchor-btn-gold-light-4-column' if @model.composite %>
-			            <%= link_to "Continuar", new_model_composite_path(@model, { source: 'edit'}), class: 'put-right anchor-btn-gold-light-4-column' unless @model.composite %>
+			            <%= link_to "Continuar", edit_model_composite_path(@model, @model.composite), :id => "btn-continue-composite", class: 'put-right anchor-btn-gold-light-4-column' if @model.composite %>
+			            <%= link_to "Continuar", new_model_composite_path(@model, { source: 'edit'}), :id => "btn-continue-composite", class: 'put-right anchor-btn-gold-light-4-column' unless @model.composite %>
 			        <% else %>
-			            <%= link_to "Continuar", new_model_composite_path(@model), class: 'put-right anchor-btn-gold-light-4-column' %>
+			            <%= link_to "Continuar", new_model_composite_path(@model), :id => "btn-continue-composite", class: 'put-right anchor-btn-gold-light-4-column' %>
 			        <% end %>
 
 				</div>

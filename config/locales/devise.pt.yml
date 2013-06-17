@@ -51,8 +51,8 @@ pt:
       failure: 'Não foi possível realizar a autenticação de %{kind} pela razão: "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: '[UBER] - Instruções de confirmação'
+        subject: 'Instruções de confirmação'
       reset_password_instructions:
-        subject: '[UBER] - Instruções para reset de senha'
+        subject: 'Instruções para reset de senha'
       unlock_instructions:
-        subject: '[UBER] - Instruções para desbloqueio de conta'
+        subject: 'Instruções para desbloqueio de conta'

@@ -1,5 +1,10 @@
 <%= stylesheet_link_tag    "home" %>
 
+<div id="video-player-container">
+	<div id="video-player-modal">&nbsp;</div>
+	<div id="video-player">&nbsp;</div>
+</div>
+
 <div id="main-content-container">
 
 <div id="main-content-wrapper">
@@ -9,13 +14,15 @@
 		<div id="video-container">
 			<div id="share-bar">
                 <ul id="share-list">
-                    <li><a href="#" onclick="javascript:return false;" title="Compartilhar no Facebook" class="share-fb">Compartilhar no Facebook</a></li>
-                    <li><a href="#" onclick="javascript:return false;" title="Compartilhar no Twitter" class="share-tr">Compartilhar no Twitter</a></li>
-                    <li><a href="#" onclick="javascript:return false;" title="Compartilhar no Google+" class="share-go">Compartilhar no Google+</a></li>
+                    <li><a href="#" onclick="javascript:return void(0);" title="Compartilhar no Facebook" class="share-fb">Compartilhar no Facebook</a></li>
+                    <li><a href="#" onclick="javascript:return void(0);" title="Compartilhar no Twitter" class="share-tr">Compartilhar no Twitter</a></li>
+                    <li><a href="#" onclick="javascript:return void(0);" title="Compartilhar no Google+" class="share-go">Compartilhar no Google+</a></li>
                     <li>&nbsp;</li>
                 </ul>
             </div>
-			<div id="video-container-obj">&nbsp;</div>
+			<div id="video-container-obj">
+				<a href="javascript:return void(0)" id="link-open-uber-video">open video</a>
+			</div>
 		</div>
 		
 	</div>
@@ -23,9 +30,9 @@
 	<div id="right-column">
         <h2>Casting Made Easy</h2>
         <ul id="content-list">
-            <li>&raquo; Organização online para cadastrar e gerenciar modelos.</li>
-            <li>&raquo; Dinamismo para buscar e selecionar composites.</li>
+            <li>&raquo; Software online para cadastrar e gerenciar modelos e atores.</li>
             <li>&raquo; Eficiência para montar, apresentar e compartilhar castings.</li>
+            <li>&raquo; Segurança dos dados garantida com <a href="http://aws.amazon.com" target="_blank" class="simple-link">aws.amazon.com</a>.</li>
         </ul>
 		<%=	link_to "EXPERIMENTAR", tour_path, :class => "btn-gold-experimentar"  %>
     </div>

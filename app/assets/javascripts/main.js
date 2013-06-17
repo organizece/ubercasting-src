@@ -40,6 +40,59 @@ $(document).ready(function(){
 		
 	}
 	
+	function videoPlayerDisplay() {
+		var hasPlayer = $('div#video-player-container').length;
+		
+		if ( hasPlayer > 0 ){
+			
+			var videoDOM = "";
+			
+			$('div#video-player-container').hide();
+			
+			var params = {
+				quality: "high",
+				scale: "noscale",
+				wmode: "transparent",
+				allowscriptaccess: "always",
+				bgcolor: "#ffffff"
+			};
+
+			var flashvars = {};
+
+			var attributes = {
+				id: "video-player",
+				name: "video-player"
+			};		
+
+			var displayFlash = {
+				movie : function(){
+					swfobject.embedSWF("./assets/home-video/uber-home-video.swf", "video-player", "800", "450", "9.0.124", "./assets/home-video/expressInstall.swf", flashvars, params, attributes);
+				}
+			};
+			
+			$('a#link-open-uber-video').click(function(event) {
+				event.preventDefault();
+				$('div#video-player-container').show();
+				
+				if ( $('div#video-player-container div#video-player').length > 0 ){
+					displayFlash.movie();
+					videoDOM = $('div#video-player-container object');
+				}else{
+					$('div#video-player-container').append(videoDOM);
+				};
+				
+			});
+			
+			$('div#video-player-modal').click(function(event) {
+				event.preventDefault();
+				$('div#video-player-container object').remove();
+				$('div#video-player-container').hide();
+			});
+			
+		};
+		
+	}
+	
 	function dropdownMenuNav(){
 		$('li.hasdrop').mouseenter(function(event) {
 			$(this).addClass('hoveractive');
@@ -415,12 +468,35 @@ $(document).ready(function(){
 			var topDomain = true;
 			var uberDomain = true;
 
-			var currentPlanPeriod = "";
+			var currentPlanPeriod = $('input#agency_account_period').val();
 			var currentPlanType = "";
 			
-			//APPLY INITIAL PRICES
-			$('div#plan-type div#type-03 p.price-top').html("R$"+topMonthPrice+"0<span>/mês</span>");
-			$('div#plan-type div#type-02 p.price-top').html("R$"+uberMonthPrice+"0<span>/mês</span>");
+			//APPLY INITIAL PRICES AND INFORMATION
+			$('div#plan-type div#type-03 p.price-top span.month-price-val').text("R$"+topAnnualPrice);
+			$('div#plan-type div#type-02 p.price-top span.month-price-val').text("R$"+uberAnnualPrice);
+			
+			switch( currentPlanPeriod ){
+				case "annual":
+					$('div#plan-type span.month-mulitplier').text('12x');
+					$('div#plan-type div#type-03 span.price-total-val').text("Valor Total: R$ "+(topAnnualPrice*12)+",00");
+					$('div#plan-type div#type-02 span.price-total-val').text("Valor Total: R$ "+(uberAnnualPrice*12)+",00");
+					$('div#plan-type div ul li span').text("Anual");
+				break;
+				case "semiannual":
+					$('div#plan-type span.month-mulitplier').text('6x');
+					$('div#plan-type div#type-03 span.price-total-val').text("Valor Total: R$ "+(topSemiPrice*6)+",00");
+					$('div#plan-type div#type-02 span.price-total-val').text("Valor Total: R$ "+(uberSemiPrice*6)+",00");
+					$('div#plan-type div ul li span').text("Semestral");
+				break;
+				case "monthly":
+					$('div#plan-type span.month-mulitplier').text('');
+					$('div#plan-type div#type-03 span.price-total-val').text("");
+					$('div#plan-type div#type-02 span.price-total-val').text("");
+					$('div#plan-type div ul li span').text("Mensal");
+					$('div#plan-type div ul li:eq(3) a').hide();
+				break;
+			}
+			
 		};
 
 		//SET UP TOOLTIP FUNCTIONS
@@ -456,18 +532,36 @@ $(document).ready(function(){
 			switch( $(this).text() ){
 				case "Mensal":
 					$('input#agency_account_period').val("monthly");
-					$('div#plan-type div#type-03 p.price-top').html("R$"+topMonthPrice+"0<span>/mês</span>");
-					$('div#plan-type div#type-02 p.price-top').html("R$"+uberMonthPrice+"0<span>/mês</span>");
+					$('div#plan-type div#type-03 p.price-top span.month-price-val').text("R$"+topMonthPrice+"0");
+					$('div#plan-type div#type-02 p.price-top span.month-price-val').text("R$"+uberMonthPrice+"0");
+					
+					$('div#plan-type span.month-mulitplier').text('');
+					$('div#plan-type div#type-03 span.price-total-val').text("");
+					$('div#plan-type div#type-02 span.price-total-val').text("");
+					$('div#plan-type div ul li span').text("Mensal");
+					$('div#plan-type a.renew').hide();
 				break;
 				case "Semestral":
 					$('input#agency_account_period').val("semiannual");
-					$('div#plan-type div#type-03 p.price-top').html("R$"+(topSemiPrice)+"0<span>/mês</span>");
-					$('div#plan-type div#type-02 p.price-top').html("R$"+(uberSemiPrice)+"0<span>/mês</span>");
+					$('div#plan-type div#type-03 p.price-top span.month-price-val').text("R$"+(topSemiPrice)+"0");
+					$('div#plan-type div#type-02 p.price-top span.month-price-val').text("R$"+(uberSemiPrice)+"0");
+					
+					$('div#plan-type span.month-mulitplier').text('6x');
+					$('div#plan-type div#type-03 span.price-total-val').text("Valor Total: R$"+(topSemiPrice*6)+",00");
+					$('div#plan-type div#type-02 span.price-total-val').text("Valor Total: R$"+(uberSemiPrice*6)+",00");
+					$('div#plan-type div ul li span').text("Semestral");
+					$('div#plan-type a.renew').show();
 				break;
 				case "Anual":
 					$('input#agency_account_period').val("annual");
-					$('div#plan-type div#type-03 p.price-top').html("R$"+(topAnnualPrice)+"0<span>/mês</span>");
-					$('div#plan-type div#type-02 p.price-top').html("R$"+(uberAnnualPrice)+"0<span>/mês</span>");
+					$('div#plan-type div#type-03 p.price-top span.month-price-val').text("R$"+(topAnnualPrice)+"0");
+					$('div#plan-type div#type-02 p.price-top span.month-price-val').text("R$"+(uberAnnualPrice));
+					
+					$('div#plan-type span.month-mulitplier').text('12x');
+					$('div#plan-type div#type-03 span.price-total-val').text("Valor Total: R$"+(topAnnualPrice*12)+",00");
+					$('div#plan-type div#type-02 span.price-total-val').text("Valor Total: R$"+(uberAnnualPrice*12)+",00");
+					$('div#plan-type div ul li span').text("Anual");
+					$('div#plan-type a.renew').show();
 				break;
 			}
 			
@@ -569,6 +663,17 @@ $(document).ready(function(){
 					}
 				});
 				
+				//INPUT SUBMIT
+				$('input#submit-register-pay').click(function(event) {
+					var agreementCheck = $(this).parent("div.form-register-field").find('p input').is(':checked');
+					if ( agreementCheck ){
+						return true;
+					}else{
+						alert("Você deve aceitar os temos de uso.");
+						return false; 
+					};
+				});
+				
 				//Fill PLAN ID Hidden input
 				var planIdInput = $('input#agency_account_period').val()+"-"+$('input#agency_account_type').val();
 				var planId = $('input#'+planIdInput).val();
@@ -585,10 +690,12 @@ $(document).ready(function(){
 					
 					var myFormRegister = $(this).parents("div.form-register");
 					var formValid = registerFormValidation(myFormRegister);
+					var agreementCheck = $(this).parent("div.form-register-field").find('p input').is(':checked');
 					
-					if (formValid) {
+					if (formValid && agreementCheck) {
 						return true;
 					}else{
+						if ( !agreementCheck ){ alert("Você deve aceitar os temos de uso."); };
 						return false;
 					};
 					
@@ -935,6 +1042,9 @@ $(document).ready(function(){
 		});
 	}
 	
+	/*
+		AGENCY » STEP BY STEP GUIDE SETUP
+	*/
 	function setupWebsiteGuide() {
 		var guideContainer = $('div#guide-content-container').length;
 		
@@ -1154,6 +1264,13 @@ $(document).ready(function(){
 						fullDomainName = prefix+"_"+$('input.agency-account-name').attr('id');
 						$('input#website_subdomain').val(fullDomainName);
 					};
+				}else{
+					$('a#verify_subdomain').click(function(event) {
+						$(this).hide();
+					});
+					$('input#website_subdomain').keypress(function(event) {
+						$('a#verify_subdomain').show();
+					});
 				};
 			};
 			
@@ -1442,7 +1559,24 @@ $(document).ready(function(){
 		};
 	}
 	
+	/*
+		PHOTO UPLOAD » CHECK IF THERE IS A PROFILE PICTURE
+		If Not, hides the continue button
+	*/
+	function checkProfilePicture(){
+		var isPhotoUpload = $('div#photo-upload').length; 
+		if ( isPhotoUpload > 0 ){
+			var modelProfilePic = $('input#model_profile_picture').val();
+			if( modelProfilePic == "" || modelProfilePic == undefined || modelProfilePic == null ){
+				$('div.bottom-ctrl-bar a#btn-continue-composite').hide();
+			}else{
+				$('div.bottom-ctrl-bar a#btn-continue-composite').show();
+			};
+		};
+	}
+	
 	btnFolderHover();
+	videoPlayerDisplay();
 	dropdownMenuNav();
 	searchAdvancedOpts();
 	searchBarSetup();
@@ -1467,5 +1601,6 @@ $(document).ready(function(){
 	subdomainLogin();
 	subdomainLoginVerify();
 	videoString();
+	checkProfilePicture();
 	
 });
