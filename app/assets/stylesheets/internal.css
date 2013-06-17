@@ -317,6 +317,8 @@ p.inner-tip{
 	display: block;
 }
 
+p.inner-tip input{ margin: 0px; in-width:20px; }
+
 a.outter-link{
 	color: #fff22d !important;
 }
@@ -796,7 +798,7 @@ div#plan-type div ul{
 	padding-left: 15px;
 }
 
-div#plan-type div#type-03 ul{ padding-left: 35px; }
+div#plan-type div#type-03 ul{ padding-left: 35px; margin: 20px 0; }
 
 div#plan-type div ul li{ 
 	width: auto; 
@@ -837,10 +839,14 @@ div#plan-type div p{
 }
 
 div#plan-type div p span{ font-size: 70%; }
+div#plan-type div p span.month-price-val{ font-size: 120%; }
+div#plan-type div p span.price-total-val{ font-size: 55%; }
 
-div#plan-type div#type-02 p{ margin-top: 30%; }
+div#plan-type div#type-02 p{ margin-top: 55px; }
 
 div#plan-type a.anchor-btn-gold-liquid{ margin: 27px auto; }
+div#plan-type div#type-02 a.anchor-btn-gold-liquid{ margin: 10px auto; }
+div#plan-type div#type-03 a.anchor-btn-gold-liquid{ margin: 15px auto; }
 
 /**************************************/
 /*  REGISTRATION  *********************/
@@ -881,6 +887,8 @@ div.form-register-field a.btn-continue{
 	width: 50%;
 	margin-right: 1%;
 }
+
+div.form-register-field input#submit-register-pay{ margin-top:0px }
 
 div.plan-summary-folder{
 	width: 49%;

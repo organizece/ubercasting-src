@@ -29,7 +29,7 @@
 			<% end %>
 			<!-- END ANNUAL VALUES -->
 			
-			<%= f.hidden_field :account_period, :value => "monthly" %>
+			<%= f.hidden_field :account_period, :value => "annual" %>
 			<%= f.hidden_field :account_type %>
 			
 			<!-- MAIN VALUES -->
@@ -43,9 +43,9 @@
 			
 			<div id="plan-period">
 				<ul>
-					<li><a href="javascript:void(0);" title="Mensal" class="monthly period-active">Mensal</a></li>
+					<li><a href="javascript:void(0);" title="Mensal" class="monthly">Mensal</a></li>
 					<li><a href="javascript:void(0);" title="Semestral" class="semiannual">Semestral</a></li>
-					<li><a href="javascript:void(0);" title="Anual" class="annual">Anual</a></li>
+					<li><a href="javascript:void(0);" title="Anual" class="annual period-active">Anual</a></li>
 				</ul>
 			</div>
 			
@@ -69,12 +69,15 @@
 					<ul>
 						<li>Templates para o site: todos</li>
 						<li>Modelos para cadastro: ilimitado</li>
-						<li class="have">
-							Domínio Próprio
-							<a href="#" data-toggle="tooltip" title="Seu ÜberSite poderá ser acessado dessa forma: nomeagencia.ubercasting.com.br" class="has-tooltip">?</a>
-						</li>
+						<li class="have">Domínio Próprio <a href="#" data-toggle="tooltip" title="Seu ÜberSite poderá ser acessado dessa forma: nomeagencia.ubercasting.com.br" class="has-tooltip">?</a></li>
+						<li>Contrato de licença <span>Anual</span> renovado automaticamente. <a href="#" data-toggle="tooltip" title="Após o término do contrato, você terá 30 dias para optar pelo cancelamento." class="has-tooltip renew">?</a></li>
 					</ul>
-					<p class="price-top">R$0,00<span>/mês</span></p>
+					<p class="price-top">
+						<span class="month-mulitplier"></span>
+						<span class="month-price-val">R$0,00</span>
+						<span>/mês</span><br />
+						<span class="price-total-val"></span>
+					</p>
 					<a href="#" title="Experimentar" class="anchor-btn-gold-liquid">Contratar</a>
 				</div>
 				
@@ -84,8 +87,14 @@
 						<li>Templates para o site: 5</li>
 						<li>Modelos para cadastro: 50</li>
 						<li class="have">Domínio Próprio <a href="#" data-toggle="tooltip" title="Seu ÜberSite poderá ser acessado dessa forma: nomeagencia.ubercasting.com.br" class="has-tooltip">?</a></li>
+						<li>Contrato de licença <span>Anual</span> renovado automaticamente. <a href="#" data-toggle="tooltip" title="Após o término do contrato, você terá 30 dias para optar pelo cancelamento." class="has-tooltip renew">?</a></li>
 					</ul>
-					<p class="price-top">R$0,00<span>/mês</span></p>
+					<p class="price-top">
+						<span class="month-mulitplier"></span>
+						<span class="month-price-val">R$0,00</span>
+						<span>/mês</span><br />
+						<span class="price-total-val"></span>
+					</p>
 					<a href="#" title="Contratar" class="anchor-btn-gold-liquid">Contratar</a>
 				</div>
 				
@@ -121,7 +130,7 @@
 				</div>
 				
 				<div class="form-register-field">
-					<p class="inner-tip">Ao clicar no botão "Finalizar", você declara que leu, entendeu e concordou com os nossos <%= link_to 'Termos de Uso', contract_path, :target => "_blank", :class => "outter-link popup-link" %>.</p>
+					<p class="inner-tip"><%= check_box_tag :agreement, "true", :required => true, :class => "agreement-check" %> Declaro que li e estou de acordo com os <%= link_to 'Termos de Uso', contract_path, :target => "_blank", :class => "outter-link popup-link" %>.</p>
 					<%= f.button :submit, "Finalizar", :class => "put-right input-btn-gold-light-4-column" %>
 				</div>
 				
@@ -297,13 +306,13 @@
 				<div id="content-split"></div>
 				
 				<div class="form-register-field">
+					<p class="inner-tip"><%= check_box_tag :agreement, "true", :required => true, :class => "agreement-check" %> Declaro que li e estou de acordo com os <%= link_to 'Termos de Uso', contract_path, :target => "_blank", :class => "outter-link popup-link" %>.</p><br />
 					<a class="btn-back btn-silver-light-fluid put-left" href="#" onclick="javascript:return false;">Voltar</a>
-					<%= f.button :submit, "Finalizar", :class => "put-right input-btn-gold-light-4-column" %>
+					<%= f.button :submit, "Finalizar", :class => "put-right input-btn-gold-light-4-column", :id => "submit-register-pay" %>
 				</div>
 				
 				<div id="content-split"></div>
 				
-				<p class="inner-tip">Ao clicar no botão "Finalizar", você declara que leu, entendeu e concordou com os nossos <%= link_to 'Termos de Uso', contract_path, :target => "_blank", :class => "outter-link  popup-link" %>.</p>
 				<p class="inner-tip">Não possuí uma conta no PayPal? Você pode criar uma <%= link_to 'clicando aqui', "http://www.paypal.com.br", :target => "_blank", :class => "outter-link" %>. É fácil, rápido e seguro (pois não compartilha os dados do seu cartão).</p>
 				
 			</div>

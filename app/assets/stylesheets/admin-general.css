@@ -2976,6 +2976,10 @@ div#guide-content-container div#guide-step-01 div#guide-logo div#logo-actions{ w
 div#guide-content-container div#guide-step-01 div#guide-logo div#logo-actions div#logo-update img{ width:100px; }
 div#guide-content-container div#guide-step-01 div#guide-logo div#logo-actions a#logo-update{ margin-left: 15px; }
 
+div#guide-content-container div#guide-step-01 div#website-subdomain-input{ width: 565px; }
+div#guide-content-container div#guide-step-01 div#website-subdomain-input input{ text-align: right; margin-right: 10px; }
+div#guide-content-container div#guide-step-01 div#website-subdomain-input span{ font-size: 16px; margin-top: 5px; }
+
 div#guide-content-container div#guide-step-03 div.website-view-block p{
 	color: #7c7c7c;
 	font-size: 90%;

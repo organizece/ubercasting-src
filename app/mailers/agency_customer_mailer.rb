@@ -5,6 +5,6 @@ class AgencyCustomerMailer < ActionMailer::Base
     @website_url = subdomain_websites_home_url(subdomain: agency_customer.agency.website.subdomain)
     @agency_name = agency_customer.agency.name
 
-    mail to: agency_customer.email, subject: "[UBER] - #{@agency_name} - Convite"
+    mail to: agency_customer.email, subject: "#{@agency_name} - Envio de convite"
   end
 end
