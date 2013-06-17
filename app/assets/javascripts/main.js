@@ -956,7 +956,7 @@ $(document).ready(function(){
 		var mainURL = "";
 		
 		if ( fullURL.indexOf("www") != -1 ){
-			mainURL = fullURL.substring(10, fullURL.lastIndexOf("/"));
+			mainURL = fullURL.substring(11, fullURL.lastIndexOf("/"));
 		}else{
 			mainURL = fullURL.substring(7, fullURL.lastIndexOf("/"));
 		};
