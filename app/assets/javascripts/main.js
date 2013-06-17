@@ -40,6 +40,9 @@ $(document).ready(function(){
 		
 	}
 	
+	/*
+		HOME » VIDEO DISPLAY
+	*/
 	function videoPlayerDisplay() {
 		var hasPlayer = $('div#video-player-container').length;
 		
@@ -950,7 +953,13 @@ $(document).ready(function(){
 	
 	function getMainPath() {
 		var fullURL = window.location.href;
-		var mainURL = fullURL.substring(7, fullURL.lastIndexOf("/"));
+		var mainURL = "";
+		
+		if ( fullURL.indexOf("www") != -1 ){
+			mainURL = fullURL.substring(10, fullURL.lastIndexOf("/"));
+		}else{
+			mainURL = fullURL.substring(7, fullURL.lastIndexOf("/"));
+		};
 		
 		if ( $('span.my-main-domain').length > 0 ) {
 			$('span.my-main-domain').append(mainURL+"/");
