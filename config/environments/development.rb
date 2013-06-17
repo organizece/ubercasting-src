@@ -39,8 +39,8 @@ Ubercasting::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => "smtp.gmail.com",
-    :user_name            => "suporte@organizece.com",
-    :password             => "organizeCE123",
+    :user_name            => "contato@ubercasting.com.br",
+    :password             => "uber2013",
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 

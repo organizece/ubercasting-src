@@ -80,18 +80,16 @@
 
 							<% if @website.agency.account_type != "free" %>
 								<div id="website-subdomain-input">
-									<span>www.ubercasting.com.br/</span>
-									<div class="content-split"></div>
 									<%= f.text_field :subdomain, :class => "input-txt-light-4-column put-left" %>
-								    <%= link_to 'Verificar', websites_verify_subdomain_path, remote: true, class: 'btn-silver-light-fluid put-left', id: 'verify_subdomain' %>
+									<span class="auto-size-block put-left">.ubercasting.com.br</span>
+								    <%= link_to 'Verificar', websites_verify_subdomain_path, remote: true, class: 'btn-silver-light-fluid put-right', id: 'verify_subdomain' %>
 								</div>
 							<% else %>
 								<div id="website-subdomain-input">
-									<span>www.ubercasting.com.br/</span>
-									<div class="content-split"></div>
+									<%= f.text_field :subdomain, :class => "input-txt-light-4-column put-left", :disabled => true %>
+									<span class="auto-size-block put-left">.ubercasting.com.br</span>
 									<%= hidden_field_tag @website.agency.name, @website.agency.name, :class => "agency-account-name" %>
 									<%= f.hidden_field :subdomain %>
-									<%= f.text_field :subdomain, :class => "input-txt-light-4-column put-left", :disabled => true %>
 								</div>
 									
 									<div class="content-split"></div>

@@ -5,7 +5,7 @@ class CastingMailer < ActionMailer::Base
     @casting_url = subdomain_casting_url(customer_casting, subdomain: customer_casting.agency.website.subdomain)
     @casting_name = customer_casting.name
 
-    mail to: customer_casting.agency_customer.email, subject: "[UBER] - #{customer_casting.agency.name} - Compartilhar Casting"
+    mail to: customer_casting.agency_customer.email, subject: "#{customer_casting.agency.name} - Compartilhamento de Casting"
   end
 
   def alert_new_message(casting, sender, receiver)
@@ -16,6 +16,6 @@ class CastingMailer < ActionMailer::Base
     @castings_url = subdomain_castings_url(subdomain: casting.agency.website.subdomain)
     @castings_url = customer_castings_url if receiver.class.name == 'Agency'
 
-    mail to: receiver.email, subject: "[UBER] - Casting: #{casting.name} - Nova mensagem"
+    mail to: receiver.email, subject: "Casting: #{casting.name} - Uma nova mensagem"
   end
 end
