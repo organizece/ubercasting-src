@@ -248,7 +248,7 @@ $(document).ready(function(){
 	setupNavBar();
 	setupHomeImgs();
 	stripesThemeSetup();
-	checkSlideCall();
+	//checkSlideCall();
 	customerRequestInputMask();
 	
 });

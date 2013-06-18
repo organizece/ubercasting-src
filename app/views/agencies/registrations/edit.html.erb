@@ -197,114 +197,8 @@
 				<% end %>
 				
 				<div class="content-split"></div>
-
-				<div id="edit-agency-subscription">
-					<h3 class="header-base-title-text">Atualizar <span>Conta</span></h3>
-					
-					<%= form_tag agency_change_subscription_path do %>
-					
-						<!-- BEGIN MONTH VALUES -->
-						<% @monthly.each do |monthly| %>
-							<%= hidden_field_tag "monthly-#{monthly.subscription.name}", monthly.id %>
-							<%= hidden_field_tag "monthly-price-#{monthly.subscription.name}", monthly.price %>
-						<% end %>
-						<!-- END MONTH VALUES -->
-						<!-- BEGIN SEMIANNUAL VALUES -->
-						<% @semiannual.each do |semiannual| %>
-							<%= hidden_field_tag "semiannual-#{semiannual.subscription.name}", semiannual.id %>
-							<%= hidden_field_tag "semiannual-price-#{semiannual.subscription.name}", semiannual.price %>
-						<% end %>
-						<!-- END SEMIANNUAL VALUES -->
-						<!-- BEGIN ANNUAL VALUES -->
-						<% @annual.each do |annual| %>
-							<%= hidden_field_tag "annual-#{annual.subscription.name}", annual.id %>
-							<%= hidden_field_tag "annual-price-#{annual.subscription.name}", annual.price %>
-						<% end %>
-						<!-- END ANNUAL VALUES -->
-
-						<% if @plan %>
-							<%= hidden_field_tag :account_period, @plan.months_qty %>
-							<%= hidden_field_tag :account_type, @plan.subscription.name %>
-						<% else %>
-							<%= hidden_field_tag :account_period, @agency.account_period %>
-							<%= hidden_field_tag :account_type, @agency.account_type %>
-						<% end %>
-						
-						<!-- MAIN VALUES -->
-						<%= hidden_field_tag :plan_id %>
-						<%= hidden_field_tag :plan_price %>
-						
-						<div id="edit-agency-payment-info" class="edit-agency-input-group">
-						
-							<div>
-								<ul class="payments">
-									<!--<li><%= radio_button_tag :account_payment, "PagSeguro" %><%= image_tag "admin/flag-pagseguro.jpg" %></li>-->
-									<li>
-										<%= radio_button_tag :account_payment, "PayPal", :checked => "checked" %>
-										<%= image_tag "admin/flag-paypal.jpg" %>
-									</li>
-									<!--<li><%= radio_button_tag :account_payment, "Boleto" %><%= image_tag "admin/flag-boleto.jpg" %></li>-->
-								</ul>
-							</div>
-						
-							<div class="content-split"></div>
-						
-							<div id="agency-account-type-info">
-								<p>
-									Tipo de Conta: 
-									<span><%= @agency.account_type %></span>
-									<a id="agency-account-display-upgrade" href="#">Fazer Upgrade</a>
-								</p>
-							</div>
-					
-						</div>
-					
-						<div class="content-split"></div>
-					
-						<div id="agency-account-upgrade" class="edit-agency-input-group">
-							
-							<div id="agency-account-upgrade-tabs" class="put-left auto-size-block">
-								<h3>Upgrade de Conta</h3>
-
-								<h4 class="header-base-title">Tipos de <strong>Conta</strong></h4>
-								<div class="ui-tab-container ui-tab-container-medium">
-									<ul id="agency-account-upgrade-type" class="put-list-inline">
-										<li><a href="#" title="free" class="free">Free</a></li>
-										<li><a href="#" title="standard" class="standard">Standard</a></li>
-										<li><a href="#" title="uber" class="uber active-tab">Über</a></li>
-									</ul>
-								</div>
-
-								<div class="content-split"></div>
-
-								<h4 class="header-base-title">Período</h4>
-								<div class="ui-tab-container ui-tab-container-medium">
-									<ul id="agency-account-upgrade-period">
-										<li><a href="#" title="monthly" class="monthly">Mensal</a></li>
-										<li><a href="#" title="semiannual" class="semiannual">Semestral</a></li>
-										<li><a href="#" title="annual" class="annual active-tab">Anual</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div id="agency-account-final-values" class="put-left">
-								<h4 class="header-base-title">Valores <strong>Finais</strong></h4>
-								<ul id="agency-account-upgrade-price">
-									<li>Valor Atual: <strong><span id="account-up-actual-price"></span></strong></li>
-									<li><h4>Valor Upgrade: <strong><span id="account-up-upgrade-price">R$ -,00</span></strong></h4></li>
-								</ul>
-							</div>
-							
-							<div class="content-split"></div>
-
-							<div id="agency-account-upgrade-action">
-								<%= submit_tag "FAZER MUDANÇA", :class => "input-btn-gold-light-4-column" %>
-							</div>
-							
-						</div>
-						
-					<% end %>
-				</div>
+				
+				<%= render "agencies/agency_upgrade" %>
 				
 				<div class="content-split"></div>
 
@@ -312,7 +206,6 @@
 					<h3 class="header-base-title-text">Cancelar <span>minha conta</span></h3>
 					<p>Se você deseja cancelar a assinatura de sua conta ÜBER, clique no botão abaixo.</p>
 					<%= link_to "Cancelar minha conta", agency_cancel_subscription_path, :data => { :confirm => "Deseja mesmo cancelar a sua conta?" } %>
-					<a href="javascript:return false;" class="btn-silver-light-fluid offline">Ao invés de sair, nos ajude a melhorar os nossos serviços. Clique aqui!</a>
 				</div>
 				
 				<div class="auto-size-block bottom-ctrl-bar">

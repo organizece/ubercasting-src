@@ -2516,6 +2516,15 @@ div.ui-tab-container ul li a.active-tab{ background-color: #EEE; }
 
 div.ui-tab-container ul li:last-child a{ border-right:none; }
 
+div.ui-tab-container ul li span{ 
+	display: block;
+	width: 85px;
+	height: 26px;
+	padding-top: 6px;
+	text-align: center;
+	border-right: 1px solid #b8b8b8;
+}
+
 div.ui-tab-container-small{ width: 252px; }
 div.ui-tab-container-small ul{ width: 92%; }
 
