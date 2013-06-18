@@ -870,6 +870,19 @@ $(document).ready(function(){
 			var subType = $('input#account_type').val();
 			var finalId = "";
 			
+			var fullPrice = 0;
+			
+			//SET UP TOOLTIP FUNCTIONS
+			$('a.has-tooltip').css('color', '#232323');
+			$('a.has-tooltip').css('font-size', '80%');
+			$('a.has-tooltip').tooltip('hide');
+			$('a.has-tooltip').mouseenter(function(event) {
+				$(this).tooltip('show');
+			});
+			$('a.has-tooltip').mouseleave(function(event) {
+				$(this).tooltip('hide');
+			});
+			
 			//HIDE UPGRADE BLOCK
 			$('div#agency-account-upgrade').hide();
 			$('a#agency-account-display-upgrade').click(function(event) {
@@ -883,6 +896,8 @@ $(document).ready(function(){
 			});
 			
 			//FILL INITIAL INFO
+			$('div.ui-tab-container ul#agency-account-upgrade-period').hide();
+			
 			var currentAccountType = $('input#account_type').val();
 			var currentAccountPeriod = $('input#account_period').val();
 			
@@ -900,9 +915,14 @@ $(document).ready(function(){
 				};
 			};
 			
-			var initPriceId = currentAccountPeriod +"-price-"+ currentAccountType;
-			
-			$('ul#agency-account-upgrade-price li span#account-up-actual-price').text("R$ "+$('input#'+initPriceId).val()+"0");
+			if ( currentAccountType != "free" ){
+				var initPriceId = currentAccountPeriod +"-price-"+ currentAccountType;
+				$('ul#agency-account-upgrade-price li span#account-up-actual-price').text("R$ "+$('input#'+initPriceId).val()+"0");
+			}else{
+				$('ul#agency-account-upgrade-price li span#account-up-actual-price').text("Grauito");
+				$('ul#agency-account-upgrade-price li:eq(3)').hide();
+				$('ul#agency-account-upgrade-price li:eq(4)').hide();
+			};
 			
 			$('ul#agency-account-upgrade-type li a').each(function(index) {
 				if ( $(this).attr('class') == currentAccountType ){
@@ -931,6 +951,8 @@ $(document).ready(function(){
 				if ( $(this).parents('ul').attr('id') == "agency-account-upgrade-type" ){
 					subType = linkValue;
 					$('input#account_type').val(subType);
+					$('div.ui-tab-container ul#agency-account-upgrade-period').show();
+					$('div.ui-tab-container ul#agency-account-upgrade-period li:eq(2) a').trigger('click');
 				};
 				
 				if ( $(this).parents('ul').attr('id') == "agency-account-upgrade-period" ){
@@ -938,12 +960,51 @@ $(document).ready(function(){
 					$('input#account_period').val(subPeriod);
 				};
 				
+				//APPLY PLAN ID AND PRICE TO HIDDEN INPUTS
 				finalId = subPeriod +"-"+ subType;
 				finalPriceId = subPeriod +"-price-"+ subType;
 				$('input#plan_id').val($('input#'+finalId).val());
 				$('input#plan_price').val($('input#'+finalPriceId).val());
 				
-				$('span#account-up-upgrade-price').text("R$ "+$('input#plan_price').val()+"0/mês");
+				//CHECK PERIOD FOR PRICE MULTIPLIER
+				switch(subPeriod){
+					case "monthly":
+						fullPrice = $('input#plan_price').val() * 1;
+					break;
+					case "semiannual":
+						fullPrice = $('input#plan_price').val() * 6;
+					break;
+					case "annual":
+						fullPrice = $('input#plan_price').val() * 12;
+					break;
+				};
+				
+				//STRING CORRECTION FOR UBER ANNUAL MONTH PRICE
+				if ( subType == "uber" && subPeriod == "annual" ){
+					$('span#account-up-upgrade-price').text("R$ "+$('input#plan_price').val()+"/mês");
+				}else{
+					$('span#account-up-upgrade-price').text("R$ "+$('input#plan_price').val()+"0/mês");
+				};
+				
+				//APPLY PLAN ID AND PRICE TO HIDDEN INPUTS
+				$('span.upgrade-total-value').text("R$ "+fullPrice+",00/total");
+				
+				//APPLY RULES FOR EXPIRATION DATE AND EXPIRE INFORMATION
+				if ( subType != "free" ){
+					$('ul#agency-account-upgrade-price li:eq(3)').show();
+					$('ul#agency-account-upgrade-price li:eq(4)').show();
+					
+					var accountDate = new Date();
+					var expireDay = accountDate.getDate();
+					var expireMonth = accountDate.getMonth()+1;
+					var expireYear = accountDate.getFullYear()+1;
+					var expireDate = expireDay.toString()+"/"+expireMonth.toString()+"/"+expireYear.toString();
+					
+					$('ul#agency-account-upgrade-price li:eq(4) span').text(expireDate);
+				}else{
+					$('ul#agency-account-upgrade-price li:eq(3)').hide();
+					$('ul#agency-account-upgrade-price li:eq(4)').hide();
+				};
 				
 			  });
 			});
@@ -1271,7 +1332,7 @@ $(document).ready(function(){
 						};
 
 						fullDomainName = prefix+"_"+$('input.agency-account-name').attr('id');
-						$('input#website_subdomain').val(fullDomainName);
+						$('input#website_subdomain').val(fullDomainName.toLowerCase());
 					};
 				}else{
 					$('a#verify_subdomain').click(function(event) {
