@@ -85,7 +85,7 @@ $(document).ready(function(){
 			
 			$('div#video-player-container').hide();
 			
-			var params = {
+			/*var params = {
 				quality: "high",
 				scale: "noscale",
 				wmode: "transparent",
@@ -104,15 +104,14 @@ $(document).ready(function(){
 				movie : function(){
 					swfobject.embedSWF("./assets/home-video/uber-home-video.swf", "video-player", "800", "450", "9.0.124", "./assets/home-video/expressInstall.swf", flashvars, params, attributes);
 				}
-			};
+			};*/
 			
 			$('a#link-open-uber-video').click(function(event) {
 				event.preventDefault();
 				$('div#video-player-container').show();
 				
-				if ( $('div#video-player-container div#video-player').length > 0 ){
-					displayFlash.movie();
-					videoDOM = $('div#video-player-container object');
+				if ( $('div#video-player-container div#video-player iframe').length > 0 ){
+					videoDOM = $('div#video-player-container iframe');
 				}else{
 					$('div#video-player-container').append(videoDOM);
 				};
@@ -121,7 +120,7 @@ $(document).ready(function(){
 			
 			$('div#video-player-modal').click(function(event) {
 				event.preventDefault();
-				$('div#video-player-container object').remove();
+				$('div#video-player-container iframe').remove();
 				$('div#video-player-container').hide();
 			});
 			
