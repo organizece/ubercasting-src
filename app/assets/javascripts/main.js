@@ -41,6 +41,39 @@ $(document).ready(function(){
 	}
 	
 	/*
+		TOUR » SETUP NAV AND TABS
+	*/
+	function tourSetup(){
+		var isPageTour = $('div.tour-content').length;
+		if ( isPageTour > 0 ){
+			var fullURL = window.location.href;
+			var urlIndex = (fullURL.indexOf("#")+1);
+			var mainURL = fullURL.substring(urlIndex,fullURL.length);
+			
+			$('div.tour-content div.tab-selector-container ul li a').removeClass('link-active');
+			
+			switch(mainURL){
+				case "register_manage":
+					$('div.tour-content div.tab-selector-container ul li:eq(1) a').addClass('link-active');
+					$('div.tour-content div#video-title h4').html("Cadastro e <strong>Gerenciamento</strong>");
+				break;
+				case "search_select":
+					$('div.tour-content div.tab-selector-container ul li:eq(2) a').addClass('link-active');
+					$('div.tour-content div#video-title h4').html("Busque e <strong>Selecione</strong>");
+				break;
+				case "display_share":
+					$('div.tour-content div.tab-selector-container ul li:eq(3) a').addClass('link-active');
+					$('div.tour-content div#video-title h4').html("Exiba e <strong>Compartilhe</strong>");
+				break;
+				default:
+					$('div.tour-content div.tab-selector-container ul li:eq(0) a').addClass('link-active');
+				break;
+			}
+			
+		};
+	}
+	
+	/*
 		HOME » VIDEO DISPLAY
 	*/
 	function videoPlayerDisplay() {
@@ -194,7 +227,7 @@ $(document).ready(function(){
 		if ( hasModelResult > 0 ) {
 			
 			$('div.model-box').each(function(index) {
-
+				
 				if ( $(this).find('input#crop_x').val() != "" ){
 					var coordX = $(this).find('input#crop_x').val();
 					var coordY = $(this).find('input#crop_y').val();
@@ -1646,6 +1679,7 @@ $(document).ready(function(){
 	}
 	
 	btnFolderHover();
+	tourSetup();
 	videoPlayerDisplay();
 	dropdownMenuNav();
 	searchAdvancedOpts();

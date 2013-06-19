@@ -18,8 +18,6 @@
 			<!-- REQUESTS PANEL -->
 			<div id="admin-panel-requests-content" class="admin-container-header">
 				
-				<span class="put-absolute admin-panel-header-icon admin-panel-header-icon-request">&nbsp;</span>
-				
 				<h3 class="put-left title-requests-sum">Resumo de Pedidos</h3>
 				<a href="#" class="put-left request-tip">
 					O que é isso?
@@ -30,10 +28,14 @@
 				
 				<div class="content-split"></div>
 			    
-				<%= link_to "Pedidos de Casting: #{@casting_requests}", customer_castings_path, :class => "request-link" %>
-			  	<%= link_to "Pedidos de Clientes: #{@customer_requests}", agency_customer_requests_path, :class => "request-link" %>
-			  	<%= link_to "Novas Mensagens: #{@new_messages}", customer_castings_path, :class => "request-link" %>
+				<div id="request-content-links">
+					<%= link_to "Pedidos de Casting: #{@casting_requests}", customer_castings_path, :class => "request-link" %>
+				  	<%= link_to "Pedidos de Clientes: #{@customer_requests}", agency_customer_requests_path, :class => "request-link" %>
+				  	<%= link_to "Novas Mensagens: #{@new_messages}", customer_castings_path, :class => "request-link" %>
+				</div>
 
+				<span id="request-content-bg" class="put-absolute admin-panel-header-icon admin-panel-header-icon-request">&nbsp;</span>
+				
 			</div>
 			
 		</div>
