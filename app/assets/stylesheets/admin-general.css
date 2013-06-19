@@ -1702,6 +1702,7 @@ div#admin-panel-container div.admin-panel-header h2.title-control-panel{
 
 div#admin-panel-container div#admin-panel-requests-content{
 	width:960px;
+	height: 60px;
 	padding-bottom: 15px;
 }
 
@@ -1735,6 +1736,9 @@ div#admin-panel-container div#admin-panel-requests-content .request-link{
 	background:transparent url(admin/link-icon.png) left 5px no-repeat scroll;
 }
 div#admin-panel-container div#admin-panel-requests-content .request-link:hover{ text-decoration: underline; }
+
+div#admin-panel-requests-content div#request-content-links{ position: absolute; z-index: 100; }
+div#admin-panel-requests-content div#request-content-bg{ z-index: 0; }
 
 
 /*  MAIN PANELS  **********************/
@@ -2336,10 +2340,16 @@ div#casting-manager-content div#casting-form{ border-bottom: 1px solid #a1a1a1; 
 
 @-moz-document url-prefix() { .uber-btn-container a.uber-gold-btn span { padding: 10px 10px 8px 5px; } } 
 
+ol#connect-method-01-steps{
+	color: #4c4c4c;
+	font-size: 90%;
+	margin-bottom: 20px;
+}
+
 div#method-01-file-gen{
 	width:927px;
 	height: 45px;
-	display: block;
+	display: none;
 	margin: 15px 0px 0px 0px;
 }
 

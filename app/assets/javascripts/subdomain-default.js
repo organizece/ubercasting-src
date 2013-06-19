@@ -46,7 +46,19 @@ $(document).ready(function(){
 	*/
 	function setupHomeImgs(){
 		if ($('div.theme-home-model-box').length > 0) {
-			$('div#content-container-wrapper div.theme-home-model-box img').resizeToParent();
+			var imgSeconds = ($('div.theme-home-model-box img').length * 0.05) * 1000;
+
+			$('div#slide-loader').show();
+			
+			var imgTimer = setInterval(function(){
+				console.log("Start Time Interval Function");
+				$('div.theme-home-model-box img').each(function(index) {
+					$(this).resizeToParent();
+					console.log(index+") "+$(this).width());
+				});
+				$('div#slide-loader').hide();
+				clearInterval(imgTimer);
+			},imgSeconds);
 		};
 	};
 	

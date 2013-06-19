@@ -29,7 +29,7 @@ $(document).ready(function() {
 					coordObj._orw = 0;
 					coordObj._orh = 0;
 					
-					if ( $('div.model-box-img img',this).height() == 0 ){
+					if ( $('div.model-box-img img',this).height() < 100 ){
 						
 						$('div.model-box-img img',this).load(function() {
 							coordObj._x = $(this).parent('.model-box-img').find('.model-box-checkbox input#crop_x').val();
@@ -62,7 +62,7 @@ $(document).ready(function() {
 					coordObj._orw = 0;
 					coordObj._orh = 0;
 					
-					if ( $('div.model-box-img img',this).height() == 0 ){
+					if ( $('div.model-box-img img',this).height() < 100 ){
 						
 						$('div.model-box-img img',this).load(function() {
 							coordObj._x = $(this).parent('.model-box-img').find('.model-box-checkbox input#crop_x').val();

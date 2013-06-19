@@ -26,13 +26,31 @@
 				<div id="connect-method-01" class="connect-method">
 					
 					<h2 class="font-body-title">Método <span class="font-body-title-bold">01</span></h2>
-					<p>Este é um método de redirecionamento simples. Para que funcione, você deve copiar e colar o trecho de código abaixo na página inicial de seu site, dentro dos limites da tag &lt;head&gt;...&lt;/head&gt;</p>
+					<p>Este é um método de redirecionamento simples. Siga o passo a passo abaixo para gerar o arquivo de redirecionamento:</p>
+					
+					<ol id="connect-method-01-steps">
+						<li>Copie o código abaixo.</li>
+						<li>Crie um novo documento do bloco de notas.</li>
+						<li>Cole o código copiado.</li>
+						<li>Salve o documento com o nome <strong>index</strong> e a extensão como <strong>.html</strong>.</li>
+						<li>Coloque este arquivo no servidor de seu site, na pasta raiz (também chamada de <em>root</em> ou <em>public_html</em>).</li>
+					</ol>
 					
 					<div class="connect-method-code">
 						<ul>
-							<li>&lt;script type="text/javascript"&gt;</li>
-							<li class="inner-line">window.location = "http://<%= @agency.website.subdomain %>.<span class="my-main-domain"></span><span>website/models</span>";</li>
-							<li>&lt;/script&gt;</li>
+							<li>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</li>
+							<li>&lt;html&gt;</li>
+							<li>&lt;head&gt;</li>
+							<li class="inner-line">&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;</li>
+							<li class="inner-line">&lt;title&gt;Redirecionando para <%= @agency.website.subdomain %> übersite&lt;/title&gt;</li>
+							<li class="inner-line">&lt;script type="text/javascript"&gt;</li>
+							<li class="inner-inner-line">window.location = "http://<%= @agency.website.subdomain %>.<span class="my-main-domain"></span><span>website/models</span>";</li>
+							<li class="inner-line">&lt;/script&gt;</li>
+							<li>&lt;/head&gt;</li>
+							<li>&lt;body&gt;</li>
+							<li class="inner-line">&lt;p&gt;Redirecionando para <%= @agency.website.subdomain %> übersite&lt;/p&gt;</li>
+							<li>&lt;/body&gt;</li>
+							<li>&lt;/html&gt;</li>
 						</ul>
 					</div>
 					
@@ -42,7 +60,7 @@
 						<%= form_tag create_uber_file_path do %>
 							<%= hidden_field_tag :agency_subdomain, @agency.website.subdomain %>
 							<%= hidden_field_tag :html_content, "file_content" %>
-							<%= submit_tag 'Gerar Arquivo Index', class: 'input-btn-gold-liquid put-right' %>
+							<% #submit_tag 'Gerar Arquivo Index', class: 'input-btn-gold-liquid put-right' %>
 						<% end %>
 					</div>
 					
