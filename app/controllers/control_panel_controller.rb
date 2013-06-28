@@ -25,6 +25,9 @@ private
     
     # First runs the Devise authenticator
     authenticate_agency!
+
+    # Check if the agency is active
+    check_active_agency
   end
   
 end
