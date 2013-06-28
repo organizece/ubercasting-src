@@ -191,6 +191,9 @@ private
     # First runs the Devise authenticator
     authenticate_agency!
 
+    # Check if the agency is active
+    check_active_agency
+
     # If agency is loged in validate if it has permission to access the controller
     unless current_agency.subscription.casting_access?
       flash[:error] = 'O seu perfil de assinatura nao tem permissao p/ acessar a funcionalidade.'
