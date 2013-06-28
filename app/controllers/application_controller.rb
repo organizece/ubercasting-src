@@ -27,6 +27,13 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource) || root_path
   end
 
+  def check_active_agency
+    unless current_agency.active?
+      flash[:error] = 'O seu usuario esta desativado. Nao e possivel utilizar o sistema.'
+      redirect_to destroy_agency_session_path
+    end
+  end
+
 private
 
   def https_redirect
