@@ -51,28 +51,72 @@ $(document).ready(function(){
 			var mainURL = fullURL.substring(urlIndex,fullURL.length);
 			
 			$('div.tour-content div.tab-selector-container ul li a').removeClass('link-active');
+			$('div#video-player div.video-player-block').hide();
 			
 			switch(mainURL){
 				case "register_manage":
 					$('div.tour-content div.tab-selector-container ul li:eq(1) a').addClass('link-active');
 					$('div.tour-content div#video-title h4').html("Cadastro e <strong>Gerenciamento</strong>");
+					$('div.tour-content div#video-title p').html("Cadastros completos,organizados e padronizados para sua agência.");
+					$('div#video-player div.video-player-block:eq(1)').show();
 				break;
 				case "search_select":
 					$('div.tour-content div.tab-selector-container ul li:eq(2) a').addClass('link-active');
 					$('div.tour-content div#video-title h4').html("Busque e <strong>Selecione</strong>");
+					$('div.tour-content div#video-title p').html("Busca avançada de modelos e seleção de composites para job do seu cliente.");
+					$('div#video-player div.video-player-block:eq(2)').show();
 				break;
 				case "display_share":
 					$('div.tour-content div.tab-selector-container ul li:eq(3) a').addClass('link-active');
 					$('div.tour-content div#video-title h4').html("Exiba e <strong>Compartilhe</strong>");
+					$('div.tour-content div#video-title p').html("Castings  selecionados  e compartilhados online com seus clientes.");
+					$('div#video-player div.video-player-block:eq(3)').show();
 				break;
 				default:
 					$('div.tour-content div.tab-selector-container ul li:eq(0) a').addClass('link-active');
+					$('div#video-player div.video-player-block:eq(0)').show();
 				break;
-			}
+			};
+			
+			$('div.tour-content div.tab-selector-container ul li a').click(function(event) {
+				event.preventDefault();
+				var myClass = $(this).attr('class');
+				
+				$('div.tour-content div.tab-selector-container ul li a').removeClass('link-active');
+				$(this).addClass('link-active');
+				
+				$('div#video-player div.video-player-block').hide();
+				
+				switch(myClass){
+					case "item01":
+						$('div.tour-content div#video-title h4').html("Sistema <strong>Geral</strong>");
+						$('div.tour-content div#video-title p').html("<strong>Veja agora o Tour completo do Uber-Casting Made Easy,</strong><br />Navegue pelas principais funcionalidades do sistema e veja como esse software online poderá facilitar o dia-dia da sua empresa. Aprenda como cadastrar, buscar e compartilhar castings com os seus clientes de forma prática e dinâmica. Experimente agora essa ferramenta que otimiza, organiza e facilita a entrega dos seus casting.");
+						$('div#video-player div.video-player-block:eq(0)').show();
+					break;
+					case "item02":
+						$('div.tour-content div#video-title h4').html("Cadastro e <strong>Gerenciamento</strong>");
+						$('div.tour-content div#video-title p').html("Cadastros completos,organizados e padronizados para sua agência.");
+						$('div#video-player div.video-player-block:eq(1)').show();
+					break;
+					case "item03":
+						$('div.tour-content div#video-title h4').html("Busque e <strong>Selecione</strong>");
+						$('div.tour-content div#video-title p').html("Busca avançada de modelos e seleção de composites para job do seu cliente.");
+						$('div#video-player div.video-player-block:eq(2)').show();
+					break;
+					case "item04":
+						$('div.tour-content div#video-title h4').html("Exiba e <strong>Compartilhe</strong>");
+						$('div.tour-content div#video-title p').html("Castings  selecionados  e compartilhados online com seus clientes.");
+						$('div#video-player div.video-player-block:eq(3)').show();
+					break;
+				};
+			});
 			
 		};
 	}
 	
+	/*
+		FAQ » SCROLL EFFECT
+	*/
 	function faqScroll(){
 		var hasFaq = $('div#faq-questions').length;
 		
