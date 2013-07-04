@@ -610,7 +610,7 @@ div#video-title p{
 div#video-player,
 div#video-nav{
 	width:565px;
-	height:382px;
+	height:320px;
 	display: block;
 	margin: 10px auto;
 }
