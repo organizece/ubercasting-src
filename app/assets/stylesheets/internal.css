@@ -1048,3 +1048,49 @@ div.register-step-03 div.register-steps-icons ul li.register-steps-icon-03{ back
 div#register-pay-03 ul.payments,
 div#register-pay-03 ul.payments li{ list-style: none; padding-bottom: 20px; }
 div#register-pay-03 ul.payments li{ display: block; float: right; margin-left: 12%; }
+
+
+/**************************************/
+/*  F.A.Q.  ***************************/
+/**************************************/
+
+div#faq-questions h3,
+div#faq-answers h3{
+	font-family:'Conv_Nexa',Sans-Serif;
+	font-size: 160%;
+	display: block;
+	font-weight: normal;
+	font-style: italic;
+	color: #fff22d;
+	line-height: 1.2em;
+}
+
+div#faq-questions ol li a{ color: #d4d4d4; border-bottom:1px dotted; }
+div#faq-questions ol li a:hover{ color: #fff22d; border-bottom:none; }
+
+div#faq-answers h4{
+	font-family:'Conv_Nexa',Sans-Serif;
+	font-size: 120%;
+	display: block;
+	font-weight: normal;
+	font-style: italic;
+	color: #fff22d;
+	line-height: 1.2em;
+}
+
+div#faq-answers ul{
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+div#faq-answers ul{ padding-left: 15px; margin: 10px 0px 10px 15px; }
+div#faq-answers p{ margin-bottom: 5px; }
+
+div.faq-answer-block{ 
+	margin: 20px 0px;
+	padding: 15px;
+	background-color: #333;
+	border-bottom: 2px solid #111;
+}
+
+div.faq-answer-block a{ color: #fff22d; display: block; }

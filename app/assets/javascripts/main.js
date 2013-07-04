@@ -73,6 +73,83 @@ $(document).ready(function(){
 		};
 	}
 	
+	function faqScroll(){
+		var hasFaq = $('div#faq-questions').length;
+		
+		if ( hasFaq > 0 ){
+			
+			$('div#faq-questions ol li a').click(function(event) {
+				event.preventDefault();
+				var myId = $(this).attr('id');
+				var goScroll = 0;
+				
+				switch(myId){
+					case "h01":
+						goScroll = $("#faq-block-01").offset().top;
+					break;
+					case "h02":
+						goScroll = $("#faq-block-02").offset().top;
+					break;
+					case "h03":
+						goScroll = $("#faq-block-03").offset().top;
+					break;
+					case "h04":
+						goScroll = $("#faq-block-04").offset().top;
+					break;
+					case "h05":
+						goScroll = $("#faq-block-05").offset().top;
+					break;
+					case "h06":
+						goScroll = $("#faq-block-06").offset().top;
+					break;
+					case "h07":
+						goScroll = $("#faq-block-07").offset().top;
+					break;
+					case "h08":
+						goScroll = $("#faq-block-08").offset().top;
+					break;
+					case "h09":
+						goScroll = $("#faq-block-09").offset().top;
+					break;
+					case "h10":
+						goScroll = $("#faq-block-10").offset().top;
+					break;
+					case "h11":
+						goScroll = $("#faq-block-11").offset().top;
+					break;
+					case "h12":
+						goScroll = $("#faq-block-12").offset().top;
+					break;
+					case "h13":
+						goScroll = $("#faq-block-13").offset().top;
+					break;
+					case "h14":
+						goScroll = $("#faq-block-14").offset().top;
+					break;
+					case "h15":
+						goScroll = $("#faq-block-15").offset().top;
+					break;
+					case "h16":
+						goScroll = $("#faq-block-16").offset().top;
+					break;
+				};
+				
+				$('html, body').animate({
+					//scrollTop: $("#faq-block-01").offset().top-50
+					scrollTop: goScroll-50
+				}, 500);
+				
+			});
+			
+			$('a.faq-top').click(function(event) {
+				event.preventDefault();
+				$('html, body').animate({
+					scrollTop: $("#faq-questions").offset().top-80
+				}, 500);
+			});
+		};
+	}
+	
 	/*
 		HOME » VIDEO DISPLAY
 	*/
@@ -1679,6 +1756,7 @@ $(document).ready(function(){
 	
 	btnFolderHover();
 	tourSetup();
+	faqScroll();
 	videoPlayerDisplay();
 	dropdownMenuNav();
 	searchAdvancedOpts();
