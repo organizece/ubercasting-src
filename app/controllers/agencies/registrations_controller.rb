@@ -108,6 +108,7 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
     # If not a monthly plan set the cancellation date
     if plan.months_qty != 1
       resource.subscription_cancellation_date = Date.current.months_since(plan.months_qty)
+      resource.cancellation_window = false
     else
       resource.subscription_cancellation_date = nil
     end
@@ -192,6 +193,7 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
     # If not a monthly plan set the cancellation date
     if plan.months_qty != 1
       @agency.subscription_cancellation_date = Date.current.months_since(plan.months_qty)
+      @agency.cancellation_window = false
     else
       @agency.subscription_cancellation_date = nil
     end

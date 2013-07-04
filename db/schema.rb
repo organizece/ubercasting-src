@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602194117) do
+ActiveRecord::Schema.define(:version => 20130704224630) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20130602194117) do
     t.date     "subscription_cancellation_date"
     t.boolean  "active",                         :default => true
     t.integer  "plan_id"
+    t.boolean  "cancellation_window",            :default => true
   end
 
   add_index "agencies", ["confirmation_token"], :name => "index_agencies_on_confirmation_token", :unique => true
