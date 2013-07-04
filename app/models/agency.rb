@@ -15,7 +15,7 @@ class Agency < ActiveRecord::Base
           :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :agency_about,
           :insc_state, :insc_city, :fancy_name, :social_name, :phone, :fax, :agency_about, :subscription_id,
           :latitude, :longitude, :paypal_customer_token, :paypal_recurring_profile_token, :subscription_cancellation_date,
-          :active, :plan_id
+          :active, :plan_id, :cancellation_window
   attr_accessor :paypal_payment_token
 
   geocoded_by :full_address
@@ -44,7 +44,23 @@ class Agency < ActiveRecord::Base
   end
 
   def can_cancel?
-    !subscription_cancellation_date || subscription_cancellation_date.past?
+    !subscription_cancellation_date || cancellation_window?
+  end
+
+  def self.scheduler_update_cancellation_date
+    agencies = Agency.where(subscription_cancellation_date: Date.today)
+    agencies = agencies.where(active: true)
+    agencies.each do |agency|
+      months_to_add = 1
+      if agency.cancellation_window?
+        plan = SubscriptionPlan.find(agency.plan_id)
+        months_to_add = plan.months_qty - months_to_add
+      end
+      agency.cancellation_window = !agency.cancellation_window
+      agency.subscription_cancellation_date = agency.subscription_cancellation_date.months_since(months_to_add)
+
+      agency.save!
+    end
   end
 
 end
