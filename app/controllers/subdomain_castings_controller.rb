@@ -1,7 +1,7 @@
 class SubdomainCastingsController < ApplicationController
   layout :subdomain_layout
 
-  before_filter :validate_customer
+  before_filter :validate_customer, except: [:show]
 
   def index
     @website = Website.find_by_subdomain(request.subdomain)
@@ -24,6 +24,13 @@ class SubdomainCastingsController < ApplicationController
     @casting_models_ids = @casting_models_ids.join(',')
 
     @casting_models = @casting_models.order(show_sort_column).page(params[:page]).per(per_page)
+
+    # Change the default route to the current subdomain when customer log in
+    store_custom_location("#{request.protocol}#{request.host_with_port}#{request.fullpath}")
+
+    # Find out the visualization mode
+    @visualization_mode = :read_only
+    @visualization_mode = :total_access if @casting.owner?(current_customer)
   end
 
   def create
