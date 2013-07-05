@@ -16,6 +16,8 @@ class SubdomainWebsitesController < ApplicationController
   def casting_foreign
     @website = Website.find_by_subdomain(request.subdomain)
 
+    # Change the default route to the current subdomain when customer log in
+    store_custom_location(subdomain_castings_path(subdomain: request.subdomain))
   end
 
   def contact_us

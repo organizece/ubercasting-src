@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     session[:users_return_to] = subdomain_websites_home_path(subdomain: subdomain)
   end
 
+  def store_custom_location(url)
+    session[:users_return_to] = url
+  end
+
   def clear_location
     session[:users_return_to] = agency_root_path
   end
