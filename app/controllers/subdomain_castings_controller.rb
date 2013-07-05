@@ -239,7 +239,7 @@ private
 
   def validate_customer
     # Change the default route to the current subdomain when customer log in
-    store_location(request.subdomain)
+    store_custom_location("#{request.protocol}#{request.host_with_port}#{request.fullpath}")
 
     # First runs the Devise authenticator
     authenticate_customer!
