@@ -1,0 +1,39 @@
+<%= javascript_include_tag "modelblock" %>
+
+<div id="casting-models-result" class="auto-size-block">
+	
+	<% for casting_model in @casting_models %>
+	
+		<div class="model-box">
+			<% model = casting_model.model %>
+			
+			<div class="model-box-img">
+				
+				<div class="model-box-checkbox">
+					<%= check_box_tag casting_model.id, casting_model.id %>
+					<%= hidden_field_tag "crop_x", model.crop_x %>
+					<%= hidden_field_tag "crop_y", model.crop_y %>
+					<%= hidden_field_tag "crop_w", model.crop_w %>
+					<%= hidden_field_tag "crop_h", model.crop_h %>
+				</div>
+				
+				<%= image_tag model.avatar.url %>
+			
+			</div>
+			
+			<div class="model-box-links">
+				
+				<ul>
+					<% if model.composite %>
+					<li class="model-box-view-composite"><%= link_to 'Visualizar Composite', subdomain_model_composite_path(model, subdomain: request.subdomain), remote: true %></li>
+					<% end %>
+					<li><h4><%= link_to model.art_name, subdomain_model_path(model, subdomain: request.subdomain) %></h4></li>
+				</ul>
+				
+			</div>
+			
+		</div>
+		
+	<% end %>
+	
+</div>
