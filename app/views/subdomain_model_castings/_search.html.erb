@@ -3,11 +3,11 @@
 	<%= javascript_include_tag "composite-nav" %>
 	
 	<div id="casting_models_criteria" class="clear-margin-padding auto-size-block">
-		<%= render 'subdomain_model_castings/search_criteria' %>
+		<%= render "subdomain_model_castings/search_criteria_#{@visualization_mode}" %>
 	</div>
 	
 	<div id="casting_models" class="full-column-width">
-		<%= render 'subdomain_model_castings/search_result' %>
+		<%= render "subdomain_model_castings/search_result_#{@visualization_mode}" %>
 	</div>
 	
 <% end %>

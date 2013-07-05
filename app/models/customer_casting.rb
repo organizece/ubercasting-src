@@ -17,4 +17,16 @@ class CustomerCasting < ActiveRecord::Base
     castings
   end
 
+  def owner?(customer)
+    owns = false
+    if customer
+      agency_customer = AgencyCustomer.find_by_agency_id_and_customer_id(agency_id, customer.id)
+      if agency_customer
+        owns = (agency_customer_id == agency_customer.id)
+      end
+    end
+
+    owns
+  end
+
 end
