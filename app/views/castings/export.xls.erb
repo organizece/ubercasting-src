@@ -22,6 +22,8 @@
         <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:hair_color) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:shoes_size) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:specialty) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:personal_email) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Model.human_attribute_name(:personal_phone) %></Data></Cell>
       </Row>
     <% @models.each do |model| %>
       <Row>
@@ -40,6 +42,8 @@
         <Cell><Data ss:Type="String"><%= t(model.hair_color, scope: :hair_color) unless model.hair_color.empty? %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= model.shoes_size %></Data></Cell>
         <Cell><Data ss:Type="String"><%= model.specialties.map { |f| t(f.name, scope: :specialties) }.join ', ' if model.specialties %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= model.personal_email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= model.personal_phone %></Data></Cell>
       </Row>
     <% end %>
     </Table>
