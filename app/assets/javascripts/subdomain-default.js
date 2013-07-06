@@ -68,8 +68,8 @@ $(document).ready(function(){
 				var actualTop = $(this).css('top');
 				var actualHeight = $(this).height();
 				var actualWidth = $(this).width();
-				if ( (actualTop != "-50px") && (actualHeight>actualWidth) ){
-					$(this).css('top','-50px');
+				if ( (actualTop != "0px") && (actualHeight > actualWidth) ){
+					$(this).css('top','0px');
 				};
 			});
 		});

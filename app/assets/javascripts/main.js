@@ -78,9 +78,9 @@ $(document).ready(function(){
 				break;
 			};
 			
-			$('div.tour-content div.tab-selector-container ul li a').click(function(event) {
+			$('div.tour-content div.tab-selector-container ul li a.tab-item ').click(function(event) {
 				event.preventDefault();
-				var myClass = $(this).attr('class');
+				var myClass = $(this).attr('id');
 				
 				$('div.tour-content div.tab-selector-container ul li a').removeClass('link-active');
 				$(this).addClass('link-active');
@@ -413,6 +413,13 @@ $(document).ready(function(){
 			
 		};
 	};
+	
+	function uploadProfilePicLink(){
+		$('a#link-choose-profile-pic').click(function(event) {
+			$(this).hide();
+			$('img#ajax-loadr').show();
+		});
+	}
 	
 	function mapModelAge(){
 		var objDate = new Date();
@@ -1806,6 +1813,7 @@ $(document).ready(function(){
 	searchAdvancedOpts();
 	searchBarSetup();
 	searchHorizontalHidden();
+	uploadProfilePicLink();
 	mapModelAge();
 	modelShowSecondInfo();
 	modelFormValidation();

@@ -71,7 +71,9 @@
 				                <span>Apagar</span>
 				            </button>
 				
-							<%= link_to "Escolher Foto de Perfil", model_profile_pic_path, title: 'Perfil Update', :class => "btn-silver-light-fluid put-left", remote: true %>
+							<%= link_to "Escolher Foto de Perfil", model_profile_pic_path, title: 'Perfil Update', :class => "btn-silver-light-fluid put-left", :id => "link-choose-profile-pic", remote: true %>
+							
+							<%= image_tag "admin/ajax-loader.gif", :id => "ajax-loadr" %>
 							
 							<%= hidden_field_tag :model_profile_picture, @model.avatar_file_name %>
 							

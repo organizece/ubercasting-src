@@ -115,3 +115,14 @@ $("#modal-profile-pic").on('shown', function () {
 	displayLoad();
 	
 });
+
+$("#modal-profile-pic").on('hidden', function () {
+	
+	function restoreProfilePicLink(){
+		$('a#link-choose-profile-pic').show();
+		$('img#ajax-loadr').hide();
+	}
+	
+	restoreProfilePicLink();
+	
+});
