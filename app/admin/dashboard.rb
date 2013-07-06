@@ -10,16 +10,20 @@ ActiveAdmin.register_page "Dashboard" do
       #end
     end
     
+    #Panel and Columns
     panel "Agencias" do
       table_for Agency.limit(10) do
-        column :email
-        column :name do |agency|
+        column "Agencia", :sortable => :name do |agency|
           link_to agency.name, admin_agency_path(agency)
         end
-        column :owner_name
-        column :account_type
-        column :account_period
-        column :account_payment
+        column "Nome", :owner_name, :sortable => true
+        column "Fone", :phone, :sortable => true
+        column :email, :sortable => true
+        column "Plano", :account_type, :sortable => true
+        column "Periodo", :account_period, :sortable => true
+        column "Criado Em", :created_at, :sortable => true
+        column "Cancelavel Em", :subscription_cancellation_date, :sortable => true
+        column "Ativo", :active, :sortable => true
       end
       strong { link_to "Ver Todas", admin_agencies_path  }
     end
