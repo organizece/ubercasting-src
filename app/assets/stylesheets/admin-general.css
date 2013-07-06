@@ -2126,6 +2126,8 @@ div.modal-btn-action{
 	margin: 15px 0px;
 }
 
+div.btnbar-upload img#ajax-loadr{ float: left; display: none; margin-right: 10px; }
+
 /**************************************/
 /*  MODEL VIDEO STORAGE  **************/
 /**************************************/
