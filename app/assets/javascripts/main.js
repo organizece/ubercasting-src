@@ -80,14 +80,14 @@ $(document).ready(function(){
 			
 			$('div.tour-content div.tab-selector-container ul li a.tab-item ').click(function(event) {
 				event.preventDefault();
-				var myClass = $(this).attr('id');
+				var myTabID = $(this).attr('id');
 				
 				$('div.tour-content div.tab-selector-container ul li a').removeClass('link-active');
 				$(this).addClass('link-active');
 				
 				$('div#video-player div.video-player-block').hide();
 				
-				switch(myClass){
+				switch(myTabID){
 					case "item01":
 						$('div.tour-content div#video-title h4').html("Sistema <strong>Geral</strong>");
 						$('div.tour-content div#video-title p').html("<strong>Veja agora o Tour completo do Uber-Casting Made Easy,</strong><br />Navegue pelas principais funcionalidades do sistema e veja como esse software online poderá facilitar o dia-dia da sua empresa. Aprenda como cadastrar, buscar e compartilhar castings com os seus clientes de forma prática e dinâmica. Experimente agora essa ferramenta que otimiza, organiza e facilita a entrega dos seus casting.");
