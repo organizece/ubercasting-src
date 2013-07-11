@@ -41,6 +41,36 @@ $(document).ready(function(){
 	}
 	
 	/*
+		VIDEO MANAGEMENT
+	*/
+	function videosManagement(){
+		
+		//Videos
+		var homeVideo = '<iframe src="http://player.vimeo.com/video/68701707" width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+		var tour01 = '<iframe src="http://player.vimeo.com/video/69644436" width="565" height="318" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+		var tour02 = '<iframe src="http://player.vimeo.com/video/69596605" width="565" height="318" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+		var tour03 = '<iframe src="http://player.vimeo.com/video/69596574" width="565" height="318" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+		var tour04 = '<iframe src="http://player.vimeo.com/video/69644437" width="565" height="318" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+		
+		//Environments
+		var onHome = $('div#video-player-container').length;
+		var onTour = $('div.tour-content').length;
+		
+		//Verifications
+		if ( onHome > 0 ){
+			$('div#video-player-container div#video-player').append(homeVideo);
+		};
+		
+		if ( onTour > 0 ){
+			$('div.tour-content div#video-player div#player-01').append(tour01);
+			$('div.tour-content div#video-player div#player-02').append(tour02);
+			$('div.tour-content div#video-player div#player-03').append(tour03);
+			$('div.tour-content div#video-player div#player-04').append(tour04);
+		};
+		
+	}
+	
+	/*
 		TOUR » SETUP NAV AND TABS
 	*/
 	function tourSetup(){
@@ -1839,5 +1869,6 @@ $(document).ready(function(){
 	subdomainLoginVerify();
 	videoString();
 	checkProfilePicture();
+	videosManagement();
 	
 });
