@@ -464,7 +464,7 @@ div#body div#ajudar-content span.email{
 	font:normal 44px Arial, Helvetica, sans-serif;
 	display:block;
 	float:left;
-	margin:40px 0 0 20px;
+	margin:40px 0 0 0px;
 }
 
 div#body div#ajudar-content .btn-enviar-email{
