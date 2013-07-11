@@ -67,4 +67,9 @@ class Customers::ConfirmationsController < Devise::ConfirmationsController
 
     sign_in_and_redirect(resource_name, @confirmable)
   end
+
+  def use_https?
+    false # Override in other controllers
+  end
+  
 end

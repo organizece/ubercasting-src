@@ -7,4 +7,11 @@ class Customers::PasswordsController < Devise::PasswordsController
     
     after_sign_in_path_for(resource)
   end
+
+private
+
+  def use_https?
+    false # Override in other controllers
+  end
+  
 end

@@ -38,4 +38,8 @@ private
     redirect_to subdomain_websites_casting_foreign_path(request.subdomain) unless agency_customer
   end
 
+  def use_https?
+    false # Override in other controllers
+  end
+
 end
