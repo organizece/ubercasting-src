@@ -56,7 +56,7 @@ $(document).ready(function(){
 		var onHome = $('div#video-player-container').length;
 		var onTour = $('div.tour-content').length;
 		
-		//Verifications
+		//Verify Enviornment X Videos
 		if ( onHome > 0 ){
 			$('div#video-player-container div#video-player').append(homeVideo);
 		};
