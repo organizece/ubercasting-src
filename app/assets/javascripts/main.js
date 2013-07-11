@@ -672,6 +672,10 @@ $(document).ready(function(){
 		$('a.has-tooltip').mouseleave(function(event) {
 			$(this).tooltip('hide');
 		});
+		$('a.has-tooltip').click(function(event) {
+			event.preventDefault();
+			return false;
+		});
 		
 		//CHECK IF RAILS RETURNED A FORM VALIDATION MESSAGE
 		if( $('div.alert').length != 0 ){
@@ -731,7 +735,7 @@ $(document).ready(function(){
 		});
 		
 		//Set Up PLAN TYPE input hidden, fill up the summary folder with account data and change step
-		$('div#plan-type div a').click(function(event) {
+		$('div#plan-type div a.btn-deal').click(function(event) {
 			
 			//Fill Information Up
 			switch( $(this).parent("div").attr("id") ){
