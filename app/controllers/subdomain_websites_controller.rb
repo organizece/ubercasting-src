@@ -65,4 +65,8 @@ private
     store_location(request.subdomain)
   end
 
+  def use_https?
+    false # Override in other controllers
+  end
+
 end
