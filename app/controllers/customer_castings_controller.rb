@@ -146,7 +146,7 @@ class CustomerCastingsController < ApplicationController
   end
 
   def open_external_url
-    @casting_url = subdomain_casting_url(params[:customer_casting_id], subdomain: current_agency.website.subdomain)
+    @casting_url = subdomain_casting_url(params[:customer_casting_id], subdomain: current_agency.website.subdomain, protocol: 'http')
   end
 
 private

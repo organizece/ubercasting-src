@@ -10,7 +10,7 @@
 			<tr>
 				<td style="background: #FEFEFE !important; border-bottom:1px solid #CCC; padding:20px 10px; font-size: 13px;">
 					<p>Você pode confirmar o seu cadastro utilizando o link abaixo:</p>
-					<p><%= link_to 'Confirmar minha conta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+					<p><%= link_to 'Confirmar minha conta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, protocol: 'https') %></p>
 				</td>
 			</tr>
 			<tr>
