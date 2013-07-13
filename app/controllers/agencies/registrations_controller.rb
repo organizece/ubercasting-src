@@ -200,6 +200,7 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
     
     @agency.account_type = plan.subscription.name
     @agency.account_period = plan.period
+    @agency.subscription = plan.subscription
     
     @agency.save!
     flash[:notice] = 'Alteracao no plano realizada com sucesso!'
