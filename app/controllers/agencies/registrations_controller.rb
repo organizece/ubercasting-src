@@ -40,6 +40,7 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
+      initialize_subscription_plans
       respond_with resource
     end
     
