@@ -30,7 +30,7 @@
 			<%= link_to "Selecionar Todos", "#", :id => "models-mark-all", :class => "models-mark-all"  %>
 		</li>
 		<li>
-			<%= link_to "Adicionar Todos", castings_open_add_models_path({models: @models_ids}), remote: true, id: :add_all_models %>
+			<%= link_to "Adicionar Todos", castings_open_add_models_path({models_id: @models_ids}), remote: true, id: :add_all_models %>
 		</li>
 		<li>
 			<%= link_to "Visualizar Castings", castings_path %>
@@ -68,7 +68,7 @@
 					<li class="model-box-view-composite"><%= link_to 'Criar Composite', new_model_composite_path(model) %></li>
 					<% end %>
 					<li><h4><%= link_to model.name, model_path(model) %></h4></li>
-					<li class="model-box-add-composite"><%= link_to 'Adicionar à Casting', castings_open_add_models_path({models: model.id}), remote: true, via: :get %></li>
+					<li class="model-box-add-composite"><%= link_to 'Adicionar à Casting', castings_open_add_models_path({models_id: model.id}), remote: true, via: :get %></li>
 					<li class="model-box-more-links admin-inner-container"><a href="#" onclick="javascript:return false;" class="model-box-open-link">Mais Ações</a></li>
 					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Editar Modelo', edit_model_path(model) %></li>
 					
