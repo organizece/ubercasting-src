@@ -264,7 +264,7 @@ p.inner-tip{
 	display: block;
 }
 
-p.big-words{ font-size: 220%; margin-left: 16px; color: #a1a1a1; }
+p.big-words{ font-size: 220%; margin-left: 16px; color: #a1a1a1; width: 96%; line-height: 35px; }
 
 /*  PAGINATOR AND ACTIONS TABS  ****************************/
 
@@ -1873,6 +1873,7 @@ div#search-criteria-button a{
 }
 div#search-criteria-button a:hover{ text-decoration: none; }
 
+div#search-criteria-button img.search-criteria-load{ display: block; float: right; margin: 17px 0px 0px 20px; }
 
 /*  SEARCH RESULTS (MODELS)  *********************/
 

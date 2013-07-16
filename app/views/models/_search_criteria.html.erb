@@ -36,7 +36,8 @@
 <div class="content-split"></div>
 
 <div id="search-criteria-button" class="auto-size-block admin-inner-container">
-	<%= submit_tag "Buscar", :name => nil, class: 'input-btn-silver-light-4-column put-right' %>
+	<%= image_tag "admin/ajax-loader.gif", :class => "search-criteria-load" %>
+	<%= submit_tag "Buscar", :name => nil, class: 'input-btn-silver-light-4-column put-right', :id => "btn-model-search" %>
 	<a id="search-criteria-adv-opts" href="#" onclick="javascript:return false;" class="put-right">Ativar Opções Avançadas »</a>
 </div>
 
