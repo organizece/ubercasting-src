@@ -31,7 +31,7 @@ $("#modal-profile-pic").on('shown', function () {
 		};
 	};
 	
-	//Image Select; APply JCrop on select image and calls preview
+	//Image Select; Apply JCrop on select image and calls preview
 	function profileImgSelect(){
 		
 		$('div#profile-pic-list ul li').click(function(event){
@@ -106,6 +106,10 @@ $("#modal-profile-pic").on('shown', function () {
 			$(this).hide();
 			$('.ajax-loader').show();
 			$('div.bottom-ctrl-bar a#btn-continue-composite').show();
+			
+			//Background action
+			$('div.btnbar-upload a#link-choose-profile-pic').show();
+			$('div.btnbar-upload img#ajax-loadr').hide();
 		});
 	}
 	

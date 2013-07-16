@@ -606,6 +606,21 @@ $(document).ready(function(){
 	}
 	
 	/*
+		MODELS » SEARCH » MANAGE LOAD
+	*/
+	function modelSearchLoad(){
+		var onSearch = $('div#search-criteria-button').length;
+		
+		if ( onSearch > 0 ){
+			$('div#search-criteria-button img.search-criteria-load').hide();
+			$('div#search-criteria-button input#btn-model-search').click(function(event) {
+				$(this).hide();
+				$('div#search-criteria-button img.search-criteria-load').show();
+			});
+		};
+	};
+	
+	/*
 		MODELS » REGISTER » ART NAME
 	*/
 	function modelArtName(){
@@ -664,8 +679,8 @@ $(document).ready(function(){
 			var currentPlanType = "";
 			
 			//APPLY INITIAL PRICES AND INFORMATION
-			$('div#plan-type div#type-03 p.price-top span.month-price-val').text("R$"+topAnnualPrice);
-			$('div#plan-type div#type-02 p.price-top span.month-price-val').text("R$"+uberAnnualPrice);
+			$('div#plan-type div#type-03 p.price-top span.month-price-val').text("R$"+convertMoney(topAnnualPrice));
+			$('div#plan-type div#type-02 p.price-top span.month-price-val').text("R$"+convertMoney(uberAnnualPrice));
 			
 			switch( currentPlanPeriod ){
 				case "annual":
@@ -708,9 +723,9 @@ $(document).ready(function(){
 		
 		//CHECK IF RAILS RETURNED A FORM VALIDATION MESSAGE
 		if( $('div.alert').length != 0 ){
-			var errorVal = $('span.help-inline').parent("div.controls").find("input").val();
-			var errorMsg = $('span.help-inline:eq('+0+')').text();
-			$('div.alert').text(errorVal+" "+errorMsg);
+			// var errorVal = $('span.help-inline').parent("div.controls").find("input").val();
+			// 			var errorMsg = $('span.help-inline:eq('+0+')').text();
+			// 			$('div.alert').text(errorVal+" "+errorMsg);
 		}
 		
 		//APPLY INPUT MASKS
@@ -728,8 +743,8 @@ $(document).ready(function(){
 			switch( $(this).text() ){
 				case "Mensal":
 					$('input#agency_account_period').val("monthly");
-					$('div#plan-type div#type-03 p.price-top span.month-price-val').text("R$"+topMonthPrice+"0");
-					$('div#plan-type div#type-02 p.price-top span.month-price-val').text("R$"+uberMonthPrice+"0");
+					$('div#plan-type div#type-03 p.price-top span.month-price-val').text("R$"+convertMoney(topMonthPrice));
+					$('div#plan-type div#type-02 p.price-top span.month-price-val').text("R$"+convertMoney(uberMonthPrice));
 					
 					$('div#plan-type span.month-mulitplier').text('');
 					$('div#plan-type div#type-03 span.price-total-val').text("");
@@ -739,8 +754,8 @@ $(document).ready(function(){
 				break;
 				case "Semestral":
 					$('input#agency_account_period').val("semiannual");
-					$('div#plan-type div#type-03 p.price-top span.month-price-val').text("R$"+(topSemiPrice)+"0");
-					$('div#plan-type div#type-02 p.price-top span.month-price-val').text("R$"+(uberSemiPrice)+"0");
+					$('div#plan-type div#type-03 p.price-top span.month-price-val').text("R$"+convertMoney(topSemiPrice));
+					$('div#plan-type div#type-02 p.price-top span.month-price-val').text("R$"+convertMoney(uberSemiPrice));
 					
 					$('div#plan-type span.month-mulitplier').text('6x');
 					$('div#plan-type div#type-03 span.price-total-val').text("Valor Total: R$"+(topSemiPrice*6)+",00");
@@ -750,8 +765,8 @@ $(document).ready(function(){
 				break;
 				case "Anual":
 					$('input#agency_account_period').val("annual");
-					$('div#plan-type div#type-03 p.price-top span.month-price-val').text("R$"+(topAnnualPrice)+"0");
-					$('div#plan-type div#type-02 p.price-top span.month-price-val').text("R$"+(uberAnnualPrice));
+					$('div#plan-type div#type-03 p.price-top span.month-price-val').text("R$"+convertMoney(topAnnualPrice));
+					$('div#plan-type div#type-02 p.price-top span.month-price-val').text("R$"+convertMoney(uberAnnualPrice));
 					
 					$('div#plan-type span.month-mulitplier').text('12x');
 					$('div#plan-type div#type-03 span.price-total-val').text("Valor Total: R$"+(topAnnualPrice*12)+",00");
@@ -818,7 +833,7 @@ $(document).ready(function(){
 			if( currentPlanType != "free" ){
 				
 				//BTN CONTINUE
-				$('div.form-register-field a.btn-continue').click(function(event) {
+				$('div.form-register-field a.btn-continue').click(function(event) {	
 					
 					var myFormId = $(this).parents("div.form-register").parents("div").attr("id");
 					var myFormRegister = $(this).parents("div.form-register");
@@ -879,7 +894,7 @@ $(document).ready(function(){
 				var planPriceInput = $('input#agency_account_period').val()+"-price-"+$('input#agency_account_type').val();
 				var planPrice = $('input#'+planPriceInput).val();
 				$('input#plan_price').val(planPrice);
-				$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+(planPrice)+"0 <span>/mês</span>");
+				$('div.plan-summary-folder p.plan-price').html("<span>R$</span> "+convertMoney(planPrice)+"<span>/mês</span>");
 				
 			}else{
 				$('div.form-register-field input.input-btn-gold-light-4-column').click(function(event) {
@@ -1032,6 +1047,36 @@ $(document).ready(function(){
 		$("#agency_insc_city").mask("99.999.999");
 		$("#agency_phone").mask("(99)9999-9999");
 		$("#agency_fax").mask("(99)9999-9999");
+	}
+	
+	/*
+		CONVERT PLAN CURRENCY TYPE FOR REAL PATTERN
+	*/
+	function convertMoney(currency){
+		//Convert values to real money
+		var moneyArray = currency.split("");
+		var moneyFinal = "";
+		
+		if ( moneyArray.length == 5 ){
+			moneyArray.push("0");
+			for (var i=0; i < moneyArray.length; i++) {
+				if ( moneyArray[i] != "." ){
+					moneyFinal += moneyArray[i];
+				}else{
+					moneyFinal += ",";
+				};
+			};
+		}else if ( moneyArray.length == 6 ){
+			for (var j = 0; j < moneyArray.length; j++) {
+				if ( moneyArray[j] != "." ){
+					moneyFinal += moneyArray[j];
+				}else{
+					moneyFinal += ",";
+				};
+			};
+		};
+		
+		return moneyFinal;
 	}
 	
 	/*
@@ -1850,6 +1895,7 @@ $(document).ready(function(){
 	mapModelAge();
 	modelShowSecondInfo();
 	modelFormValidation();
+	modelSearchLoad();
 	modelArtName();
 	checkModelAgeBox();
 	registerFlow();

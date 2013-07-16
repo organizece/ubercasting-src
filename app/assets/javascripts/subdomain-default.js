@@ -62,14 +62,20 @@ $(document).ready(function(){
 		};
 	};
 	
+	/*
+		STYLISH THEME - HOME IMAGES ADJUSTMENTS
+	*/
 	function adjustHomeImgs() {
 		$('div#content-container-wrapper div.theme-home-model-box img').each(function(index) {
-			$('div#content-container-wrapper div.theme-home-model-box img').load(function() {
-				var actualTop = $(this).css('top');
-				var actualHeight = $(this).height();
-				var actualWidth = $(this).width();
-				if ( (actualTop != "0px") && (actualHeight > actualWidth) ){
-					$(this).css('top','0px');
+			$(this).load(function() {
+				$(this).css({
+				  width: $(this).parent('div').width(),
+				  top: '-50px'
+				});
+				
+				if ( ($(this).height() - 50) < $(this).parent('div').height() ){
+					var newHeight = $(this).height() + 25;
+					$(this).height(newHeight);
 				};
 			});
 		});
@@ -87,6 +93,7 @@ $(document).ready(function(){
 				slideShowVertUpdate();
 				adjustHomeImgs();
 			}else{
+				setupHomeImgs();
 				slideShowUpdate();
 			};
 		};
@@ -258,7 +265,6 @@ $(document).ready(function(){
 	}
 	
 	setupNavBar();
-	setupHomeImgs();
 	stripesThemeSetup();
 	checkSlideCall();
 	customerRequestInputMask();

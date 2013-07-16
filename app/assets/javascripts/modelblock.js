@@ -12,6 +12,20 @@ $(document).ready(function() {
 	}
 	
 	/*
+		MODELS » SEARCH » LOAD SETUP
+	*/
+	function modelSearchLoadManage() {
+		var onSearch = $('div#search-criteria-button').length;
+		
+		if ( onSearch > 0 ){
+			if ( $('div#search-criteria-button input#btn-model-search').css('display') == "none" ){
+				$('div#search-criteria-button img.search-criteria-load').hide();
+				$('div#search-criteria-button input#btn-model-search').show();
+			};
+		};
+	}
+	
+	/*
 		MODELS » SEARCH » PROFILE PIC SETUP
 	*/
 	function searchSetupModelAvatar(){
@@ -169,6 +183,7 @@ $(document).ready(function() {
 	}
 	
 	modelBlockMoreLinks();
+	modelSearchLoadManage();
 	searchSetupModelAvatar();
 	modelMarkAll();
 	stripesThemeModelView();

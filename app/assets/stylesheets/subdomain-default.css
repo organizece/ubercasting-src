@@ -1245,6 +1245,7 @@ div#search-criteria-button a{
 }
 div#search-criteria-button a:hover{ text-decoration: none; }
 
+div#search-criteria-button img.search-criteria-load{ display: block; float: right; margin: 16px 0px 0px 20px; }
 
 /*  SEARCH RESULTS (MODELS)  *********************/
 
