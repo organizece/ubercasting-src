@@ -71,33 +71,36 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
     
     email_exists = !Agency.where(email: resource.email).empty?
     if email_exists
-       flash[:error] = 'O email utilizado para o cadastro ja existe no sistema.'
+       flash[:error] = 'O email utilizado para o cadastro ja existe no sistema.'  
        initialize_subscription_plans
        render "new"
     else
-      if resource.account_type == 'free'
-        session[:registration_new_agency] = resource
-        render 'confirm_paypal_payment'
-      else
-        plan = SubscriptionPlan.find(params[:plan_id])
+      plan = SubscriptionPlan.find(params[:plan_id])
+      flash[:error] = 'Account Type: '+resource.account_type+' / Plan ID: '+(plan.id.to_s)+' / Payment Type: '+resource.account_payment
+      redirect_to root_path
+#      if resource.account_type == 'free'
+#        session[:registration_new_agency] = resource
+#        render 'confirm_paypal_payment'
+#      else
+#        plan = SubscriptionPlan.find(params[:plan_id])
 
-        resource.plan_id = plan.id
-        session[:registration_new_agency] = resource
+#        resource.plan_id = plan.id
+#        session[:registration_new_agency] = resource
 
-        if resource.account_payment == 'PayPal'
-          payment = PaypalPayment.new(plan, resource)
-          redirect_to payment.checkout_url(
-            return_url: agency_confirm_paypal_payment_url,
-            cancel_url: root_url
-          )
-        elsif resource.account_payment == 'PagSeguro'
-          flash[:notice] = 'Funcionalidade do pagseguro ainda sera implementada.'
-          redirect_to root_path
-        else
-          flash[:error] = 'Opcao invalida de pagamento.'
-          redirect_to root_path
-        end
-      end
+#        if resource.account_payment == 'PayPal'
+#          payment = PaypalPayment.new(plan, resource)
+#          redirect_to payment.checkout_url(
+#            return_url: agency_confirm_paypal_payment_url,
+#            cancel_url: root_url
+#          )
+#        elsif resource.account_payment == 'PagSeguro'
+#          flash[:notice] = 'Funcionalidade do pagseguro ainda sera implementada.'
+#          redirect_to root_path
+#        else
+#          flash[:error] = 'Opcao invalida de pagamento.'
+#          redirect_to root_path
+#        end
+#      end
     end 
 
   end
