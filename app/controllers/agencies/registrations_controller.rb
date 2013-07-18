@@ -76,7 +76,8 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
        render "new"
     else
       plan = SubscriptionPlan.find(params[:plan_id])
-      flash[:error] = 'Account Type: '+resource.account_type+' / Plan ID: '+(plan.id.to_s)+' / Payment Type: '+resource.account_payment
+      #flash[:error] = 'Account Type: '+resource.account_type+' / Plan ID: '+(plan.id.to_s)+' / Payment Type: '+resource.account_payment
+      flash[:error] = 'Account Type: '+resource.account_type
       redirect_to root_path
 #      if resource.account_type == 'free'
 #        session[:registration_new_agency] = resource
