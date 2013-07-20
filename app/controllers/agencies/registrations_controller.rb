@@ -3,7 +3,7 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
 
   def new
     initialize_subscription_plans
-
+    @agency = Agency.new
     super
   end
   
@@ -67,7 +67,7 @@ class Agencies::RegistrationsController < Devise::RegistrationsController
   end
 
   def do_payment
-    build_resource
+    resource = Agency.new(params[:agency])
     
     email_exists = !Agency.where(email: resource.email).empty?
     if email_exists
