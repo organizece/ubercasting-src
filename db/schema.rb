@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716155115) do
+ActiveRecord::Schema.define(:version => 20130821225225) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -155,6 +155,16 @@ ActiveRecord::Schema.define(:version => 20130716155115) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "composite_style"
+    t.integer  "main_photo_x"
+    t.integer  "main_photo_y"
+    t.integer  "first_sub_photo_x"
+    t.integer  "first_sub_photo_y"
+    t.integer  "second_sub_photo_x"
+    t.integer  "second_sub_photo_y"
+    t.integer  "third_sub_photo_x"
+    t.integer  "third_sub_photo_y"
+    t.integer  "fourth_sub_photo_x"
+    t.integer  "fourth_sub_photo_y"
   end
 
   create_table "customer_casting_messages", :force => true do |t|
