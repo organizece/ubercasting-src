@@ -55,7 +55,7 @@ private
   end
 
   def per_page
-    ITENS_PER_PAGE.include?(params[:itens_per_page]) ? params[:itens_per_page] : 6
+    ITENS_PER_PAGE.include?(params[:itens_per_page]) ? params[:itens_per_page] : ITENS_PER_PAGE[0]
   end
 
   def customer_total_access?

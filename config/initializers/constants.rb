@@ -26,4 +26,4 @@ STATES = %w(AC
             SE
             TO)
 
-ITENS_PER_PAGE = %w(6 12 24 36)
+ITENS_PER_PAGE = %w(12 24 36 48)
