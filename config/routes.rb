@@ -42,6 +42,8 @@ Ubercasting::Application.routes.draw do
     resources :composites, except: [:index, :destroy]
   end
 
+  resources :gallery_items
+
   # Routes to Casting pages
   get 'castings/open_add_models/'
   post 'castings/save_add_models/'
