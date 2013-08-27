@@ -52,7 +52,8 @@ jQuery.fn.resizeToParent = function(options) {
 		obj.css({'left': leftOffset, 'top': topOffset});
 		
 		/* ÜBER CUSTOM ADD ON */
-		if ( ($('body div#admin-model-search-container').length > 0) || ($('body div#model-composite-content').length > 0) ){
+		//if ( ($('body div#admin-model-search-container').length > 0) || ($('body div#model-composite-content').length > 0) || ($('body div#model-info-content').length > 0) ){
+		if ( ($('body div#composite-template').length > 0) ){
 			var myParentID = obj.parent('div').attr('id');
 			
 			switch( myParentID ){
