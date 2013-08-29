@@ -68,7 +68,8 @@
                                 <li><%= link_to '» Configurar Übersite', edit_website_path(current_agency.website) %></li>
                                 <li><%= link_to '» Alterar Visualização', edit_website_path(current_agency.website)+"#themeView" %></li>
                                 <li><%= link_to '» Customizar Domínio', edit_website_path(current_agency.website)+"#checkDomain" %></li>
-								<li><%= link_to '» Conectar Sites', connect_sites_path, :class => "hasnewicon" %></li>
+                                <li><%= link_to '» Conectar Sites', connect_sites_path, :class => "hasnewicon" %></li>
+								<li><%= link_to '» Gerenciar Galeria', gallery_items_path, :class => "hasnewicon" %></li>
                             </ul>
                         </li>
                     <% else %>
@@ -77,7 +78,8 @@
                                 <li><%= link_to '» Configurar Übersite', root_path %></li>
                                 <li><%= link_to '» Alterar Visualização', root_path %></li>
                                 <li><%= link_to '» Customizar Domínio', root_path %></li>
-								<li><%= link_to '» Conectar Sites', root_path, :class => "hasnewicon" %></li>
+                                <li><%= link_to '» Conectar Sites', root_path, :class => "hasnewicon" %></li>
+                                <li><%= link_to '» Gerenciar Galeria', root_path, :class => "hasnewicon" %></li>
                             </ul>
                         </li>
                     <% end %>

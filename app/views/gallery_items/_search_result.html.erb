@@ -1,0 +1,29 @@
+<div id="search-gallery-result" class="auto-size-block">
+    
+    <% for item in @gallery_items %>
+    
+        <div class="model-box">
+            
+            <div class="model-box-img">
+                
+                <% if item.image? %>
+                    <%= image_tag item.image.url(:thumb) %>
+                <% end %>
+            
+            </div>
+            
+            <div class="model-box-links">
+                
+                <ul>
+                    <li><h4><%= link_to item.title, gallery_item_path(item) %></h4></li>
+                    <li class="model-box-more-links"><%= link_to 'Editar', edit_gallery_item_path(item) %></li>
+                    <li class="model-box-more-links"><%= link_to 'Deletar', gallery_item_path(item), method: :delete, :confirm => "Tem certeza que deseja excluir este item da galeria?" %></li>
+                </ul>
+                
+            </div>
+            
+        </div>
+    
+    <% end %>
+
+</div>

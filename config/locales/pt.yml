@@ -190,6 +190,7 @@ pt:
       specialty: Especialidade
       agency_customer_request: Pedido
       customer_casting: Pedido de casting
+      gallery_item: Item de Galeria
     attributes:
       agency:
         name: Nome
@@ -319,6 +320,10 @@ pt:
         message: Mensagem
       customer_casting:
         name: Nome
+      gallery_item:
+        title: Título
+        description: Descrição
+        image: Imagem
 
     errors:
       template:

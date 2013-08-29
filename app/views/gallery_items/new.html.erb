@@ -1,5 +1,40 @@
-<h1>New gallery_item</h1>
+<div id="agency-customer-manager" class="full-column-container put-center">
+  
+  <div id="main-header" class="auto-size-block admin-panel-header">
+    <span class="icon-title icon-title-gear put-left">&nbsp;</span>
+    <h2 class="put-left clear-margin-padding font-title">Gerenciar <span class="font-title-bold">Galeria</span></h2>
+  </div>
+  
+  <div class="content-split"></div>
+  
+  <div id="agency-customer-manager-content" class="auto-size-block clear-margin put-relative">
+    
+    <div class="admin-panel-full-top clear-margin-padding">&nbsp;</div>
+    
+    <div id="content" class="full-column-width content-body">
+      
+      <div id="subheader" class="auto-size-block admin-inner-container put-relative">
+        
+        <span class="put-absolute admin-panel-header-icon admin-panel-header-icon-customer">&nbsp;</span>
+        
+        <h3 class="header-base-title-text">Inserir <strong>Item de Galeria</strong></h3>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', gallery_items_path %>
+        <%= link_to 'Voltar', gallery_items_path, class: 'put-right anchor-btn-silver-light-normal put-absolute icon-user' %>
+        
+      </div>
+      
+      <div class="content-split"></div>
+      
+      <div id="body" class="auto-size-block clear-margin">
+        
+        <div id="search">
+          <%= render 'form' %>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</div>

@@ -6,7 +6,7 @@
         <%= f.input :description %>
         <% if @gallery_item.image? %>
             <div id='image-update'>
-                <%= image_tag @gallery_item.image.url(:image) %>
+                <%= image_tag @gallery_item.image.url(:gallery) %>
                 <a href="#" id="image-update" class="btn-silver-light-fluid">Alterar</a>
             </div>
             <div id='image-field' style='display:none;'>

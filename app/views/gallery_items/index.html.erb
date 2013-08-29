@@ -1,25 +1,41 @@
-<h1>Listing gallery_items</h1>
+<div id="agency-customer-manager" class="full-column-container put-center">
+  
+  <div id="main-header" class="auto-size-block admin-panel-header">
+    <span class="icon-title icon-title-gear put-left">&nbsp;</span>
+    <h2 class="put-left clear-margin-padding font-title">Gerenciar <span class="font-title-bold">Galeria</span></h2>
+  </div>
+  
+  <div class="content-split"></div>
+  
+  <div id="agency-customer-manager-content" class="auto-size-block clear-margin put-relative">
+    
+    <div class="admin-panel-full-top clear-margin-padding">&nbsp;</div>
+    
+    <div id="content" class="full-column-width content-body">
+      
+      <div id="subheader" class="auto-size-block admin-inner-container put-relative">
+        
+        <span class="put-absolute admin-panel-header-icon admin-panel-header-icon-customer">&nbsp;</span>
+        
+        <h3 class="header-base-title-text">Lista de <strong>Itens</strong></h3>
+        <p class="base-text">Esta é a sua galeria. Navegue pela lista para visualizar, editar ou exlcuir um item.</p>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @gallery_items.each do |gallery_item| %>
-  <tr>
-    <td><%= gallery_item.title %></td>
-    <td><%= gallery_item.description %></td>
-    <td><%= link_to 'Show', gallery_item %></td>
-    <td><%= link_to 'Edit', edit_gallery_item_path(gallery_item) %></td>
-    <td><%= link_to 'Destroy', gallery_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Gallery item', new_gallery_item_path %>
+        <%= link_to 'Novo Item', new_gallery_item_path, class: 'put-right anchor-btn-silver-light-normal put-absolute icon-user' %>
+        
+      </div>
+      
+      <div class="content-split"></div>
+      
+      <div id="body" class="auto-size-block clear-margin">
+        
+        <div id="search">
+          <%= render 'search' %>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</div>
