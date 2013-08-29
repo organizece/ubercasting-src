@@ -1,5 +1,5 @@
 db/*.sqlite3
 log/*.log
 tmp/
-public/system/photos/images/*
+public/system/*/images/*
 .DS_Store
