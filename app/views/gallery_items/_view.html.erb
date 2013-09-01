@@ -1,0 +1,5 @@
+<% if @gallery_item.image? %>
+    <%= image_tag @gallery_item.image.url(:gallery) %>
+<% end %>
+<h2><%= @gallery_item.title %></h2>
+<h3><%= @gallery_item.description %></h3>

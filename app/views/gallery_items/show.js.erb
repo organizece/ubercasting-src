@@ -1,0 +1,3 @@
+$("#modals").empty();
+$("#modals").html("<%= escape_javascript(render('gallery_items/modals/view')) %>");
+$("#modal-gallery-view").modal('show');

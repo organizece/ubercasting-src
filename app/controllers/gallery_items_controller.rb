@@ -45,9 +45,11 @@ class GalleryItemsController < ApplicationController
     def destroy
     	@gallery_item = GalleryItem.find(params[:id])
         @gallery_item.destroy
+        flash[:notice] = 'Item de galeria excluido com sucesso.'
 
         respond_to do |format|
-            format.html { redirect_to gallery_items_url, notice: 'Item de galeria excluido com sucesso.' }
+            format.html { redirect_to gallery_items_url }
+            format.js
         end
     end
 

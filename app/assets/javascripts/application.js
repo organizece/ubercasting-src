@@ -28,6 +28,7 @@
 //= require castings
 //= require composites
 //= require control_panel
+//= require gallery_items
 //= require model_castings
 //= require models
 //= require websites
