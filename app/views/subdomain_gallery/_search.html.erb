@@ -1,0 +1,11 @@
+<%= form_tag gallery_items_path, method: 'get', id: "gallery_search" do %>
+    
+    <div id="gallery_criteria" class="clear-margin-padding auto-size-block">
+        <%= render 'search_criteria' %>
+    </div>
+    
+    <div id="gallery" class="full-column-width admin-inner-container">
+        <%= render 'search_result' %>
+    </div>
+    
+<% end %>

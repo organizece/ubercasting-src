@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821235437) do
+ActiveRecord::Schema.define(:version => 20130901154038) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -403,6 +403,7 @@ ActiveRecord::Schema.define(:version => 20130821235437) do
     t.string   "logo_url"
     t.string   "external_site"
     t.boolean  "has_custom"
+    t.boolean  "gallery",                            :default => true
   end
 
 end

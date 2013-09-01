@@ -1,0 +1,18 @@
+<div id="search-paginator" class="auto-size-block paginator">
+    
+    <ul>
+        <li class="put-left itens_per_page">
+            Itens por página:
+            <%= select_tag :itens_per_page, options_for_select(itens_per_page, params[:itens_per_page]), class: 'input-mini' %>
+        </li>
+        <li class="pagination">
+            <%= paginate @gallery_items %>
+            <%= hidden_field_tag :page, params[:page] %>
+        </li>
+        <li class="put-right order_column">
+            Ordenar por:
+            <%= select_tag :order_column, options_for_select(gallery_items_order_columns, params[:order_column]), :include_blank => true, class: 'input-medium' %>
+        </li>
+    </ul>
+    
+</div>

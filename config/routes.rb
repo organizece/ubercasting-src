@@ -137,6 +137,8 @@ Ubercasting::Application.routes.draw do
   match "/website/customer_requests/new" => "subdomain_customer_requests#new", via: :get, as: :subdomain_new_customer_request, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
   match "/website/customer_requests" => "subdomain_customer_requests#create", via: :post, as: :subdomain_customer_requests, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
 
+  match "/website/gallery" => "subdomain_gallery#index", via: :get, as: :subdomain_gallery, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  match "/website/gallery/:id" => "subdomain_gallery#show", via: :get, as: :subdomain_gallery_item, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
 
 
 end

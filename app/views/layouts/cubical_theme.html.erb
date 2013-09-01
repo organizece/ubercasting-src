@@ -123,6 +123,10 @@
 								<% end %>
 							<% end %>
 
+							<% if @website.gallery %>
+							<li class="link-contact"><%= link_to 'Galeria', subdomain_gallery_path(subdomain: request.subdomain) %></li>
+							<% end %>
+
 							<% if @website.contact_us %>
 							<li class="link-contact"><%= link_to 'Contato', subdomain_websites_contact_us_path(subdomain: request.subdomain) %></li>
 							<% end %>

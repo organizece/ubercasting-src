@@ -20,6 +20,7 @@
 //= require lightbox
 //= require castings
 //= require composites
+//= require gallery_items
 //= require models
 //= require model_castings
 //= require main

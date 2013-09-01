@@ -1,0 +1,27 @@
+<div id="search-gallery-result" class="auto-size-block">
+    
+    <% for item in @gallery_items %>
+    
+        <div class="model-box">
+            
+            <div class="model-box-img">
+                
+                <% if item.image? %>
+                    <%= image_tag item.image.url(:thumb) %>
+                <% end %>
+            
+            </div>
+            
+            <div class="model-box-links">
+                
+                <ul>
+                    <li><h4><%= link_to item.title, subdomain_gallery_item_path(item), remote: true %></h4></li>
+                </ul>
+                
+            </div>
+            
+        </div>
+    
+    <% end %>
+
+</div>
