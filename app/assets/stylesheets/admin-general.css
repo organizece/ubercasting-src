@@ -3057,6 +3057,79 @@ div.website-content-btns{
 .summary-block{ margin: 25px 0px; }
 
 /**************************************/
+/*  UBERSITE GALLERY   ****************/
+/**************************************/
+
+div#agency-gallery-manager div#search-gallery-result{
+	padding: 26px;
+}
+
+div#agency-gallery-manager div#search-gallery-result div.model-box{
+	margin: 0px 2px 0px 0px;
+	padding: 0px;
+}
+
+div#agency-gallery-manager div#search-gallery-result div.model-box-links{
+	margin: -31px 0px 0px 0px;
+	padding: 0px;
+	background-color: #f3f3f3;
+	overflow: hidden;
+	border-bottom: 1px solid #a1a1a1;
+}
+
+div#agency-gallery-manager div#search-gallery-result ul#search-gallery-list{
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	background-color: #f3f3f3;
+	overflow: hidden;
+	width: 147px;
+}
+
+div#agency-gallery-manager div#search-gallery-result ul#search-gallery-list li.gallery-action{
+	width: auto;
+	height: 17px;
+	display: block;
+	float: left;
+	border: none;
+	padding: 7px 15px;
+	margin: 0px 0px;
+	border-right: 1px solid #a1a1a1;
+	border-left: 1px solid #fff;
+}
+div#agency-gallery-manager div#search-gallery-result ul#search-gallery-list li.gallery-view{ border-left: none; }
+div#agency-gallery-manager div#search-gallery-result ul#search-gallery-list li.gallery-del{ border-right: none; }
+
+div#agency-gallery-manager div#search-gallery-result ul#search-gallery-list li.gallery-action a{
+	height: 17px;
+	display: block;
+	text-indent: -9999px;
+}
+
+div#agency-gallery-manager div#search-gallery-result ul#search-gallery-list li.gallery-view a{
+	width: 19px;
+	background: #f3f3f3 url(admin/gallery/bg-icon-view.jpg) left top no-repeat scroll;
+}
+
+div#agency-gallery-manager div#search-gallery-result ul#search-gallery-list li.gallery-edit a{
+	width: 18px;
+	background: #f3f3f3 url(admin/gallery/bg-icon-edit.jpg) left top no-repeat scroll;	
+}
+
+div#agency-gallery-manager div#search-gallery-result ul#search-gallery-list li.gallery-del a{
+	width: 14px;
+	background: #f3f3f3 url(admin/gallery/bg-icon-trash.jpg) left top no-repeat scroll;
+}
+
+/*  UBERSITE GALLERY: ADD PHOTO   ****************/
+div#gallery-new-item div#image-update a#image-update{
+	width: 100% !important;
+	padding: 8px 0px 0px 0px !important;
+	margin: 20px;
+}
+
+
+/**************************************/
 /*  FOOTER  ***************************/
 /**************************************/
 
