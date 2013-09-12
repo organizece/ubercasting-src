@@ -1,28 +1,47 @@
 <%= simple_form_for(@gallery_item) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs">
-        <%= f.input :title %>
-        <%= f.input :description %>
-        <% if @gallery_item.image? %>
-            <div id='image-update'>
-                <%= image_tag @gallery_item.image.url(:gallery) %>
-                <a href="#" id="image-update" class="btn-silver-light-fluid">Alterar</a>
-            </div>
-            <div id='image-field' style='display:none;'>
-                <%= f.label :image, "Upload de image" %>
-                <%= f.file_field :image %>
-                <br/>ou<br/>
-                <a href="#" id="image-update-cancel" class="btn-silver-light-fluid">Cancelar</a>
-            </div>
-        <% else %>
-            <%= f.label :image %>
-            <%= f.file_field :image %>
-        <% end %>
+    <div id="gallery-new-item" class="form-inputs">
+	
+        <div class="put-left form-block-4-columns field-isreq">
+			<%= f.input :title %>
+		</div>
+		
+        <div class="put-left form-block-4-columns field-isreq">
+			<%= f.input :description %>
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<div class="put-left form-block-4-columns field-isreq">
+			
+			<% if @gallery_item.image? %>
+	            <div id='image-update'>
+	                <%= image_tag @gallery_item.image.url(:gallery) %>
+					<br />
+	                <a href="#" id="image-update" class="btn-silver-light-fluid">Alterar</a>
+	            </div>
+				
+	            <div id='image-field' style='display:none;'>
+	                <%= f.label :image, "Upload de image" %>
+	                <%= f.file_field :image %>
+	                <br/>ou<br/>
+	                <a href="#" id="image-update-cancel" class="btn-silver-light-fluid">Cancelar</a>
+	            </div>
+	        <% else %>
+	            <%= f.label :image %>
+	            <%= f.file_field :image %>
+	        <% end %>
+			
+		</div>
+		
+		<div class="content-split"></div>
+		
     </div>
-
-    <div class="form-actions">
-        <%= f.button :submit %>
-    </div>
+	
+	<div class="auto-size-block bottom-ctrl-bar">
+		<%= link_to 'Voltar', gallery_items_path, class: 'put-left anchor-btn-silver-light-normal' %>
+		<%= f.button :submit, class: 'put-right input-btn-gold-light-4-column' %>
+	</div>
 
 <% end %>

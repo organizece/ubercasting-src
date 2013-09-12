@@ -743,6 +743,37 @@ span.btn-silver-light-fluid,
 	background: #fff url(admin/bg-icon-star-clear.jpg) left top no-repeat scroll;
 }
 
+/**************************************/
+/*  UBERSITE GALLERY   ****************/
+/**************************************/
+
+div#search-gallery-result{
+	padding: 26px;
+}
+
+div#search-gallery-result div.model-box{
+	margin: 0px 2px 0px 0px;
+	padding: 0px;
+}
+
+div#search-gallery-result div.model-box-links{
+	margin: -43px 0px 0px 0px;
+	padding: 0px;
+	background-color: #fff;
+	overflow: hidden;
+	border-bottom: 1px solid #a1a1a1;
+}
+
+div#search-gallery-result ul#search-gallery-list{
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	background-color: #f3f3f3;
+	overflow: hidden;
+	width: 147px;
+}
+
+
 /*  MODAL WINDOW  ****************************/
 
 .modal{
