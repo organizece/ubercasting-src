@@ -194,6 +194,32 @@ class ModelsController < ApplicationController
     end
   end
 
+  def set_feature
+      @model = current_agency.models.find(params[:model_id])
+      if @model.feature_limit_reached?
+          flash[:error] = 'Numero de modelos feature ja alcancado. Nao e possivel cadastrar mais modelos.'
+      else
+          @model.feature = true
+          @model.save
+          flash[:notice] = 'Modelo cadastrado como feature com sucesso.'
+      end
+
+      respond_to do |format|
+          format.html { redirect_to models_url }
+      end
+  end
+
+  def unset_feature
+      @model = current_agency.models.find(params[:model_id])
+      @model.feature = false
+      @model.save
+      flash[:notice] = 'Modelo descadastrado como feature com sucesso.'
+
+      respond_to do |format|
+          format.html { redirect_to models_url }
+      end
+  end
+
   def sort_column
     Model.column_names.include?(params[:order_column]) ? params[:order_column] : "name"
   end

@@ -5,7 +5,7 @@ class SubdomainWebsitesController < ApplicationController
 
   def home
     @website = Website.find_by_subdomain(request.subdomain)
-    
+    @models = @website.agency.models.order('feature DESC').limit(15)
   end
 
   def about

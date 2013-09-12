@@ -14,8 +14,9 @@
 	
 	<div id="home-slider" class="is-slide-show">
 		<div id="home-slider-container">
-			<% @website.agency.models.each do |model| %>
+			<% @models.each do |model| %>
 				<div class="theme-home-model-box">
+					<%= model.name %>
 					<%= image_tag model.avatar.url %>
 				</div>
 			<% end %>

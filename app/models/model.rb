@@ -40,7 +40,7 @@ class Model < ActiveRecord::Base
     :height, :weight, :eyes_color, :hair_color, :bust, :waist, :hip, :mannequin, :shoes_size, :rg, :cpf, :personal_phone, :secondary_phone, 
     :curriculum, :job_phone, :specialty, :address, :address_number, :neighborhood, :complement, :cep, :city, :state, :country, :bank, 
     :bank_account, :bank_account_type, :bank_agency, :personal_email, :job_email, :secondary_email, :site_url,
-    :specialty_ids, :video, :art_name, :avatar_photo_id, :avatar, :crop_x, :crop_y, :crop_w, :crop_h
+    :specialty_ids, :video, :art_name, :avatar_photo_id, :avatar, :crop_x, :crop_y, :crop_w, :crop_h, :feature
 
   has_attached_file :avatar
 
@@ -156,6 +156,13 @@ class Model < ActiveRecord::Base
 
     # Validates if the creation limit hasn't been reached. Unlimited(-1)
     limit != -1 && limit == current_models_number
+  end
+
+  def feature_limit_reached?
+      limit = 15
+      feat_number = agency.models.where(feature: true).count
+
+      limit == feat_number      
   end
 
   def avatar_from_url(url)

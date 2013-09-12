@@ -38,6 +38,8 @@ Ubercasting::Application.routes.draw do
     match 'update_model_video' => 'models#update_video', via: :put, as: :update_video
     match 'profile_pic' => 'models#open_profile_pic', via: :get, as: :profile_pic
     match 'profile_pic' => 'models#save_profile_pic', via: :post, as: :profile_pic
+    match 'feature' => 'models#set_feature', via: :post, as: :set_feature
+    match 'feature' => 'models#unset_feature', via: :delete, as: :unset_feature
     resources :photos, except: [:edit, :update]
     resources :composites, except: [:index, :destroy]
   end
