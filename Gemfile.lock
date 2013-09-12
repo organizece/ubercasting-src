@@ -231,7 +231,7 @@ DEPENDENCIES
   brazilian-rails
   coffee-rails (~> 3.2.1)
   country_select
-  devise
+  devise (~> 2.2.0)
   geocoder
   jquery-fileupload-rails
   jquery-rails

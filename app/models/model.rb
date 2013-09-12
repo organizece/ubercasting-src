@@ -1,7 +1,8 @@
 class Model < ActiveRecord::Base
 
   BIOTYPES = %w( branco 
-                 mulato 
+                 mulato
+                 pardo 
                  negro 
                  mestico 
                  latino 

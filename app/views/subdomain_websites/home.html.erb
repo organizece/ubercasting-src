@@ -16,7 +16,6 @@
 		<div id="home-slider-container">
 			<% @models.each do |model| %>
 				<div class="theme-home-model-box">
-					<%= model.name %>
 					<%= image_tag model.avatar.url %>
 				</div>
 			<% end %>
