@@ -7,7 +7,7 @@ gem 'thin'
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
 
-gem 'devise'
+gem 'devise', "~> 2.2.0"
 gem 'brazilian-rails'
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
