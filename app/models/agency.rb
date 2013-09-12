@@ -61,6 +61,21 @@ class Agency < ActiveRecord::Base
       agency.subscription_cancellation_date = agency.subscription_cancellation_date.months_since(months_to_add)
 
       agency.save!
+      if agency.cancellation_window?
+          AgencyMailer.warn_contract_end(agency).deliver
+      else
+          AgencyMailer.warn_contract_renewal(agency).deliver
+      end
+    end
+  end
+
+  def self.scheduler_warn_contract_expiration
+    warn_date = Date.today.months_since(1)
+    agencies = Agency.where(subscription_cancellation_date: warn_date)
+    agencies = agencies.where(cancellation_window: false)
+    agencies = agencies.where(active: true)
+    agencies.each do |agency|
+      AgencyMailer.warn_contract_expiration(agency).deliver
     end
   end
 
