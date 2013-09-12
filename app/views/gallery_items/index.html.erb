@@ -1,4 +1,4 @@
-<div id="agency-customer-manager" class="full-column-container put-center">
+<div id="agency-gallery-manager" class="full-column-container put-center">
   
   <div id="main-header" class="auto-size-block admin-panel-header">
     <span class="icon-title icon-title-gear put-left">&nbsp;</span>
@@ -17,10 +17,10 @@
         
         <span class="put-absolute admin-panel-header-icon admin-panel-header-icon-customer">&nbsp;</span>
         
-        <h3 class="header-base-title-text">Lista de <strong>Itens</strong></h3>
-        <p class="base-text">Esta é a sua galeria. Navegue pela lista para visualizar, editar ou exlcuir um item.</p>
+        <h3 class="header-base-title-text">Lista de <strong>Fotos</strong></h3>
+        <p class="base-text">Esta é a sua galeria. Cadastre peças e fotos que seus modelos participaram. <br />Utilize a lista abaixo para visualizar, editar ou exlcuir um item.</p>
 
-        <%= link_to 'Novo Item', new_gallery_item_path, class: 'put-right anchor-btn-silver-light-normal put-absolute icon-user' %>
+        <%= link_to 'Adicionar Foto', new_gallery_item_path, class: 'put-right anchor-btn-silver-light-normal put-absolute icon-user' %>
         
       </div>
       
@@ -28,7 +28,7 @@
       
       <div id="body" class="auto-size-block clear-margin">
         
-        <div id="search">
+        <div id="search" class="agency-gallery-search">
           <%= render 'search' %>
         </div>
         

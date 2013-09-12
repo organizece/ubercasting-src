@@ -1883,6 +1883,56 @@ $(document).ready(function(){
 		};
 	}
 	
+	/*
+		UBERSITE GALLERY » BOX ACTION LIST
+	*/
+	function ubersiteGallerytBtns() {
+		var hasGallery = $('div#search-gallery-result').length;
+		
+		if ( hasGallery > 0 ){
+			
+			$('div#search-gallery-result div.model-box .model-box-img img').resizeToParent();
+			$('div#search-gallery-result div.model-box .model-box-links').hide();
+			
+			$('div#search-gallery-result div.model-box').live('mouseenter', function(event) {
+			  $(this).find('.model-box-links').fadeIn('fast');
+			});
+			
+			$('div#search-gallery-result div.model-box').live('mouseleave', function(event) {
+				$(this).find('.model-box-links').fadeOut('fast');
+			});
+			
+			//ADD DIVIDER
+			$('div#search-gallery-result div.model-box').each(function(index) {
+				if ( (index+1) % 3 == 0 ){
+					$(this).after('<div class="content-split"></div>');
+				};
+			});
+			
+			$('div#search').live('mouseenter', function(event) {
+				$('div#search-gallery-result div.model-box .model-box-img img').resizeToParent();
+				$('div#search-gallery-result div.model-box .model-box-links').hide();
+				
+				//ADD DIVIDER
+				$('div#search-gallery-result div.model-box').each(function(index) {
+					if ( (index+1) % 3 == 0 ){
+						$(this).after('<div class="content-split"></div>');
+					};
+				});
+			});
+			
+		};
+		
+		var onItemEdit = $('div#gallery-new-item div#image-update').length;
+		
+		if ( onItemEdit > 0 ){
+			$('div#gallery-new-item div#image-update a#image-update').click(function(event) {
+				$(this).parent('div#image-update').hide();
+				$('div#gallery-new-item div#image-field').show();
+			});
+		};
+	}
+	
 	btnFolderHover();
 	tourSetup();
 	faqScroll();
@@ -1915,5 +1965,6 @@ $(document).ready(function(){
 	videoString();
 	checkProfilePicture();
 	videosManagement();
+	ubersiteGallerytBtns();
 	
 });
