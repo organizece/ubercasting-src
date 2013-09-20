@@ -272,7 +272,7 @@ $(document).ready(function(){
 		
 		if ( onCasting > 0 ){
 			
-			var topPost = new Array("-150px","-165px","-125px");
+			var topPost = new Array("-190px","-165px","-85px");
 			var arrowsDisplay = new Array("side","side","br");
 			var contentNum = topPost.length;
 			var tourIndex = 0;
