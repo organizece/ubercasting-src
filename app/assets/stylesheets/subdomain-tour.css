@@ -1,6 +1,22 @@
 @charset "UTF-8";
 /* CSS Document */
 
+.anchor-btn-silver-tour{
+	width: auto;
+	height: 19px;
+	display: block;
+	padding: 9px 20px;
+	background: #FFF url(admin/btn-bg-gray-fluid.jpg) left top repeat-x scroll;
+	border: 1px solid #a1a1a1;
+	border-bottom: none;
+	color: #000;
+	margin-right: 10px;
+	
+	text-shadow: #FFF 0px 1px 0px;
+	-moz-text-shadow: #FFF 0px 1px 0px;
+	-webkit-text-shadow: #FFF 0px 1px 0px;
+}
+
 div#tour-box{
 	width: 500px;
 	height: auto;

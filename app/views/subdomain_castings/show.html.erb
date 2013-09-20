@@ -1,4 +1,27 @@
-<div id="casting-models-information" class="put-center">
+<div id="casting-models-information" class="put-center" style="position: relative;">
+	
+	<!-- *********** TOUR-BOX *********** -->
+	<div id="tour-box">
+
+		<div class="tour-content">
+			<h3>Casting: <strong>CRIE RANKINGS PARA OS MODELOS</strong></h3>
+			<p>Você pode aplicar votos diferentes para cada um de seus modelos. Depois, basta utilizar o filtro da barra de busca para organizá-los de modo que os modelos mais votados fiquem no topo.</p>
+		</div>
+
+		<a href="#" class="btn-silver-light-fluid" id="btn-tour-next">CONCLUIR</a>
+
+		<div id="tour-bullets">
+			<a href="#">&nbsp;</a>
+		</div>
+
+		<div id="tour-arrows">
+			<%= image_tag("theme-tour/ArrowTopLeft.png", size: "63x100", alt: "ArrowTopLeft", id: "arrow-top-left") %>
+			<%= image_tag("theme-tour/ArrowSideLeft.png", size: "81x25", alt: "ArrowSideLeft", id: "arrow-side-left") %>
+			<%= image_tag("theme-tour/ArrowSideRight.png", size: "81x25", alt: "ArrowSideRight", id: "arrow-side-right") %>
+			<%= image_tag("theme-tour/ArrowBottomRight.png", size: "71x92", alt: "ArrowBottomRight", id: "arrow-bottom-right") %>
+		</div>
+
+	</div>
   
 	<!-- *********** CONTENT *********** -->
 	
@@ -13,6 +36,7 @@
 			
 				<ul class="put-right put-list-inline header-lists">
 					<li><%= link_to "Visualizar Castings", subdomain_castings_path(subdomain: request.subdomain), class: 'anchor-btn-silver-medium-base anchor-btn-silver-medium-return' %></li>
+					<li><a href="#" id="casting-take-tour" class='anchor-btn-silver-tour'>Fazer Tour &raquo;</a></li>
 				</ul>
 			</div>
 
