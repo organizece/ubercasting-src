@@ -2,6 +2,7 @@
  *= require_self
  *= require bootstrap_and_overrides
  *= require subdomain-default
+ *= require subdomain-tour
  *= require composites
  *= require lightbox
 */

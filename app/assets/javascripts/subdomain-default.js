@@ -264,9 +264,101 @@ $(document).ready(function(){
 		};
 	}
 	
+	/*
+		SUBDOMAIN » CASTING » TOUR
+	*/
+	function castingTour(){
+		var onCasting = $('div#casting-models-info-content').length;
+		
+		if ( onCasting > 0 ){
+			
+			var topPost = new Array("-150px","-165px","-125px");
+			var arrowsDisplay = new Array("side","side","br");
+			var contentNum = topPost.length;
+			var tourIndex = 0;
+			
+			//SETUP BULLETS
+			$('div#tour-box div#tour-bullets a').remove();
+			for (var i = 0; i < contentNum; i++) {
+				$('div#tour-box div#tour-bullets').append('<a href="#" class="off">&nbsp;</a>');
+			};
+			
+			//HIDE ARROWS
+			$('div#tour-box div#tour-arrows img').hide();
+			
+			//START TOUR
+			$('a#casting-take-tour').click(function(event) {
+				event.preventDefault();
+				
+				$('div#tour-box div.tour-content').hide();
+				$('div#tour-box div.tour-content:eq('+tourIndex+')').show();
+				
+				$('div#tour-box div#tour-bullets a').addClass('off');
+				$('div#tour-box div#tour-bullets a:eq('+tourIndex+')').removeClass('off');
+				
+				$('div#tour-box').fadeIn('slow');
+				$('div#tour-box').animate({"margin-top": topPost[tourIndex]}, "slow");
+				
+				changeTourArrows( arrowsDisplay[tourIndex] );
+				
+			});
+			
+			//NEXT BUTTON
+			$('div#tour-box a#btn-tour-next').click(function(event) {
+				event.preventDefault();
+				
+				if ( tourIndex < (contentNum-1) ){
+					tourIndex++;
+					if ( tourIndex == 2 ){ $(this).text('CONCLUIR'); };
+					
+					$('div#tour-box div.tour-content').hide();
+					$('div#tour-box div.tour-content:eq('+tourIndex+')').show();
+					
+					$('div#tour-box div#tour-bullets a').addClass('off');
+					$('div#tour-box div#tour-bullets a:eq('+tourIndex+')').removeClass('off');
+					
+					$('div#tour-box').animate({"margin-top": topPost[tourIndex]}, "slow");
+					
+					changeTourArrows( arrowsDisplay[tourIndex] );
+				}else{
+					$('div#tour-box').fadeOut('fast', function() {
+						$('div#tour-box a#btn-tour-next').text('PRÓXIMO');
+					});
+					
+					tourIndex = 0;
+				};
+			});
+			
+		};
+	};
+	
+	function changeTourArrows( arrowsDisplay ){
+		$('div#tour-box div#tour-arrows img').hide();
+		switch( arrowsDisplay ){
+			case "side":
+				$('div#tour-box div#tour-arrows img#arrow-side-left').fadeIn('slow');
+				$('div#tour-box div#tour-arrows img#arrow-side-right').fadeIn('slow');
+			break;
+			case "sl":
+				$('div#tour-box div#tour-arrows img#arrow-side-left').fadeIn('slow');
+			break;
+			case "sr":
+				$('div#tour-box div#tour-arrows img#arrow-side-right').fadeIn('slow');
+			break;
+			case "br":
+				$('div#tour-box div#tour-arrows img#arrow-bottom-right').fadeIn('slow');
+			break;
+			case "tl":
+				$('div#tour-box div#tour-arrows img#arrow-top-left').fadeIn('slow');
+			break;
+			
+		}
+	}
+	
 	setupNavBar();
 	stripesThemeSetup();
 	checkSlideCall();
 	customerRequestInputMask();
+	castingTour();
 	
 });
