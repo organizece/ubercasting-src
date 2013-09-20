@@ -1,5 +1,41 @@
-<div id="casting-manager" class="full-column-container put-center">
+<div id="casting-manager" class="full-column-container put-center" style="position: relative;">
   
+	<!-- *********** TOUR-BOX *********** -->
+	<div id="tour-box">
+		
+		<div class="tour-content">
+			<h3>Casting: <strong>BUSQUE E ORGANIZE</strong></h3>
+			<p>Utilize a barra acima para buscar por castings específicos, ordenar ou filtrar quantos devem aparecer na página e excluir castings selecionados.</p>
+		</div>
+		
+		<div class="tour-content" style="display: none;">
+			<h3>Casting: <strong>EDITE SEU CASTING</strong></h3>
+			<p>Através da barra indicada você pode selecionar castings para exclusão ou usar as ações abaixo:</p>
+			<%= image_tag("theme-tour/tour-img-actions.jpg", size: "250x86", alt: "Actions", id: "img-actions") %>
+		</div>
+		
+		<div class="tour-content" style="display: none;">
+			<h3>Casting: <strong>CRIE NOVOS CASTINGS</strong></h3>
+			<p>Atrav&eacute;s do campo abaixo &eacute; poss&iacute;vel criar novos castings. Estes irão aparecer em sua lista autom&aacute;ticamente e estarão prontos para serem editados.</p>
+		</div>
+		
+		<a href="#" class="btn-silver-light-fluid" id="btn-tour-next">PRÓXIMO</a>
+		
+		<div id="tour-bullets">
+			<a href="#">&nbsp;</a>
+			<a href="#">&nbsp;</a>
+			<a href="#">&nbsp;</a>
+		</div>
+		
+		<div id="tour-arrows">
+			<%= image_tag("theme-tour/ArrowTopLeft.png", size: "63x100", alt: "ArrowTopLeft", id: "arrow-top-left") %>
+			<%= image_tag("theme-tour/ArrowSideLeft.png", size: "81x25", alt: "ArrowSideLeft", id: "arrow-side-left") %>
+			<%= image_tag("theme-tour/ArrowSideRight.png", size: "81x25", alt: "ArrowSideRight", id: "arrow-side-right") %>
+			<%= image_tag("theme-tour/ArrowBottomRight.png", size: "71x92", alt: "ArrowBottomRight", id: "arrow-bottom-right") %>
+		</div>
+		
+	</div>
+	
 	<!-- *********** CONTENT *********** -->
 	
 	<div id="casting-models-info-content" class="auto-size-block clear-margin put-relative">
@@ -9,7 +45,8 @@
 			
 			<div id="subheader" class="auto-size-block">
 				<p class="lead">Lista de <strong>Castings</strong></p>
-				<p class="default">Navegue pelas listas de castings já criadas ou crie novas listas para serem compartilhadas.</p>
+				<p class="default">Navegue pelas listas de castings já criadas ou crie novas listas para serem compartilhadas.<br />
+					<a href="#" id="casting-take-tour">Fazer Tour &raquo;</a></p>
 			</div>
 
 			<div class="content-split"></div>
