@@ -10,7 +10,7 @@ gem 'pg', group: :production
 gem 'devise', "~> 2.2.0"
 gem 'brazilian-rails'
 gem "paperclip", "~> 3.0"
-gem 'aws-sdk'
+gem 'aws-sdk', "~> 1.8.0"
 gem 'kaminari'
 gem 'simple_form'
 gem 'country_select'
