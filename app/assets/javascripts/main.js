@@ -1784,6 +1784,8 @@ $(document).ready(function(){
 	*/
 	function subdomainLogin(){
 		$('a.sub-popup-link').click(function(event) {
+			alert("GO!");
+			
 			event.preventDefault();
 			
 			var popWIndex = $(this).attr('class').indexOf("popupw-")+7;
