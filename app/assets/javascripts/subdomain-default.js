@@ -268,7 +268,7 @@ $(document).ready(function(){
 		SUBDOMAIN » CASTING » TOUR
 	*/
 	function castingTour(){
-		var onCasting = $('div#casting-models-info-content').length;
+		var onCasting = $('div#casting-manager').length;
 		
 		if ( onCasting > 0 ){
 			
@@ -332,6 +332,58 @@ $(document).ready(function(){
 		};
 	};
 	
+	/*
+		SUBDOMAIN » CASTING MODEL » TOUR
+	*/
+	function castingModelTour(){
+		var onCasting = $('div#casting-models-result').length;
+		
+		if ( onCasting > 0 ){
+			
+			var topPost = new Array("300px");
+			var arrowsDisplay = new Array("sl");
+			var contentNum = topPost.length;
+			var tourIndex = 0;
+			
+			//SETUP BULLETS
+			$('div#tour-box div#tour-bullets a').remove();
+			for (var i = 0; i < contentNum; i++) {
+				$('div#tour-box div#tour-bullets').append('<a href="#" class="off">&nbsp;</a>');
+			};
+			
+			//HIDE ARROWS
+			$('div#tour-box div#tour-arrows img').hide();
+			
+			//START TOUR
+			$('a#casting-take-tour').click(function(event) {
+				event.preventDefault();
+				
+				$('div#tour-box div.tour-content').hide();
+				$('div#tour-box div.tour-content:eq('+tourIndex+')').show();
+				
+				$('div#tour-box div#tour-bullets a').addClass('off');
+				$('div#tour-box div#tour-bullets a:eq('+tourIndex+')').removeClass('off');
+				
+				$('div#tour-box').animate({top: topPost[tourIndex], "margin-left": "-80px"}, "slow");
+				$('div#tour-box').fadeIn('slow');
+				
+				changeTourArrows( arrowsDisplay[tourIndex] );
+				
+			});
+			
+			//NEXT BUTTON
+			$('div#tour-box a#btn-tour-next').click(function(event) {
+				event.preventDefault();
+				$('div#tour-box').fadeOut('fast');
+				tourIndex = 0;
+			});
+			
+		};
+	};
+	
+	/*
+		SUBDOMAIN » CHANGE ARROWS DISPLAY
+	*/
 	function changeTourArrows( arrowsDisplay ){
 		$('div#tour-box div#tour-arrows img').hide();
 		switch( arrowsDisplay ){
@@ -360,5 +412,6 @@ $(document).ready(function(){
 	checkSlideCall();
 	customerRequestInputMask();
 	castingTour();
+	castingModelTour();
 	
 });
