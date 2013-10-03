@@ -11,11 +11,11 @@
 	
 	<% end %>
 
-	<table>
+	<table id="videos-list">
 		<% @model.videos.each do |video| %>
 			<tr>
 				<td><%= video.url %></td>
-				<td><%= link_to 'Delete', model_video_path(@model, video), remote: true, method: :delete %></td>
+				<td><%= link_to 'Apagar', model_video_path(@model, video), remote: true, method: :delete %></td>
 			</tr>
 		<% end %>
 	</table>

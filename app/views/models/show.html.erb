@@ -356,7 +356,7 @@
 				
 				<div class="content-split"></div>
 				
-				<% if @model.video %>
+				<% if @model.videos.count > 0 %>
 				
 					<div id="model-video-gallery" class="auto-size-block">
 					
@@ -370,9 +370,11 @@
 				
 						<div class="content-split"></div>
 						
+						<% for video in @model.videos %>
 						<div id="video-box">
-							<iframe width="560" height="315" src="<%= @model.video %>" frameborder="0" allowfullscreen></iframe>
+							<iframe width="560" height="315" src="<%= video.url %>" frameborder="0" allowfullscreen></iframe>
 						</div>
+						<% end %>
 					
 					</div>
 				
