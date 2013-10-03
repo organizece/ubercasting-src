@@ -1853,7 +1853,7 @@ $(document).ready(function(){
 			var videoStringIndex = 0;
 			var videoCode = "";
 			
-			$('input#model_video').blur(function(event) {
+			$('input#model_video').live('blur', function(event) {
 				videoString = $(this).val();
 				
 				if ( videoString.indexOf("/embed/") == -1 ){
@@ -1861,7 +1861,6 @@ $(document).ready(function(){
 					videoCode = videoString.substring(videoStringIndex, videoString.length);
 					$(this).val('http://www.youtube.com/embed/'+videoCode);
 				};
-				
 			});
 			
 		};
@@ -1933,6 +1932,55 @@ $(document).ready(function(){
 		};
 	}
 	
+	/*
+		UBERSITE FEATURE MODEL SETUP
+	*/
+	function setupModelFeature(){
+		var onFeatureModel = $('div#website-feature-content').length;
+		
+		if ( onFeatureModel > 0 ){
+			var checkIndex = 1;
+			var modelDivId = 0;
+			var modelId = 0;
+			
+			$('div#feature-models-container div.model-feature-img img').resizeToParent();
+			
+			$('div#feature-models-container div.model-feature-img div.model-feature-checkbox input').click(function(event) {
+				
+				if ( checkIndex < 15 ){
+					modelDivId = $(this).parents('div.model-feature').attr('id');
+					modelId = modelDivId.substring(6,modelDivId.length);
+					
+					$(this).parents('div.model-feature-img').find('div.model-feature-index span').text(checkIndex);
+					$('div#feature-models-container input.feature-hidden:eq('+(checkIndex-1)+')').val(modelId);
+					
+					checkIndex++;
+				}else{
+					event.preventDefault();
+					checkIndex = 15;
+				}
+				
+			});
+			
+			$('a#link-feature-deselect').click(function(event) {
+				
+				event.preventDefault();
+				
+				$('div#feature-models-container div.model-feature-checkbox input').each(function(index) {
+					if ($(this).is(':checked')){
+						$(this).attr('checked', false);
+					};
+				});
+				$('div#feature-models-container input.feature-hidden').each(function(index) {
+					$(this).val('false');
+				});
+				$('div.model-feature-img div.model-feature-index span').text("0");
+				checkIndex = 1;
+			});
+			
+		};
+	}
+	
 	btnFolderHover();
 	tourSetup();
 	faqScroll();
@@ -1966,5 +2014,6 @@ $(document).ready(function(){
 	checkProfilePicture();
 	videosManagement();
 	ubersiteGallerytBtns();
+	setupModelFeature();
 	
 });
