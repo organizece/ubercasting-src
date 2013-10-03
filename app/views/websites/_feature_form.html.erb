@@ -1,0 +1,63 @@
+<div id="website-feature-content" class="website-content-config">
+	
+	<h4>Modelo Feature:</h4>
+	<p>Selecione os modelos que você quer que apareçam na home page de seu übersite. A ordem aparição irá respeitar a ordem com que você escolher os modelos abaixo.</p>
+	
+	<div class="content-split"></div>
+	
+	<%= form_for @website do |f| %>
+		
+		<!-- LIST MODELS -->
+		<div id="feature-models-container">
+			
+			<% for model in @website.agency.models %>
+				
+				<div id="model-<%= model.id %>" class="model-feature">
+					<div class="model-feature-img">
+						<div class="model-feature-checkbox">
+							<%= check_box_tag model, model.id %>
+							<%= hidden_field_tag "crop_x", model.crop_x %>
+							<%= hidden_field_tag "crop_y", model.crop_y %>
+							<%= hidden_field_tag "crop_w", model.crop_w %>
+							<%= hidden_field_tag "crop_h", model.crop_h %>
+						</div>
+						<div class="model-feature-index">
+							<span class="feature-index">0</span>
+						</div>
+						<%= image_tag model.avatar.url %>
+					</div>
+				</div>
+				
+			<% end %>
+			
+			<!-- HIDDEN CONTROLLERS -->
+			<%= hidden_field_tag "feature01", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature02", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature03", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature04", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature05", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature06", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature07", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature08", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature09", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature10", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature11", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature12", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature13", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature14", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature15", false, :class => "feature-hidden" %>
+			
+		</div>
+		
+		<div class="content-split"></div>
+		
+		<!-- BUTTON CTRLER BAR -->
+		<div class="website-content-btns">
+			<%= f.submit 'Salvar Configurações', class: 'input-btn-gold-liquid put-right' %>
+			<%= link_to "Ver website", subdomain_websites_home_url(subdomain: @agency.website.subdomain, protocol: 'http'), class: 'btn-silver-light-fluid put-right', target: "_blank" %>
+			<%= link_to "Voltar ao topo", "#", :class => "btn-silver-light-fluid put-right has-scrollUp scrollTo-0" %>
+			<%= link_to "Deselecionar Todos", "#", :class => "btn-silver-light-fluid put-right", :id => "link-feature-deselect" %>
+		</div>
+	<% end %>
+	
+</div>

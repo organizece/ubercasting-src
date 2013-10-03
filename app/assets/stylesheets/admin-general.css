@@ -2129,6 +2129,22 @@ div.modal-btn-action{
 
 div.btnbar-upload img#ajax-loadr{ float: left; display: none; margin-right: 10px; }
 
+/*  MODEL VIDEO STORAGE LIST  **************/
+
+table#videos-list tr td{
+	padding: 5px 0px;
+	border-bottom: 1px dotted #a1a1a1;
+}
+
+table#videos-list tr td a{
+	width: 14px;
+	height: 16px;
+	display: block;
+	background: #FFF url(admin/btn-icon-delete.jpg) left top no-repeat scroll;
+	text-indent: -9999px;
+	margin-left: 10px;
+}
+
 /**************************************/
 /*  MODEL VIDEO STORAGE  **************/
 /**************************************/
@@ -2650,12 +2666,12 @@ div#website-content-container div#website-content-subnav ul li a{
 	color: #232323;
 	font-size: 90%;
 	display: block;
-	padding: 6px 20px 6px 20px;
+	padding: 6px 11px 6px 11px;
 	border-right: 1px solid #b8b8b8;
 	border-left: 1px solid #FFF;
 }
 
-div#website-content-container div#website-content-subnav ul li:last-child a{ border-right:none; padding-left: 33px; }
+div#website-content-container div#website-content-subnav ul li:last-child a{ border-right:none; padding-left: 18px; }
 
 
 /*  PAGE CLASSES  ************/
@@ -2801,6 +2817,67 @@ div#theme-custom-part-body input#website_body_font_size,
 div#theme-custom-part-header input#website_header_font_size,
 div#theme-custom-part-content input#website_content_font_size,
 div#theme-custom-part-footer input#website_footer_font_size{ width: 230px; }
+
+/*  FEATURE CONFIG CUSTOM  ************/
+
+div#website-feature-content div#feature-models-container{
+	width: 98%;
+	margin: 0 auto;
+	height: 300px;
+	overflow: auto;
+	padding-left: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #eee;
+}
+
+div#website-feature-content div.model-feature,
+div#website-feature-content div.model-feature div.model-feature-img{
+	width: 140px;
+	height: 140px;
+	display: block;
+}
+
+div#website-feature-content div.model-feature{
+	float: left;
+	margin: 0px 7px 7px 0px;
+	border: 1px solid #555;
+	border-bottom: 3px solid #555;
+}
+
+div#website-feature-content div.model-feature div.model-feature-img{
+	overflow: hidden;
+	position: relative;
+}
+
+div#website-feature-content div.model-feature div.model-feature-img img{
+	width: auto;
+	max-width: none;
+	position: absolute;
+}
+
+div#website-feature-content div.model-feature div.model-feature-img div.model-feature-checkbox,
+div#website-feature-content div.model-feature div.model-feature-img div.model-feature-index{
+	position: absolute;
+	z-index: 9999;
+}
+
+div#website-feature-content div.model-feature div.model-feature-img div.model-feature-checkbox{
+	top: 0px;
+	left: 5px;
+}
+
+div#website-feature-content div.model-feature div.model-feature-img div.model-feature-index{
+	right: 0px;
+	bottom: 0px;
+	background-color: #DDD;
+	padding: 3px 7px;
+	
+	opacity: 0.5;
+	-moz-opacity: 0.5;
+	filter:alpha(opacity=50);
+}
+
 
 /*  THEME LOGO CONFIG  ************/
 
