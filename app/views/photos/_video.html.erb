@@ -10,6 +10,15 @@
 		<%= f.submit 'Salvar Video', class: 'put-left btn-silver-light-fluid' %>
 	
 	<% end %>
+
+	<table>
+		<% @model.videos.each do |video| %>
+			<tr>
+				<td><%= video.url %></td>
+				<td><%= link_to 'Delete', model_video_path(@model, video), remote: true, method: :delete %></td>
+			</tr>
+		<% end %>
+	</table>
 	
 	<div class="content-split"></div>
 	

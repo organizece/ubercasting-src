@@ -226,7 +226,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   awesome_print
-  aws-sdk
+  aws-sdk (~> 1.8.0)
   bootstrap-sass
   brazilian-rails
   coffee-rails (~> 3.2.1)

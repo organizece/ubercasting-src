@@ -1,5 +1,7 @@
 Ubercasting::Application.routes.draw do
 
+  get "video/destroy"
+
   match "" => "subdomain_websites#home", constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
   root :to => "main_pages#home"
   
@@ -42,6 +44,7 @@ Ubercasting::Application.routes.draw do
     match 'feature' => 'models#unset_feature', via: :delete, as: :unset_feature
     resources :photos, except: [:edit, :update]
     resources :composites, except: [:index, :destroy]
+    resources :videos, only: [:destroy]
   end
 
   resources :gallery_items

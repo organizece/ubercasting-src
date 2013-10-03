@@ -27,6 +27,7 @@ class PhotosController < ApplicationController
   def new
     @photo = Photo.new
     @model = Model.find(params[:model_id])
+    @model.video = nil
 
     respond_to do |format|
       format.html # new.html.erb

@@ -34,6 +34,7 @@ class Model < ActiveRecord::Base
   has_many :photos, dependent: :destroy
   has_one :composite, dependent: :destroy
   has_many :model_castings, dependent: :destroy
+  has_many :videos, dependent: :destroy
   has_many :castings, through: :model_castings
   has_and_belongs_to_many :specialties
 
