@@ -8,6 +8,8 @@ class WebsitesController < ApplicationController
 
     @themes = @agency.subscription.themes
     @themes += @agency.themes
+
+    @feat_models = current_agency.models.where(feature: true).order('feature_number ASC').limit(15)
   end
 
   def update

@@ -29,23 +29,16 @@
 				</div>
 				
 			<% end %>
-			
+
 			<!-- HIDDEN CONTROLLERS -->
-			<%= hidden_field_tag "feature1", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature2", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature3", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature4", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature5", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature6", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature7", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature8", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature9", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature10", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature11", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature12", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature13", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature14", nil, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature15", nil, :class => "feature-hidden" %>
+			<% for index in (1..(@feat_models.size)) %>
+				<%= hidden_field_tag "feature#{index}", @feat_models[index - 1].id, :class => "feature-hidden" %>
+			<% end %>
+			<% if @feat_models.size < 15 %>
+				<% for index in ((@feat_models.size + 1)..15) %>
+					<%= hidden_field_tag "feature#{index}", nil, :class => "feature-hidden" %>
+				<% end %>
+			<% end %>
 			
 		</div>
 		
