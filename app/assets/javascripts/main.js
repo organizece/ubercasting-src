@@ -1972,7 +1972,7 @@ $(document).ready(function(){
 					};
 				});
 				$('div#feature-models-container input.feature-hidden').each(function(index) {
-					$(this).val('false');
+					$(this).val(null);
 				});
 				$('div.model-feature-img div.model-feature-index span').text("0");
 				checkIndex = 1;

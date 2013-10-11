@@ -15,14 +15,14 @@
 				<div id="model-<%= model.id %>" class="model-feature">
 					<div class="model-feature-img">
 						<div class="model-feature-checkbox">
-							<%= check_box_tag model, model.id %>
+							<%= check_box_tag model, model.id, model.feature %>
 							<%= hidden_field_tag "crop_x", model.crop_x %>
 							<%= hidden_field_tag "crop_y", model.crop_y %>
 							<%= hidden_field_tag "crop_w", model.crop_w %>
 							<%= hidden_field_tag "crop_h", model.crop_h %>
 						</div>
 						<div class="model-feature-index">
-							<span class="feature-index">0</span>
+							<span class="feature-index"><%= model.feature_number %></span>
 						</div>
 						<%= image_tag model.avatar.url %>
 					</div>
@@ -31,21 +31,21 @@
 			<% end %>
 			
 			<!-- HIDDEN CONTROLLERS -->
-			<%= hidden_field_tag "feature01", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature02", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature03", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature04", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature05", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature06", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature07", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature08", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature09", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature10", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature11", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature12", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature13", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature14", false, :class => "feature-hidden" %>
-			<%= hidden_field_tag "feature15", false, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature1", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature2", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature3", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature4", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature5", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature6", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature7", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature8", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature9", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature10", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature11", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature12", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature13", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature14", nil, :class => "feature-hidden" %>
+			<%= hidden_field_tag "feature15", nil, :class => "feature-hidden" %>
 			
 		</div>
 		
@@ -53,7 +53,7 @@
 		
 		<!-- BUTTON CTRLER BAR -->
 		<div class="website-content-btns">
-			<%= f.submit 'Salvar Configurações', class: 'input-btn-gold-liquid put-right' %>
+			<%= f.submit 'Salvar Configurações', name: 'feature_models', class: 'input-btn-gold-liquid put-right' %>
 			<%= link_to "Ver website", subdomain_websites_home_url(subdomain: @agency.website.subdomain, protocol: 'http'), class: 'btn-silver-light-fluid put-right', target: "_blank" %>
 			<%= link_to "Voltar ao topo", "#", :class => "btn-silver-light-fluid put-right has-scrollUp scrollTo-0" %>
 			<%= link_to "Deselecionar Todos", "#", :class => "btn-silver-light-fluid put-right", :id => "link-feature-deselect" %>

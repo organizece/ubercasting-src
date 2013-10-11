@@ -13,9 +13,33 @@ class WebsitesController < ApplicationController
   def update
     @website = Website.find(params[:id])
 
-    respond_to do |format|
+    if params[:feature_models]
+      # Clear features
+      current_agency.models.where(feature: true).each do |model|
+        model.feature = false
+        model.feature_number = 0
+        model.save!
+      end
+      # Set features
+      (1..15).each do |feat_num|
+        feat_model = params["feature#{feat_num}"]
+        if !feat_model.blank?
+          model = current_agency.models.find(feat_model)
+          model.feature = true
+          model.feature_number = feat_num
+          model.save!
+        end
+      end
+      flash[:notice] = 'Website atualizado com sucesso.'
+    else
       if @website.update_attributes(params[:website])
-        format.html { redirect_to edit_website_path(@website), notice: 'Website atualizado com sucesso.' }
+        flash[:notice] = 'Website atualizado com sucesso.'
+      end
+    end
+
+    respond_to do |format|
+      if flash[:notice]
+        format.html { redirect_to edit_website_path(@website) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

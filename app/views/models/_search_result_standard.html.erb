@@ -75,11 +75,6 @@
 					<% if model.composite %>
 					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Editar Composite', edit_model_composite_path(model,model.composite) %></li>
 					<% end %>
-					<% if model.feature? %>
-						<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Desselecionar como Feature', model_unset_feature_path(model), method: :delete %></li>
-					<% else %>
-						<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Selecionar como Feature', model_set_feature_path(model), method: :post %></li>
-					<% end %>
 					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Upload Fotos', new_model_photo_path(model, {source: 'edit'}) %></li>
 					<li class="model-box-more-links admin-inner-container closed"><%= link_to 'Deletar Modelo', model_path(model), method: :delete, :confirm => "Tem certeza que deseja excluir este modelo?" %></li>
 				</ul>
