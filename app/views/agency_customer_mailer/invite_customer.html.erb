@@ -12,6 +12,12 @@
 				<td style="background: #FEFEFE !important; border-bottom:1px solid #CCC; padding:20px 10px; font-size: 13px;">
 					<p><strong>...está convidando você para visitar o website dela!</strong></p>
 					<p>Para acessar, clique neste link: <%= link_to @agency_name, @website_url %></p>
+					<% if !@customer.encrypted_password.blank? %>
+						<p><strong>Lembrete:</strong> seu e-mail <%= @customer.email %> já possu&iacute; uma conta nos sistemas Über.</p>
+						<hr style="border-top:1px solid #ccc; border-bottom: none;" />
+						<p style="font-size:11px;">A data de criação de sua conta é de <%= @customer.created_at.to_s[8..9] %> / <%= @customer.created_at.to_s[5..6] %> / <%= @customer.created_at.to_s[0..3] %>. Caso tenha problemas em lembrar sua senha, clique em <em><strong>Esqueceu sua Senha?</strong></em> no painel de Login dentro do site da ag&ecirc;ncia <strong><%= @agency_name %></strong>.</p>
+					<% end %>
+					
 				</td>
 			</tr>
 			<tr>

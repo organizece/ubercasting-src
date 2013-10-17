@@ -1945,15 +1945,61 @@ $(document).ready(function(){
 			
 			$('div#feature-models-container div.model-feature-img img').resizeToParent();
 			
-			$('div#feature-models-container div.model-feature-img div.model-feature-checkbox input').click(function(event) {
+			//If there are any models checked, update counter
+			checkIndex = updateModelIndexCount();
+			
+			//Checkbox MouseDown
+			$('div#feature-models-container div.model-feature-img div.model-feature-checkbox input').mousedown(function(event) {
 				
-				if ( checkIndex < 15 ){
+				//If checked, remove from hidden
+				//Else, inserts model on last hidden available
+				if ( $(this).is(':checked') ){
+					
+					var getId = $(this).parents('div.model-feature').attr('id');
+					var getModelId = getId.substring(6,modelDivId.length);
+					var inputIndex = 0;
+					
+					$(this).parents('div.model-feature-img').find('div.model-feature-index span').text("0");
+					
+					//Erase Value from input
+					$('input.feature-hidden').each(function(index) {
+						if ( $(this).val() == getModelId ){
+							$(this).val("");
+							inputIndex = index;
+						};
+					});
+					
+					//Update Input List Order
+					for (var i = inputIndex; i < $('input.feature-hidden').length; i++) {
+						var nextVal = $('input.feature-hidden:eq('+(i+1)+')').val();
+						$('input.feature-hidden:eq('+i+')').val(nextVal);
+					};
+					
+					//Update Counter
+					checkIndex = updateModelIndexCount();
+					
+					//Update Counter Display
+					$('input.feature-hidden').each(function(index) {
+						if ( $(this).val() != "" ){
+							var myHiddenVal = $(this).val();
+							var myHiddenIndex = index;
+
+							$('div.model-feature').each(function(index) {
+								if ( $(this).attr('id').indexOf(myHiddenVal) != -1 ){
+									$(this).find('div.model-feature-index span').text((myHiddenIndex+1));
+								};
+							});
+							
+						};
+					});
+					
+				}else if ( checkIndex < 15 ){
 					modelDivId = $(this).parents('div.model-feature').attr('id');
 					modelId = modelDivId.substring(6,modelDivId.length);
-					
+
 					$(this).parents('div.model-feature-img').find('div.model-feature-index span').text(checkIndex);
 					$('div#feature-models-container input.feature-hidden:eq('+(checkIndex-1)+')').val(modelId);
-					
+
 					checkIndex++;
 				}else{
 					event.preventDefault();
@@ -1980,6 +2026,30 @@ $(document).ready(function(){
 			
 		};
 	}
+	
+	/*
+		UBERSITE FEATURE MODEL SETUP » RESET INDX COUNTER
+	*/
+	function updateModelIndexCount(){
+		var emptyInputs = new Array();
+		var returnIndex = 0;
+		
+		//If there are any models checked, update counter
+		$('input.feature-hidden').each(function(index) {
+			if ( $(this).val() == "" ){
+				emptyInputs.push(index);
+			};
+		});
+		if ( emptyInputs.length > 0 ){
+			returnIndex = emptyInputs[0]+1;
+			while( emptyInputs.length > 0 ){
+				emptyInputs.pop();
+			}
+		};
+		
+		return returnIndex;
+	}
+	
 	
 	btnFolderHover();
 	tourSetup();
