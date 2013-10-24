@@ -176,8 +176,8 @@ module ModelsHelper
 
   def shoes_sizes_from
     shoes_sizes = []
-    shoes_sizes << ["- 20", 0]
-    (21..50).each do |shoes_size|
+    shoes_sizes << ["- 14", 0]
+    (15..50).each do |shoes_size|
       shoes_sizes << [shoes_size, shoes_size]
     end
     shoes_sizes << ['50 +', 51]
@@ -186,8 +186,8 @@ module ModelsHelper
 
   def shoes_sizes_to
     shoes_sizes = []
-    shoes_sizes << ['- 20', 19]
-    (21..50).each do |shoes_size|
+    shoes_sizes << ['- 14', 19]
+    (15..50).each do |shoes_size|
       shoes_sizes << [shoes_size, shoes_size]
     end
     shoes_sizes << ['50 +', '']
@@ -196,7 +196,7 @@ module ModelsHelper
 
   def shoes_size
     shoes_size = []
-    (20..50).each do |size|
+    (14..50).each do |size|
       shoes_size << [size, size]
     end
 

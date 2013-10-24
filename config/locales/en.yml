@@ -356,14 +356,12 @@ en:
 
   eyes_color:
     azul: Azul
-    castanho_claro: Castanho claro
-    castanho_escuro: Castanho escuro
+    castanho: Castanho
     verde: Verde
 
   hair_color:
     branco: Branco / Grisalho
-    castanho_claro: Castanho claro
-    castanho_escuro: Castanho escuro
+    castanho: Castanho
     preto: Preto
     loiro: Loiro
     ruivo: Ruivo
