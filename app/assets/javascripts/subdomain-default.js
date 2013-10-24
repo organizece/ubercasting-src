@@ -154,7 +154,7 @@ $(document).ready(function(){
 			});
 		};
 		
-		$('a#btn-left').click(function(event) {
+		$('a#btn-right').click(function(event) {
 			event.preventDefault();
 			var canvas = (slideHTot - limitDisplay)*-1;
 			if ( slidePos > canvas ){
@@ -163,7 +163,7 @@ $(document).ready(function(){
 			};
 		});
 	
-		$('a#btn-right').click(function(event) {
+		$('a#btn-left').click(function(event) {
 			event.preventDefault();
 			if ( slidePos < 0 ){
 				slidePos += slideH;
@@ -225,7 +225,7 @@ $(document).ready(function(){
 			});
 		};
 		
-		$('a#btn-left').click(function(event) {
+		$('a#btn-right').click(function(event) {
 			event.preventDefault();
 			if ( slidePos > ((slideWTot * -1)+limitDisplay) ){
 				slidePos -= slideW;
@@ -233,7 +233,7 @@ $(document).ready(function(){
 			};
 		});
 		
-		$('a#btn-right').click(function(event) {
+		$('a#btn-left').click(function(event) {
 			event.preventDefault();
 			if ( slidePos < 0 ){
 				slidePos += slideW;

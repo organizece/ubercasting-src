@@ -14,12 +14,10 @@ class Model < ActiveRecord::Base
 
   EYES_COLOR = %w( azul 
                    verde
-                   castanho_claro 
-                   castanho_escuro )
+                   castanho )
   
   HAIR_COLOR = %w( branco 
-                   castanho_claro 
-                   castanho_escuro 
+                   castanho 
                    preto 
                    loiro 
                    ruivo )
