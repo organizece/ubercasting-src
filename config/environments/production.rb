@@ -36,6 +36,7 @@ Ubercasting::Application.configure do
                                'cubical.css', 
                                'stylish.css', 
                                'stripes.css', 
+                               'elegant.css', 
                                'subdomain.js',
                                'composite-jquery-1.8.2.js',
                                'composite-jquery-ui-1.9.0.js',
