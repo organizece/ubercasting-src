@@ -1269,6 +1269,9 @@ $(document).ready(function(){
 		
 	}
 	
+	/*
+		ÜBERSITES » UPDATE THEME PREVEIWS
+	*/
 	function websiteUpdateThemePreview() {
 		var themeContainer = $('div#website-theme-content');
 		
@@ -1291,6 +1294,9 @@ $(document).ready(function(){
 				break;
 				case 3:
 					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/04.jpg');
+				break;
+				case 4:
+					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/05.jpg');
 				break;
 			}
 			$('div#website-theme-preview-thumb img').fadeIn(400);
@@ -1317,6 +1323,10 @@ $(document).ready(function(){
 					break;
 					case "stripes_theme":
 						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/04.jpg');
+						$(this).parent("li").addClass('theme-active');
+					break;
+					case "elegant_theme":
+						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/05.jpg');
 						$(this).parent("li").addClass('theme-active');
 					break;
 				}
@@ -1352,6 +1362,7 @@ $(document).ready(function(){
 	
 	/*
 		AGENCY » STEP BY STEP GUIDE SETUP
+		ÜBERSITES GUIDE » UPDATE THEME PREVEIWS
 	*/
 	function setupWebsiteGuide() {
 		var guideContainer = $('div#guide-content-container').length;
@@ -1590,6 +1601,7 @@ $(document).ready(function(){
 			
 			$('div#website-theme-preview-thumb img').hide();
 			
+			//EDIT THEMES THUMBS
 			switch(activeLiId){
 				case 0:
 					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/01.jpg');
@@ -1603,6 +1615,9 @@ $(document).ready(function(){
 				case 3:
 					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/04.jpg');
 				break;
+				case 4:
+					$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/05.jpg');
+				break;
 			}
 			
 			$('div#website-theme-preview-thumb img').fadeIn(400);
@@ -1615,6 +1630,8 @@ $(document).ready(function(){
 				$("div#website-theme-input ul li").removeClass('theme-active');
 				
 				$('div#website-theme-preview-thumb img').hide();
+				
+				//EDIT THEMES THUMBS
 				switch(myThumb){
 					case "subdomain_default":
 						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/01.jpg');
@@ -1630,6 +1647,10 @@ $(document).ready(function(){
 					break;
 					case "stripes_theme":
 						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/04.jpg');
+						$(this).parent("li").addClass('theme-active');
+					break;
+					case "elegant_theme":
+						$('div#website-theme-preview-thumb img').attr('src', '/assets/thumbs/05.jpg');
 						$(this).parent("li").addClass('theme-active');
 					break;
 				}

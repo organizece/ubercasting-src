@@ -407,11 +407,37 @@ $(document).ready(function(){
 		}
 	}
 	
+	/*
+		ELEGANT » RESIZE TEASER IMGS
+	*/
+	function elegantThemeTeaserImgs(){
+		var curTheme = $('#current-theme').val();
+		
+		if ( curTheme.indexOf("elegant") != -1 ){
+			$('#teaser-02-container .photo-bg img').resizeToParent();
+		};
+	}
+	
+	/*
+		FOOTER » SET CURRENT YEAR
+	*/
+	function footerYear(){
+		var hasYear = $('span.current-year').size();
+		
+		if ( hasYear > 0 ){
+			var myDate = new Date();
+			var thisYear = myDate.getFullYear();
+			$('span.current-year').text(thisYear);
+		};
+	}
+	
 	setupNavBar();
 	stripesThemeSetup();
 	checkSlideCall();
 	customerRequestInputMask();
 	castingTour();
 	castingModelTour();
+	elegantThemeTeaserImgs();
+	footerYear();
 	
 });

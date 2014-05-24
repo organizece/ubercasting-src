@@ -421,6 +421,7 @@ pt:
     cubical_theme: "Tema Cubical"
     stylish_theme: "Tema Stylish"
     stripes_theme: "Tema Stripes"
+    elegant_theme: "Tema Elegant"
     
   active_admin:
         dashboard: "Painel Administrativo"
