@@ -246,7 +246,7 @@
 				<div class="banner-msg">
 					<%= link_to 'Faça Seu Cadastro »', subdomain_new_customer_request_path(subdomain: request.subdomain) %>
 				</div>
-				<% @randomOne = rand(0..( (@website.agency.models.size - 1)/2 )) %>
+				<% @randomOne = (0..( (@website.agency.models.size - 1)/2 )).to_a.sample %>
 				<div class="photo-bg"><%= image_tag @website.agency.models[@randomOne].avatar.url %></div>
 			</div>
 			
@@ -254,7 +254,7 @@
 				<div class="banner-msg">
 					<%= link_to 'Busque o modelo certo »', subdomain_new_customer_request_path(subdomain: request.subdomain) %>
 				</div>
-				<% @randomTwo = rand(( ((@website.agency.models.size-1)/2)+1 )..(@website.agency.models.size-1)) %>
+				<% @randomTwo = (( ((@website.agency.models.size-1)/2)+1 )..(@website.agency.models.size-1)).to_a.sample %>
 				<div class="photo-bg"><%= image_tag @website.agency.models[@randomTwo].avatar.url %></div>
 			</div>
 						
