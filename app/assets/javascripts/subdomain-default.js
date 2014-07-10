@@ -3,19 +3,20 @@
 $(document).ready(function(){
 
 	function setupNavBar(){
-		var sectionID = $('div#content-container-wrapper div:eq(1)').attr('id');
+		var sectionID = window.location.href;
 		var mySection = "";
-
-		if ( sectionID != undefined && sectionID != "undefined" ){
-			if( sectionID != "admin-model-manage-container" ){
-				mySection = sectionID.substring(0, sectionID.indexOf("-"));
-			}else{
-				mySection = "models";
-			};
+		var barIndex = 0;
+		
+		if ( sectionID.indexOf("/website/home") != -1 || sectionID.indexOf("/website") == -1 ){
+			mySection = "home";
+		}else{
+			barIndex = sectionID.lastIndexOf("/");
+			mySection = sectionID.substring((barIndex+1), sectionID.length);
+			mySection = $.trim(mySection);
 		};
-
+		
 		$('div#main-nav ul li a').removeClass('active');
-
+		
 		switch(mySection){
 			case "home":
 				$('div#main-nav ul li.link-home a').addClass('active');
@@ -23,10 +24,10 @@ $(document).ready(function(){
 			case "about":
 				$('div#main-nav ul li.link-about a').addClass('active');
 			break;
-			case "bemodel":
+			case "be_model":
 				$('div#main-nav ul li.link-be-model a').addClass('active');
 			break;
-			case "contactus":
+			case "contact_us":
 				$('div#main-nav ul li.link-contact a').addClass('active');
 			break;
 			case "models":
@@ -35,8 +36,14 @@ $(document).ready(function(){
 			case "casting":
 				$('div#main-nav ul li.link-casting a').addClass('active');
 			break;
-			case "customer":
+			case "casting_foreign":
+				$('div#main-nav ul li.link-casting-foreign a').addClass('active');
+			break;
+			case "new":
 				$('div#main-nav ul li.link-register a').addClass('active');
+			break;
+			case "gallery":
+				$('div#main-nav ul li.link-gallery a').addClass('active');
 			break;
 		}
 	}
@@ -419,6 +426,32 @@ $(document).ready(function(){
 	}
 	
 	/*
+		UBER THEME » LOGO SIZE & PLACEMENT
+		UBER THEME » HOME BACKGROUND TRANSPARENT
+	*/
+	function uberThemeLogoSetup(){
+		var curTheme = $('#current-theme').val();
+		
+		if ( curTheme.indexOf("uber") != -1 ){
+			var logoW = $('div#logo-container img').width();
+			$('div#logo-container').width(logoW);
+		};
+	}
+	
+	function uberThemeHomeBackground() {
+		var curTheme = $('#current-theme').val();
+		
+		if ( curTheme.indexOf("uber") != -1 ){
+			var getURL = window.location.href;
+			
+			if ( getURL.indexOf("/website/home") != -1 || getURL.indexOf("website") == -1 ){
+				$('div#content-container-wrapper').css('background-color', 'transparent');
+			};
+			
+		};
+	}
+	
+	/*
 		FOOTER » SET CURRENT YEAR
 	*/
 	function footerYear(){
@@ -439,5 +472,7 @@ $(document).ready(function(){
 	castingModelTour();
 	elegantThemeTeaserImgs();
 	footerYear();
+	uberThemeLogoSetup();
+	uberThemeHomeBackground();
 	
 });

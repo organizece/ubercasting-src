@@ -247,7 +247,7 @@ span.btn-silver-light-fluid,
 	border-left: 1px solid #81817b;
 	border-top: 1px solid #81817b;
 	border-right: 1px solid #81817b;
-	background:#fff url(admin/btn-bg-gray-fluid.jpg) left top repeat-x scroll !important;
+	background:#fff url(admin/btn-bg-gray-fluid.jpg) left top repeat-x scroll;
 	color: #000 !important;
 	font-size: 13px;
 	text-align: center;
