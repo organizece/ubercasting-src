@@ -422,6 +422,7 @@ pt:
     stylish_theme: "Tema Stylish"
     stripes_theme: "Tema Stripes"
     elegant_theme: "Tema Elegant"
+    uber_theme: "Tema Über"
     
   active_admin:
         dashboard: "Painel Administrativo"
